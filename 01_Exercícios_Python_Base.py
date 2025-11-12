@@ -481,7 +481,7 @@ turmas = {
     }
 }
 
-# 23.1) Mostra a lista de alunos com as respetivas notas de cada turma.
+# 25.1) Mostra a lista de alunos com as respetivas notas de cada turma.
 
 # Resolução:
 for turma, info in turmas.items():
@@ -492,7 +492,7 @@ for turma, info in turmas.items():
         print(f"  Aluno: {nome}, Notas: {notas}")
     print()
 
-# 23.2) Diz quantos alunos têm pelo menos uma negativa (nota < 10) em cada turma.
+# 25.2) Diz quantos alunos têm pelo menos uma negativa (nota < 10) em cada turma.
 
 # Resolução:
 for turma, info in turmas.items():
@@ -505,14 +505,14 @@ for turma, info in turmas.items():
 
     print(f"Turma {turma} tem {count_negativas} alunos com pelo menos uma negativa.") 
 
-# 23.3) Diz qual o professor de cada turma.
+# 25.3) Diz qual o professor de cada turma.
 
 # Resolução:
 for turma, info in turmas.items():
     professor = info["professor"]
     print(f"O professor da turma {turma} é {professor}.")
 
-# 23.4) Pede um nome de um aluno e diz em que turma está e quais as suas notas.
+# 25.4) Pede um nome de um aluno e diz em que turma está e quais as suas notas.
 
 # Resolução:
 nome_procurado = input("Introduza o nome do aluno que procura: ")
@@ -525,3 +525,15 @@ for turma, info in turmas.items():
     else:
         continue  # Continua se o aluno não foi encontrado nesta turma
     break  # Sai do loop se o aluno foi encontrado
+
+# 26) Cria uma função que diga "Olá, Mundo!" e depois chama essa função.
+
+# 27) Cria uma função que receba dois números como parâmetros e retorne a sua soma.
+
+# 28) Cria uma função que receba um nome e diga quantas letras o nome tem.
+
+# 29) Cria uma função que receba uma lista de números e retorne quantos pares e quantos ímpares há na lista.
+
+# 30) Cria uma função que receba uma lista de números e retorne a média dos números da lista.
+
+# 31) Cria uma função que receba um dicionário com alunos e as respetivas notas e retorne a média das notas dos alunos.
