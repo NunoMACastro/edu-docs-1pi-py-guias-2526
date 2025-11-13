@@ -528,17 +528,88 @@ for turma, info in turmas.items():
 
 # 26) Cria uma função que diga "Olá, Mundo!" e depois chama essa função.
 
+# Resolução:
+def ola_mundo():
+    print("Olá, Mundo!")
+
+ola_mundo()  # Chama a função
+
 # 27) Cria uma função que receba dois números como parâmetros e retorne a sua soma.
+
+# Resolução:
+def soma(a, b):
+    return a + b
+resultado = soma(5, 3)
+print("A soma é:", resultado)
 
 # 28) Cria uma função que receba um nome e diga quantas letras o nome tem.
 
+# Resolução:
+def contar_letras(nome):
+    return len(nome)
+
+nome_utilizador = input("Introduza o seu nome: ")
+num_letras = contar_letras(nome_utilizador)
+print(f"O nome {nome_utilizador} tem {num_letras} letras.")
+
 # 29) Cria uma função que receba uma lista de números e retorne quantos pares e quantos ímpares há na lista.
+
+# Resolução:
+def contar_pares_impares(lista_numeros):
+    pares = 0
+    impares = 0
+    for num in lista_numeros:
+        if num % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+    return pares, impares
+
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+pares, impares = contar_pares_impares(numeros)
+print(f"Números pares: {pares}, Números ímpares: {impares}")
 
 # 30) Cria uma função que receba uma lista de números e retorne a média dos números da lista.
 
+# Resolução:
+def calcular_media(lista_numeros):
+    if len(lista_numeros) == 0:
+        return 0  # Evita divisão por zero
+    soma = sum(lista_numeros)
+    media = soma / len(lista_numeros)
+    return media
+
+numeros = [10, 20, 30, 40, 50]
+media = calcular_media(numeros)
+print(f"A média dos números é: {media}")
+
 # 31) Cria uma função que recebe uma número n e devolva o seu somatório (1 + 2 + ... + n).
 
+# Resolução:
+def somatorio(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += i
+    return total
+
+n = int(input("Introduza um número positivo: "))
+if n > 0:
+    resultado = somatorio(n)
+    print(f"O somatório de 1 até {n} é: {resultado}")
+else:
+    print("Número inválido. Deve ser positivo.")
+
 # 32) Cria uma função que receba uma lista de strings e retorne a string mais longa da lista.
+
+# Resolução: 
+def string_mais_longa(lista_strings):
+    if not lista_strings:  # Verifica se a lista está vazia
+        return None
+    mais_longa = lista_strings[0]
+    for string in lista_strings:
+        if len(string) > len(mais_longa):
+            mais_longa = string
+    return mais_longa
 
 # 33) Cria uma função que recebe um dicionário com turmas e alunos (lista) e devolva quantos alunos há por turma.
 
