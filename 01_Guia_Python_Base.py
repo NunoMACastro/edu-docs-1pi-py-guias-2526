@@ -463,3 +463,405 @@ alunos.append(novo_aluno)                 # adiciona à lista
 # - Atenção à mutabilidade: listas/dicionários (mutáveis) vs strings/ints (imutáveis).
 # - Testa com exemplos pequenos e vai aumentando a complexidade.
 # =============================================================================
+
+# =============================================================================
+# 16) FUNÇÕES — CONCEITO, DEFINIÇÃO E CHAMADA
+# -----------------------------------------------------------------------------
+# - Uma função é um "bloco reutilizável" que recebe dados (parâmetros),
+#   executa passos e (normalmente) devolve um resultado (return).
+# - Vantagens: evita duplicação, organiza o código e facilita testes.
+# - Sintaxe:
+#       def nome_funcao(param1, param2):
+#           """Docstring que explica o que faz, parâmetros e retorno."""
+#           # corpo
+#           return resultado
+# - Boas práticas: nomes verbais em snake_case e docstrings claras.
+# =============================================================================
+
+def soma(a: int, b: int) -> int:
+    """
+    Soma dois inteiros e devolve o resultado.
+
+    :param a: Primeiro número inteiro.
+    :param b: Segundo número inteiro.
+    :return: Soma de a e b.
+    """
+    # Lógica simples: devolve a + b (não imprime; retorna)
+    return a + b
+
+
+def saudacao(nome: str, prefixo: str = "Olá") -> str:
+    """
+    Constrói uma saudação formatada.
+
+    :param nome: Nome da pessoa a saudar.
+    :param prefixo: Texto antes do nome (por defeito: "Olá").
+    :return: String da forma "<prefixo>, <nome>!".
+    """
+    return f"{prefixo}, {nome}!"
+
+
+res_soma_1 = soma(3, 5)                # 8 (argumentos posicionais)
+res_saud_1 = saudacao("Ana")           # "Olá, Ana!"
+res_saud_2 = saudacao(nome="Bruno", prefixo="Bem-vindo")  # argumentos nomeados
+
+
+# =============================================================================
+# 17) PARÂMETROS — POSICIONAIS, NOMEADOS E VALORES POR DEFEITO
+# -----------------------------------------------------------------------------
+# - Posicionais: a ordem importa → func(3, 2)
+# - Nomeados (keywords): ordem não importa → func(expoente=2, base=3)
+# - Valores por defeito: tornam o argumento opcional → def f(x, y=0)
+# - Evitar defaults MUTÁVEIS (ex.: lista/dict) — ver secção 20 (pitfall).
+# =============================================================================
+
+def potencia(base: float, expoente: int = 2) -> float:
+    """
+    Calcula 'base' elevada a 'expoente'.
+
+    :param base: Número real (float) base.
+    :param expoente: Expoente inteiro (por defeito: 2).
+    :return: base ** expoente.
+    """
+    return base ** expoente
+
+
+p1 = potencia(3)                        # 9 (usa expoente por defeito = 2)
+p2 = potencia(base=2, expoente=5)       # 32 (argumentos nomeados)
+p3 = potencia(4, 3)                      # 64 (posicionais)
+
+
+# =============================================================================
+# 18) RETURN — UM VALOR, VÁRIOS VALORES, None, SAÍDA ANTECIPADA
+# -----------------------------------------------------------------------------
+# - 'return valor' termina a função e devolve o valor.
+# - Vários valores: devolve um TUPO (ex.: return a, b).
+# - Sem return explícito ⇒ devolve None.
+# - Pode devolver cedo (early return) para tratar casos especiais.
+# =============================================================================
+
+from typing import Tuple, Optional
+
+def dividir(dividendo: int, divisor: int) -> Tuple[int, int]:
+    """
+    Devolve (quociente, resto) da divisão inteira.
+
+    :param dividendo: Número inteiro a dividir.
+    :param divisor: Número inteiro divisor (≠ 0).
+    :return: Tuplo (quociente, resto).
+    :raises ZeroDivisionError: Se divisor == 0.
+    """
+    if divisor == 0:
+        # Saída antecipada com erro explícito torna o bug evidente.
+        raise ZeroDivisionError("Divisor não pode ser 0.")
+    return dividendo // divisor, dividendo % divisor
+
+
+def safe_div(a: float, b: float) -> Optional[float]:
+    """
+    Divide a por b. Se b==0, devolve None (em vez de lançar erro).
+
+    :param a: Dividendo (float).
+    :param b: Divisor (float).
+    :return: Resultado da divisão ou None se b==0.
+    """
+    if b == 0:
+        return None
+    return a / b
+
+
+q, r = dividir(17, 5)                    # q=3, r=2
+div_ok = safe_div(10.0, 2.0)             # 5.0
+div_erro = safe_div(10.0, 0.0)           # None
+
+
+# =============================================================================
+# 19) ESCOPO (SCOPE) — LOCAL, GLOBAL E NONLOCAL
+# -----------------------------------------------------------------------------
+# - Variáveis criadas dentro da função são LOCAIS à função.
+# - Para alterar uma variável GLOBAL dentro da função, usar 'global' (raramente
+#   recomendado em código real; preferir retorno de valores).
+# - 'nonlocal' altera variáveis do escopo ENCAPSULANTE (funções internas/closures).
+# =============================================================================
+
+total_global = 0  # exemplo didático; evite estados globais em produção
+
+def acumular_no_global(valor: int) -> None:
+    """
+    Soma valor à variável global 'total_global'.
+
+    :param valor: Inteiro a acumular.
+    :return: None (efeito colateral em total_global).
+    """
+    global total_global
+    total_global += valor  # altera o estado global
+
+
+def cria_contador(inicio: int = 0):
+    """
+    Fábrica de contadores (exemplo de CLOSURE com 'nonlocal').
+
+    :param inicio: Valor inicial do contador.
+    :return: Função 'proximo()' que incrementa e devolve o contador.
+    """
+    contador = inicio
+
+    def proximo() -> int:
+        """Incrementa o contador fechado sobre o escopo externo."""
+        nonlocal contador
+        contador += 1
+        return contador
+
+    return proximo
+
+
+acumular_no_global(5)                    # total_global = 5
+acumular_no_global(7)                    # total_global = 12
+
+novo_id = cria_contador(100)             # cria um contador a começar em 100
+id1 = novo_id()                          # 101
+id2 = novo_id()                          # 102
+
+
+# =============================================================================
+# 20) MUTABILIDADE E "PASSAGEM DE ARGUMENTOS"
+# -----------------------------------------------------------------------------
+# - Python passa REFERÊNCIAS a objetos (call-by-object). O comportamento depende
+#   da mutabilidade do objeto recebido.
+# - Imutáveis (int, float, str, tuple): NÃO podem ser alterados por mutação.
+# - Mutáveis (list, dict, set): PODEM ser alterados por mutação dentro da função.
+# - Pitfall clássico: defaults mutáveis (ex.: def f(x, acc=[]) → evita!).
+# =============================================================================
+
+def incrementa_numero(n: int) -> int:
+    """
+    Devolve um NOVO inteiro com +1 (não altera o original, que é imutável).
+    """
+    return n + 1
+
+
+def adiciona_elemento(lista: list, elem) -> None:
+    """
+    Adiciona 'elem' à LISTA recebida (altera o objeto mutável).
+    """
+    lista.append(elem)  # mutação in-place
+
+
+n_original = 10
+n_novo = incrementa_numero(n_original)   # 11; n_original continua 10
+
+lst = [1, 2]
+adiciona_elemento(lst, 3)                # lst agora [1, 2, 3]
+
+# ---- Evitar defaults mutáveis ----
+def acumulador_errado(valor: int, acc: list = []):
+    """
+    EXEMPLO A NÃO USAR: o default [] é criado UMA vez e reutilizado em todas
+    as chamadas sem 'acc' explícito, acumulando resultados entre chamadas.
+    """
+    acc.append(valor)
+    return acc
+
+def acumulador_correto(valor: int, acc: Optional[list] = None) -> list:
+    """
+    Usa None como sentinela e cria uma nova lista quando necessário.
+    """
+    if acc is None:
+        acc = []
+    acc.append(valor)
+    return acc
+
+
+# =============================================================================
+# 21) FUNÇÕES DE ORDEM SUPERIOR, LAMBDAS E COMPREENSÕES
+# -----------------------------------------------------------------------------
+# - Funções são "cidadãos de 1.ª classe": podem ser guardadas em variáveis,
+#   passadas como argumentos e devolvidas.
+# - lambda: função anónima para casos simples (usar com moderação pela legibilidade).
+# - map/filter/sorted(key=...) vs compreensões — compare e escolhe o mais claro.
+# =============================================================================
+
+from typing import Callable, Iterable, List
+
+def aplicar(func: Callable[[int], int], valor: int) -> int:
+    """
+    Aplica 'func' ao 'valor' e devolve o resultado.
+
+    :param func: Função que recebe int e devolve int.
+    :param valor: Inteiro de entrada.
+    """
+    return func(valor)
+
+def dobro(x: int) -> int:
+    """Devolve o dobro de x."""
+    return 2 * x
+
+res_aplicar = aplicar(dobro, 7)          # 14
+
+# Lambda equivalente (mais compacto, menos descritivo):
+res_aplicar_lambda = aplicar(lambda x: x * 2, 7)  # 14
+
+# map/filter vs compreensões:
+dados = [1, 2, 3, 4, 5]
+
+dobros_map = list(map(lambda x: x * 2, dados))        # [2,4,6,8,10]
+pares_filter = list(filter(lambda x: x % 2 == 0, dados))  # [2,4]
+
+# Compreensões (normalmente mais legíveis):
+dobros_comp = [x * 2 for x in dados]                  # [2,4,6,8,10]
+pares_comp = [x for x in dados if x % 2 == 0]         # [2,4]
+
+# sorted com 'key' (ordenar tuplos pelo 2.º elemento):
+tuplos = [("a", 3), ("b", 1), ("c", 2)]
+ord_por_segundo = sorted(tuplos, key=lambda t: t[1])  # [("b",1),("c",2),("a",3)]
+
+
+# =============================================================================
+# 22) *args e **kwargs — NÚMERO VARIÁVEL DE ARGUMENTOS
+# -----------------------------------------------------------------------------
+# - *args: empacota argumentos posicionais num tuplo.
+# - **kwargs: empacota argumentos nomeados num dicionário.
+# - Úteis para "funções elásticas" e para encaminhar argumentos.
+# =============================================================================
+
+def media(*nums: float) -> float:
+    """
+    Calcula a média aritmética de 0 ou mais números.
+
+    :param nums: Sequência de números (posicionais).
+    :return: Média (0.0 se não forem dados números).
+    """
+    if not nums:
+        return 0.0
+    return sum(nums) / len(nums)
+
+def configurar(**opcoes) -> dict:
+    """
+    Recebe opções nomeadas (kwargs) e devolve-as normalizadas.
+
+    :return: Dicionário com opções.
+    """
+    # Exemplo simples: poderíamos validar/chavear defaults aqui
+    return dict(opcoes)
+
+m1 = media(10, 12, 14)                   # 12.0
+m2 = media()                             # 0.0
+
+cfg = configurar(debug=True, porta=8000) # {"debug": True, "porta": 8000}
+
+# Desempacotar ao chamar:
+valores = [10, 20, 30]
+opcoes = {"debug": False, "porta": 5000}
+m3 = media(*valores)                     # 20.0
+cfg2 = configurar(**opcoes)              # {"debug": False, "porta": 5000}
+
+
+# =============================================================================
+# 23) DOCSTRINGS E ANOTAÇÕES DE TIPO (TYPE HINTS)
+# -----------------------------------------------------------------------------
+# - Escreve SEMPRE docstrings em funções (o 'help(func)' usa-as).
+# - Usa anotações de tipo para clarificar intenção e ajudar ferramentas.
+# - Importante para ensino, testes e IDEs (autocompletar, warnings).
+# =============================================================================
+
+from typing import Sequence
+
+def normalizar_textos(textos: Sequence[str]) -> list[str]:
+    """
+    Normaliza uma lista/tuplo de textos:
+    - remove espaços nas pontas
+    - converte para minúsculas
+    - ignora strings vazias após trim
+
+    :param textos: Sequência de strings de entrada.
+    :return: Lista de strings normalizadas e não vazias.
+
+    Exemplo:
+    >>> normalizar_textos(["  Ana  ", "  ", "PYTHON"])
+    ['ana', 'python']
+    """
+    resultado: list[str] = []
+    for t in textos:
+        t_norm = t.strip().lower()
+        if t_norm:                # ignora vazias
+            resultado.append(t_norm)
+    return resultado
+
+# Dica: no REPL, experimenta:
+# >>> help(normalizar_textos)
+# para ver a docstring formatada.
+
+
+# =============================================================================
+# 24) RECURSÃO — IDEIA E EXEMPLOS
+# -----------------------------------------------------------------------------
+# - Uma função recursiva chama-se a SI PRÓPRIA.
+# - Precisa SEMPRE de caso(s) base (condição de paragem) para não ser infinita.
+# - Útil em problemas naturalmente recursivos (árvores, divide-and-conquer).
+# - Em Python, a recursão profunda é limitada (RecursionError); cuidado com n grandes.
+# =============================================================================
+
+def fatorial(n: int) -> int:
+    """
+    Calcula n! (fatorial) de forma recursiva.
+
+    :param n: Inteiro >= 0.
+    :return: fatorial de n.
+    :raises ValueError: se n < 0.
+    """
+    if n < 0:
+        raise ValueError("n deve ser >= 0")
+    if n in (0, 1):         # casos base
+        return 1
+    return n * fatorial(n - 1)
+
+def conta_decrescente(n: int) -> list[int]:
+    """
+    Devolve lista [n, n-1, ..., 1] usando recursão (exemplo didático).
+
+    :param n: Inteiro >= 1.
+    :return: Lista decrescente até 1.
+    """
+    if n <= 1:
+        return [1]
+    return [n] + conta_decrescente(n - 1)
+
+
+# =============================================================================
+# 25) BOAS PRÁTICAS EM FUNÇÕES
+# -----------------------------------------------------------------------------
+# - Preferir 'return' de valores a 'print' (separa lógica de I/O).
+# - Funções curtas e com 1 responsabilidade (Single Responsibility).
+# - Nomes claros e docstrings objetivas (o quê, parâmetros, retorno, exceções).
+# - Evitar alterar variáveis globais (usar retorno/argumentos).
+# - Evitar defaults mutáveis; usar None como sentinela e criar novos objetos.
+# - Escrever testes simples (asserts) e usar o bloco '__main__' para demos.
+# =============================================================================
+
+
+# =============================================================================
+# 26) DEMOS E TESTES RÁPIDOS (EXECUTADOS APENAS SE ESTE FICHEIRO FOR O PROGRAMA)
+# -----------------------------------------------------------------------------
+# - Mantemos os testes de demonstração aqui, protegidos por 'if __name__ == "__main__":'
+#   para não correrem quando o ficheiro for importado como módulo noutro script.
+# =============================================================================
+if __name__ == "__main__":
+    # Asserções simples (se alguma falhar, o Python lança AssertionError):
+    assert soma(2, 3) == 5
+    assert potencia(3) == 9
+    assert potencia(2, 5) == 32
+    assert safe_div(9, 0) is None
+    assert normalizar_textos(["  Ana  ", "  ", "PYTHON"]) == ["ana", "python"]
+    assert fatorial(5) == 120
+    assert conta_decrescente(4) == [4, 3, 2, 1]
+
+    # Mostrar alguns resultados:
+    print("\n--- DEMOS FUNÇÕES ---")
+    print("soma(7, 8) ->", soma(7, 8))
+    print("saudacao('Beatriz') ->", saudacao("Beatriz"))
+    print("dividir(17, 5) ->", dividir(17, 5))
+    print("media(10, 12, 14) ->", media(10, 12, 14))
+    print("contador closure ->", novo_id(), novo_id())  # continua de 102
+    print("sorted por 2.º elemento ->", ord_por_segundo)
+    print("--- FIM ---\n")
+

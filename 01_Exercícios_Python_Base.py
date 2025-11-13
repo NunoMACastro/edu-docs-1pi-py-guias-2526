@@ -536,4 +536,14 @@ for turma, info in turmas.items():
 
 # 30) Cria uma função que receba uma lista de números e retorne a média dos números da lista.
 
-# 31) Cria uma função que receba um dicionário com alunos e as respetivas notas e retorne a média das notas dos alunos.
+# 31) Cria uma função que recebe uma número n e devolva o seu somatório (1 + 2 + ... + n).
+
+# 32) Cria uma função que receba uma lista de strings e retorne a string mais longa da lista.
+
+# 33) Cria uma função que recebe um dicionário com turmas e alunos (lista) e devolva quantos alunos há por turma.
+
+# 34) Cria uma função que receba um dicionário com nomes e idades e retorne o nome da pessoa mais velha.
+
+
+
+
