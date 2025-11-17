@@ -1,4 +1,4 @@
-# Python (10.º Ano) — 03 · Listas, Dicionários e Estruturas Aninhadas
+# Python (10.º Ano) - 03 · Listas, Dicionários e Estruturas Aninhadas
 
 > **Objetivo deste ficheiro**  
 > Consolidar o armazenamento de coleções de dados em Python (listas e dicionários) e começar a pensar de forma mais estruturada com estruturas aninhadas.
@@ -85,12 +85,12 @@ l.clear()          # apaga todos os elementos -> []
 
 Vamos ver com mais calma:
 
--   `append(x)` — acrescenta `x` no fim.
--   `insert(i, x)` — insere `x` na posição `i`, deslocando o resto.
--   `pop()` — remove e devolve o último elemento.
--   `pop(i)` — remove e devolve o elemento no índice `i`.
--   `remove(x)` — remove a primeira ocorrência de `x` (se não existir, dá erro).
--   `clear()` — esvazia a lista.
+-   `append(x)` - acrescenta `x` no fim.
+-   `insert(i, x)` - insere `x` na posição `i`, deslocando o resto.
+-   `pop()` - remove e devolve o último elemento.
+-   `pop(i)` - remove e devolve o elemento no índice `i`.
+-   `remove(x)` - remove a primeira ocorrência de `x` (se não existir, dá erro).
+-   `clear()` - esvazia a lista.
 
 Mais métodos úteis para análise:
 
@@ -640,7 +640,7 @@ if not encontrado:
 > Tenta resolver estes exercícios usando apenas o que está neste ficheiro e nos anteriores.  
 > Alguns são adaptações dos exercícios que já fizeste, mas agora estão organizados por tema.
 
-### Exercício 1 — Lista básica e índices
+### Exercício 1 - Lista básica e índices
 
 Cria uma lista com pelo menos 5 números à tua escolha.  
 O programa deve:
@@ -652,7 +652,7 @@ O programa deve:
 
 ---
 
-### Exercício 2 — Positivos, negativos e zeros (lista)
+### Exercício 2 - Positivos, negativos e zeros (lista)
 
 Pede 5 números ao utilizador e guarda-os numa lista.  
 Depois, percorre a lista e, para cada número, imprime se é:
@@ -663,7 +663,7 @@ Depois, percorre a lista e, para cada número, imprime se é:
 
 ---
 
-### Exercício 3 — Maior e menor sem `max`/`min`
+### Exercício 3 - Maior e menor sem `max`/`min`
 
 Pede 10 números ao utilizador e guarda-os numa lista.
 
@@ -672,7 +672,7 @@ Pede 10 números ao utilizador e guarda-os numa lista.
 
 ---
 
-### Exercício 4 — Separar pares e ímpares
+### Exercício 4 - Separar pares e ímpares
 
 Pede ao utilizador que introduza 10 números inteiros e guarda-os numa lista.  
 Depois:
@@ -683,7 +683,7 @@ Depois:
 
 ---
 
-### Exercício 5 — Dicionário simples de pessoa
+### Exercício 5 - Dicionário simples de pessoa
 
 Cria um dicionário que represente uma pessoa com as chaves:
 
@@ -701,7 +701,7 @@ Depois:
 
 ---
 
-### Exercício 6 — Festival de comida (dicionário de dicionários)
+### Exercício 6 - Festival de comida (dicionário de dicionários)
 
 Usa o seguinte dicionário de bancas num festival de comida:
 
@@ -721,7 +721,7 @@ bancas = {
 
 ---
 
-### Exercício 7 — Matriz 3x3
+### Exercício 7 - Matriz 3x3
 
 Cria uma matriz 3x3 (lista de listas) com números inteiros à tua escolha.
 
@@ -731,7 +731,7 @@ Cria uma matriz 3x3 (lista de listas) com números inteiros à tua escolha.
 
 ---
 
-### Exercício 8 — Turmas e alunos (dicionário de listas)
+### Exercício 8 - Turmas e alunos (dicionário de listas)
 
 Cria um dicionário de listas onde:
 
@@ -746,7 +746,7 @@ O programa deve:
 
 ---
 
-### Exercício 9 — Turmas com notas (estrutura aninhada)
+### Exercício 9 - Turmas com notas (estrutura aninhada)
 
 Usa a estrutura de `turmas` apresentada na secção 4.2 (cada turma tem uma lista de alunos com notas e um professor).
 
@@ -760,7 +760,7 @@ O programa deve:
 
 ---
 
-### Exercício 10 — Base de dados de livros (lista de dicionários)
+### Exercício 10 - Base de dados de livros (lista de dicionários)
 
 Cria uma lista de dicionários, em que cada dicionário representa um livro com:
 
@@ -777,7 +777,7 @@ O programa deve:
 
 ---
 
-### Exercício 11 — Temperaturas mensais
+### Exercício 11 - Temperaturas mensais
 
 Usa duas listas:
 
@@ -794,7 +794,7 @@ O programa deve:
 
 ---
 
-### Exercício 12 (Desafio) — Sistema simples de gestão de escola
+### Exercício 12 (Desafio) - Sistema simples de gestão de escola
 
 Cria uma estrutura de dados (usando listas e dicionários) para representar:
 

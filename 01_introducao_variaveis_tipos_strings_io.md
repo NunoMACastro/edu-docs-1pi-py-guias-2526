@@ -1,4 +1,4 @@
-# Python (10.º Ano) — 01 · Introdução, Variáveis, Tipos, Strings e I/O
+# Python (10.º Ano) - 01 · Introdução, Variáveis, Tipos, Strings e I/O
 
 > **Objetivo deste ficheiro**  
 > Dar-te uma base sólida em Python: o que é programar, como declarar variáveis, conhecer os tipos de dados mais usados, trabalhar com texto (strings) e comunicar com o utilizador usando `print()` e `input()`.
@@ -8,7 +8,7 @@
 ## 0. Como usar este ficheiro
 
 1. Lê a explicação teórica com calma.
-2. Analisa os exemplos de código — tenta prever o resultado **antes** de o correr.
+2. Analisa os exemplos de código - tenta prever o resultado **antes** de o correr.
 3. Reproduz os exemplos no teu editor / IDE.
 4. No fim, resolve os **exercícios** (10–12). Começa pelos mais fáceis e sobe a dificuldade.
 
@@ -259,7 +259,7 @@ Mais tarde vamos ver **docstrings**, que são “comentários especiais” usado
 
 ## 7. Entrada e saída: `print()` e `input()`
 
-### 7.1. `print()` — mostrar informação
+### 7.1. `print()` - mostrar informação
 
 A função `print()` escreve texto no ecrã.
 
@@ -273,7 +273,7 @@ print("Ano letivo:", ano)
 
 Podes juntar valores com vírgulas (Python coloca um espaço entre eles por defeito) ou usar **f-strings** (ver abaixo).
 
-### 7.2. `input()` — ler informação
+### 7.2. `input()` - ler informação
 
 A função `input()` mostra uma mensagem (opcional) e **lê uma linha de texto** escrita pelo utilizador.  
 O resultado é sempre uma `str`.
@@ -343,7 +343,7 @@ print(f"Nome formatado: {nome.capitalize()}")
 > Sugestão: copia cada exercício para um ficheiro `.py` e resolve-o.  
 > Tenta primeiro **sem olhar para a solução**. Só depois compara com a correção.
 
-### Exercício 1 — Dados básicos do aluno
+### Exercício 1 - Dados básicos do aluno
 
 Cria um programa que:
 
@@ -358,7 +358,7 @@ Podes usar `print()` normal ou uma f-string.
 
 ---
 
-### Exercício 2 — Tipos de dados
+### Exercício 2 - Tipos de dados
 
 Escreve um programa que:
 
@@ -382,7 +382,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 3 — Conversão de input
+### Exercício 3 - Conversão de input
 
 Escreve um programa que:
 
@@ -397,7 +397,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 4 — Comprimento de uma palavra
+### Exercício 4 - Comprimento de uma palavra
 
 Cria um programa que:
 
@@ -409,7 +409,7 @@ Cria um programa que:
 
 ---
 
-### Exercício 5 — Maiúsculas e minúsculas
+### Exercício 5 - Maiúsculas e minúsculas
 
 Escreve um programa que:
 
@@ -421,7 +421,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 6 — Limpar espaços
+### Exercício 6 - Limpar espaços
 
 Cria um programa que:
 
@@ -433,7 +433,7 @@ Cria um programa que:
 
 ---
 
-### Exercício 7 — Procurar letra na palavra
+### Exercício 7 - Procurar letra na palavra
 
 Escreve um programa que:
 
@@ -455,7 +455,7 @@ A letra "x" não existe na palavra "banana".
 
 ---
 
-### Exercício 8 — Conversão de temperatura
+### Exercício 8 - Conversão de temperatura
 
 Cria um programa que:
 
@@ -471,7 +471,7 @@ Cria um programa que:
 
 ---
 
-### Exercício 9 — Valores “vazios” e `bool()`
+### Exercício 9 - Valores “vazios” e `bool()`
 
 Escreve um programa que:
 
@@ -495,7 +495,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 10 — Questionário simples
+### Exercício 10 - Questionário simples
 
 Cria um pequeno “questionário” em que o programa pergunta ao utilizador:
 
@@ -511,7 +511,7 @@ Olá, eu sou a/o <nome>, vivo em <cidade> e a minha linguagem favorita é <lingu
 
 ---
 
-### Exercício 11 (Desafio) — Identificar o tipo de input
+### Exercício 11 (Desafio) - Identificar o tipo de input
 
 Escreve um programa que:
 
@@ -528,7 +528,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 12 (Desafio) — Formatar um “cartão de aluno”
+### Exercício 12 (Desafio) - Formatar um “cartão de aluno”
 
 Cria um programa que:
 

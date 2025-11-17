@@ -1,4 +1,4 @@
-# Python (10.º Ano) — 05 · Algoritmos e Padrões de Programação
+# Python (10.º Ano) - 05 · Algoritmos e Padrões de Programação
 
 > **Objetivo deste ficheiro**  
 > Deixar de ser apenas “truques de Python” e começar a pensar **como programador**:
@@ -21,7 +21,7 @@ Ao longo deste documento:
 Muitos erros aparecem porque se começa logo a escrever código, sem pensar.  
 Uma abordagem mais segura:
 
-### 0.1. Passo 1 — Ler o enunciado com calma
+### 0.1. Passo 1 - Ler o enunciado com calma
 
 -   Sublinha ou destaca:
     -   o que é dado (**entrada**),
@@ -42,7 +42,7 @@ Exemplo de enunciado:
     -   somar idades para calcular média,
     -   contar quantas idades são ≥ 18.
 
-### 0.2. Passo 2 — Fazer 2–3 exemplos à mão
+### 0.2. Passo 2 - Fazer 2–3 exemplos à mão
 
 Escolhe tu os dados e faz as contas no papel.
 
@@ -55,7 +55,7 @@ Exemplo:
 
 Já tens uma ideia do que o programa deve fazer.
 
-### 0.3. Passo 3 — Escrever um plano em português (pseudocódigo)
+### 0.3. Passo 3 - Escrever um plano em português (pseudocódigo)
 
 Exemplo de plano:
 
@@ -69,7 +69,7 @@ Exemplo de plano:
 5. Contar quantas idades são ≥ 18.
 6. Mostrar a média e o número de maiores ou iguais a 18.
 
-### 0.4. Passo 4 — Transformar o plano em código
+### 0.4. Passo 4 - Transformar o plano em código
 
 Primeiro, sem funções (só para perceber a lógica).  
 Depois, refatorar para funções (ver secção 4).
@@ -490,7 +490,7 @@ Se um assert falhar, o Python lança um erro e isso ajuda a localizar o problema
 
 ---
 
-## 6. Exercícios — Algoritmos e Padrões de Programação
+## 6. Exercícios - Algoritmos e Padrões de Programação
 
 > Sugestão:
 >
@@ -500,7 +500,7 @@ Se um assert falhar, o Python lança um erro e isso ajuda a localizar o problema
 
 ---
 
-### Exercício 1 — Contagem de positivos, negativos e zeros
+### Exercício 1 - Contagem de positivos, negativos e zeros
 
 Pede ao utilizador n números (escolhe tu o valor de n, por exemplo 10) e:
 
@@ -518,7 +518,7 @@ Tenta identificar no teu código os padrões de:
 
 ---
 
-### Exercício 2 — Aprovados e reprovados
+### Exercício 2 - Aprovados e reprovados
 
 Cria uma função contar_aprovados_reprovados(notas) que recebe uma lista de notas (0–20) e:
 
@@ -533,7 +533,7 @@ No programa principal:
 
 ---
 
-### Exercício 3 — Mínimo e máximo manual
+### Exercício 3 - Mínimo e máximo manual
 
 Escreve uma função min_max(lista_numeros) que:
 
@@ -545,7 +545,7 @@ Testa com pelo menos 3 listas diferentes.
 
 ---
 
-### Exercício 4 — Filtrar pares e ímpares
+### Exercício 4 - Filtrar pares e ímpares
 
 Escreve uma função separar_pares_impares(lista_numeros) que:
 
@@ -561,7 +561,7 @@ No programa principal:
 
 ---
 
-### Exercício 5 — Transformação: quadrados dos números
+### Exercício 5 - Transformação: quadrados dos números
 
 Escreve uma função quadrados(lista_numeros) que:
 
@@ -574,7 +574,7 @@ Testa:
 
 ---
 
-### Exercício 6 — Produtos e preços
+### Exercício 6 - Produtos e preços
 
 Cria um dicionário precos em que:
 
@@ -589,7 +589,7 @@ Escreve uma função produto_mais_caro(precos) que:
 
 ---
 
-### Exercício 7 — Idades e maioridade
+### Exercício 7 - Idades e maioridade
 
 Cria um dicionário idades (nome → idade) e escreve uma função estatisticas_idades(idades) que devolve:
 
@@ -605,7 +605,7 @@ Maiores ou iguais a 18: Y
 
 ---
 
-### Exercício 8 — Contar alunos por turma
+### Exercício 8 - Contar alunos por turma
 
 Cria um dicionário turmas em que:
 
@@ -628,7 +628,7 @@ Turma 10B -> 4 alunos
 
 ---
 
-### Exercício 9 — Reprovados por turma
+### Exercício 9 - Reprovados por turma
 
 Usa uma estrutura semelhante à de turma na secção 4 (com alunos e notas por disciplina) e escreve uma função:
 
@@ -643,7 +643,7 @@ Mostra depois um pequeno relatório por turma.
 
 ---
 
-### Exercício 10 — Algoritmo em português (sem código primeiro)
+### Exercício 10 - Algoritmo em português (sem código primeiro)
 
 Lê com atenção este enunciado:
 
@@ -667,7 +667,7 @@ Só depois, se quiseres, tenta começar a programar.
 
 ---
 
-### Exercício 11 (Desafio) — Contador de frequências de letras
+### Exercício 11 (Desafio) - Contador de frequências de letras
 
 Escreve uma função contar_letras(texto) que:
 
@@ -684,7 +684,7 @@ Dica: podes primeiro converter o texto para minúsculas e ignorar espaços.
 
 ---
 
-### Exercício 12 (Desafio) — Refatorar com funções
+### Exercício 12 (Desafio) - Refatorar com funções
 
 Escolhe um dos programas que já fizeste (por exemplo, um que trabalhe com turmas, notas ou temperaturas) e:
 

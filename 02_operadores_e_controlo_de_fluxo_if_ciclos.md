@@ -1,4 +1,4 @@
-# Python (10.º Ano) — 02 · Operadores e Controlo de Fluxo (`if`, `for`, `while`)
+# Python (10.º Ano) - 02 · Operadores e Controlo de Fluxo (`if`, `for`, `while`)
 
 > **Objetivo deste ficheiro**  
 > Dar-te o “motor” da lógica em Python: aprender a usar operadores, tomar decisões com `if/elif/else` e repetir ações com `while` e `for`.
@@ -127,9 +127,9 @@ Isto é muito útil, por exemplo, para intervalos de notas ou idades.
 
 Os operadores lógicos combinam condições.
 
--   `and` — verdadeiro se **ambas** as condições forem verdadeiras.
--   `or` — verdadeiro se **pelo menos uma** condição for verdadeira.
--   `not` — inverte o valor lógico (True → False, False → True).
+-   `and` - verdadeiro se **ambas** as condições forem verdadeiras.
+-   `or` - verdadeiro se **pelo menos uma** condição for verdadeira.
+-   `not` - inverte o valor lógico (True → False, False → True).
 
 ### 3.1. Tabelas verdade simples
 
@@ -177,7 +177,7 @@ print(False and diz_ola())   # não chama diz_ola (já sabe que é False)
 print(True or diz_ola())     # não chama diz_ola (já sabe que é True)
 ```
 
-Isto é importante quando a segunda condição é “cara” (ou pode dar erro) — podes usar a primeira condição como “filtro”.
+Isto é importante quando a segunda condição é “cara” (ou pode dar erro) - podes usar a primeira condição como “filtro”.
 
 ---
 
@@ -340,7 +340,7 @@ Lê-se: “resultado é `'Aprovado'` **se** `nota >= 10`, caso contrário `'Repr
 
 ---
 
-## 8. Ciclo `while` — repetir enquanto a condição for verdadeira
+## 8. Ciclo `while` - repetir enquanto a condição for verdadeira
 
 O `while` repete um bloco **enquanto** a condição for `True`.
 
@@ -380,7 +380,7 @@ Aqui usamos `while` para repetir até a condição “nota inválida” deixar d
 
 ---
 
-## 9. Ciclo `for` — percorrer sequências
+## 9. Ciclo `for` - percorrer sequências
 
 O `for` é ideal para **percorrer coleções** (listas, strings, ranges).
 
@@ -412,7 +412,7 @@ O `for` é muito usado com `range()`, que vamos ver a seguir.
 
 ---
 
-## 10. `range()` — gerar sequências numéricas
+## 10. `range()` - gerar sequências numéricas
 
 `range()` gera uma sequência de inteiros (não é uma lista, mas comporta-se de forma parecida num `for`).
 
@@ -497,7 +497,7 @@ Se a indentação estiver errada, o Python vai dar erros (`IndentationError`) ou
 > Tenta primeiro sem olhar para as soluções anteriores.  
 > Alguns exercícios são versões reformuladas dos que já fizeste, mas agora estão agrupados por tema.
 
-### Exercício 1 — Positivo, negativo ou zero
+### Exercício 1 - Positivo, negativo ou zero
 
 Lê um número inteiro do utilizador e diz se é:
 
@@ -509,7 +509,7 @@ Usa `if/elif/else`.
 
 ---
 
-### Exercício 2 — Positivo e par / ímpar
+### Exercício 2 - Positivo e par / ímpar
 
 Pede um número ao utilizador. Se o número for **positivo**:
 
@@ -519,7 +519,7 @@ Se não for positivo, escreve uma mensagem a indicar que o número não é váli
 
 ---
 
-### Exercício 3 — Classificação de nota (0–20)
+### Exercício 3 - Classificação de nota (0–20)
 
 Lê uma nota inteira entre 0 e 20.
 
@@ -535,7 +535,7 @@ Usa `if/elif/else`.
 
 ---
 
-### Exercício 4 — Menor de três números (sem `min()`)
+### Exercício 4 - Menor de três números (sem `min()`)
 
 Pede 3 números (podem ser `float`) ao utilizador e, **sem usar** a função `min()`, imprime qual é o menor.
 
@@ -543,7 +543,7 @@ Dica: começa por assumir que o primeiro é o menor e vai comparando com os outr
 
 ---
 
-### Exercício 5 — Número dentro de um intervalo
+### Exercício 5 - Número dentro de um intervalo
 
 Lê um número inteiro e diz se está entre 5 e 15 (inclusive).
 
@@ -554,7 +554,7 @@ Faz a verificação de duas maneiras:
 
 ---
 
-### Exercício 6 — Mesmo sinal
+### Exercício 6 - Mesmo sinal
 
 Lê dois números inteiros e indica se:
 
@@ -565,7 +565,7 @@ Usa operadores lógicos (`and`, `or`).
 
 ---
 
-### Exercício 7 — Contagem decrescente
+### Exercício 7 - Contagem decrescente
 
 Pede um número inteiro ao utilizador.
 
@@ -578,7 +578,7 @@ Se o número não for maior que 1, mostra uma mensagem de erro.
 
 ---
 
-### Exercício 8 — Somatório de 1 até `n`
+### Exercício 8 - Somatório de 1 até `n`
 
 Pede um número inteiro **positivo** `n` ao utilizador.
 
@@ -593,7 +593,7 @@ Se não for positivo, mostra mensagem de erro.
 
 ---
 
-### Exercício 9 — Tabuada
+### Exercício 9 - Tabuada
 
 Pede um número inteiro ao utilizador e mostra a tabuada desse número de 1 a 10, por exemplo:
 
@@ -609,7 +609,7 @@ Usa um ciclo `for`.
 
 ---
 
-### Exercício 10 — Jogo do número aleatório (máx. 5 tentativas)
+### Exercício 10 - Jogo do número aleatório (máx. 5 tentativas)
 
 Usando o módulo `random`:
 
@@ -623,7 +623,7 @@ Usa um ciclo `while` para controlar o número de tentativas.
 
 ---
 
-### Exercício 11 — Soma de múltiplos de 3
+### Exercício 11 - Soma de múltiplos de 3
 
 Usa um ciclo `for` com `range()` para:
 
@@ -634,7 +634,7 @@ Usa um ciclo `for` com `range()` para:
 
 ---
 
-### Exercício 12 (Desafio) — Estatísticas de notas
+### Exercício 12 (Desafio) - Estatísticas de notas
 
 Escreve um programa que:
 
