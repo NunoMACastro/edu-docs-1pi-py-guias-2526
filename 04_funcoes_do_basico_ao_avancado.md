@@ -1,4 +1,4 @@
-# Python (10.º Ano) — 04 · Funções do Básico ao “Quase Avançado”
+# Python (10.º Ano) - 04 · Funções do Básico ao “Quase Avançado”
 
 > **Objetivo deste ficheiro**  
 > Perceber bem o que são funções em Python, como as definir e usar, e dar um primeiro contacto com ideias um bocadinho mais avançadas.
@@ -65,7 +65,7 @@ def nome_da_funcao(param1, param2):
 -   O corpo está **indentado** (4 espaços).
 -   `return` devolve o resultado e termina a função.
 
-### 2.2. Exemplo 1 — função muito simples
+### 2.2. Exemplo 1 - função muito simples
 
 ```python
 def ola_mundo():
@@ -78,7 +78,7 @@ Chamar a função:
 ola_mundo()   # executa o código da função
 ```
 
-### 2.3. Exemplo 2 — soma de dois números
+### 2.3. Exemplo 2 - soma de dois números
 
 ```python
 def soma(a, b):
@@ -89,7 +89,7 @@ x = soma(3, 5)      # x fica 8
 print(x)
 ```
 
-### 2.4. Exemplo 3 — saudação
+### 2.4. Exemplo 3 - saudação
 
 ```python
 def saudacao(nome):
@@ -463,7 +463,7 @@ pares_comp = [x for x in dados if x % 2 == 0]
 
 Servem para criar funções com número variável de argumentos.
 
-### 9.1. `*args` — vários argumentos posicionais
+### 9.1. `*args` - vários argumentos posicionais
 
 ```python
 def media(*nums):
@@ -475,7 +475,7 @@ print(media(10, 12, 14))   # 12.0
 print(media())             # 0.0
 ```
 
-### 9.2. `**kwargs` — vários argumentos nomeados
+### 9.2. `**kwargs` - vários argumentos nomeados
 
 ```python
 def configurar(**opcoes):
@@ -622,7 +622,7 @@ if __name__ == "__main__":
 > Começa pelos primeiros.  
 > Os últimos podem ser um pouco mais desafiantes, especialmente se envolverem dicionários ou recursão.
 
-### Exercício 1 — `ola_mundo` (a máquina mais simples)
+### Exercício 1 - `ola_mundo` (a máquina mais simples)
 
 Cria uma função `ola_mundo` que não recebe parâmetros e:
 
@@ -632,7 +632,7 @@ Depois, chama essa função pelo menos duas vezes.
 
 ---
 
-### Exercício 2 — Soma de dois números
+### Exercício 2 - Soma de dois números
 
 Cria uma função `soma(a, b)` que:
 
@@ -644,7 +644,7 @@ No programa principal, pede dois números ao utilizador, chama a função e most
 
 ---
 
-### Exercício 3 — Contar letras de um nome
+### Exercício 3 - Contar letras de um nome
 
 Cria uma função `contar_letras(nome)` que:
 
@@ -659,7 +659,7 @@ O nome <nome> tem <n> letras.
 
 ---
 
-### Exercício 4 — Contar pares e ímpares numa lista
+### Exercício 4 - Contar pares e ímpares numa lista
 
 Cria uma função `contar_pares_impares(lista_numeros)` que:
 
@@ -674,7 +674,7 @@ Números pares: X, números ímpares: Y
 
 ---
 
-### Exercício 5 — Média de uma lista de números
+### Exercício 5 - Média de uma lista de números
 
 Cria uma função `calcular_media(lista_numeros)` que:
 
@@ -686,7 +686,7 @@ Testa a função com diferentes listas (incluindo uma lista vazia).
 
 ---
 
-### Exercício 6 — Somatório de 1 até `n`
+### Exercício 6 - Somatório de 1 até `n`
 
 Cria uma função `somatorio(n)` que:
 
@@ -700,7 +700,7 @@ No programa principal, pede `n` ao utilizador, verifica se é positivo e:
 
 ---
 
-### Exercício 7 — String mais longa
+### Exercício 7 - String mais longa
 
 Cria uma função `string_mais_longa(lista_strings)` que:
 
@@ -712,7 +712,7 @@ Testa a função com várias listas (por exemplo, nomes de cidades, jogadores, e
 
 ---
 
-### Exercício 8 — Contar alunos por turma (dicionário simples + função)
+### Exercício 8 - Contar alunos por turma (dicionário simples + função)
 
 Cria um dicionário `turmas` em que:
 
@@ -735,7 +735,7 @@ Turma 10B: 4 alunos
 
 ---
 
-### Exercício 9 — Encontrar a pessoa mais velha
+### Exercício 9 - Encontrar a pessoa mais velha
 
 Cria uma função `mais_velho(pessoas)` que recebe um dicionário do tipo:
 
@@ -756,7 +756,7 @@ Testa a função com diferentes dicionários.
 
 ---
 
-### Exercício 10 — Média por aluno (função + dicionário aninhado)
+### Exercício 10 - Média por aluno (função + dicionário aninhado)
 
 Usa um dicionário semelhante a este:
 
@@ -923,7 +923,7 @@ No programa principal: 1. Cria 2 perfis diferentes usando a função:
 • um com nome, idade;
 • outro com nome, idade, curso e turma (por exemplo "10.º A"). 2. Imprime os dicionários devolvidos.
 
-### Exercício 19 (Desafio) — Função com `*args`
+### Exercício 19 (Desafio) - Função com `*args`
 
 Cria uma função `produto(*nums)` que:
 
@@ -939,7 +939,7 @@ Testa com:
 
 ---
 
-### Exercício 20 (Desafio avançado) — Recursão simples
+### Exercício 20 (Desafio avançado) - Recursão simples
 
 Cria uma função recursiva `conta_decrescente(n)` que:
 
