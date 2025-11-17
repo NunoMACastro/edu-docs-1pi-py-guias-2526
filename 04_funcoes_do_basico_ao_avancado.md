@@ -5,6 +5,26 @@
 
 ---
 
+## Índice
+
+-   [0. Guia para não te perderes](#0-guia-para-nao-te-perderes)
+-   [1. Porque usar funções? · [ESSENCIAL]](#1-porque-usar-funcoes-essencial)
+-   [2. Definir e chamar funções · [ESSENCIAL]](#2-definir-e-chamar-funcoes-essencial)
+-   [3. `print` vs `return` · [ESSENCIAL]](#3-print-vs-return-essencial)
+-   [4. Parâmetros e argumentos · [ESSENCIAL]](#4-parametros-e-argumentos-essencial)
+-   [5. `return` em detalhe · [ESSENCIAL]](#5-return-em-detalhe-essencial)
+-   [6. Scope (espaço de nomes) · [ESSENCIAL (noção básica)]](#6-scope-espaco-de-nomes-essencial-nocao-basica)
+-   [7. Mutabilidade e passagem de argumentos · [ESSENCIAL]](#7-mutabilidade-e-passagem-de-argumentos-essencial)
+-   [8. Funções de ordem superior e `lambda` · [EXTRA]](#8-funcoes-de-ordem-superior-e-lambda-extra)
+-   [9. `*args` e `**kwargs` · [EXTRA]](#9-args-e-kwargs-extra)
+-   [10. Docstrings e anotações de tipo · [EXTRA mas muito útil]](#10-docstrings-e-anotacoes-de-tipo-extra-mas-muito-util)
+-   [11. Recursão · [EXTRA / AVANÇADO]](#11-recursao-extra-avancado)
+-   [12. Boas práticas e pequenos testes · [ESSENCIAL (mentalidade)]](#12-boas-praticas-e-pequenos-testes-essencial-mentalidade)
+-   [13. Exercícios (Funções do básico ao avançado)](#13-exercicios-funcoes-do-basico-ao-avancado)
+-   [14. Changelog](#14-changelog)
+
+---
+
 ## 0. Guia para não te perderes
 
 É aqui que muitos alunos começam a “desligar”, por isso vamos organizar assim:
@@ -630,6 +650,16 @@ Cria uma função `ola_mundo` que não recebe parâmetros e:
 
 Depois, chama essa função pelo menos duas vezes.
 
+> Resolução
+
+```python
+def ola_mundo():
+    print("Olá, Mundo!")
+
+ola_mundo()
+ola_mundo()
+```
+
 ---
 
 ### Exercício 2 - Soma de dois números
@@ -641,6 +671,19 @@ Cria uma função `soma(a, b)` que:
 -   não faz `print` dentro da função.
 
 No programa principal, pede dois números ao utilizador, chama a função e mostra o resultado.
+
+> Resolução
+
+```python
+def soma(a, b):
+    return a + b
+
+num1 = float(input("Escreve o primeiro número: "))
+num2 = float(input("Escreve o segundo número: "))
+
+resultado = soma(num1, num2)
+print(f"A soma de {num1} e {num2} é {resultado}.")
+```
 
 ---
 
@@ -655,6 +698,17 @@ No programa principal, pede o nome ao utilizador e mostra:
 
 ```text
 O nome <nome> tem <n> letras.
+```
+
+> Resolução
+
+```python
+def contar_letras(nome):
+    return len(nome)
+
+nome_usuario = input("Escreve o teu nome: ")
+num_letras = contar_letras(nome_usuario)
+print(f"O nome {nome_usuario} tem {num_letras} letras.")
 ```
 
 ---
@@ -672,6 +726,24 @@ No programa principal, cria uma lista de números (por exemplo, de 1 a 10) e mos
 Números pares: X, números ímpares: Y
 ```
 
+> Resolução
+
+```python
+def contar_pares_impares(lista_numeros):
+    pares = 0
+    impares = 0
+    for num in lista_numeros:
+        if num % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+    return pares, impares
+
+numeros = list(range(1, 11))  # Números de 1 a 10
+num_pares, num_impares = contar_pares_impares(numeros)
+print(f"Números pares: {num_pares}, números ímpares: {num_impares}")
+```
+
 ---
 
 ### Exercício 5 - Média de uma lista de números
@@ -683,6 +755,21 @@ Cria uma função `calcular_media(lista_numeros)` que:
 -   se a lista estiver vazia, devolve 0 (para evitar divisão por zero).
 
 Testa a função com diferentes listas (incluindo uma lista vazia).
+
+> Resolução
+
+```python
+
+def calcular_media(lista_numeros):
+    if not lista_numeros:
+        return 0.0
+    return sum(lista_numeros) / len(lista_numeros)
+
+# Testes
+print(calcular_media([10, 20, 30]))  # 20.0
+print(calcular_media([]))             # 0.0
+print(calcular_media([5, 15]))        # 10.0
+```
 
 ---
 
@@ -698,6 +785,23 @@ No programa principal, pede `n` ao utilizador, verifica se é positivo e:
 -   se for, mostra o somatório;
 -   se não, mostra uma mensagem de erro.
 
+> Resolução
+
+```python
+def somatorio(n):
+    soma = 0
+    for i in range(1, n + 1):
+        soma += i
+    return soma
+
+n = int(input("Escreve um número inteiro positivo: "))
+if n > 0:
+    resultado = somatorio(n)
+    print(f"O somatório de 1 até {n} é {resultado}.")
+else:
+    print("Erro: o número deve ser positivo.")
+```
+
 ---
 
 ### Exercício 7 - String mais longa
@@ -709,6 +813,26 @@ Cria uma função `string_mais_longa(lista_strings)` que:
 -   se a lista estiver vazia, devolve `None`.
 
 Testa a função com várias listas (por exemplo, nomes de cidades, jogadores, etc.).
+
+> Resolução
+
+```python
+def string_mais_longa(lista_strings):
+    if not lista_strings: # Lista vazia
+        return None
+
+    # Se chegar aqui, a lista não está vazia uma vez que o if anterior falhou e o return não foi executado
+    mais_longa = lista_strings[0]
+    for s in lista_strings:
+        if len(s) > len(mais_longa):
+            mais_longa = s
+    return mais_longa
+
+# Testes
+print(string_mais_longa(["Lisboa", "Porto", "Faro"]))  # "Lisboa"
+print(string_mais_longa(["Ana", "Bruno", "Carla"]))    # "Bruno"
+print(string_mais_longa([]))                             # None
+```
 
 ---
 
@@ -733,6 +857,25 @@ Turma 10A: 3 alunos
 Turma 10B: 4 alunos
 ```
 
+> Resolução
+
+```python
+def contar_alunos_por_turma(turmas):
+    contagem = {}
+    for turma, alunos in turmas.items():
+        contagem[turma] = len(alunos)
+    return contagem
+
+turmas = {
+    "10A": ["Ana", "Bruno", "Carla"],
+    "10B": ["Diogo", "Eva", "Fábio", "Guida"]
+}
+
+contagem = contar_alunos_por_turma(turmas)
+for turma, num_alunos in contagem.items():
+    print(f"Turma {turma}: {num_alunos} alunos")
+```
+
 ---
 
 ### Exercício 9 - Encontrar a pessoa mais velha
@@ -754,6 +897,22 @@ A função deve:
 
 Testa a função com diferentes dicionários.
 
+> Resolução
+
+````python
+def mais_velho(pessoas):
+    nome_mais_velho = None
+    idade_mais_velha = -1
+    for nome, idade in pessoas.items():
+        if idade > idade_mais_velha:
+            idade_mais_velha = idade
+            nome_mais_velho = nome
+    return nome_mais_velho
+
+# Testes
+pessoas1 = {"Ana": 16, "Bruno": 17, "Carla": 15}
+print(mais_velho(pessoas1))  # "Bruno"
+
 ---
 
 ### Exercício 10 - Média por aluno (função + dicionário aninhado)
@@ -768,11 +927,11 @@ turma = {
         {"nome": "Carla", "notas": {"Matemática": 12, "Português": 14}}
     ]
 }
-```
+````
 
 Cria uma função `media_aluno(aluno)` que:
 
--   recebe um dicionário com `"nome"` e `"notas"`,
+-   recebe um dicionário com `"nome"` e `"notas"` que é outro dicionário com as disciplinas e respetivas notas,
 -   devolve a média das notas desse aluno.
 
 Depois, no programa principal, percorre a lista de alunos em `turma["alunos"]` e mostra:
@@ -781,6 +940,27 @@ Depois, no programa principal, percorre a lista de alunos em `turma["alunos"]` e
 Ana -> média: X
 Bruno -> média: Y
 Carla -> média: Z
+```
+
+> Resolução
+
+```python
+def media_aluno(aluno):
+    notas = aluno["notas"].values()
+    return sum(notas) / len(notas)
+
+turma = {
+    "alunos": [
+        {"nome": "Ana", "notas": {"Matemática": 18, "Português": 16}},
+        {"nome": "Bruno", "notas": {"Matemática": 14, "Português": 15}},
+        {"nome": "Carla", "notas": {"Matemática": 12, "Português": 14}}
+    ]
+}
+
+for aluno in turma["alunos"]:
+    nome = aluno["nome"]
+    media = media_aluno(aluno)
+    print(f"{nome} -> média: {media:.2f}")
 ```
 
 ---
@@ -798,6 +978,17 @@ No programa principal:
 2. Chama a função;
 3. Mostra o resultado ao utilizador.
 
+> Resolução
+
+```python
+def quadrado(n):
+    return n ** 2
+
+num = float(input("Escreve um número: "))
+resultado = quadrado(num)
+print(f"O quadrado de {num} é {resultado}.")
+```
+
 ---
 
 ### Exercício 12 - Função que diz se um número é par
@@ -814,6 +1005,18 @@ No programa principal:
 2. Chama `eh_par(n)` e guarda o resultado;
 3. Se o resultado for `True`, imprime `"O número é par."`, senão `"O número é ímpar."`.
 
+> Resolução
+
+```python
+def eh_par(n):
+    return n % 2 == 0
+num = int(input("Escreve um número inteiro: "))
+if eh_par(num):
+    print("O número é par.")
+else:
+    print("O número é ímpar.")
+```
+
 ---
 
 ### Exercício 13 - Função com dois parâmetros: maior de dois números
@@ -828,6 +1031,21 @@ No programa principal:
 1. Pede dois números ao utilizador;
 2. Chama a função;
 3. Mostra a frase: `"O maior número é: <resultado>"`.
+
+> Resolução
+
+```python
+def maior(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+
+num1 = float(input("Escreve o primeiro número: "))
+num2 = float(input("Escreve o segundo número: "))
+resultado = maior(num1, num2)
+print(f"O maior número é: {resultado}")
+```
 
 ---
 
@@ -961,6 +1179,10 @@ Reflete qual das versões achas mais fácil de ler.
 
 > Registo de alterações importantes a este ficheiro.
 
+-   **2025-11-17 · v1.2**
+    -   Adicionadas soluções aos já realizados.
+-   **2025-11-17 · v1.1**
+    -   TOC atualizado.
 -   **2025-11-17 · v1.0**
     -   Criação inicial do documento.
     -   Secções essenciais: motivação para funções, definição e chamada, `print` vs `return`, parâmetros/argumentos, `return`, scope básico, mutabilidade, boas práticas e testes.

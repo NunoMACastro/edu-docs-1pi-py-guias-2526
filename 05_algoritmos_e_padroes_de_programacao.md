@@ -16,6 +16,19 @@ Ao longo deste documento:
 
 ---
 
+## Índice
+
+-   [0. Como atacar um problema de programação · [ESSENCIAL]](#0-como-atacar-um-problema-de-programacao-essencial)
+-   [1. Padrões clássicos com listas · [ESSENCIAL]](#1-padroes-classicos-com-listas-essencial)
+-   [2. Padrões com dicionários · [ESSENCIAL]](#2-padroes-com-dicionarios-essencial)
+-   [3. Juntar tudo em funções · [ESSENCIAL]](#3-juntar-tudo-em-funcoes-essencial)
+-   [4. Estratégia passo-a-passo num problema maior · [ESSENCIAL]](#4-estrategia-passo-a-passo-num-problema-maior-essencial)
+-   [5. Erros típicos e debugging básico · [ESSENCIAL]](#5-erros-tipicos-e-debugging-basico-essencial)
+-   [6. Exercícios - Algoritmos e Padrões de Programação](#6-exercicios---algoritmos-e-padroes-de-programacao)
+-   [7. Changelog](#7-changelog)
+
+---
+
 ## 0. Como atacar um problema de programação · [ESSENCIAL]
 
 Muitos erros aparecem porque se começa logo a escrever código, sem pensar.  
@@ -701,7 +714,9 @@ Escolhe um dos programas que já fizeste (por exemplo, um que trabalhe com turma
 
 > Registo de alterações a este ficheiro.
 
--   2025-11-17 · v1.0
+-   **2025-11-17 · v1.1**
+    -   TOC atualizado.
+-   **2025-11-17 · v1.0**
     -   Criação inicial do documento.
     -   Adicionadas secções sobre:
         -   estratégia para atacar problemas (entrada/processamento/saída e pseudocódigo),

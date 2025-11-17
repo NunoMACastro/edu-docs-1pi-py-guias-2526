@@ -1,3 +1,14 @@
+## Índice
+
+- [Python · 10.º Ano (Programador de Informática)](#python-10o-ano-programador-de-informatica)
+  - [Estrutura do repositório](#estrutura-do-repositorio)
+    - [`01_introducao_variaveis_tipos_strings_io.md`](#01introducaovariaveistiposstringsiomd)
+    - [`02_operadores_e_controlo_de_fluxo_if_ciclos.md`](#02operadoresecontrolodefluxoifciclosmd)
+    - [`03_listas_dicionarios_estruturas_aninhadas.md`](#03listasdicionariosestruturasaninhadasmd)
+    - [`04_funcoes_do_basico_ao_avancado.md`](#04funcoesdobasicoaoavancadomd)
+    - [`05_algoritmos_e_padroes_de_programacao.md`](#05algoritmosepadroesdeprogramacaomd)
+  - [Como usar estes materiais](#como-usar-estes-materiais)
+  - [Pré-requisitos e ambiente de trabalho](#pre-requisitos-e-ambiente-de-trabalho)
 # Python · 10.º Ano (Programador de Informática)
 
 Materiais de apoio em formato **Markdown** para introdução à programação em Python, pensados para alunos do **10.º ano - Curso Profissional de Programador de Informática (PI)**.

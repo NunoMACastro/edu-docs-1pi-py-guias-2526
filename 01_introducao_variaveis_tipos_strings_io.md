@@ -5,6 +5,21 @@
 
 ---
 
+## Índice
+
+-   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
+-   [1. O que é programar?](#1-o-que-e-programar)
+-   [2. Primeiro contacto com Python](#2-primeiro-contacto-com-python)
+-   [3. Variáveis](#3-variaveis)
+-   [4. Tipos de dados básicos](#4-tipos-de-dados-basicos)
+-   [5. Strings (texto)](#5-strings-texto)
+-   [6. Comentários](#6-comentarios)
+-   [7. Entrada e saída: `print()` e `input()`](#7-entrada-e-saida-print-e-input)
+-   [8. Exercícios](#8-exercicios-introducao-variaveis-tipos-strings-io)
+-   [9. Changelog](#9-changelog)
+
+---
+
 ## 0. Como usar este ficheiro
 
 1. Lê a explicação teórica com calma.
@@ -356,6 +371,15 @@ Cria um programa que:
 
 Podes usar `print()` normal ou uma f-string.
 
+> Resolução:
+
+```python
+nome = "Teu Nome"
+idade = 16
+curso = "PI 10.º"
+print(f"Olá, eu sou a/o {nome}, tenho {idade} anos e estou no curso {curso}.")
+```
+
 ---
 
 ### Exercício 2 - Tipos de dados
@@ -380,20 +404,43 @@ Escreve um programa que:
 
 (Completa com o tipo correto em texto.)
 
+> Resolução:
+
+```python
+idade = 16
+altura = 1.70
+nome = "João"
+aprovado = False
+
+print(f"A variável idade é do tipo {type(idade)}")
+print(f"A variável altura é do tipo {type(altura)}")
+print(f"A variável nome é do tipo {type(nome)}")
+print(f"A variável aprovado é do tipo {type(aprovado)}")
+```
+
 ---
 
 ### Exercício 3 - Conversão de input
 
 Escreve um programa que:
 
-1. Pede ao utilizador a sua idade (com `input()`).
-2. Converte essa idade para `int`.
-3. Calcula a idade que a pessoa terá daqui a 10 anos.
-4. Mostra uma frase usando uma f-string, por exemplo:
+1.  Pede ao utilizador a sua idade (com `input()`).
+2.  Converte essa idade para `int`.
+3.  Calcula a idade que a pessoa terá daqui a 10 anos.
+4.  Mostra uma frase usando uma f-string, por exemplo:
 
-    ```
-    Daqui a 10 anos terás 25 anos.
-    ```
+        ```
+        Daqui a 10 anos terás 25 anos.
+        ```
+
+    > Resolução:
+
+```python
+idade_str = input("Qual é a tua idade? ")
+idade = int(idade_str)
+idade_futura = idade + 10
+print(f"Daqui a 10 anos terás {idade_futura} anos.")
+```
 
 ---
 
@@ -405,7 +452,14 @@ Cria um programa que:
 2. Mostra o primeiro e o último carácter da palavra.
 3. Mostra quantos caracteres tem a palavra usando `len()`.
 
-> Atenção: se o utilizador introduzir uma string vazia (`""`), explica ao utilizador que a palavra é vazia e não tentes aceder a índices.
+> Resolução:
+
+```python
+palavra = input("Escreve uma palavra: ")
+print("Primeiro carácter:", palavra[0])
+print("Último carácter:", palavra[-1])
+print("Número de caracteres:", len(palavra))
+```
 
 ---
 
@@ -419,6 +473,15 @@ Escreve um programa que:
     - toda em minúsculas,
     - com apenas a primeira letra em maiúscula (`capitalize()`).
 
+> Resolução:
+
+```python
+frase = input("Escreve uma frase: ")
+print("Maiúsculas:", frase.upper())
+print("Minúsculas:", frase.lower())
+print("Capitalizada:", frase.capitalize())
+```
+
 ---
 
 ### Exercício 6 - Limpar espaços
@@ -430,6 +493,16 @@ Cria um programa que:
     - o comprimento da frase original (`len()`),
     - a frase sem espaços nas pontas (`strip()`),
     - o comprimento da frase depois de `strip()`.
+
+> Resolução:
+
+```python
+frase = input("Escreve uma frase com espaços no início e no fim: ")
+print("Comprimento original:", len(frase))
+frase_limpa = frase.strip()
+print("Frase sem espaços:", frase_limpa)
+print("Comprimento sem espaços:", len(frase_limpa))
+```
 
 ---
 
@@ -453,6 +526,15 @@ ou
 A letra "x" não existe na palavra "banana".
 ```
 
+> Resolução:
+
+```python
+palavra = input("Escreve uma palavra: ")
+letra = input("Escreve uma letra: ")
+existe = letra in palavra
+print(f'A letra "{letra}" {"existe" if existe else "não existe"} na palavra "{palavra}".')
+```
+
 ---
 
 ### Exercício 8 - Conversão de temperatura
@@ -468,6 +550,15 @@ Cria um programa que:
     \]
 
 4. Mostra uma mensagem com **2 casas decimais** na temperatura em Fahrenheit.
+
+> Resolução:
+
+```python
+celsius_str = input("Temperatura em Celsius: ")
+celsius = float(celsius_str)
+fahrenheit = celsius * 9/5 + 32
+print(f"Temperatura em Fahrenheit: {fahrenheit:.2f} °F")
+```
 
 ---
 
@@ -493,6 +584,22 @@ Escreve um programa que:
 
 3. No final, escreve um pequeno comentário (em texto, num `print` ou em comentário) a explicar que valores são considerados `False` em Python.
 
+> Resolução:
+
+```python
+a = 0
+b = ""
+c = []
+d = "Python"
+e = 123
+print(f"bool(a) -> {bool(a)}")
+print(f"bool(b) -> {bool(b)}")
+print(f"bool(c) -> {bool(c)}")
+print(f"bool(d) -> {bool(d)}")
+print(f"bool(e) -> {bool(e)}")
+# Em Python, valores como 0, string vazia "", lista vazia [], None são  considerados False.
+```
+
 ---
 
 ### Exercício 10 - Questionário simples
@@ -509,26 +616,18 @@ Depois, mostra uma frase organizada, usando uma f-string, por exemplo:
 Olá, eu sou a/o <nome>, vivo em <cidade> e a minha linguagem favorita é <linguagem>.
 ```
 
----
+> Resolução:
 
-### Exercício 11 (Desafio) - Identificar o tipo de input
-
-Escreve um programa que:
-
-1. Pede ao utilizador para introduzir **qualquer coisa** (pode ser número, texto, etc.).
-2. Guarda o valor original em `resposta_raw` (string).
-3. Tenta determinar, de forma simples, que tipo de dado o utilizador introduziu:
-
-    - Se conseguir converter para `int` → diz “parece um inteiro”.
-    - Caso contrário, se conseguir converter para `float` → diz “parece um número decimal”.
-    - Caso contrário → diz “parece texto”.
-
-> Não uses ainda `try/except` se ainda não aprendeste.  
-> Podes, por exemplo, testar se todos os caracteres são dígitos com `.isdigit()` para o caso de inteiro, e fazer algo simples para float (por exemplo, permitir um ponto `.`).
+```python
+nome = input("Qual é o teu nome? ")
+cidade = input("Onde vives? ")
+linguagem = input("Qual é a tua linguagem de programação favorita? ")
+print(f"Olá, eu sou a/o {nome}, vivo em {cidade} e a minha linguagem favorita é {linguagem}.")
+```
 
 ---
 
-### Exercício 12 (Desafio) - Formatar um “cartão de aluno”
+### Exercício 11 (Desafio) - Formatar um “cartão de aluno”
 
 Cria um programa que:
 
@@ -553,12 +652,33 @@ Cria um programa que:
 Podes usar `
 ` para quebras de linha e, se quiseres, formatação com casas decimais na média (`{media:.2f}`).
 
+> Resolução:
+
+```python
+nome = input("Nome: ")
+idade = int(input("Idade: "))
+turma = input("Turma: ")
+media = float(input("Média: "))
+print(f"""=========================
+    CARTÃO DE ALUNO
+=========================
+Nome : {nome}
+Idade: {idade} anos
+Turma: {turma}
+Média: {media:.2f} valores
+=========================""")
+```
+
 ---
 
 ## 9. Changelog
 
 > Registo de alterações importantes a este ficheiro.
 
+-   **2025-11-17 · v1.2**
+    -   Adicionadas soluções aos exercícios todos.
+-   **2025-11-17 · v1.1**
+    -   TOC atualizado.
 -   **2025-11-17 · v1.0**
     -   Criação inicial do documento.
     -   Secções: introdução, variáveis, tipos básicos, strings, comentários, `print()`/`input()` e f-strings.

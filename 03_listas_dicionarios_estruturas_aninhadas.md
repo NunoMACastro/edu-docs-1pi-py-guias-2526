@@ -5,6 +5,18 @@
 
 ---
 
+## Índice
+
+-   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
+-   [1. Listas](#1-listas)
+-   [2. Dicionários](#2-dicionarios)
+-   [3. Estruturas de dados aninhadas](#3-estruturas-de-dados-aninhadas)
+-   [4. Exemplos aplicados](#4-exemplos-aplicados)
+-   [5. Exercícios (Listas, Dicionários e Estruturas Aninhadas)](#5-exercicios-listas-dicionarios-e-estruturas-aninhadas)
+-   [6. Changelog](#6-changelog)
+
+---
+
 ## 0. Como usar este ficheiro
 
 1. Lê a explicação teórica com atenção.
@@ -650,6 +662,16 @@ O programa deve:
 3. Mostrar o último elemento.
 4. Mostrar o comprimento da lista com `len()`.
 
+> Resolução:
+
+```python
+numeros = [10, 25, -3, 42, 7]
+print("Lista completa:", numeros)
+print("Primeiro elemento:", numeros[0])
+print("Último elemento:", numeros[-1])
+print("Comprimento da lista:", len(numeros))
+```
+
 ---
 
 ### Exercício 2 - Positivos, negativos e zeros (lista)
@@ -661,6 +683,23 @@ Depois, percorre a lista e, para cada número, imprime se é:
 -   negativo,
 -   ou zero.
 
+> Resolução:
+
+```python
+numeros = []
+for _ in range(5):
+    n = float(input("Introduz um número: "))
+    numeros.append(n)
+
+for n in numeros:
+    if n > 0:
+        print(n, "é positivo")
+    elif n < 0:
+        print(n, "é negativo")
+    else:
+        print(n, "é zero")
+```
+
 ---
 
 ### Exercício 3 - Maior e menor sem `max`/`min`
@@ -669,6 +708,26 @@ Pede 10 números ao utilizador e guarda-os numa lista.
 
 -   Sem usar `max()` nem `min()`, descobre qual é o maior e o menor número usando um ciclo `for` e comparações.
 -   No final, mostra os dois valores.
+
+> Resolução:
+
+```python
+numeros = []
+for i in range(10):
+    n = float(input("Introduz um número: "))
+    numeros.append(n)
+
+maior = numeros[0]
+menor = numeros[0]
+
+for n in numeros:
+    if n > maior:
+        maior = n
+    if n < menor:
+        menor = n
+print("Maior número:", maior)
+print("Menor número:", menor)
+```
 
 ---
 
@@ -680,6 +739,26 @@ Depois:
 1. Cria uma nova lista apenas com os números pares.
 2. Cria outra lista apenas com os números ímpares.
 3. Mostra as duas listas.
+
+> Resolução:
+
+```python
+numeros = []
+for _ in range(10): # uma vez que não vamos precisar do índice, usamos _
+    n = int(input("Introduz um número inteiro: "))
+    numeros.append(n)
+
+pares = []
+impares = []
+for n in numeros:
+    if n % 2 == 0:
+        pares.append(n)
+    else:
+        impares.append(n)
+
+print("Números pares:", pares)
+print("Números ímpares:", impares)
+```
 
 ---
 
@@ -698,6 +777,22 @@ Depois:
 3. Adiciona uma chave `"cidade"`.
 4. Remove a chave `"profissao"` com `pop` ou `del`.
 5. Mostra o dicionário final.
+
+> Resolução:
+
+```python
+pessoa = {
+    "nome": "João Silva",
+    "idade": 30,
+    "profissao": "Programador"
+}
+
+print(f"Nome: {pessoa['nome']}, Idade: {pessoa['idade']}, Profissão: {pessoa['profissao']}") # 1
+pessoa["idade"] += 1 # 2
+pessoa["cidade"] = "Porto" # 3
+pessoa.pop("profissao")  # ou: del pessoa["profissao"] # 4
+print("Dicionário final:", pessoa) # 5
+```
 
 ---
 
@@ -719,6 +814,43 @@ bancas = {
 2. Calcula, para cada restaurante, quanto dinheiro fez (`vendas * preco_medio`).
 3. Diz qual o restaurante que fez **mais dinheiro**.
 
+> Resolução:
+
+```python
+bancas = {
+    "TacoTron":   {"vendas": 184, "preco_medio": 6.5, "avaliacao": 4.6},
+    "Bao&Buns":   {"vendas": 149, "preco_medio": 7.0, "avaliacao": 4.8},
+    "PokeWave":   {"vendas": 132, "preco_medio": 9.0, "avaliacao":  4.2},
+    "PastelPower":{"vendas": 210, "preco_medio": 2.0, "avaliacao": 4.9},
+    "VeggieVolt": {"vendas": 98,  "preco_medio": 8.5, "avaliacao": 4.4}
+}
+
+# 1. Melhor avaliação
+melhor_avaliacao = 0
+restaurante_top = ""
+for nome, info in bancas.items():
+    if info["avaliacao"] > melhor_avaliacao:
+        melhor_avaliacao = info["avaliacao"]
+        restaurante_top = nome
+print("Restaurante com melhor avaliação:", restaurante_top, "com", melhor_avaliacao)
+
+# 2. Dinheiro feito por cada restaurante
+dinheiro_feito = {}
+for nome, info in bancas.items():
+    total = info["vendas"] * info["preco_medio"]
+    dinheiro_feito[nome] = total
+    print(f"{nome} fez {total:.2f} euros.")
+
+# 3. Restaurante que fez mais dinheiro
+mais_dinheiro = 0
+restaurante_rico = ""
+for nome, total in dinheiro_feito.items():
+    if total > mais_dinheiro:
+        mais_dinheiro = total
+        restaurante_rico = nome
+print("Restaurante que fez mais dinheiro:", restaurante_rico, "com", mais_dinheiro)
+```
+
 ---
 
 ### Exercício 7 - Matriz 3x3
@@ -728,6 +860,34 @@ Cria uma matriz 3x3 (lista de listas) com números inteiros à tua escolha.
 1. Mostra a matriz linha a linha.
 2. Adiciona uma nova linha à matriz.
 3. Calcula a soma de todos os elementos da matriz (com ciclos aninhados).
+
+> Resolução:
+
+```python
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+# 1. Mostrar a matriz
+print("Matriz:")
+for linha in matriz:
+    print(linha)
+
+# 2. Adicionar nova linha
+nova_linha = [10, 11, 12]
+matriz.append(nova_linha)
+print("Matriz atualizada:")
+for linha in matriz:
+    print(linha)
+
+# 3. Soma de todos os elementos
+soma_total = 0
+for linha in matriz:
+    for elemento in linha:
+        soma_total += elemento
+print("Soma de todos os elementos da matriz:", soma_total)
+```
 
 ---
 
@@ -744,6 +904,27 @@ O programa deve:
 2. Adicionar uma nova turma com alguns alunos.
 3. Mostrar o dicionário atualizado.
 
+> Resolução:
+
+```python
+turmas = {
+    "10A": ["Ana", "Bruno", "Carla"],
+    "10B": ["David", "Eva", "Fábio"]
+}
+
+# 1. Mostrar lista de alunos por turma
+for turma, alunos in turmas.items():
+    print(f"Turma {turma}: {alunos}")
+
+# 2. Adicionar nova turma
+turmas["10C"] = ["Gabriela", "Helena", "Igor"]
+
+# 3. Mostrar dicionário atualizado
+print("Dicionário de turmas atualizado:")
+for turma, alunos in turmas.items():
+    print(f"Turma {turma}: {alunos}")
+```
+
 ---
 
 ### Exercício 9 - Turmas com notas (estrutura aninhada)
@@ -757,6 +938,40 @@ O programa deve:
 3. Pedir um nome de aluno ao utilizador e indicar:
     - em que turma está,
     - quais as suas notas.
+
+> Resolução:
+
+```python
+# Usa a estrutura de turmas do exemplo anterior
+# 1. Mostrar alunos e notas por turma
+for turma, info in turmas.items():
+    print(f"Turma {turma}:")
+    for aluno in info["alunos"]:
+        print(f"  Aluno: {aluno['nome']}, Notas: {aluno['notas']}")
+    print()
+# 2. Contar alunos com negativas
+for turma, info in turmas.items():
+    count_negativas = 0
+    for aluno in info["alunos"]:
+        for nota in aluno["notas"].values():
+            if nota < 10:
+                count_negativas += 1
+                break
+    print(f"Turma {turma} tem {count_negativas} alunos com pelo menos uma negativa.")
+# 3. Procurar aluno
+nome_procurado = input("Nome do aluno a procurar: ")
+encontrado = False
+for turma, info in turmas.items():
+    for aluno in info["alunos"]:
+        if aluno["nome"].lower() == nome_procurado.lower():
+            print(f"O aluno {nome_procurado} está na turma {turma} com notas: {aluno['notas']}")
+            encontrado = True
+            break
+    if encontrado:
+        break
+if not encontrado:
+    print("Aluno não encontrado.")
+```
 
 ---
 
@@ -775,6 +990,32 @@ O programa deve:
 2. Pedir um título ao utilizador e, se o livro existir na lista, mostrar a sua informação completa.
 3. Se não existir, indicar que o livro não foi encontrado.
 
+> Resolução:
+
+```python
+livros = [
+    {"titulo": "1984", "autor": "George Orwell", "ano": 1949, "genero": "Distopia"},
+    {"titulo": "O Senhor dos Anéis", "autor": "J.R.R. Tolkien", "ano": 1954, "genero": "Fantasia"},
+    {"titulo": "Dom Quixote", "autor": "Miguel de Cervantes", "ano": 1605, "genero": "Clássico"}
+]
+
+# 1. Mostrar todos os livros
+print("Lista de livros:")
+for livro in livros:
+    print(f"Título: {livro['titulo']}, Autor: {livro['autor']}, Ano: {livro['ano']}, Género: {livro['genero']}")
+# 2. Pedir título e procurar
+titulo_procurado = input("Introduz o título do livro que procuras: ")
+encontrado = False
+for livro in livros:
+    if livro["titulo"].lower() == titulo_procurado.lower():
+        print("Livro encontrado:")
+        print(f"Título: {livro['titulo']}, Autor: {livro['autor']}, Ano: {livro['ano']}, Género: {livro['genero']}")
+        encontrado = True
+        break
+if not encontrado:
+    print("Livro não encontrado.")
+```
+
 ---
 
 ### Exercício 11 - Temperaturas mensais
@@ -791,6 +1032,46 @@ O programa deve:
 3. Indicar o mês mais quente e o mês mais frio:
     - Versão A: usando `max`, `min` e `index`.
     - Versão B (desafio): sem `max`/`min`, apenas com ciclos e comparações.
+
+> Resolução:
+
+```python
+temperaturas = [15.5, 16.0, 18.2, 20.1, 22.5, 25.0, 27.3, 26.8, 24.0, 20.5, 17.8, 15.2]
+meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+# 1. Pedir número do mês e mostrar temperatura
+mes_procurado = int(input("Número do mês (1-12): "))
+if 1 <= mes_procurado <= 12:
+    indice = mes_procurado - 1
+    print(f"A temperatura média em {meses[indice]} é {temperaturas[indice]} °C.")
+else:
+    print("Mês inválido.")
+
+# 2. Calcular média anual
+media_anual = sum(temperaturas) / len(temperaturas)
+print(f"Temperatura média anual: {media_anual:.2f} °C")
+
+# 3. Mês mais quente e mais frio (Versão A)
+indice_quente = temperaturas.index(max(temperaturas))
+indice_frio = temperaturas.index(min(temperaturas))
+print(f"Mês mais quente: {meses[indice_quente]} ({temperaturas[indice_quente]} °C)")
+print(f"Mês mais frio: {meses[indice_frio]} ({temperaturas[indice_frio]} °C)")
+# Versão B (desafio)
+maior_temp = temperaturas[0]
+menor_temp = temperaturas[0]
+indice_maior = 0
+indice_menor = 0
+for i in range(len(temperaturas)):
+    if temperaturas[i] > maior_temp:
+        maior_temp = temperaturas[i]
+        indice_maior = i
+    if temperaturas[i] < menor_temp:
+        menor_temp = temperaturas[i]
+        indice_menor = i
+print(f"(Desafio) Mês mais quente: {meses[indice_maior]} ({maior_temp} °C)")
+print(f"(Desafio) Mês mais frio: {meses[indice_menor]} ({menor_temp} °C)")
+```
 
 ---
 
@@ -810,13 +1091,79 @@ O programa deve permitir (por menu simples ou sequencialmente):
 
 Podes começar com dados fixos no código (sem `input()` para criar a estrutura) e focar-te em percorrer e analisar a estrutura.
 
+> Resolução:
+
+```python
+turmas = {
+    "10A": {
+        "alunos": [
+            {"nome": "Ana", "notas": {"Matemática": 18, "Português": 16}},
+            {"nome": "Bruno", "notas": {"Matemática": 14, "Português": 15}},
+            {"nome": "Carla", "notas": {"Matemática": 12, "Português": 14}}
+        ],
+        "professor": "Sr. Silva"
+    },
+    "10B": {
+        "alunos": [
+            {"nome": "David", "notas": {"Matemática": 10, "Português": 12}},
+            {"nome": "Eva", "notas": {"Matemática": 9, "Português": 11}},
+            {"nome": "Fábio", "notas": {"Matemática": 15, "Português": 14}}
+        ],
+        "professor": "Sra. Costa"
+    }
+}
+
+# 1. Mostrar todas as turmas e alunos
+for turma, info in turmas.items():
+    print(f"Turma {turma}:")
+    for aluno in info["alunos"]:
+        print(f"  Aluno: {aluno['nome']}, Notas: {aluno['notas']}")
+    print()
+
+# 2. Mostrar notas de um aluno específico
+nome_procurado = input("Nome do aluno a procurar: ")
+encontrado = False
+for turma, info in turmas.items():
+    for aluno in info["alunos"]:
+        if aluno["nome"].lower() == nome_procurado.lower():
+            print(f"O aluno {nome_procurado} está na turma {turma} com notas: {aluno['notas']}")
+            encontrado = True
+            break
+    if encontrado:
+        break
+if not encontrado:
+    print("Aluno não encontrado.")
+
+# 3. Contar alunos com média ≥ 10 numa turma escolhida
+turma_escolhida = input("Escolhe uma turma (por exemplo, 10A): ")
+if turma_escolhida in turmas:
+    count_aprovados = 0
+    for aluno in turmas[turma_escolhida]["alunos"]:
+        soma_notas = sum(aluno["notas"].values())
+        num_disciplinas = len(aluno["notas"])
+        media = soma_notas / num_disciplinas
+        if media >= 10:
+            count_aprovados += 1
+    print(f"Na turma {turma_escolhida}, {count_aprovados} alunos têm média ≥ 10.")
+else:
+    print("Turma não encontrada.")
+```
+
 ---
 
 ## 6. Changelog
 
 > Registo de alterações importantes a este ficheiro.
 
+-   **2025-11-17 · v1.2**
+    -   Adicionadas soluções aos exercícios todos.
+-   **2025-11-17 · v1.1**
+    -   TOC atualizado.
 -   **2025-11-17 · v1.0**
     -   Criação inicial do documento.
     -   Secções: listas (criação, acesso, métodos, funções, padrões típicos, compreensões), dicionários (chaves/valores, métodos, iteração), estruturas aninhadas (lista de listas, dicionário de listas, dicionário de dicionários, lista de dicionários) e exemplos aplicados (temperaturas, turmas).
     -   Adicionados 12 exercícios graduais sobre listas, dicionários e estruturas aninhadas.
+
+```
+
+```

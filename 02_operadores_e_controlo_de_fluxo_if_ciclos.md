@@ -5,6 +5,25 @@
 
 ---
 
+## Índice
+
+-   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
+-   [1. Operadores aritméticos](#1-operadores-aritmeticos)
+-   [2. Operadores de comparação](#2-operadores-de-comparacao)
+-   [3. Operadores lógicos (`and`, `or`, `not`)](#3-operadores-logicos-and-or-not)
+-   [4. Operadores de pertinência e identidade](#4-operadores-de-pertinencia-e-identidade)
+-   [5. Atribuições compostas (`+=`, `-=`, ...)](#5-atribuicoes-compostas--)
+-   [6. Truthiness (o que é considerado “verdadeiro” ou “falso”)](#6-truthiness-o-que-e-considerado-verdadeiro-ou-falso)
+-   [7. Estruturas de seleção: `if`, `elif`, `else`](#7-estruturas-de-selecao-if-elif-else)
+-   [8. Ciclo `while` - repetir enquanto a condição for verdadeira](#8-ciclo-while---repetir-enquanto-a-condicao-for-verdadeira)
+-   [9. Ciclo `for` - percorrer sequências](#9-ciclo-for---percorrer-sequencias)
+-   [10. `range()` - gerar sequências numéricas](#10-range---gerar-sequencias-numericas)
+-   [11. Blocos de código e indentação](#11-blocos-de-codigo-e-indentacao)
+-   [12. Exercícios (Operadores, `if`, `for`, `while`)](#12-exercicios-operadores-if-for-while)
+-   [13. Changelog](#13-changelog)
+
+---
+
 ## 0. Como usar este ficheiro
 
 1. Lê a explicação teórica com calma.
@@ -507,6 +526,18 @@ Lê um número inteiro do utilizador e diz se é:
 
 Usa `if/elif/else`.
 
+> Resolução:
+
+```python
+num = int(input("Escreve um número inteiro: "))
+if num > 0:
+    print("Positivo")
+elif num < 0:
+    print("Negativo")
+else:
+    print("Zero")
+```
+
 ---
 
 ### Exercício 2 - Positivo e par / ímpar
@@ -516,6 +547,19 @@ Pede um número ao utilizador. Se o número for **positivo**:
 -   diz se é **par** ou **ímpar** (usa `%`).
 
 Se não for positivo, escreve uma mensagem a indicar que o número não é válido para esta verificação.
+
+> Resolução:
+
+```python
+num = int(input("Escreve um número inteiro: "))
+if num > 0:
+    if num % 2 == 0:
+        print("Positivo e par")
+    else:
+        print("Positivo e ímpar")
+else:
+    print("Número não é positivo.")
+```
 
 ---
 
@@ -533,6 +577,24 @@ Lê uma nota inteira entre 0 e 20.
 
 Usa `if/elif/else`.
 
+> Resolução:
+
+```python
+valor = int(input("Introduz a nota (0-20): "))
+if valor < 0 or valor > 20:
+    print("Nota inválida.")
+else:
+    if valor >= 18:
+        nota = "Excelente"
+    elif valor >= 14:
+        nota = "Bom"
+    elif valor >= 10:
+        nota = "Suficiente"
+    else:
+        nota = "Insuficiente"
+    print("Nota:", nota)
+```
+
 ---
 
 ### Exercício 4 - Menor de três números (sem `min()`)
@@ -540,6 +602,22 @@ Usa `if/elif/else`.
 Pede 3 números (podem ser `float`) ao utilizador e, **sem usar** a função `min()`, imprime qual é o menor.
 
 Dica: começa por assumir que o primeiro é o menor e vai comparando com os outros.
+
+> Resolução:
+
+```python
+a = float(input("Escreve o 1.º número: "))
+b = float(input("Escreve o 2.º número: "))
+c = float(input("Escreve o 3.º número: "))
+
+menor = a
+if b < menor:
+    menor = b
+if c < menor:
+    menor = c
+
+print("O menor número é:", menor)
+```
 
 ---
 
@@ -552,6 +630,24 @@ Faz a verificação de duas maneiras:
 1. Usando `if num >= 5 and num <= 15`.
 2. Usando comparação encadeada `if 5 <= num <= 15`.
 
+> Resolução:
+
+```python
+num = int(input("Escreve um número inteiro: "))
+
+# Método 1
+if num >= 5 and num <= 15:
+    print("Está entre 5 e 15 (método 1)")
+else:
+    print("Não está entre 5 e 15 (método 1)")
+
+# Método 2
+if 5 <= num <= 15:
+    print("Está entre 5 e 15 (método 2)")
+else:
+    print("Não está entre 5 e 15 (método 2)")
+```
+
 ---
 
 ### Exercício 6 - Mesmo sinal
@@ -562,6 +658,18 @@ Lê dois números inteiros e indica se:
 -   ou se têm **sinais diferentes**.
 
 Usa operadores lógicos (`and`, `or`).
+
+> Resolução:
+
+```python
+a = int(input("Escreve o 1.º número inteiro: "))
+b = int(input("Escreve o 2.º número inteiro: "))
+
+if (a >= 0 and b >= 0) or (a < 0 and b < 0):
+    print("Têm o mesmo sinal.")
+else:
+    print("Têm sinais diferentes.")
+```
 
 ---
 
@@ -575,6 +683,26 @@ Se for maior do que 1, faz uma contagem decrescente desse número até 0:
 -   2.ª versão: usa um ciclo `while`.
 
 Se o número não for maior que 1, mostra uma mensagem de erro.
+
+> Resolução:
+
+```python
+n = int(input("Escreve um número inteiro maior que 1: "))
+if n > 1:
+    # Versão com for
+    print("Contagem decrescente (for):")
+    for i in range(n, -1, -1):
+        print(i)
+
+    # Versão com while
+    print("Contagem decrescente (while):")
+    contador = n
+    while contador >= 0:
+        print(contador)
+        contador -= 1
+else:
+    print("Erro: o número não é maior que 1.")
+```
 
 ---
 
@@ -590,6 +718,19 @@ Se for válido:
 Se não for positivo, mostra mensagem de erro.
 
 > Dica: usa `range(1, n + 1)`.
+
+> Resolução:
+
+```python
+n = int(input("Escreve um número inteiro positivo: "))
+if n > 0:
+    soma = 0
+    for i in range(1, n + 1):
+        soma += i
+    print("O somatório de 1 até", n, "é:", soma)
+else:
+    print("Erro: o número não é positivo.")
+```
 
 ---
 
@@ -607,6 +748,15 @@ Tabuada do 7:
 
 Usa um ciclo `for`.
 
+> Resolução:
+
+```python
+num = int(input("Escreve um número inteiro para ver a tabuada: "))
+print("Tabuada do", num, ":")
+for i in range(1, 11):
+    print(f"{num} x {i} = {num * i}")
+```
+
 ---
 
 ### Exercício 10 - Jogo do número aleatório (máx. 5 tentativas)
@@ -621,6 +771,31 @@ Usando o módulo `random`:
 
 Usa um ciclo `while` para controlar o número de tentativas.
 
+> Resolução:
+
+```python
+import random
+
+numero_secreto = random.randint(1, 100)
+tentativas = 0
+max_tentativas = 5
+print("Tens 5 tentativas para adivinhar o número entre 1 e 100.")
+
+while tentativas < max_tentativas:
+    palpite = int(input("Escreve o teu palpite: "))
+    tentativas += 1
+
+    if palpite == numero_secreto:
+        print(f"Parabéns! Adivinhaste o número em {tentativas} tentativas.")
+        break
+    elif palpite < numero_secreto:
+        print("O número é maior.")
+    else:
+        print("O número é menor.")
+else:
+    print(f"Fim das tentativas! O número era {numero_secreto}.")
+```
+
 ---
 
 ### Exercício 11 - Soma de múltiplos de 3
@@ -631,6 +806,15 @@ Usa um ciclo `for` com `range()` para:
 2. Mostrar o resultado final.
 
 > Dica: podes usar `if i % 3 == 0` dentro do ciclo, ou então começar logo em 3 e usar um passo de 3: `range(3, 101, 3)`.
+
+> Resolução:
+
+```python
+soma = 0
+for i in range(3, 101, 3):  # Começa em 3, vai até 100, passo 3
+    soma += i
+print("A soma dos múltiplos de 3 entre 1 e 100 é:", soma)
+```
 
 ---
 
@@ -658,12 +842,47 @@ Sugestão: usa um ciclo `while` e acumula:
 -   contador de positivas,
 -   contador de negativas.
 
+> Resolução:
+
+```python
+soma_notas = 0
+contador_notas = 0
+contador_positivas = 0
+contador_negativas = 0
+
+while True:
+    nota = int(input("Escreve uma nota (0-20) ou -1 para terminar: "))
+    if nota == -1:
+        break
+    if 0 <= nota <= 20:
+        soma_notas += nota
+        contador_notas += 1
+        if nota >= 10:
+            contador_positivas += 1
+        else:
+            contador_negativas += 1
+    else:
+        print("Nota inválida, tenta novamente.")
+if contador_notas > 0:
+    media = soma_notas / contador_notas
+    print("Número de notas introduzidas:", contador_notas)
+    print("Média das notas:", media)
+    print("Número de notas positivas (≥ 10):", contador_positivas)
+    print("Número de notas negativas (< 10):", contador_negativas)
+else:
+    print("Nenhuma nota válida foi introduzida.")
+```
+
 ---
 
 ## 13. Changelog
 
 > Registo de alterações importantes a este ficheiro.
 
+-   **2025-11-17 · v1.2**
+    -   Adicionadas soluções aos exercícios todos.
+-   **2025-11-17 · v1.1**
+    -   TOC atualizado.
 -   **2025-11-17 · v1.0**
     -   Criação inicial do documento.
     -   Secções: operadores aritméticos, comparação, lógicos, pertinência/identidade, atribuições compostas, truthiness, `if/elif/else`, `while`, `for`, `range` e indentação.
