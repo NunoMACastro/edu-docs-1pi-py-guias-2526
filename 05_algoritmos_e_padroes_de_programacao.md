@@ -18,13 +18,13 @@ Ao longo deste documento:
 
 ## Índice
 
--   [0. Como atacar um problema de programação · [ESSENCIAL]](#0-como-atacar-um-problema-de-programacao-essencial)
--   [1. Padrões clássicos com listas · [ESSENCIAL]](#1-padroes-classicos-com-listas-essencial)
--   [2. Padrões com dicionários · [ESSENCIAL]](#2-padroes-com-dicionarios-essencial)
--   [3. Juntar tudo em funções · [ESSENCIAL]](#3-juntar-tudo-em-funcoes-essencial)
--   [4. Estratégia passo-a-passo num problema maior · [ESSENCIAL]](#4-estrategia-passo-a-passo-num-problema-maior-essencial)
--   [5. Erros típicos e debugging básico · [ESSENCIAL]](#5-erros-tipicos-e-debugging-basico-essencial)
--   [6. Exercícios - Algoritmos e Padrões de Programação](#6-exercicios---algoritmos-e-padroes-de-programacao)
+-   [0. Como atacar um problema de programação · [ESSENCIAL]](#0-como-atacar-um-problema-de-programa%C3%A7%C3%A3o--essencial)
+-   [1. Padrões clássicos com listas · [ESSENCIAL]](#1-padr%C3%B5es-cl%C3%A1ssicos-com-listas--essencial)
+-   [2. Padrões com dicionários · [ESSENCIAL]](#2-padr%C3%B5es-com-dicion%C3%A1rios--essencial)
+-   [3. Juntar tudo em funções · [ESSENCIAL]](#3-juntar-tudo-em-fun%C3%A7%C3%B5es--essencial)
+-   [4. Estratégia passo-a-passo num problema maior · [ESSENCIAL]](#4-estrat%C3%A9gia-passo-a-passo-num-problema-maior--essencial)
+-   [5. Erros típicos e debugging básico · [ESSENCIAL]](#5-erros-t%C3%ADpicos-e-debugging-b%C3%A1sico--essencial)
+-   [6. Exercícios - Algoritmos e Padrões de Programação](#6-exerc%C3%ADcios---algoritmos-e-padr%C3%B5es-de-programa%C3%A7%C3%A3o)
 -   [7. Changelog](#7-changelog)
 
 ---
