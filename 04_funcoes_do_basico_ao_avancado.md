@@ -7,7 +7,7 @@
 
 ## Índice
 
--   [0. Guia para não te perderes](#0-guia-para-nao-te-perderes)
+-   [0. Guia para não te perderes](#0-guia-para-n%C3%A3o-te-perderes)
 -   [1. Porque usar funções? · [ESSENCIAL]](#1-porque-usar-funcoes-essencial)
 -   [2. Definir e chamar funções · [ESSENCIAL]](#2-definir-e-chamar-funcoes-essencial)
 -   [3. `print` vs `return` · [ESSENCIAL]](#3-print-vs-return-essencial)

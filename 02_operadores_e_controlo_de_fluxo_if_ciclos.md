@@ -478,9 +478,10 @@ Em Python, os blocos são definidos pela **indentação** (espaços no início d
 
 ### 11.1. Regras importantes
 
--   Usa **4 espaços** por nível de indentação (não uses TAB misturado com espaços).
+-   Usa **4 espaços** por nível de indentação ou um TAB (não uses TAB misturado com espaços).
 -   Todas as linhas com a mesma indentação pertencem ao mesmo bloco.
 -   Os dois pontos `:` indicam que a seguir vem um bloco (`if`, `elif`, `else`, `for`, `while`, `def`, etc.).
+-   Tudo o que vier depois dos dois pontos pertence ao bloco, até voltares à indentação anterior.
 
 Exemplo com `if/else`:
 
@@ -493,6 +494,7 @@ if x > 10:
 else:
     # este é o bloco do else
     print("10 ou menos")
+print("Fim da verificação")  # já fora do if/else (sem indentação)
 ```
 
 Exemplo com `while`:
