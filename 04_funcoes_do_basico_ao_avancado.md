@@ -785,7 +785,145 @@ Carla -> média: Z
 
 ---
 
-### Exercício 11 (Desafio) — Função com `*args`
+### Exercício 11 - Função que calcula o quadrado de um número
+
+Cria uma função `quadrado(n)` que:
+
+-   recebe um número `n`;
+-   devolve o valor de `n` ao quadrado (`n ** 2`).
+
+No programa principal:
+
+1. Pede um número ao utilizador (com `input` e `int` ou `float`);
+2. Chama a função;
+3. Mostra o resultado ao utilizador.
+
+---
+
+### Exercício 12 - Função que diz se um número é par
+
+Cria uma função `eh_par(n)` que:
+
+-   recebe um número inteiro `n`;
+-   devolve `True` se o número for par (`n % 2 == 0`),
+-   devolve `False` caso contrário.
+
+No programa principal:
+
+1. Pede um número inteiro ao utilizador;
+2. Chama `eh_par(n)` e guarda o resultado;
+3. Se o resultado for `True`, imprime `"O número é par."`, senão `"O número é ímpar."`.
+
+---
+
+### Exercício 13 - Função com dois parâmetros: maior de dois números
+
+Cria uma função `maior(a, b)` que:
+
+-   recebe dois números `a` e `b`;
+-   devolve o maior dos dois.
+
+No programa principal:
+
+1. Pede dois números ao utilizador;
+2. Chama a função;
+3. Mostra a frase: `"O maior número é: <resultado>"`.
+
+---
+
+### Exercício 14 - Filtrar aprovados a partir de um dicionário
+
+Imagina um dicionário `notas` do tipo:
+
+```python
+notas = {
+    "Ana": 17,
+    "Bruno": 9,
+    "Carla": 12,
+    "Diogo": 8
+}
+```
+
+Cria uma função aprovados(notas) que:
+• recebe este dicionário;
+• devolve uma lista com os nomes dos alunos cuja nota é ≥ 10.
+
+Depois cria outra função reprovados(notas) que devolve a lista de nomes com nota < 10.
+
+No programa principal: 1. Cria um dicionário notas à tua escolha; 2. Chama aprovados(notas) e reprovados(notas); 3. Imprime algo do género:
+
+```text
+Aprovados: ['Ana', 'Carla']
+Reprovados: ['Bruno', 'Diogo']
+```
+
+---
+
+### Exercício 15 - Função que devolve vários valores
+
+Cria uma função `estatisticas_numeros(numeros)` que recebe uma lista de números e devolve **3 valores**:
+
+-   a soma de todos os números;
+-   o valor mínimo;
+-   o valor máximo;
+
+(Usa o cálculo manual de mínimo e máximo, sem `min()` / `max()`.)
+
+No programa principal:
+
+1. Cria uma lista com alguns números, por exemplo `[3, 7, -2, 10, 4]`.
+2. Chama a função e guarda o resultado em três variáveis.
+3. Mostra um pequeno resumo, por exemplo:
+
+```text
+Soma: ...
+Mínimo: ...
+Máximo: ...
+```
+
+---
+
+### Exercício 16 - Mutabilidade: função que modifica uma lista recebida
+
+Cria uma função adicionar_prefixo(lista_nomes, prefixo) que:
+• recebe uma lista de nomes (por exemplo ["Ana", "Bruno"]);
+• recebe uma string prefixo (por exemplo "Sr." ou "Aluna"),
+• altera a lista recebida, transformando cada nome para "prefixo nome", por exemplo:
+• ["Ana", "Bruno"] com "Aluna" → ["Aluna Ana", "Aluna Bruno"].
+
+No programa principal:
+
+-   1. Cria uma lista de nomes;
+-   2. Chama a função;
+-   3. Imprime a lista antes e depois da chamada para veres o efeito da mutabilidade.
+
+---
+
+### Exercício 17 - \*args: média de quantidade variável de números
+
+Cria uma função media_variavel(\*nums) que:
+• recebe 0 ou mais números (inteiros ou floats);
+• se não receber nenhum número, devolve 0.0;
+• caso contrário, devolve a média aritmética.
+
+No programa principal: 1. Testa a função com:
+• media_variavel();
+• media_variavel(10, 12, 14);
+• media_variavel(5, 7.5). 2. Imprime os resultados.
+
+---
+
+### Exercício 18 - \*\*kwargs: configuração flexível
+
+Cria uma função criar_perfil(\*\*info) que:
+• recebe informações nomeadas sobre uma pessoa (por exemplo, nome="Ana", idade=16, curso="PI"),
+• devolve um dicionário com essas informações.
+
+No programa principal: 1. Cria 2 perfis diferentes usando a função:
+• um com nome, idade;
+• outro com nome, idade, curso e turma (por exemplo "10.º A"). 2. Imprime os dicionários devolvidos.
+
+### Exercício 19 (Desafio) — Função com `*args`
 
 Cria uma função `produto(*nums)` que:
 
@@ -801,7 +939,7 @@ Testa com:
 
 ---
 
-### Exercício 12 (Desafio avançado) — Recursão simples
+### Exercício 20 (Desafio avançado) — Recursão simples
 
 Cria uma função recursiva `conta_decrescente(n)` que:
 
