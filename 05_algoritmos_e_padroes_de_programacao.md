@@ -1,7 +1,7 @@
 # Python (10.º Ano) - 05 · Algoritmos e Padrões de Programação
 
 > **Objetivo deste ficheiro**  
-> Deixar de ser apenas “truques de Python” e começar a pensar **como programador**:
+> Aprender a resolver problemas de programação comuns, usando listas, dicionários e funções.
 >
 > -   ler um problema,
 > -   descobrir quais são os **dados de entrada**,
