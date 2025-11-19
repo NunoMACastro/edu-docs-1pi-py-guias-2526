@@ -1,17 +1,17 @@
-## Índice
+**Índice**
 
 -   [Estrutura do repositório](#estrutura-do-reposit%C3%B3rio)
--   [`01_introducao_variaveis_tipos_strings_io.md`](#01introducaovariaveistiposstringsiomd)
--   [`02_operadores_e_controlo_de_fluxo_if_ciclos.md`](#02operadoresecontrolodefluxoifciclosmd)
--   [`03_listas_dicionarios_estruturas_aninhadas.md`](#03listasdicionariosestruturasaninhadasmd)
--   [`04_funcoes_do_basico_ao_avancado.md`](#04funcoesdobasicoaoavancadomd)
--   [`05_algoritmos_e_padroes_de_programacao.md`](#05algoritmosepadroesdeprogramacaomd)
+-   [`01_introducao_variaveis_tipos_strings_io.md`](#01_introducao_variaveis_tipos_strings_iomd)
+-   [`02_operadores_e_controlo_de_fluxo_if_ciclos.md`](#02_operadores_e_controlo_de_fluxo_if_ciclosmd)
+-   [`03_listas_dicionarios_estruturas_aninhadas.md`](#03_listas_dicionarios_estruturas_aninhadasmd)
+-   [`04_funcoes_do_basico_ao_avancado.md`](#04_funcoes_do_basico_ao_avancadomd)
+-   [`05_algoritmos_e_padroes_de_programacao.md`](#05_algoritmos_e_padroes_de_programacaomd)
 -   [Como usar estes materiais](#como-usar-estes-materiais)
 -   [Pré-requisitos e ambiente de trabalho](#pr%C3%A9-requisitos-e-ambiente-de-trabalho)
 
 # Python · 10.º Ano (Programador de Informática)
 
-Materiais de apoio em formato **Markdown** para introdução à programação em Python, pensados para alunos do **10.º ano - Curso Profissional de Programador de Informática (PI)**.
+Materiais de apoio em formato **Markdown** para introdução à programação em Python, pensados para alunos do **10.º ano - Curso Profissional de Técnico de Programação de Informática**.
 
 O objetivo deste repositório é ter um conjunto de **apontamentos estruturados + exercícios graduais**, que os alunos possam usar como:
 
@@ -40,6 +40,8 @@ Cada ficheiro foca um conjunto de temas e termina com:
 
 ### `01_introducao_variaveis_tipos_strings_io.md`
 
+[Ver ficheiro](./01_introducao_variaveis_tipos_strings_io.md)
+
 **Objetivo:** dar o primeiro contacto com Python e com a ideia de “programa”.
 
 Conteúdos principais:
@@ -64,6 +66,8 @@ Inclui exemplos muito simples e exercícios iniciais focados em:
 ---
 
 ### `02_operadores_e_controlo_de_fluxo_if_ciclos.md`
+
+[Ver ficheiro](./02_operadores_e_controlo_de_fluxo_if_ciclos.md)
 
 **Objetivo:** introduzir o “motor” da lógica de programação: **operadores**, **decisões** e **repetições**.
 
@@ -106,6 +110,8 @@ Exercícios focados em:
 ---
 
 ### `03_listas_dicionarios_estruturas_aninhadas.md`
+
+[Ver ficheiro](./03_listas_dicionarios_estruturas_aninhadas.md)
 
 **Objetivo:** consolidar o armazenamento de coleções de dados e treinar uma forma de pensar mais estruturada.
 
@@ -153,6 +159,8 @@ Exercícios focados em:
 ---
 
 ### `04_funcoes_do_basico_ao_avancado.md`
+
+[Ver ficheiro](./04_funcoes_do_basico_ao_avancado.md)
 
 **Objetivo:** construir um módulo sólido sobre **funções**, desde o `def` básico até ideias de ordem superior, com as partes **essenciais** bem destacadas e os tópicos mais avançados claramente marcados como **extra**.
 
@@ -218,6 +226,8 @@ Exercícios focados em:
 ---
 
 ### `05_algoritmos_e_padroes_de_programacao.md`
+
+[Ver ficheiro](./05_algoritmos_e_padroes_de_programacao.md)
 
 **Objetivo:**  
 Deixar de ser apenas “truques de Python” e começar a pensar como **programador**, usando o que já se aprendeu (variáveis, listas, dicionários, funções) para resolver problemas completos: analisar o enunciado, planear a solução e só depois escrever código.

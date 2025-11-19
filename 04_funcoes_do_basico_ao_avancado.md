@@ -1115,6 +1115,18 @@ No programa principal:
 -   2. Chama a função;
 -   3. Imprime a lista antes e depois da chamada para veres o efeito da mutabilidade.
 
+> Resolução
+
+```python
+def adicionar_prefixo(lista_nomes, prefixo):
+    for i in range(len(lista_nomes)):
+        lista_nomes[i] = f"{prefixo} {lista_nomes[i]}"
+nomes = ["Ana", "Bruno", "Carla"]
+print("Antes:", nomes)
+adicionar_prefixo(nomes, "Sr./Sra.")
+print("Depois:", nomes)
+```
+
 ---
 
 ### Exercício 17 - \*args: média de quantidade variável de números
