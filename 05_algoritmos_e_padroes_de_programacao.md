@@ -18,7 +18,7 @@ Ao longo deste documento:
 
 ## Índice
 
--   [0. Como atacar um problema de programação · [ESSENCIAL]](#0-como-atacar-um-problema-de-programa%C3%A7%C3%A3o--essencial)
+-   [0. Como resolver um problema de programação · [ESSENCIAL]](#0-como-resolver-um-problema-de-programa%C3%A7%C3%A3o--essencial)
 -   [1. Padrões clássicos com listas · [ESSENCIAL]](#1-padr%C3%B5es-cl%C3%A1ssicos-com-listas--essencial)
 -   [2. Padrões com dicionários · [ESSENCIAL]](#2-padr%C3%B5es-com-dicion%C3%A1rios--essencial)
 -   [3. Juntar tudo em funções · [ESSENCIAL]](#3-juntar-tudo-em-fun%C3%A7%C3%B5es--essencial)

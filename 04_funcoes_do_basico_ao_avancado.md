@@ -642,7 +642,7 @@ if __name__ == "__main__":
 > Começa pelos primeiros.  
 > Os últimos podem ser um pouco mais desafiantes, especialmente se envolverem dicionários ou recursão.
 
-### Exercício 1 - `ola_mundo` (a máquina mais simples)
+### Exercício 1 - `ola_mundo`
 
 Cria uma função `ola_mundo` que não recebe parâmetros e:
 
