@@ -594,10 +594,10 @@ def fatorial(n):
 ```python
 def conta_decrescente(n):
     if n <= 1:
-        return [1]
-    return [n] + conta_decrescente(n - 1)
-
-print(conta_decrescente(4))   # [4, 3, 2, 1]
+        return 1
+    else:
+        print(n)
+        return conta_decrescente(n - 1)
 ```
 
 Avisos:
