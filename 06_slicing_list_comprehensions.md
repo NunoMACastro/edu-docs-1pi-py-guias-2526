@@ -596,7 +596,24 @@ devolva:
 
 ---
 
-### Exercício 6 · Filtrar pares com list comprehension · [BÁSICO]
+### Exercício 6 · Slice e list comprehension · [MÉDIO]
+
+Dada a lista:
+
+```python
+palavras = ["casa", "carro", "bicicleta", "avião", "barco"]
+```
+
+Usa _slicing_ para obter uma nova lista com as **duas primeiras letras** de cada palavra, usando uma **list comprehension**.
+Exemplo de saída:
+
+```python
+["ca", "ca", "bi", "av", "ba"]
+```
+
+---
+
+### Exercício 7 · Filtrar pares com list comprehension · [BÁSICO]
 
 Dada a lista:
 
@@ -608,7 +625,7 @@ Cria uma list comprehension que devolva apenas os **números pares**.
 
 ---
 
-### Exercício 7 · Comprimentos de nomes com filtro · [MÉDIO]
+### Exercício 8 · Comprimentos de nomes com filtro · [MÉDIO]
 
 Dada a lista:
 
@@ -626,7 +643,7 @@ Exemplo de saída:
 
 ---
 
-### Exercício 8 · Classificar números como "par"/"ímpar" · [MÉDIO]
+### Exercício 9 · Classificar números como "par"/"ímpar" · [MÉDIO]
 
 Dada a lista:
 
@@ -642,7 +659,7 @@ Usa uma list comprehension com `if/else` na **expressão** para obter:
 
 ---
 
-### Exercício 9 · Misto de slicing e comprehension · [MÉDIO]
+### Exercício 10 · Misto de slicing e comprehension · [MÉDIO]
 
 Dada a lista:
 
@@ -661,7 +678,7 @@ Exemplo de saída:
 
 ---
 
-### Exercício 10 (Desafio) · Filtrar e transformar ao mesmo tempo · [DESAFIO]
+### Exercício 11 (Desafio) · Filtrar e transformar ao mesmo tempo · [DESAFIO]
 
 Dada a lista:
 
@@ -682,7 +699,7 @@ Exemplo (não é a resposta completa):
 
 ---
 
-### Exercício 11 (Desafio) · Slicing em “janelas” · [DESAFIO]
+### Exercício 12 (Desafio) · Slicing em “janelas” · [DESAFIO]
 
 Dada a lista:
 
