@@ -6,6 +6,7 @@
 -   [`03_listas_dicionarios_estruturas_aninhadas.md`](#03_listas_dicionarios_estruturas_aninhadasmd)
 -   [`04_funcoes_do_basico_ao_avancado.md`](#04_funcoes_do_basico_ao_avancadomd)
 -   [`05_algoritmos_e_padroes_de_programacao.md`](#05_algoritmos_e_padroes_de_programacaomd)
+-   [`06_slicing_list_comprehensions_md`](#06_slicing_list_comprehensions_md)
 -   [Como usar estes materiais](#como-usar-estes-materiais)
 -   [Pré-requisitos e ambiente de trabalho](#pr%C3%A9-requisitos-e-ambiente-de-trabalho)
 
@@ -35,6 +36,7 @@ Cada ficheiro foca um conjunto de temas e termina com:
 ├── 03_listas_dicionarios_estruturas_aninhadas.md
 ├── 04_funcoes_do_basico_ao_avancado.md
 ├── 05_algoritmos_e_padroes_de_programacao.md
+├── 06_slicing_list_comprehensions.md
 └── README.md
 ```
 
@@ -230,7 +232,7 @@ Exercícios focados em:
 [Ver ficheiro](./05_algoritmos_e_padroes_de_programacao.md)
 
 **Objetivo:**  
-Deixar de ser apenas “truques de Python” e começar a pensar como **programador**, usando o que já se aprendeu (variáveis, listas, dicionários, funções) para resolver problemas completos: analisar o enunciado, planear a solução e só depois escrever código.
+Começar a pensar como **programador**, usando o que já se aprendeu (variáveis, listas, dicionários, funções) para resolver problemas completos: analisar o enunciado, planear a solução e só depois escrever código.
 
 Conteúdos principais:
 
@@ -263,6 +265,36 @@ Exercícios focados em:
 -   aplicar estratégias de decomposição em funções;
 -   analisar enunciados em português antes de escrever código;
 -   desafios com estruturas aninhadas e pequenos “mini-projetos” guiados.
+
+---
+
+### `06_slicing_list_comprehensions_md`
+
+[Ver ficheiro](./06_slicing_list_comprehensions.md)
+
+**Objetivo:**
+Aprofundar dois tópicos importantes para manipulação de listas em Python: **slicing** e **compreensões de lista**.
+
+Conteúdos principais:
+
+-   **Slicing**:
+    -   sintaxe básica: `lista[inicio:fim:passo]`;
+    -   valores por defeito (omitir `inicio`, `fim` ou `passo`);
+    -   índices negativos;
+    -   exemplos práticos (sublistas, inverter listas, pegar elementos de `n` em `n`);
+    -   uso de slicing com strings;
+-   **Compreensões de lista**:
+    -   sintaxe básica: `[expressao for item in lista if condicao]`;
+    -   criar listas de forma concisa;
+    -   exemplos com transformação e filtragem;
+    -   compreensões aninhadas (listas de listas);
+    -   comparação com loops tradicionais.
+
+Exercícios focados em:
+
+-   praticar slicing em listas e strings;
+-   criar novas listas usando compreensões;
+-   desafios que combinam slicing e compreensões.
 
 ---
 

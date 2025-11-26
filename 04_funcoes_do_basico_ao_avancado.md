@@ -642,7 +642,7 @@ if __name__ == "__main__":
 > Começa pelos primeiros.  
 > Os últimos podem ser um pouco mais desafiantes, especialmente se envolverem dicionários ou recursão.
 
-### Exercício 1 - `ola_mundo`
+### <a id="ex1"></a> Exercício 1 - `ola_mundo`
 
 Cria uma função `ola_mundo` que não recebe parâmetros e:
 
@@ -662,7 +662,7 @@ ola_mundo()
 
 ---
 
-### Exercício 2 - Soma de dois números
+### <a id="ex2"></a> Exercício 2 - Soma de dois números
 
 Cria uma função `soma(a, b)` que:
 
@@ -687,7 +687,7 @@ print(f"A soma de {num1} e {num2} é {resultado}.")
 
 ---
 
-### Exercício 3 - Contar letras de um nome
+### <a id="ex3"></a> Exercício 3 - Contar letras de um nome
 
 Cria uma função `contar_letras(nome)` que:
 
@@ -713,7 +713,7 @@ print(f"O nome {nome_usuario} tem {num_letras} letras.")
 
 ---
 
-### Exercício 4 - Contar pares e ímpares numa lista
+### <a id="ex4"></a> Exercício 4 - Contar pares e ímpares numa lista
 
 Cria uma função `contar_pares_impares(lista_numeros)` que:
 
@@ -746,7 +746,7 @@ print(f"Números pares: {num_pares}, números ímpares: {num_impares}")
 
 ---
 
-### Exercício 5 - Média de uma lista de números
+### <a id="ex5"></a> Exercício 5 - Média de uma lista de números
 
 Cria uma função `calcular_media(lista_numeros)` que:
 
@@ -773,7 +773,7 @@ print(calcular_media([5, 15]))        # 10.0
 
 ---
 
-### Exercício 6 - Somatório de 1 até `n`
+### <a id="ex6"></a> Exercício 6 - Somatório de 1 até `n`
 
 Cria uma função `somatorio(n)` que:
 
@@ -804,7 +804,7 @@ else:
 
 ---
 
-### Exercício 7 - String mais longa
+### <a id="ex7"></a> Exercício 7 - String mais longa
 
 Cria uma função `string_mais_longa(lista_strings)` que:
 
@@ -836,7 +836,7 @@ print(string_mais_longa([]))                             # None
 
 ---
 
-### Exercício 8 - Contar alunos por turma (dicionário simples + função)
+### <a id="ex8"></a> Exercício 8 - Contar alunos por turma (dicionário simples + função)
 
 Cria um dicionário `turmas` em que:
 
@@ -878,7 +878,7 @@ for turma, num_alunos in contagem.items():
 
 ---
 
-### Exercício 9 - Encontrar a pessoa mais velha
+### <a id="ex9"></a> Exercício 9 - Encontrar a pessoa mais velha
 
 Cria uma função `mais_velho(pessoas)` que recebe um dicionário do tipo:
 
@@ -899,7 +899,7 @@ Testa a função com diferentes dicionários.
 
 > Resolução
 
-````python
+```python
 def mais_velho(pessoas):
     nome_mais_velho = None
     idade_mais_velha = -1
@@ -912,6 +912,8 @@ def mais_velho(pessoas):
 # Testes
 pessoas1 = {"Ana": 16, "Bruno": 17, "Carla": 15}
 print(mais_velho(pessoas1))  # "Bruno"
+
+```
 
 ---
 
@@ -927,7 +929,11 @@ turma = {
         {"nome": "Carla", "notas": {"Matemática": 12, "Português": 14}}
     ]
 }
-````
+```
+
+---
+
+### <a id="ex10"></a> Exercício 10 - Média por aluno (função + dicionário aninhado)
 
 Cria uma função `media_aluno(aluno)` que:
 
@@ -965,7 +971,7 @@ for aluno in turma["alunos"]:
 
 ---
 
-### Exercício 11 - Função que calcula o quadrado de um número
+### <a id="ex11"></a> Exercício 11 - Função que calcula o quadrado de um número
 
 Cria uma função `quadrado(n)` que:
 
@@ -991,7 +997,7 @@ print(f"O quadrado de {num} é {resultado}.")
 
 ---
 
-### Exercício 12 - Função que diz se um número é par
+### <a id="ex12"></a> Exercício 12 - Função que diz se um número é par
 
 Cria uma função `eh_par(n)` que:
 
@@ -1019,7 +1025,7 @@ else:
 
 ---
 
-### Exercício 13 - Função com dois parâmetros: maior de dois números
+### <a id="ex13"></a> Exercício 13 - Função com dois parâmetros: maior de dois números
 
 Cria uma função `maior(a, b)` que:
 
@@ -1049,7 +1055,7 @@ print(f"O maior número é: {resultado}")
 
 ---
 
-### Exercício 14 - Filtrar aprovados a partir de um dicionário
+### <a id="ex14"></a> Exercício 14 - Filtrar aprovados a partir de um dicionário
 
 Imagina um dicionário `notas` do tipo:
 
@@ -1077,7 +1083,7 @@ Reprovados: ['Bruno', 'Diogo']
 
 ---
 
-### Exercício 15 - Função que devolve vários valores
+### <a id="ex15"></a> Exercício 15 - Função que devolve vários valores
 
 Cria uma função `estatisticas_numeros(numeros)` que recebe uma lista de números e devolve **3 valores**:
 
@@ -1101,7 +1107,7 @@ Máximo: ...
 
 ---
 
-### Exercício 16 - Mutabilidade: função que modifica uma lista recebida
+### <a id="ex16"></a> Exercício 16 - Mutabilidade: função que modifica uma lista recebida
 
 Cria uma função adicionar_prefixo(lista_nomes, prefixo) que:
 • recebe uma lista de nomes (por exemplo ["Ana", "Bruno"]);
@@ -1129,7 +1135,7 @@ print("Depois:", nomes)
 
 ---
 
-### Exercício 17 - \*args: média de quantidade variável de números
+### <a id="ex17"></a> Exercício 17 - \*args: média de quantidade variável de números
 
 Cria uma função media_variavel(\*nums) que:
 • recebe 0 ou mais números (inteiros ou floats);
@@ -1143,7 +1149,7 @@ No programa principal: 1. Testa a função com:
 
 ---
 
-### Exercício 18 - \*\*kwargs: configuração flexível
+### <a id="ex18"></a> Exercício 18 - \*\*kwargs: configuração flexível
 
 Cria uma função criar_perfil(\*\*info) que:
 • recebe informações nomeadas sobre uma pessoa (por exemplo, nome="Ana", idade=16, curso="PI"),
@@ -1153,7 +1159,7 @@ No programa principal: 1. Cria 2 perfis diferentes usando a função:
 • um com nome, idade;
 • outro com nome, idade, curso e turma (por exemplo "10.º A"). 2. Imprime os dicionários devolvidos.
 
-### Exercício 19 (Desafio) - Função com `*args`
+### <a id="ex19"></a> Exercício 19 (Desafio) - Função com `*args`
 
 Cria uma função `produto(*nums)` que:
 
@@ -1169,7 +1175,7 @@ Testa com:
 
 ---
 
-### Exercício 20 (Desafio avançado) - Recursão simples
+### <a id="ex20"></a> Exercício 20 (Desafio avançado) - Recursão simples
 
 Cria uma função recursiva `conta_decrescente(n)` que:
 
