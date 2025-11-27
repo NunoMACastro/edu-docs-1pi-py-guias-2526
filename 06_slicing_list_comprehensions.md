@@ -678,7 +678,34 @@ Exemplo de saída:
 
 ---
 
-### Exercício 11 (Desafio) · Filtrar e transformar ao mesmo tempo · [DESAFIO]
+### Exercício 11 · Filtrar e transformar · [MÉDIO]
+
+Dada a lista:
+
+```python
+nums = list(range(1, 21))  # de 1 até 20
+```
+
+Usa uma **list comprehension** para criar uma lista com:
+
+-   os quadrados dos números **pares**,
+-   mas **apenas** daqueles que são **maiores que 10**.
+
+---
+
+### Exercício 12 · LC em strings · [MÉDIO]
+
+Dada a string:
+
+```python
+frase = "Vocês são umas belezuras"
+```
+
+Cria uma list comprehension apenas com as vogais da frase em maiúsculas.
+
+---
+
+### Exercício 13 (Desafio) · Filtrar e transformar ao mesmo tempo · [DESAFIO]
 
 Dada a lista:
 
@@ -699,7 +726,7 @@ Exemplo (não é a resposta completa):
 
 ---
 
-### Exercício 12 (Desafio) · Slicing em “janelas” · [DESAFIO]
+### Exercício 14 (Desafio) · Slicing em “janelas” · [DESAFIO]
 
 Dada a lista:
 
