@@ -7,6 +7,8 @@
 -   [`04_funcoes_do_basico_ao_avancado.md`](#04_funcoes_do_basico_ao_avancadomd)
 -   [`05_algoritmos_e_padroes_de_programacao.md`](#05_algoritmos_e_padroes_de_programacaomd)
 -   [`06_slicing_list_comprehensions_md`](#06_slicing_list_comprehensions_md)
+-   [`07_ficheiros_texto_json_csv.md`](#07_ficheiros_texto_json_csvmd)
+-   [`08_excecoes_e_tratamento_de_erros.md`](#08_excecoes_e_tratamento_de_errosmd)
 -   [Como usar estes materiais](#como-usar-estes-materiais)
 -   [Pré-requisitos e ambiente de trabalho](#pr%C3%A9-requisitos-e-ambiente-de-trabalho)
 
@@ -37,6 +39,8 @@ Cada ficheiro foca um conjunto de temas e termina com:
 ├── 04_funcoes_do_basico_ao_avancado.md
 ├── 05_algoritmos_e_padroes_de_programacao.md
 ├── 06_slicing_list_comprehensions.md
+├── 07_ficheiros_texto_json_csv.md
+├── 08_excecoes_e_tratamento_de_erros.md
 └── README.md
 ```
 
@@ -298,9 +302,78 @@ Exercícios focados em:
 
 ---
 
+### `07_ficheiros_texto_json_csv.md`
+
+[Ver ficheiro](./07_ficheiros_texto_json_csv.md)
+
+**Objetivo:**  
+Introduzir o trabalho com **ficheiros** em Python, para guardar e voltar a usar dados entre execuções, usando formatos simples e práticos.
+
+Conteúdos principais:
+
+-   ficheiros de texto (`.txt`):
+    -   `open` com os modos `"r"`, `"w"` e `"a"`;
+    -   uso de `with open(..., encoding="utf-8")`;
+    -   escrever linhas com `write`;
+    -   ler linha a linha com `for`, `read`, `readlines`;
+-   ficheiros JSON (`.json`):
+    -   o que é JSON (dicionários/listas em texto);
+    -   guardar dicionários e listas com `json.dump`;
+    -   ler para estruturas Python com `json.load`;
+    -   exemplos com um aluno e lista de alunos;
+-   ficheiros CSV (`.csv`):
+    -   noção de tabela (linhas/colunas separadas por `;`);
+    -   escrita “à mão” de CSV a partir de listas/dicionários;
+    -   leitura “à mão” com `split(";")` e conversão de tipos;
+    -   curiosidade: uso básico do módulo `csv` (`DictReader`);
+-   boas práticas:
+    -   usar sempre `with open` e `encoding="utf-8"`;
+    -   ler ficheiros grandes linha a linha.
+
+Exercícios focados em:
+
+-   criar e ler diários em `.txt`;
+-   guardar e ler registos de alunos em JSON;
+-   exportar listas de dicionários para CSV e calcular estatísticas simples.
+
+---
+
+### `08_excecoes_e_tratamento_de_erros.md`
+
+[Ver ficheiro](./08_excecoes_e_tratamento_de_erros.md)
+
+**Objetivo:**  
+Perceber os tipos de erros mais comuns em Python, aprender a ler mensagens de erro (tracebacks) e usar `try`/`except` para tornar os programas mais robustos e amigáveis.
+
+Conteúdos principais:
+
+-   tipos de erros:
+    -   `SyntaxError` vs erros em tempo de execução;
+    -   exemplos de `ValueError`, `ZeroDivisionError`, `TypeError`, `IndexError`, `KeyError`, etc.;
+-   leitura de mensagens de erro:
+    -   ficheiro, linha, tipo de erro e mensagem;
+    -   como usar o traceback para encontrar o problema;
+-   `try`/`except` básico:
+    -   sintaxe geral;
+    -   usar `try`/`except` para validar `input`;
+    -   capturar exceções específicas (`ValueError`, `ZeroDivisionError`, `FileNotFoundError`, ...);
+-   secções **[EXTRA]**:
+    -   vários blocos `except` e captura múltipla;
+    -   exceção genérica (`Exception`) e cuidados a ter;
+    -   `else` e `finally`;
+    -   lançar erros com `raise` e usar `assert`.
+
+Exercícios focados em:
+
+-   tornar leituras de `input` mais seguras;
+-   tratar erros ao dividir, ler ficheiros, JSON e CSV;
+-   implementar pequenos menus e funções robustas com tratamento de exceções.
+
+---
+
 ## Como usar estes materiais
 
-1. Segue a **ordem dos ficheiros** (01 → 02 → 03 → 04).
+1. Segue a **ordem dos ficheiros** (01 → 02 → 03 → 04 → 05 → 06 → 07 → 08).
 2. Em cada ficheiro:
     - lê primeiro a teoria e os exemplos;
     - copia alguns exemplos para um ficheiro `.py` e experimenta alterá-los;

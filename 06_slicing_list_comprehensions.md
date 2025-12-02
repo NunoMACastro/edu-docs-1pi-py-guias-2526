@@ -749,6 +749,16 @@ Sugestão:
 -   Em cada iteração, usa _slicing_ `dados[i:i+3]`.
 -   Depois, tenta transformar a solução numa list comprehension.
 
+> Resolução:
+
+```python
+dados = [10, 20, 30, 40, 50, 60]
+janelas = [dados[i:i+3] for i in range(len(dados) - 2)]
+print(janelas)
+```
+
+> Explicação: `range(len(dados) - 2)` garante que `i+3` não ultrapassa o tamanho da lista.
+
 ---
 
 ## 13. Changelog
