@@ -9,8 +9,8 @@
 
 -   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 -   [1. Introdução: porque usar ficheiros?](#1-introdução-porque-usar-ficheiros)
--   [2. Ficheiros de texto (`.txt`)](#2-ficheiros-de-texto-txt)
--   [3. Ficheiros JSON (`.json`)](#3-ficheiros-json-json)
+-   [2. Ficheiros JSON (`.json`)](#2-ficheiros-json-json)
+-   [3. Ficheiros de texto (`.txt`)](#3-ficheiros-de-texto-txt)
 -   [4. Ficheiros CSV (`.csv`)](#4-ficheiros-csv-csv)
 -   [5. Boas práticas com ficheiros](#5-boas-práticas-com-ficheiros)
 -   [6. Exercícios - Ficheiros de Texto, JSON e CSV](#6-exercícios---ficheiros-de-texto-json-e-csv)
