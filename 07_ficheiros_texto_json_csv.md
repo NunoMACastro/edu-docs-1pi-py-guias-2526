@@ -468,7 +468,41 @@ Escreve um programa que:
 
 ---
 
-### Exercício 5 - Usando funções, dicionários e JSON · [INTERMÉDIO]
+### Exercício 5 - Escrever um dicionário em JSON · [BÁSICO]
+
+Escreve um programa que:
+
+-   pede ao utilizador para inserir os seus dados pessoais:
+    -   nome (string);
+    -   idade (inteiro);
+    -   email (string);
+-   guarda esses dados num dicionário;
+-   escreve esse dicionário num ficheiro `dados_pessoais.json` usando `json.dump`.
+
+---
+
+### Exercício 6 - Simulação de login · [BÁSICO]
+
+Cria um ficheiro `utilizadores.json` com o seguinte conteúdo:
+
+```json
+[
+    { "username": "ana", "password": "senha123" },
+    { "username": "bruno", "password": "qwerty" },
+    { "username": "carla", "password": "abc123" }
+]
+```
+
+Depois, escreve um programa que:
+
+-   lê o ficheiro `utilizadores.json`;
+-   pede ao utilizador para inserir o seu `username` e `password`;
+-   verifica se o `username` e `password` correspondem a algum dos utilizadores no ficheiro;
+-   mostra uma mensagem de "Login bem-sucedido" ou "Credenciais inválidas".
+
+---
+
+### Exercício 7 - Usando funções, dicionários e JSON · [INTERMÉDIO]
 
 Escreve um programa que:
 
@@ -487,7 +521,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 6 - Gestão de contactos · [INTERMÉDIO]
+### Exercício 8 - Gestão de contactos · [INTERMÉDIO]
 
 Escreve um programa que:
 
@@ -506,7 +540,7 @@ Escreve um programa que:
 
 ---
 
-### Exercício 7 - Gestão de notas · [DESAFIO]
+### Exercício 9 - Gestão de notas · [DESAFIO]
 
 Escreve um programa que:
 
