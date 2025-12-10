@@ -34,7 +34,7 @@ Cada ficheiro foca um conjunto de temas e termina com:
 
 ```text
 .
-├── 00_exercicios_de_preparacao
+├── 00_exercicios_de_preparacao.md
 ├── 01_introducao_variaveis_tipos_strings_io.md
 ├── 02_operadores_e_controlo_de_fluxo_if_ciclos.md
 ├── 03_listas_dicionarios_estruturas_aninhadas.md
