@@ -1,6 +1,7 @@
 **Índice**
 
 -   [Estrutura do repositório](#estrutura-do-reposit%C3%B3rio)
+-   [ `00_exercicios_de_preparacao`](#00_exercicios_de_preparacaomd)
 -   [`01_introducao_variaveis_tipos_strings_io.md`](#01_introducao_variaveis_tipos_strings_iomd)
 -   [`02_operadores_e_controlo_de_fluxo_if_ciclos.md`](#02_operadores_e_controlo_de_fluxo_if_ciclosmd)
 -   [`03_listas_dicionarios_estruturas_aninhadas.md`](#03_listas_dicionarios_estruturas_aninhadasmd)
@@ -33,6 +34,7 @@ Cada ficheiro foca um conjunto de temas e termina com:
 
 ```text
 .
+├── 00_exercicios_de_preparacao
 ├── 01_introducao_variaveis_tipos_strings_io.md
 ├── 02_operadores_e_controlo_de_fluxo_if_ciclos.md
 ├── 03_listas_dicionarios_estruturas_aninhadas.md
@@ -43,6 +45,20 @@ Cada ficheiro foca um conjunto de temas e termina com:
 ├── 08_excecoes_e_tratamento_de_erros.md
 └── README.md
 ```
+
+### `00_exercicios_de_preparacao.md`
+
+[Ver ficheiro](./00_exercicios_de_preparacao.md)
+
+**Objetivo:**  
+Preparar os alunos para as avaliações, através de exercícios que envolvem os conceitos básicos de Python
+
+Conteúdos principais:
+
+-   revisão de funções (definição, parâmetros, retorno, \*args/\*\*kwargs);
+-   leitura e escrita de ficheiros JSON;
+
+---
 
 ### `01_introducao_variaveis_tipos_strings_io.md`
 
