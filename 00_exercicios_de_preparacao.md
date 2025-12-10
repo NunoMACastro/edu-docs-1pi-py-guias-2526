@@ -94,3 +94,13 @@ Cria funções para:
 ---
 
 **Ficheiros JSON**
+
+17. Pede ao utilizador para introduzir o nome, idade e cidade. Guarda estes dados num ficheiro JSON com o formato de um dicionário.
+
+18. Lê o ficheiro JSON criado no exercício anterior e imprime os dados de forma organizada.
+
+19. Cria uma função que receba uma lista de dicionários (cada dicionário representa uma pessoa com nome e idade) e guarde esta lista num ficheiro JSON.
+
+20. Cria uma função que leia o ficheiro JSON criado no exercício anterior e retorne a lista de dicionários.
+
+21. Cria um programa que permita ao utilizador gerir uma lista de tarefas (to-do list). O programa deve permitir adicionar, remover e listar tarefas. Os dados devem estar guardados num ficheiro JSON.
