@@ -63,7 +63,7 @@ Matérias anteriores que podem ser úteis:
             "Matemática": 18,
             "Física": 16,
             "Química": 17
-        }
+        },
         "faltas": {
             "Matemática": 2,
             "Física": 0,
