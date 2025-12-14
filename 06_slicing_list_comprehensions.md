@@ -530,6 +530,16 @@ Usando apenas _slicing_ (`lista[inicio:fim]`), cria expressões que devolvam:
 3. `[30, 40, 50, 60]`
 4. Uma cópia completa da lista.
 
+> Resolução:
+
+```python
+numeros = [10, 20, 30, 40, 50, 60, 70]
+print(numeros[0:3])    # [10, 20, 30
+print(numeros[3:6])    # [40, 50, 60
+print(numeros[2:6])    # [30, 40, 50, 60]
+print(numeros[:])      # cópia completa
+```
+
 ---
 
 ### Exercício 2 · Slicing com índices negativos · [BÁSICO]
@@ -545,6 +555,15 @@ obter:
 1. `["d", "e", "f"]`
 2. `["b", "c", "d", "e"]`
 3. `["e", "f"]` usando apenas índices negativos.
+
+> Resolução:
+
+```python
+letras = ["a", "b", "c", "d", "e", "f"]
+print(letras[-3:])     # ["d", "e", "f"]
+print(letras[1:-1])    # ["b", "c", "d", "e"]
+print(letras[-2:])     # ["e", "f"]
+```
 
 ---
 
@@ -562,6 +581,15 @@ Usa _slicing_ para obter:
 2. `"Informático"`
 3. A string ao contrário.
 
+> Resolução:
+
+```python
+texto = "Programador Informático"
+print(texto[:11])        # "Programador"
+print(texto[12:])        # "Informático"
+print(texto[::-1])       # "ocitamrofI rodamargoP"
+```
+
 ---
 
 ### Exercício 4 · Slicing com passo · [MÉDIO]
@@ -578,6 +606,15 @@ Usa _slicing_ com `passo` para obter:
 2. Todos os números pares.
 3. A lista `[20, 18, 16, 14, 12, 10]`.
 
+> Resolução:
+
+```python
+nums = list(range(1, 21))
+print(nums[::2])        # Números ímpares
+print(nums[1::2])       # Números pares
+print(nums[-1:-11:-2])  # [20, 18, 16, 14, 12, 10]
+```
+
 ---
 
 ### Exercício 5 · Quadrados com list comprehension · [BÁSICO]
@@ -592,6 +629,14 @@ devolva:
 
 ```python
 [1, 4, 9, 16, 25]
+```
+
+> Resolução:
+
+```python
+nums = [1, 2, 3, 4, 5]
+quadrados = [n ** 2 for n in nums]
+print(quadrados)  # [1, 4, 9, 16, 25]
 ```
 
 ---
@@ -611,6 +656,14 @@ Exemplo de saída:
 ["ca", "ca", "bi", "av", "ba"]
 ```
 
+> Resolução:
+
+```python
+palavras = ["casa", "carro", "bicicleta", "avião", "barco"]
+iniciais = [palavra[:2] for palavra in palavras]
+print(iniciais)  # ["ca", "ca", "bi", "av", "ba"]
+```
+
 ---
 
 ### Exercício 7 · Filtrar pares com list comprehension · [BÁSICO]
@@ -622,6 +675,14 @@ nums = [3, 8, 12, 5, 7, 20, 21]
 ```
 
 Cria uma list comprehension que devolva apenas os **números pares**.
+
+> Resolução:
+
+```python
+nums = [3, 8, 12, 5, 7, 20, 21]
+pares = [n for n in nums if n % 2 == 0]
+print(pares)  # [8, 12, 20]
+```
 
 ---
 
@@ -641,6 +702,14 @@ Exemplo de saída:
 [5, 5, 5]
 ```
 
+> Resolução:
+
+```python
+nomes = ["Ana", "Bruno", "Carla", "Diogo", "Eva"]
+comprimentos = [len(nome) for nome in nomes if len(nome) >= 4]
+print(comprimentos)  # [5, 5, 5]
+```
+
 ---
 
 ### Exercício 9 · Classificar números como "par"/"ímpar" · [MÉDIO]
@@ -655,6 +724,14 @@ Usa uma list comprehension com `if/else` na **expressão** para obter:
 
 ```python
 ["ímpar", "par", "ímpar", "par", "ímpar", "par"]
+```
+
+> Resolução:
+
+```python
+nums = [1, 2, 3, 4, 5, 6]
+tipos = ["par" if n % 2 == 0 else "ímpar" for n in nums]
+print(tipos)  # ["ímpar", "par", "ímpar", "par", "ímpar", "par"]
 ```
 
 ---
@@ -676,6 +753,20 @@ Exemplo de saída:
 ["on", "or", "ta", "on"]
 ```
 
+> Resolução:
+
+```python
+palavras = ["Python", "Programador", "Lista", "Comprehension"]
+# Usando for normal
+ultimas = []
+for palavra in palavras:
+    ultimas.append(palavra[-2:])
+print(ultimas)  # ["on", "or", "ta", "on"]
+# Usando list comprehension
+ultimas_lc = [palavra[-2:] for palavra in palavras]
+print(ultimas_lc)  # ["on", "or", "ta", "on"]
+```
+
 ---
 
 ### Exercício 11 · Filtrar e transformar · [MÉDIO]
@@ -691,6 +782,14 @@ Usa uma **list comprehension** para criar uma lista com:
 -   os quadrados dos números **pares**,
 -   mas **apenas** daqueles que são **maiores que 10**.
 
+> Resolução:
+
+```python
+nums = list(range(1, 21))
+resultado = [n ** 2 for n in nums if n % 2 == 0 and n > 10]
+print(resultado)  # [144, 196, 256, 324, 400]
+```
+
 ---
 
 ### Exercício 12 · LC em strings · [MÉDIO]
@@ -702,6 +801,14 @@ frase = "Vocês são umas belezuras"
 ```
 
 Cria uma list comprehension apenas com as vogais da frase em maiúsculas.
+
+> Resolução:
+
+```python
+frase = "Vocês são umas belezuras"
+vogais_maiusc = [letra.upper() for letra in frase if letra.lower() in "aeiouáéíóúâêôãõ"]
+print(vogais_maiusc)  # ['O', 'E', 'A', 'O', 'U', 'A', 'E', 'E', 'U', 'A']
+```
 
 ---
 
@@ -722,6 +829,14 @@ Exemplo (não é a resposta completa):
 
 ```python
 [4, 16, 36, ...]
+```
+
+> Resolução:
+
+```python
+nums = list(range(-5, 11))
+resultado = [n ** 2 for n in nums if n > 0 and n % 2 == 0]
+print(resultado)  # [4, 16, 36, 64, 100]
 ```
 
 ---

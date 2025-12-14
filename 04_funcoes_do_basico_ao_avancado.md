@@ -1081,6 +1081,34 @@ Aprovados: ['Ana', 'Carla']
 Reprovados: ['Bruno', 'Diogo']
 ```
 
+> Resolução
+
+```python
+def aprovados(notas):
+    lista_aprovados = []
+    for nome, nota in notas.items():
+        if nota >= 10:
+            lista_aprovados.append(nome)
+    return lista_aprovados
+
+def reprovados(notas):
+    lista_reprovados = []
+    for nome, nota in notas.items():
+        if nota < 10:
+            lista_reprovados.append(nome)
+    return lista_reprovados
+
+notas = {
+    "Ana": 17,
+    "Bruno": 9,
+    "Carla": 12,
+    "Diogo": 8
+}
+
+print("Aprovados:", aprovados(notas))
+print("Reprovados:", reprovados(notas))
+```
+
 ---
 
 ### <a id="ex15"></a> Exercício 15 - Função que devolve vários valores
@@ -1103,6 +1131,28 @@ No programa principal:
 Soma: ...
 Mínimo: ...
 Máximo: ...
+```
+
+> Resolução
+
+```python
+def estatisticas_numeros(numeros):
+    soma = 0
+    minimo = numeros[0]
+    maximo = numeros[0]
+    for num in numeros:
+        soma += num
+        if num < minimo:
+            minimo = num
+        if num > maximo:
+            maximo = num
+    return soma, minimo, maximo
+
+numeros = [3, 7, -2, 10, 4]
+soma, minimo, maximo = estatisticas_numeros(numeros)
+print(f"Soma: {soma}")
+print(f"Mínimo: {minimo}")
+print(f"Máximo: {maximo}")
 ```
 
 ---
@@ -1147,6 +1197,19 @@ No programa principal: 1. Testa a função com:
 • media_variavel(10, 12, 14);
 • media_variavel(5, 7.5). 2. Imprime os resultados.
 
+> Resolução
+
+```python
+def media_variavel(*nums):
+    if not nums:
+        return 0.0
+    return sum(nums) / len(nums)
+# Testes
+print(media_variavel())               # 0.0
+print(media_variavel(10, 12, 14))     # 12.0
+print(media_variavel(5, 7.5))         # 6.25
+```
+
 ---
 
 ### <a id="ex18"></a> Exercício 18 - \*\*kwargs: configuração flexível
@@ -1158,6 +1221,20 @@ Cria uma função criar_perfil(\*\*info) que:
 No programa principal: 1. Cria 2 perfis diferentes usando a função:
 • um com nome, idade;
 • outro com nome, idade, curso e turma (por exemplo "10.º A"). 2. Imprime os dicionários devolvidos.
+
+> Resolução
+
+```python
+def criar_perfil(**info):
+    return info
+# Testes
+perfil1 = criar_perfil(nome="Ana", idade=16)
+perfil2 = criar_perfil(nome="Bruno", idade=17, curso="PI", turma="10.º A")
+print(perfil1)  # {'nome': 'Ana', 'idade': 16}
+print(perfil2)  # {'nome': 'Bruno', 'idade': 17, 'curso': 'PI', 'turma': '10.º A'}
+```
+
+---
 
 ### <a id="ex19"></a> Exercício 19 (Desafio) - Função com `*args`
 
@@ -1172,6 +1249,20 @@ Testa com:
 -   `produto(2, 3)` → 6
 -   `produto(2, 3, 4)` → 24
 -   `produto()` → 1
+
+> Resolução
+
+```python
+def produto(*nums):
+    resultado = 1
+    for n in nums:
+        resultado *= n
+    return resultado
+# Testes
+print(produto(2, 3))        # 6
+print(produto(2, 3, 4))     # 24
+print(produto())            # 1
+```
 
 ---
 
@@ -1190,6 +1281,25 @@ conta_decrescente(4)  # [4, 3, 2, 1]
 
 Depois, compara com uma versão **não recursiva** usando `while` ou `for`.  
 Reflete qual das versões achas mais fácil de ler.
+
+> Resolução
+
+```python
+def conta_decrescente(n):
+    if n <= 1:
+        return [1]
+    else:
+        return [n] + conta_decrescente(n - 1)
+# Versão não recursiva
+def conta_decrescente_iterativa(n):
+    resultado = []
+    for i in range(n, 0, -1):
+        resultado.append(i)
+    return resultado
+# Testes
+print(conta_decrescente(4))             # [4, 3, 2, 1]
+print(conta_decrescente_iterativa(4))   # [4, 3, 2, 1]
+```
 
 ---
 
