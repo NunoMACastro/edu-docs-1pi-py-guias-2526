@@ -145,7 +145,7 @@ print(soma_pares([1, 2, 3, 4, 5, 6]))  # Deve retornar 12
 
 ```python
 def contar_vogais(texto):
-    vogais = "aeiouAEIOU"
+    vogais = "aeiouAEIOUàáâãäåèéêëìíîïòóôõöùúûüÁÀÂÃÄÅÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜ"
     contador = 0
     for char in texto:
         if char in vogais:
@@ -480,4 +480,52 @@ def menu():
 
 menu()
 
+```
+
+22. Cria as funções para um programa que faça a gestão das notas de alunos de uma turma. O programa deve poder guardar os nomes dos alunos e as suas notas nas diferentes disciplinas. O programa deve manter os dados num ficheiro JSON. Deve ser possível consultar a média de cada aluno e se um determinado aluno tem negativas (e quantas).
+    O programa deve ter as seguintes funções:
+    guardar_dados_alunos -> Função que recebe uma lista de alunos e a grava num ficheiro.
+    ler_dados_alunos -> Função que devolve uma lista com os dados dos alunos gravados em ficheiro
+    calcula_media -> Função que recebe uma lista de alunos e mostra a média de cada aluno na lista
+    devolve_negativas -> Função que recebe um aluno e devolve quantas negativas esse aluno tem.
+
+> Resolução:
+
+```python
+import json
+def guardar_dados_alunos(alunos, nome_ficheiro):
+    with open(nome_ficheiro, "w") as ficheiro:
+        json.dump(alunos, ficheiro, indent=4)
+
+def ler_dados_alunos(nome_ficheiro):
+    with open(nome_ficheiro, "r") as ficheiro:
+        alunos = json.load(ficheiro)
+    return alunos
+
+def calcula_media(alunos):
+    for aluno in alunos:
+        notas = aluno["notas"].values()
+        media = sum(notas) / len(notas)
+        print(f"{aluno['nome']} - Média: {media:.2f}")
+
+def devolve_negativas(aluno):
+    negativas = 0
+    for nota in aluno["notas"].values():
+        if nota < 10:
+            negativas += 1
+    return negativas
+
+# Exemplo de uso:
+alunos = [
+    {"nome": "Ana", "notas": {"Matemática": 18, "Física": 16, "Química": 9}},
+    {"nome": "Bruno", "notas": {"Matemática": 12, "Física": 14, "Química": 11}},
+    {"nome": "Carla", "notas": {"Matemática": 8, "Física": 7, "Química": 10}}
+]
+
+guardar_dados_alunos(alunos, "alunos.json")
+alunos_lidos = ler_dados_alunos("alunos.json")
+calcula_media(alunos_lidos)
+for aluno in alunos_lidos:
+    negativas = devolve_negativas(aluno)
+    print(f"{aluno['nome']} - Negativas: {negativas}")
 ```
