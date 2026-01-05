@@ -11,6 +11,7 @@
 -   [`07_ficheiros_texto_json_csv.md`](#07_ficheiros_texto_json_csvmd)
 -   [`08_excecoes_e_tratamento_de_erros.md`](#08_excecoes_e_tratamento_de_errosmd)
 -   [`09_modulos_e_organizacao_de_projetos.md`](#09_modulos_e_organizacao_de_projetosmd)
+-   [`10_estruturas_e_algoritmos_classicos.md`](#10_estruturas_e_algoritmos_classicosmd)
 -   [Como usar estes materiais](#como-usar-estes-materiais)
 -   [Pré-requisitos e ambiente de trabalho](#pr%C3%A9-requisitos-e-ambiente-de-trabalho)
 
@@ -45,6 +46,7 @@ Cada ficheiro foca um conjunto de temas e termina com:
 ├── 07_ficheiros_texto_json_csv.md
 ├── 08_excecoes_e_tratamento_de_erros.md
 ├── 09_modulos_e_organizacao_de_projetos.md
+├── 10_estruturas_e_algoritmos_classicos.md
 └── README.md
 ```
 
@@ -409,6 +411,28 @@ Exercícios focados em:
 -   criar módulos simples e importar funções;
 -   aplicar `as` e evitar `import *`;
 -   organizar um mini projeto com 2–3 ficheiros.
+
+---
+
+### `10_estruturas_e_algoritmos_classicos.md`
+
+[Ver ficheiro](./10_estruturas_e_algoritmos_classicos.md)
+
+**Objetivo:**  
+Introduzir pesquisa linear, ordenação básica (bubble e selection) e uma noção simples de eficiência.
+
+Conteúdos principais:
+
+-   o que são algoritmos e porque estudar;
+-   pesquisa linear com e sem índice;
+-   ordenação por bolha (bubble sort) e por seleção (selection sort);
+-   noção simples de eficiência e comparação de passos.
+
+Exercícios focados em:
+
+-   implementar pesquisa linear e contagem de passos;
+-   ordenar listas com bubble/selection sort;
+-   aplicar ordenação e pesquisa em listas de números e nomes.
 
 ---
 
