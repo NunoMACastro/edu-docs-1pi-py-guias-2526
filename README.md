@@ -10,6 +10,7 @@
 -   [`06_slicing_list_comprehensions_md`](#06_slicing_list_comprehensions_md)
 -   [`07_ficheiros_texto_json_csv.md`](#07_ficheiros_texto_json_csvmd)
 -   [`08_excecoes_e_tratamento_de_erros.md`](#08_excecoes_e_tratamento_de_errosmd)
+-   [`09_modulos_e_organizacao_de_projetos.md`](#09_modulos_e_organizacao_de_projetosmd)
 -   [Como usar estes materiais](#como-usar-estes-materiais)
 -   [Pré-requisitos e ambiente de trabalho](#pr%C3%A9-requisitos-e-ambiente-de-trabalho)
 
@@ -43,6 +44,7 @@ Cada ficheiro foca um conjunto de temas e termina com:
 ├── 06_slicing_list_comprehensions.md
 ├── 07_ficheiros_texto_json_csv.md
 ├── 08_excecoes_e_tratamento_de_erros.md
+├── 09_modulos_e_organizacao_de_projetos.md
 └── README.md
 ```
 
@@ -384,6 +386,29 @@ Exercícios focados em:
 -   tornar leituras de `input` mais seguras;
 -   tratar erros ao dividir, ler ficheiros, JSON e CSV;
 -   implementar pequenos menus e funções robustas com tratamento de exceções.
+
+---
+
+### `09_modulos_e_organizacao_de_projetos.md`
+
+[Ver ficheiro](./09_modulos_e_organizacao_de_projetos.md)
+
+**Objetivo:**  
+Ensinar a organizar código em vários ficheiros e reutilizar funções com `import`, preparando projetos pequenos mais limpos e fáceis de manter.
+
+Conteúdos principais:
+
+-   o que é um módulo e porque usar;
+-   diferentes formas de `import` e boas práticas;
+-   `if __name__ == "__main__":` para testes simples;
+-   separação de lógica e I/O em ficheiros diferentes;
+-   exemplo de mini projeto organizado.
+
+Exercícios focados em:
+
+-   criar módulos simples e importar funções;
+-   aplicar `as` e evitar `import *`;
+-   organizar um mini projeto com 2–3 ficheiros.
 
 ---
 
