@@ -558,8 +558,6 @@ Escreve um programa que:
     -   mostrar o quadrado do número, **se estiver tudo bem**;
     -   mostrar uma mensagem amigável **se o utilizador escrever algo inválido** (por exemplo, `abc`).
 
-Sugestão: começa por provocar o erro sem `try`/`except`, depois acrescenta o tratamento.
-
 ---
 
 ### Exercício 2 - Repetir até ser válido · [BÁSICO]
