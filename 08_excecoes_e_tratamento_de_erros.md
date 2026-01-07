@@ -242,6 +242,25 @@ except ValueError:
     print("Por favor escreve números válidos.")
 ```
 
+> Podemos pedir repetidamente numeros ao utilizador enquanto o que ele introduzir produzir erros:
+
+```python
+
+while True:
+    try:
+        numerador = float(input("Numerador: "))
+        denominador = float(input("Denominador: "))
+        resultado = numerador / denominador
+    except ZeroDivisionError:
+        print("Não é possível dividir por zero. Tenta outra vez.")
+    except ValueError:
+        print("Por favor escreve números válidos. Tenta outra vez.")
+    else:
+        # Só chega aqui se NÃO tiver havido erro
+        print("Resultado:", resultado)
+        break  # sai do ciclo se tudo correu bem
+```
+
 Repara que já temos **dois `except` diferentes**:
 
 -   um para divisão por zero,
@@ -325,7 +344,7 @@ Regra geral para quem está a aprender:
 
 ---
 
-## 6. `else` e `finally` · [EXTRA / curiosidade]
+## 6. `else` e `finally` · [EXTRA]
 
 ### 6.1. `else` depois de `try`/`except`
 
@@ -425,7 +444,71 @@ def media(numeros):
 
 ---
 
-## 9. Exercícios - Exceções e Tratamento de Erros
+## 9. Padrões comuns de exceções
+
+-   **Leitura segura de inteiro**:
+
+    ```python
+    try:
+        numero = int(input("Número inteiro: "))
+    except ValueError:
+        print("Isso não é um inteiro.")
+    ```
+
+-   **Divisão segura**:
+
+    ```python
+    try:
+        resultado = a / b
+    except ZeroDivisionError:
+        print("Não podes dividir por zero.")
+    ```
+
+-   **Leitura de ficheiro com tratamento de erro**:
+
+    ```python
+    try:
+        with open("dados.txt", "r", encoding="utf-8") as f:
+            conteudo = f.read()
+    except FileNotFoundError:
+        print("Ficheiro não encontrado.")
+    else:
+        print(conteudo)
+    ```
+
+-   **Conversão segura de lista de strings para inteiros**:
+
+    ```python
+    strings = ["10", "20", "abc", "30"]
+    numeros = []
+    for s in strings:
+        try:
+            n = int(s)
+            numeros.append(n)
+        except ValueError:
+            print(f"Ignorando valor inválido: {s}")
+    ```
+
+---
+
+## 10. Lista de erros comuns em Python
+
+-   `SyntaxError` → erro de sintaxe (o programa não arranca).
+-   `NameError` → variável não definida.
+-   `TypeError` → operação com tipos incompatíveis.
+-   `ValueError` → valor inválido (ex.: converter string para número).
+-   `IndexError` → índice fora dos limites de uma lista.
+-   `KeyError` → chave inexistente num dicionário.
+-   `ZeroDivisionError` → divisão por zero.
+-   `FileNotFoundError` → ficheiro não encontrado.
+-   `IOError` / `OSError` → erros de entrada/saída (ficheiros, discos, etc.).
+-   `ImportError` → erro ao importar um módulo.
+-   `AttributeError` → atributo ou método inexistente num objeto.
+-   `IndentationError` → erro de indentação (espaços/tabs incorretos).
+
+---
+
+## 11. Exercícios - Exceções e Tratamento de Erros
 
 ### Exercício 1 - Leitura segura de inteiro · [BÁSICO]
 
