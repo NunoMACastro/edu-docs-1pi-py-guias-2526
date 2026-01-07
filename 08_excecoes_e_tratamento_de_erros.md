@@ -393,6 +393,9 @@ with open("dados.txt", "w", encoding="utf-8") as f:
 
 Porque o `with` já trata da parte de fechar o ficheiro.
 
+> Porquê usar o `finally` e não colocar o código fora do `try`/`except`?
+> Porque se houver um erro no `try`, o código fora do `try`/`except` **não é executado**.
+
 ---
 
 ## 7. Lançar erros com `raise` (e `assert`) · [EXTRA]
@@ -411,6 +414,32 @@ def dividir(a, b):
 Se alguém chamar `dividir(10, 0)`, é lançado um `ValueError` com a mensagem indicada.
 
 Mais tarde, esse erro pode ser tratado com `try`/`except` noutro sítio do programa.
+
+Outro exemplo, mas mais util:
+
+```python
+def define_maioridade(idade):
+    if idade < 0:
+        raise ValueError("Idade não pode ser negativa.")
+    elif idade >= 18:
+        return True
+    else:
+        return False
+```
+
+Deteção do erro:
+
+```python
+try:
+    idade = int(input("Idade: "))
+    maior = define_maioridade(idade)
+    if maior:
+        print("És maior de idade.")
+    else:
+        print("És menor de idade.")
+except ValueError as e:
+    print("Erro:", e)
+```
 
 ### 7.2. `assert` para verificações rápidas
 
@@ -445,6 +474,16 @@ def media(numeros):
 ---
 
 ## 9. Padrões comuns de exceções
+
+-   **Exemplo usando as mensagens de erro**:
+
+    ```python
+    try:
+        numero = int(input("Número inteiro: "))
+        print("10 / número =", 10 / numero)
+    except Exception as e:
+        print("Ocorreu um erro:", e)
+    ```
 
 -   **Leitura segura de inteiro**:
 
