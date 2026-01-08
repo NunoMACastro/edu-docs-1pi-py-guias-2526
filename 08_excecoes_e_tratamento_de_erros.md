@@ -558,6 +558,16 @@ Escreve um programa que:
     -   mostrar o quadrado do número, **se estiver tudo bem**;
     -   mostrar uma mensagem amigável **se o utilizador escrever algo inválido** (por exemplo, `abc`).
 
+> Resolução:
+
+```python
+try:
+    numero = int(input("Número inteiro: "))
+    print("Número ao quadrado:", numero ** 2)
+except ValueError:
+    print("Isso não é um inteiro válido.")
+```
+
 ---
 
 ### Exercício 2 - Repetir até ser válido · [BÁSICO]
@@ -567,6 +577,19 @@ Melhora o exercício anterior:
 -   usa um ciclo `while True` para pedir um número inteiro;
 -   se a conversão com `int` correr bem, sai do ciclo (`break`) e mostra o resultado;
 -   se der `ValueError`, mostra uma mensagem e volta a pedir o número.
+
+> Resolução:
+
+```python
+while True:
+    try:
+        numero = int(input("Número inteiro: "))
+        break  # sai do ciclo se tudo correr bem
+    except ValueError:
+        print("Isso não é um inteiro válido. Tenta outra vez.")
+
+print("Número ao quadrado:", numero ** 2)
+```
 
 ---
 
@@ -582,6 +605,20 @@ Escreve um programa que:
 
 Mostra mensagens diferentes em cada caso.
 
+> Resolução:
+
+```python
+try:
+    numerador = float(input("Numerador: "))
+    denominador = float(input("Denominador: "))
+    resultado = numerador / denominador
+    print("Resultado:", resultado)
+except ValueError:
+    print("Por favor escreve números válidos.")
+except ZeroDivisionError:
+    print("Não é possível dividir por zero.")
+```
+
 ---
 
 ### Exercício 4 - Leitura de ficheiro com mensagem amigável · [BÁSICO]
@@ -593,6 +630,40 @@ Escreve um programa que:
 -   se o ficheiro **não existir**, apanha `FileNotFoundError` e mostra uma mensagem clara (sem traceback).
 
 Dica: liga com o que aprendeste em `07_ficheiros_texto_json_csv.md`.
+
+> Resolução:
+
+```python
+nome_ficheiro = input("Nome do ficheiro: ")
+try:
+    with open(nome_ficheiro, "r", encoding="utf-8") as f:
+        conteudo = f.read()
+except FileNotFoundError:
+    print("Não foi possível encontrar esse ficheiro.")
+else:
+    print("Conteúdo do ficheiro:")
+    print(conteudo)
+```
+
+> Podemos também verificar se a extensão do ficheiro é `json`e se não for, lançar um `ValueError` com `raise`.
+> Vamos usar o split para dividir o nome do ficheiro pelo ponto e verificar a última parte.:
+
+```python
+nome_ficheiro = input("Nome do ficheiro: ")
+try:
+    if nome_ficheiro.split('.')[-1] != 'json': # aqui usamos o índice -1 para obter a última parte após o ponto
+        raise ValueError("O ficheiro tem de ser um .json")
+    with open(nome_ficheiro, "r", encoding="utf-8") as f:
+        conteudo = f.read()
+except FileNotFoundError:
+    print("Não foi possível encontrar esse ficheiro.")
+except ValueError as ve:
+    print("Erro:", ve)
+else:
+    print("Conteúdo do ficheiro:")
+    print(conteudo)
+
+```
 
 ---
 
