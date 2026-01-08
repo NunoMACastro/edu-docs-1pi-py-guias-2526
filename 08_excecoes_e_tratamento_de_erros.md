@@ -725,43 +725,56 @@ Requisitos:
 
 ---
 
-### Exercício 8 (Desafio) - Função `dividir` robusta · [DESAFIO]
+### Exercício 8 (Desafio) - Calculadora básica com validação (usa \*args) · [DESAFIO]
 
-Cria uma função `dividir(a, b)` que:
+Escreve uma função `calculadora(operacao, *numeros)` que:
 
--   verifica se `b` é zero;
--   se for zero, lança um `ValueError` com uma mensagem clara usando `raise`;
--   caso contrário, devolve o resultado da divisão.
+-   recebe uma string `operacao` que pode ser `"soma"`, `"subtrai"`, `"multiplica"` ou `"divide"`;
+-   recebe um número variável de argumentos `numeros` (pelo menos dois);
+-   realiza a operação indicada em todos os números fornecidos;
+-   usa `try`/`except` para tratar:
+    -   `ValueError` se algum dos argumentos não for numérico;
+    -   `ZeroDivisionError` se tentar dividir por zero (neste caso, devolve `None`);
+    -   `TypeError` se a operação não for reconhecida (mostra uma mensagem clara).
+    -   Cria um erro `ValueError` se forem fornecidos menos de dois números.
 
-Depois cria um programa que:
+Exemplos de uso:
 
--   pede `a` e `b` ao utilizador;
--   chama `dividir(a, b)` dentro de um `try`;
--   trata o `ValueError` lançado pela função, mostrando uma mensagem amigável.
+```python
+print(calculadora("soma", 10, 5, 3))          # devolve 18
+print(calculadora("subtrai", 10, 5, 3))       # devolve 2
+print(calculadora("multiplica", 2, 3, 4))      # devolve 24
+print(calculadora("divide", 10, 2, 0))         # devolve None (devido a divisão por zero)
+print(calculadora("divide", 10, "a"))          # trata ValueError
+print(calculadora("potencia", 2, 3))           # trata TypeError
+print(calculadora("soma", 10))                  # trata ValueError (menos de dois números)
+```
 
 ---
 
-### Exercício 9 (Desafio) - Estatísticas robustas a partir de CSV · [DESAFIO]
+### Exercício 9 (Desafio) - Estatísticas a partir de JSON · [DESAFIO]
 
-Supondo um ficheiro `notas.csv` com:
+Supondo um ficheiro `notas.json` com:
 
-```text
-nome;nota
-Ana;15
-Bruno;abc
-Carla;18
+```json
+{
+    "alunos": [
+        { "nome": "Ana", "notas": [14, 15, 12] },
+        { "nome": "Bruno", "notas": [10, 9, 11] },
+        { "nome": "Carla", "notas": [16, 18, 17] }
+    ]
+}
 ```
 
 Escreve um programa que:
 
--   tenta abrir o ficheiro `notas.csv` (trata `FileNotFoundError`);
--   percorre cada linha (ignorando o cabeçalho);
--   tenta converter a nota para inteiro:
-    -   se correr bem, usa essa nota;
-    -   se der erro (`ValueError`), mostra uma mensagem a indicar o nome do aluno com nota inválida e ignora essa linha;
--   no fim, mostra:
-    -   média das notas válidas;
-    -   número de linhas ignoradas por erro.
+-   tenta ler o ficheiro `notas.json`;
+-   se o ficheiro não existir, apanha `FileNotFoundError` e mostra uma mensagem;
+-   se o conteúdo for inválido, apanha `json.JSONDecodeError` e mostra uma mensagem;
+-   se tudo correr bem, calcula e mostra:
+    -   a média de cada aluno;
+    -   a média geral da turma;
+    -   o nome do aluno com a maior média.
 
 ---
 
@@ -778,11 +791,16 @@ Cria um programa que funcione como um “diário” simples:
 
 Requisitos:
 
--   todas as entradas são guardadas em `diario.txt` (uma por linha);
--   o programa usa `try`/`except` para:
-    -   lidar com erros ao abrir/ler/escrever o ficheiro;
-    -   validar a opção do menu (tem de ser 1, 2 ou 3);
--   se o ficheiro ainda não existir quando o utilizador escolher “Ver entradas”, mostra uma mensagem simpática (por exemplo, “Ainda não tens entradas no diário!”) em vez de um traceback.
+-   todas as entradas são guardadas em `diario.json`;
+-   ao escolher “Escrever nova entrada”:
+    -   pede a data (formato `YYYY-MM-DD`);
+    -   pede o texto da entrada;
+    -   guarda a entrada no ficheiro JSON (cria o ficheiro se não existir);
+-   ao escolher “Ver entradas”:
+    -   tenta ler o ficheiro `diario.json`;
+    -   se o ficheiro não existir, mostra uma mensagem adequada;
+    -   se o ficheiro existir, mostra todas as entradas com data e texto;
+-   usa `try`/`except` para tratar erros de ficheiro e JSON inválido.
 
 ---
 
