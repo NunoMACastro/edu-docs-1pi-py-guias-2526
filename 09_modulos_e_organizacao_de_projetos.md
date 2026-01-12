@@ -348,19 +348,18 @@ def dividir(a, b):
 
 ```python
 # Ficheiro principal main.py
-from utils import ler_ficheiro, dividir
+import utils
 def main():
-    conteudo = ler_ficheiro('dados.txt')
+    conteudo = utils.ler_ficheiro('dados.txt')
     if conteudo is not None:
         print("Conteúdo do ficheiro:")
         print(conteudo)
 
     try:
-        resultado = dividir(10, 0)
+        resultado = utils.dividir(10, 0)
         print(f"Resultado da divisão: {resultado}")
     except ValueError as e:
         print(f"Erro ao dividir: {e}")
-
 main()
 ```
 
