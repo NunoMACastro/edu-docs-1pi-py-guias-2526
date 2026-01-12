@@ -683,6 +683,22 @@ Escreve um programa que:
     -   mostra uma mensagem a indicar qual foi o valor inválido;
     -   ignora esse valor e continua com os restantes.
 
+> Resolução:
+
+```python
+linha = input("Escreve vários números separados por espaços: ")
+partes = linha.split()
+soma = 0
+
+for p in partes:
+    try:
+        n = int(p)
+        soma += n
+    except ValueError:
+        print(f"Ignorando valor inválido: {p}")
+print("Soma dos números válidos:", soma)
+```
+
 ---
 
 ### Exercício 6 - Leitura de JSON com tratamento de erros · [INTERMÉDIO]
@@ -704,6 +720,26 @@ Escreve um programa que:
 -   se o ficheiro existir mas o conteúdo estiver estragado (JSON inválido), apanha `json.JSONDecodeError` e mostra uma mensagem adequada;
 -   se tudo correr bem, mostra o nome do aluno e a média das notas.
 
+> Resolução:
+
+```python
+import json
+
+try:
+    with open("aluno.json", "r", encoding="utf-8") as f:
+        dados = json.load(f)
+except FileNotFoundError:
+    print("Ficheiro aluno.json não encontrado.")
+except json.JSONDecodeError:
+    print("O conteúdo do ficheiro aluno.json é inválido.")
+else:
+    nome = dados["nome"]
+    notas = dados["notas"]
+    media = sum(notas) / len(notas) if notas else 0
+    print(f"Aluno: {nome}")
+    print(f"Média das notas: {media:.2f}")
+```
+
 ---
 
 ### Exercício 7 - Menu com validação de opções · [INTERMÉDIO]
@@ -722,6 +758,31 @@ Requisitos:
 -   usa `try`/`except` para garantir que a opção é um inteiro válido;
 -   se a opção não existir (por exemplo, 10), mostra uma mensagem e volta a pedir;
 -   só termina quando o utilizador escolher a opção 3.
+
+> Resolução:
+
+```python
+while True:
+    print("Menu:")
+    print("1 - Dizer olá")
+    print("2 - Mostrar a tabuada do 5")
+    print("3 - Sair")
+    try:
+        opcao = int(input("Escolhe uma opção (1-3): "))
+        if opcao == 1:
+            print("Olá!")
+        elif opcao == 2:
+            print("Tabuada do 5:")
+            for i in range(1, 11):
+                print(f"5 x {i} = {5 * i}")
+        elif opcao == 3:
+            print("A sair...")
+            break
+        else:
+            print("Opção inválida. Tenta outra vez.")
+    except ValueError:
+        print("Por favor escreve um número inteiro válido.")
+```
 
 ---
 
@@ -750,6 +811,42 @@ print(calculadora("potencia", 2, 3))           # trata TypeError
 print(calculadora("soma", 10))                  # trata ValueError (menos de dois números)
 ```
 
+> Resolução:
+
+```python
+def calculadora(operacao, *numeros):
+    if len(numeros) < 2:
+        raise ValueError("Deves fornecer pelo menos dois números.")
+
+    try:
+        if operacao == "soma":
+            return sum(numeros)
+        elif operacao == "subtrai":
+            resultado = numeros[0]
+            for n in numeros[1:]:
+                resultado -= n
+            return resultado
+        elif operacao == "multiplica":
+            resultado = 1
+            for n in numeros:
+                resultado *= n
+            return resultado
+        elif operacao == "divide":
+            resultado = numeros[0]
+            for n in numeros[1:]:
+                resultado /= n
+            return resultado
+        else:
+            raise TypeError(f"Operação '{operacao}' não reconhecida.")
+    except ValueError:
+        print("Erro: todos os argumentos devem ser numéricos.")
+    except ZeroDivisionError:
+        print("Erro: divisão por zero detectada.")
+    except TypeError as te:
+        print(te)
+        return None
+```
+
 ---
 
 ### Exercício 9 (Desafio) - Estatísticas a partir de JSON · [DESAFIO]
@@ -775,6 +872,48 @@ Escreve um programa que:
     -   a média de cada aluno;
     -   a média geral da turma;
     -   o nome do aluno com a maior média.
+
+> Resolução:
+
+```python
+import json
+try:
+    with open("notas.json", "r", encoding="utf-8") as f:
+        dados = json.load(f)
+except FileNotFoundError:
+    print("Ficheiro notas.json não encontrado.")
+except json.JSONDecodeError:
+    print("O conteúdo do ficheiro notas.json é inválido.")
+else:
+    alunos = dados.get("alunos", [])
+    if not alunos:
+        print("Nenhum aluno encontrado.")
+    else:
+        soma_geral = 0
+        total_notas = 0
+        melhor_aluno = None
+        melhor_media = -1
+
+        for aluno in alunos:
+            nome = aluno.get("nome", "Desconhecido")
+            notas = aluno.get("notas", [])
+            if notas:
+                media = sum(notas) / len(notas)
+                print(f"{nome}: Média = {media:.2f}")
+                soma_geral += sum(notas)
+                total_notas += len(notas)
+
+                if media > melhor_media:
+                    melhor_media = media
+                    melhor_aluno = nome
+            else:
+                print(f"{nome}: Sem notas disponíveis.")
+
+        if total_notas > 0:
+            media_geral = soma_geral / total_notas
+            print(f"Média geral da turma: {media_geral:.2f}")
+            print(f"Melhor aluno: {melhor_aluno} com média {melhor_media:.2f}")
+```
 
 ---
 
@@ -802,8 +941,63 @@ Requisitos:
     -   se o ficheiro existir, mostra todas as entradas com data e texto;
 -   usa `try`/`except` para tratar erros de ficheiro e JSON inválido.
 
+> Resolução:
+
+```python
+import json
+import os # Para verificar se o ficheiro existe
+DIARIO_FILE = "diario.json"
+
+def carregar_diario():
+    if not os.path.exists(DIARIO_FILE): # Verifica se o ficheiro existe
+        return []
+    try:
+        with open(DIARIO_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        print("Erro: o ficheiro do diário está corrompido.")
+        return []
+def guardar_diario(entradas):
+    with open(DIARIO_FILE, "w", encoding="utf-8") as f:
+        json.dump(entradas, f, ensure_ascii=False, indent=4)
+def escrever_entrada():
+    data = input("Data (YYYY-MM-DD): ")
+    texto = input("Texto da entrada: ")
+    entradas = carregar_diario()
+    entradas.append({"data": data, "texto": texto})
+    guardar_diario(entradas)
+    print("Entrada guardada.")
+def ver_entradas():
+    entradas = carregar_diario()
+    if not entradas:
+        print("Nenhuma entrada no diário.")
+        return
+    for entrada in entradas:
+        print(f"{entrada['data']}: {entrada['texto']}")
+def main():
+    while True:
+        print("Menu do Diário:")
+        print("1 - Escrever nova entrada")
+        print("2 - Ver entradas")
+        print("3 - Sair")
+        try:
+            opcao = int(input("Escolhe uma opção (1-3): "))
+            if opcao == 1:
+                escrever_entrada()
+            elif opcao == 2:
+                ver_entradas()
+            elif opcao == 3:
+                print("A sair...")
+                break
+            else:
+                print("Opção inválida. Tenta outra vez.")
+        except ValueError:
+            print("Por favor escreve um número inteiro válido.")
+main()
+
 ---
 
 ## 10. Changelog
 
 -   `2025-02-XX` · Criação inicial do ficheiro com introdução a exceções, leitura de mensagens de erro e `try`/`except` básico.
+```

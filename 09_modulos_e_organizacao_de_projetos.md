@@ -319,7 +319,52 @@ print(numero)
 
 ---
 
-## 9) Exercícios
+## 10) Usando excepções juntamente com módulos
+
+Podemos e devemos integrar excepções em todos os pontos de quebra do código, mesmo usando módulos.
+
+Exemplo
+
+```python
+# Ficheiro com funções chamado utils.py
+
+def ler_ficheiro(nome_ficheiro):
+    try:
+        with open(nome_ficheiro, 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"Erro: O ficheiro {nome_ficheiro} não foi encontrado.")
+        return None
+    except IOError:
+        print(f"Erro: Não foi possível ler o ficheiro {nome_ficheiro}.")
+        return None
+
+# Função que usa um `raise`para levantar uma excepção mas o try será feito no main
+def dividir(a, b):
+    if b == 0:
+        raise ValueError("Divisão por zero não é permitida.")
+    return a / b
+```
+
+```python
+# Ficheiro principal main.py
+from utils import ler_ficheiro, dividir
+def main():
+    conteudo = ler_ficheiro('dados.txt')
+    if conteudo is not None:
+        print("Conteúdo do ficheiro:")
+        print(conteudo)
+
+    try:
+        resultado = dividir(10, 0)
+        print(f"Resultado da divisão: {resultado}")
+    except ValueError as e:
+        print(f"Erro ao dividir: {e}")
+
+main()
+```
+
+## 11) Exercícios
 
 ### Exercício 1 - Primeiro módulo
 
