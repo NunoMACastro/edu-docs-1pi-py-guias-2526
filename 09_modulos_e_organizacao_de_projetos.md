@@ -616,6 +616,22 @@ alunos = [
 ]
 ```
 
+```python
+# main.py
+from dados_alunos import alunos
+
+total_notas = 0
+num_notas = 0
+
+for aluno in alunos:
+    for nota in aluno["notas"].values():
+        total_notas += nota
+        num_notas += 1
+
+media_geral = total_notas / num_notas if num_notas > 0 else 0
+print(f"Média geral da turma: {media_geral:.2f}")
+```
+
 ---
 
 ### Exercício 10 - Módulo de utilitários
@@ -625,6 +641,42 @@ alunos = [
     - `fatorial(n)` que devolve o fatorial de `n`.
 2. No `main.py`, testa essas funções.
 
+> Resolução:
+
+```python
+# utilitarios.py
+def eh_par(n):
+    return n % 2 == 0
+
+def fatorial(n):
+    if n < 0:
+        raise ValueError("Fatorial não definido para números negativos.")
+    if n == 0 or n == 1:
+        return 1
+    resultado = 1
+    for i in range(2, n + 1):
+        resultado *= i
+    return resultado
+```
+
+Main com teste de erros
+
+```python
+# main.py
+from utilitarios import eh_par, fatorial
+
+try:
+    numero = int(input("Escreve um número: "))
+    if eh_par(numero):
+        print(f"{numero} é par.")
+    else:
+        print(f"{numero} é ímpar.")
+    print(f"Fatorial de {numero}: {fatorial(numero)}")
+except ValueError as e:
+    print(f"Erro: {e}")
+
+```
+
 ---
 
 ### Exercício 11 - Módulo de manipulação de strings
@@ -633,6 +685,27 @@ alunos = [
     - `inverter(texto)` que devolve o texto invertido;
     - `contar_palavras(texto)` que devolve o número de palavras.
 2. No `main.py`, pede uma frase ao utilizador e mostra o texto invertido e o número de palavras.
+
+> Resolução:
+
+```python
+# string_utils.py
+def inverter(texto):
+    return texto[::-1]
+
+def contar_palavras(texto):
+    palavras = texto.split()
+    return len(palavras)
+```
+
+```python
+# main.py
+from string_utils import inverter, contar_palavras
+
+frase = input("Escreve uma frase: ")
+print("Frase invertida:", inverter(frase))
+print("Número de palavras:", contar_palavras(frase))
+```
 
 ---
 
@@ -645,6 +718,81 @@ Cria um projeto com 3 ficheiros:
 - `main.py` (junta tudo e executa).
 
 Objetivo: um mini gestor de tarefas simples (adicionar, listar, remover).
+
+> Resolução usando ficheiros json para guardar as tarefas e tratamento de erros:
+> Vamos guardar as tarefas usando lista de dicionários.
+
+```python
+# logica.py
+import json
+
+def carregar_tarefas(nome_ficheiro):
+    try:
+        with open(nome_ficheiro, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+def guardar_tarefas(tarefas, nome_ficheiro):
+    with open(nome_ficheiro, 'w', encoding='utf-8') as f:
+        json.dump(tarefas, f, ensure_ascii=False, indent=4)
+
+def adicionar_tarefa(tarefas, descricao):
+    tarefas.append({"descricao": descricao, "concluida": False})
+
+def listar_tarefas(tarefas):
+    for tarefa in tarefas:
+        status = "Concluída" if tarefa["concluida"] else "Pendente"
+        print(f"- {tarefa['descricao']} [{status}]")
+
+# remover usando o pop
+def remover_tarefa(tarefas, indice):
+    if 0 <= indice < len(tarefas):
+        tarefas.pop(indice)
+```
+
+```python
+# menu.py
+def mostrar_menu():
+    print("Gestor de Tarefas")
+    print("1. Adicionar tarefa")
+    print("2. Listar tarefas")
+    print("3. Remover tarefa")
+    print("4. Sair")
+    escolha = input("Escolhe uma opção (1-4): ")
+    return escolha
+```
+
+```python
+# main.py
+from logica import carregar_tarefas, guardar_tarefas, adicionar_tarefa, listar_tarefas, remover_tarefa
+from menu import mostrar_menu
+
+def main():
+    nome_ficheiro = 'tarefas.json'
+    tarefas = carregar_tarefas(nome_ficheiro)
+
+    while True:
+        escolha = mostrar_menu()
+        if escolha == '1':
+            descricao = input("Descrição da tarefa: ")
+            adicionar_tarefa(tarefas, descricao)
+            guardar_tarefas(tarefas, nome_ficheiro)
+        elif escolha == '2':
+            listar_tarefas(tarefas)
+        elif escolha == '3':
+            indice = int(input("Índice da tarefa a remover: "))
+            remover_tarefa(tarefas, indice)
+            guardar_tarefas(tarefas, nome_ficheiro)
+        elif escolha == '4':
+            print("A sair...")
+            break
+        else:
+            print("Opção inválida. Tenta novamente.")
+
+if __name__ == "__main__":
+    main()
+```
 
 ---
 
