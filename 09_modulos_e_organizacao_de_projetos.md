@@ -9,24 +9,24 @@
 
 Em Python, **um módulo é um ficheiro `.py`** com código. Esse código pode ter:
 
--   funções;
--   variáveis;
--   constantes;
--   pequenas listas/dicionários úteis;
--   até código de teste.
+- funções;
+- variáveis;
+- constantes;
+- pequenas listas/dicionários úteis;
+- até código de teste.
 
 A ideia é **separar responsabilidades**. Em vez de ter tudo num único ficheiro:
 
--   um ficheiro pode tratar **cálculos**;
--   outro pode tratar **leitura/escrita de ficheiros**;
--   outro pode ter o **programa principal** (menu, `input`, `print`).
+- um ficheiro pode tratar **cálculos**;
+- outro pode tratar **leitura/escrita de ficheiros**;
+- outro pode ter o **programa principal** (menu, `input`, `print`).
 
 Vantagens:
 
--   o código fica **mais organizado**;
--   é mais fácil **reutilizar funções**;
--   é mais simples **corrigir erros**;
--   consegues **testar** partes isoladas.
+- o código fica **mais organizado**;
+- é mais fácil **reutilizar funções**;
+- é mais simples **corrigir erros**;
+- consegues **testar** partes isoladas.
 
 ---
 
@@ -60,8 +60,8 @@ print(math_utils.media([10, 12, 14]))
 
 Observa:
 
--   o `import math_utils` lê o ficheiro `math_utils.py`;
--   para usar funções, escreves `math_utils.nome_da_funcao`.
+- o `import math_utils` lê o ficheiro `math_utils.py`;
+- para usar funções, escreves `math_utils.nome_da_funcao`.
 
 ---
 
@@ -104,8 +104,8 @@ from math_utils import *
 
 Isto coloca **todas** as funções no teu ficheiro. É rápido, mas perigoso:
 
--   pode esconder nomes iguais;
--   fica menos claro o que foi importado.
+- pode esconder nomes iguais;
+- fica menos claro o que foi importado.
 
 Regra prática: **evita** `import *` em projetos reais.
 
@@ -171,8 +171,8 @@ Se precisares de testes, usa `if __name__ == "__main__":`.
 
 Cada ficheiro Python tem uma variável especial chamada `__name__`.
 
--   Quando o ficheiro é executado diretamente, `__name__` é `"__main__"`.
--   Quando o ficheiro é importado, `__name__` tem o nome do módulo.
+- Quando o ficheiro é executado diretamente, `__name__` é `"__main__"`.
+- Quando o ficheiro é importado, `__name__` tem o nome do módulo.
 
 Isto permite colocar **testes simples** no fim do módulo, sem que eles corram no `import`.
 
@@ -259,9 +259,9 @@ guardar_alunos(alunos, "alunos.json")
 
 Notas pedagógicas:
 
--   `main.py` só tem **input/print** e fluxo principal.
--   `alunos.py` tem **logica** (funções de calculo).
--   `ficheiros.py` tem **I/O**.
+- `main.py` só tem **input/print** e fluxo principal.
+- `alunos.py` tem **logica** (funções de calculo).
+- `ficheiros.py` tem **I/O**.
 
 ---
 
@@ -291,11 +291,11 @@ Deves sempre ser consistente na organização e coerente com os nomes.
 
 ## 7) Boas praticas ao criar módulos
 
--   escolhe nomes claros e simples (`alunos.py`, `ficheiros.py`, `utils.py`);
--   evita letras maiusculas e espaços;
--   não escrevas código solto que execute automaticamente;
--   coloca testes simples no `if __name__ == "__main__":`;
--   separa **logica** de **I/O**.
+- escolhe nomes claros e simples (`alunos.py`, `ficheiros.py`, `utils.py`);
+- evita letras maiusculas e espaços;
+- não escrevas código solto que execute automaticamente;
+- coloca testes simples no `if __name__ == "__main__":`;
+- separa **logica** de **I/O**.
 
 ---
 
@@ -303,10 +303,10 @@ Deves sempre ser consistente na organização e coerente com os nomes.
 
 Python vem com muitas bibliotecas. Alguns exemplos uteis:
 
--   `random` → números aleatorios;
--   `math` → funções matematicas;
--   `datetime` → datas e horas;
--   `os` e `os.path` → caminhos e pastas.
+- `random` → números aleatorios;
+- `math` → funções matematicas;
+- `datetime` → datas e horas;
+- `os` e `os.path` → caminhos e pastas.
 
 Exemplo rápido com `random`:
 
@@ -378,12 +378,42 @@ main()
 
 Cria um ficheiro `operacoes.py` com:
 
--   `soma(a, b)`
--   `subtrai(a, b)`
--   `multiplica(a, b)`
--   `divide(a, b)` (se `b == 0`, devolve `None`)
+- `soma(a, b)`
+- `subtrai(a, b)`
+- `multiplica(a, b)`
+- `divide(a, b)` (se `b == 0`, devolve `None`)
 
 Depois cria `main.py` para testar cada função.
+
+> Resolução com exceção para divisão por zero:
+
+```python
+# operacoes.py
+def soma(a, b):
+    return a + b
+def subtrai(a, b):
+    return a - b
+def multiplica(a, b):
+    return a * b
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Divisão por zero não é permitida.")
+    return a / b
+```
+
+```python
+# main.py
+from operacoes import soma, subtrai, multiplica, divide
+def main():
+    print("Soma:", soma(5, 3))
+    print("Subtração:", subtrai(5, 3))
+    print("Multiplicação:", multiplica(5, 3))
+    try:
+        print("Divisão:", divide(5, 0))
+    except ValueError as e:
+        print("Erro na divisão:", e)
+main()
+```
 
 ---
 
@@ -392,14 +422,50 @@ Depois cria `main.py` para testar cada função.
 1. Cria um módulo `texto.py` com uma função `conta_vogais(texto)`.
 2. No `main.py`, pede uma frase ao utilizador e mostra quantas vogais existem.
 
+> Resolução:
+
+```python
+# texto.py
+def conta_vogais(texto):
+    vogais = "aeiouAEIOU"
+    contador = 0
+    for char in texto:
+        if char in vogais:
+            contador += 1
+    return contador
+```
+
+```python
+# main.py
+import texto
+
+frase = input("Escreve uma frase: ")
+num_vogais = texto.conta_vogais(frase)
+print(f"A frase tem {num_vogais} vogais.")
+```
+
 ---
 
 ### Exercício 4 - Projeto com dois módulos
 
 Cria um pequeno projeto:
 
--   `alunos.py` com funções para calcular media e contar negativas;
--   `main.py` com uma lista de alunos e a impressao do relatorio.
+- `alunos.py` com funções para calcular media e contar negativas;
+- `main.py` com uma lista de alunos e a impressao do relatorio.
+
+> Resolução com tratamento de erros sem usar um try em cada iteração, ou seja, o try está no main:
+
+> Dicionário de exemplo:
+
+```python
+
+turma = {
+    "Diogo": [12, 11, 9, 20],
+    "Davi": [10, "c", 2, 15],
+    "das Neves": [16, 15, 17, 18],
+    "Kayque": [10, 10, 10, 10]
+}
+```
 
 ---
 
@@ -416,19 +482,85 @@ Cria um pequeno projeto:
 2. Importa com um apelido: `import numeros as n`.
 3. Usa `n.dobros(...)`.
 
+> Resolução com tratamento de erros ignorando valores inválidos e tratando os caracteres para não serem duplicados:
+
+```python
+# numeros.py
+def dobros_erros(lista):
+    resultado = []
+    for num in lista:
+        try:
+            if isinstance(num, str):
+                raise TypeError("Moço, tem um string... A ignorar")
+            resultado.append(num*2)
+        except TypeError as e:
+            print("Moço, só quero numeros.")
+            print(str(e))
+            continue
+    return resultado
+```
+
+```python
+# main.py
+import numeros as n
+valores = [1, 2, 'a', 4.5, None, 6]
+print(n.dobros(valores))
+```
+
+> Resolução com tratamento de erros global no main:
+
+```python
+# numeros.py
+def dobros(lista):
+    return [num * 2 for num in lista]
+```
+
+```python
+# main.py
+import numeros as n
+
+valores = [1, 2, 'a', 4.5, None, 6]
+resultado = []
+for valor in valores:
+    try:
+        resultado.append(n.dobros([valor])[0])
+    except TypeError:
+        continue  # Ignora valores inválidos
+print(resultado)
+```
+
+> Resolução com filtragem prévia:
+
+```python
+# numeros.py
+def dobros(lista):
+    resultado = []
+    for num in lista:
+        if isinstance(num, (int, float)):
+            resultado.append(num * 2)
+    return resultado
+```
+
+```python
+# main.py
+import numeros as n
+valores = [1, 2, 'a', 4.5, None, 6]
+print(n.dobros(valores))
+```
+
 ---
 
 ### Exercício 7 - `__main__`
 
 Num módulo chamado `teste_modulo.py`:
 
--   cria uma função `quadrado(n)`;
--   no fim, adiciona um bloco `if __name__ == "__main__":` com testes.
+- cria uma função `quadrado(n)`;
+- no fim, adiciona um bloco `if __name__ == "__main__":` com testes.
 
 Depois:
 
--   executa `python teste_modulo.py` e confirma que os testes correm;
--   cria `main.py` que importa `teste_modulo` e usa `quadrado` sem correr os testes.
+- executa `python teste_modulo.py` e confirma que os testes correm;
+- cria `main.py` que importa `teste_modulo` e usa `quadrado` sem correr os testes.
 
 ---
 
@@ -439,22 +571,78 @@ Depois:
     - `ANO = 2025`
 2. No `main.py`, imprime uma frase a usar essas constantes.
 
+> Resolução:
+
+```python
+# config.py
+ESCOLA = "EPM"
+ANO = 2025
+```
+
+```python
+# main.py
+from config import ESCOLA, ANO
+print(f"Bem-vindo à {ESCOLA} no ano de {ANO}!")
+```
+
 ---
 
 ### Exercício 9 - Módulo com listas/dicionarios
 
-Cria `dados_alunos.py` com uma lista de alunos e notas.  
+Cria `dados_alunos.py` com uma lista de alunos e notas.
 No `main.py`, importa essa lista e calcula a media geral.
+
+> Resolução:
+
+```python
+# dados_alunos.py
+alunos = [
+    {
+        "nome" : "Davi",
+        "notas" : {
+            "LP" : 10,
+            "Matemática" : 10,
+            "Aturar o Amendoim" : 20
+        }
+    },
+    {
+        "nome" : "Kaykay",
+        "notas" : {
+            "LP" : 5,
+            "Matemática" : 5,
+            "Aturar a infiltrada" : 20
+        }
+    }
+]
+```
 
 ---
 
-### Exercício 10 - Mini projeto organizado
+### Exercício 10 - Módulo de utilitários
+
+1. Cria `utilitarios.py` com funções:
+    - `eh_par(n)` que devolve `True` se `n` for par;
+    - `fatorial(n)` que devolve o fatorial de `n`.
+2. No `main.py`, testa essas funções.
+
+---
+
+### Exercício 11 - Módulo de manipulação de strings
+
+1. Cria `string_utils.py` com funções:
+    - `inverter(texto)` que devolve o texto invertido;
+    - `contar_palavras(texto)` que devolve o número de palavras.
+2. No `main.py`, pede uma frase ao utilizador e mostra o texto invertido e o número de palavras.
+
+---
+
+### Exercício 12 - Mini projeto organizado
 
 Cria um projeto com 3 ficheiros:
 
--   `menu.py` (mostra opcoes e valida escolha);
--   `logica.py` (funções que tratam tarefas);
--   `main.py` (junta tudo e executa).
+- `menu.py` (mostra opcoes e valida escolha);
+- `logica.py` (funções que tratam tarefas);
+- `main.py` (junta tudo e executa).
 
 Objetivo: um mini gestor de tarefas simples (adicionar, listar, remover).
 
@@ -462,4 +650,12 @@ Objetivo: um mini gestor de tarefas simples (adicionar, listar, remover).
 
 ## 10) Changelog
 
--   `2025-02-XX` · Criacao inicial do ficheiro com introducao a modulos, imports e organizacao de projetos.
+- `2025-02-XX` · Criacao inicial do ficheiro com introducao a modulos, imports e organizacao de projetos.
+
+```
+
+```
+
+```
+
+```
