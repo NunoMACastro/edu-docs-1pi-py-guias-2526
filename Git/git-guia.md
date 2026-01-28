@@ -222,7 +222,7 @@ git reset --hard <hash_do_commit>
 `git revert` **cria um novo commit** que anula as alterações de um commit anterior.
 
 ```bash
-git revert <hash_do_commit>
+git revert <hash_do_commit> 
 ```
 
 Isto é o mais seguro quando:
