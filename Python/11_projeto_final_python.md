@@ -171,7 +171,7 @@ Este ficheiro vale para a nota e serve para desbloquear o projeto.
 #### 1) Modelo de dados (muito importante)
 
 - Como vão representar:
-    - as perguntas em memória (lista de dicionários?)
+    - as perguntas em memória (lista? Dicionários? Uma combinação de ambos?)
     - a pontuação (inteiro? dicionário com certas/erradas?)
     - as pontuações guardadas (lista de dicionários em `pontuacoes.json`?)
 - Incluir **2 exemplos reais** (pequenos) das estruturas.
@@ -191,10 +191,15 @@ Exemplos do género:
 - `carregar_perguntas(...)` — lê JSON e devolve lista
 - `mostrar_menu(...)` — imprime opções e devolve escolha válida
 - `fazer_pergunta(...)` — mostra pergunta, pede resposta, devolve se acertou
-- `jogar(...)` — ciclo principal do jogo, devolve resultado final
-- `guardar_pontuacao(...)` — escreve no ficheiro de pontuações
 
 (Os nomes e a divisão são decididos por vocês — mas têm de justificar.)
+
+Exemplo de tabela com as funções:
+
+| Função               | Descrição                                 | Responsabilidade |
+| -------------------- | ----------------------------------------- | ---------------- |
+| `carregar_perguntas` | Leitura do ficheiro JSON com as perguntas | João             |
+| `mostrar_menu`       | Mostra o menu e lê escolha do utilizador  | Maria            |
 
 #### 4) Fluxo do programa
 
@@ -204,6 +209,14 @@ Um fluxograma simples (pode ser em texto ou diagrama) ou passos numerados que ex
 - como o menu liga ao jogo, como o jogo termina, etc.
 - como são tratadas entradas inválidas
 - como se escolhe jogar outra vez ou sair
+
+##### Exemplo prático de fluxo
+
+1. Ao arrancar, limpar o ecrã e mostrar o menu principal.
+2. Ler a escolha do utilizador; se for inválida, repetir até obter um número válido.
+3. Se a escolha for “jogar”, carregar perguntas, iniciar o ciclo de perguntas (mostrar enunciado, validar resposta, atualizar pontuação) e, no final, apresentar o resumo e perguntar se quer jogar outra vez.
+4. Se a escolha for ......
+5. Se for sair ......
 
 #### 5) Estrutura de ficheiros / módulos (decidida por vocês)
 
@@ -220,7 +233,17 @@ Criar uma lista de testes do tipo:
 - “Se escolher uma opção fora do intervalo, dá erro e repete”
 - ...
 
-Escrever pelo menos 8 testes diferentes que cubram as funcionalidades principais e as validações.
+Escrever pelo menos 7 testes diferentes que cubram as funcionalidades principais e as validações.
+
+##### Teste de exemplo
+
+- Entrada inválida: o utilizador digita “a” em vez de um número no menu. O programa deteta o erro, mostra uma mensagem de aviso e volta a pedir uma escolha sem fechar.
+
+#### 7) Mini-revisões antes de começar a programar
+
+- Revisão 1: o modelo de dados está descrito com dois exemplos e todos os membros compreendem como as perguntas/pontuações são guardadas?
+- Revisão 2: a lista de funções está completa, com responsabilidades atribuídas e dependências assinaladas?
+- Revisão 3: o fluxo e o plano de testes foram revistos antes de começar a implementar?
 
 ---
 
@@ -259,7 +282,7 @@ Escrever pelo menos 8 testes diferentes que cubram as funcionalidades principais
 
 ## 9) Entrega final
 
-Entregar uma pasta (ou zip) com:
+Entregar o link do repositório GitHub com:
 
 - ficheiros `.py` do projeto
 - `perguntas.json` (o fornecido, sem alterações “à sorte”)
