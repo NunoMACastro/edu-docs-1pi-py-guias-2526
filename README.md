@@ -24,6 +24,14 @@ Apontamentos e exercícios graduais de Python, com ficha de consulta rápida e u
 - [`Python/10_estruturas_e_algoritmos_classicos.md`](./Python/10_estruturas_e_algoritmos_classicos.md) — pesquisa e ordenação básicas.
 - [`Python/11_projeto_final_python.md`](./Python/11_projeto_final_python.md) — projeto final (quiz em consola).
 
+### C
+
+[Ver sub-readme](./C/README.md)
+
+Apontamentos e exercícios graduais de C alinhados ao programa, desde fundamentos de engenharia de software até memória dinâmica e ficheiros.
+
+- [`C/README.md`](./C/README.md) — índice completo dos 19 módulos.
+
 ### Git
 
 - [`Git/git-guia.md`](./Git/git-guia.md) — guia prático com comandos e fluxo básico.
@@ -33,6 +41,11 @@ Apontamentos e exercícios graduais de Python, com ficha de consulta rápida e u
 
 ```text
 .
+├── C
+│   ├── README.md
+│   ├── 01_ciclo_de_vida_do_software.md
+│   ├── ...
+│   └── 19_editor_texto_produtividade_e_debug.md
 ├── Git
 │   ├── git-guia.md
 │   └── template-gitignore.md
