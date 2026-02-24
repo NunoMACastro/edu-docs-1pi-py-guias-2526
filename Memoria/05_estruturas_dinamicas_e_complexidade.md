@@ -490,6 +490,62 @@ Por exemplo, para n = 10, O(1) é 1 passo, O(log n) é cerca de 3 passos, O(n) �
 | `O(n log n)` | ~33      | ~664      | ~9966      |
 | `O(n^2)`     | 100      | 10 000    | 1 000 000  |
 
+### Gráficos em Markdown (Mermaid)
+
+Sim, é possível ter gráficos em Markdown usando blocos `mermaid` (quando o visualizador suporta Mermaid).
+
+Exemplos para as classes mais usadas neste módulo:
+
+#### `O(1)` (constante)
+
+```mermaid
+xychart-beta
+    title "O(1) - Constante"
+    x-axis [1, 2, 4, 8, 16]
+    y-axis "custo relativo" 0 --> 10
+    line [5, 5, 5, 5, 5]
+```
+
+#### `O(log n)` (logarítmica)
+
+```mermaid
+xychart-beta
+    title "O(log n) - Logaritmica (base 2)"
+    x-axis [1, 2, 4, 8, 16]
+    y-axis "custo relativo" 0 --> 5
+    line [0, 1, 2, 3, 4]
+```
+
+#### `O(n)` (linear)
+
+```mermaid
+xychart-beta
+    title "O(n) - Linear"
+    x-axis [1, 2, 4, 8, 16]
+    y-axis "custo relativo" 0 --> 16
+    line [1, 2, 4, 8, 16]
+```
+
+#### `O(n log n)` (linearitmica)
+
+```mermaid
+xychart-beta
+    title "O(n log n) - Linearitmica"
+    x-axis [1, 2, 4, 8, 16]
+    y-axis "custo relativo" 0 --> 64
+    line [0, 2, 8, 24, 64]
+```
+
+#### `O(n^2)` (quadrática)
+
+```mermaid
+xychart-beta
+    title "O(n^2) - Quadratica"
+    x-axis [1, 2, 4, 8, 16]
+    y-axis "custo relativo" 0 --> 260
+    line [1, 4, 16, 64, 256]
+```
+
 ### Ordenar uma lista: `sort` vs BST
 
 Se tens uma lista não ordenada com `n` elementos:
@@ -609,5 +665,6 @@ Legenda:
 
 ## 13. Changelog
 
+- **2026-02-24**: adicionada subsecção com gráficos Mermaid para as classes `O(1)`, `O(log n)`, `O(n)`, `O(n log n)` e `O(n^2)` em Big-O.
 - **2026-02-23**: adicionados esquemas (ASCII), exemplos de inserção/pesquisa, passo a passo de inserção de lista não ordenada em BST, ordenação in-order, reforço pedagógico da complexidade, comparação `sort` vs BST, tabela de estruturas compostas e tabela-resumo de utilização.
 - **2026-02-04**: versão inicial do módulo 05.
