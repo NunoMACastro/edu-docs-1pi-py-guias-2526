@@ -17,7 +17,7 @@
 - [5. Árvore binária](#5-árvore-binária)
 - [6. Dicionário (Hash Table, visão base)](#6-dicionário-hash-table-visão-base)
 - [7. O que é complexidade?](#7-o-que-é-complexidade)
-- [8. Big-O sem medo](#8-big-o-sem-medo)
+- [8. Big-O](#8-big-o)
 - [9. Comparação simplificada de estruturas](#9-comparação-simplificada-de-estruturas)
 - [10. Erros comuns (e correções)](#10-erros-comuns-e-correções)
 - [11. Tabela resumo: pontos fortes, fracos e quando usar](#11-tabela-resumo-pontos-fortes-fracos-e-quando-usar)
