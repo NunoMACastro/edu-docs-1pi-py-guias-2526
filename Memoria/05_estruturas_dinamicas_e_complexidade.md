@@ -490,11 +490,10 @@ Por exemplo, para n = 10, O(1) é 1 passo, O(log n) é cerca de 3 passos, O(n) �
 | `O(n log n)` | ~33      | ~664      | ~9966      |
 | `O(n^2)`     | 100      | 10 000    | 1 000 000  |
 
-### Gráficos em Markdown (Mermaid)
+### Visualização gráfica (crescimento relativo)
 
-Sim, é possível ter gráficos em Markdown usando blocos `mermaid` (quando o visualizador suporta Mermaid).
-
-Exemplos para as classes mais usadas neste módulo:
+> Eixo dos y é o custo relativo (não em segundos, mas em "quantidade de passos").
+> Eixo dos x é o tamanho da entrada `n`.
 
 #### `O(1)` (constante)
 
