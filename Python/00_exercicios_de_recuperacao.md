@@ -22,6 +22,16 @@ Cria um programa que:
     Olá, eu sou a/o <nome>, tenho <idade> anos e estou no curso <curso>.
     ```
 
+> Resolução:
+
+```python
+nome = "Maria"
+idade = 16
+curso = "10.º Ano"
+
+print(f"Olá, eu sou a/o {nome}, tenho {idade} anos e estou no curso {curso}.")
+```
+
 ## Exercício 2
 
 Cria um programa que:
@@ -33,6 +43,16 @@ Cria um programa que:
         ```
         O total a pagar é: <total>.
         ```
+
+> Resolução:
+
+```python
+preco = 12.5
+quantidade = 4
+total = preco * quantidade
+
+print(f"O total a pagar é: {total}.")
+```
 
 ## Exercício 3
 
@@ -49,6 +69,23 @@ Cria um programa que:
     A divisão é: <divisão>.
     ```
 
+> Resolução:
+
+```python
+numero1 = float(input("Introduz o primeiro número: "))
+numero2 = float(input("Introduz o segundo número: "))
+
+soma = numero1 + numero2
+subtracao = numero1 - numero2
+multiplicacao = numero1 * numero2
+divisao = numero1 / numero2
+
+print(f"A soma é: {soma}.")
+print(f"A subtração é: {subtracao}.")
+print(f"A multiplicação é: {multiplicacao}.")
+print(f"A divisão é: {divisao}.")
+```
+
 ## Exercício 4
 
 Cria um programa que:
@@ -60,6 +97,17 @@ Cria um programa que:
     ```
     A área do retângulo é: <área>.
     ```
+
+> Resolução:
+
+```python
+altura = float(input("Introduz a altura do retângulo: "))
+largura = float(input("Introduz a largura do retângulo: "))
+
+area = altura * largura
+
+print(f"A área do retângulo é: {area}.")
+```
 
 ## Exercício 5
 
@@ -74,6 +122,16 @@ Cria um programa que:
     A temperatura em Fahrenheit é: <F>°F.
     ```
 
+> Resolução:
+
+```python
+celsius = float(input("Introduz a temperatura em graus Celsius: "))
+fahrenheit = (celsius * 9 / 5) + 32
+
+print(f"A temperatura em Celsius é: {celsius}°C.")
+print(f"A temperatura em Fahrenheit é: {fahrenheit}°F.")
+```
+
 ## Exercício 6
 
 Cria um programa que:
@@ -85,6 +143,14 @@ Cria um programa que:
     A tua morada é: <morada>.
     ```
 
+> Resolução:
+
+```python
+morada = input("Introduz a tua morada: ")
+
+print(f"A tua morada é: {morada}.")
+```
+
 ## Exercício 7
 
 Cria um programa que:
@@ -95,6 +161,15 @@ Cria um programa que:
     ```
     Olá, <nome>! Tens <idade> anos.
     ```
+
+> Resolução:
+
+```python
+nome = input("Introduz o teu nome: ")
+idade = int(input("Introduz a tua idade: "))
+
+print(f"Olá, {nome}! Tens {idade} anos.")
+```
 
 ## Exercício 8
 
@@ -108,6 +183,16 @@ Cria um programa que:
         A área do círculo é: <área>.
         ```
 
+> Resolução:
+
+```python
+raio = float(input("Introduz o raio do círculo: "))
+pi = 3.14
+area = pi * raio ** 2
+
+print(f"A área do círculo é: {area}.")
+```
+
 ## Exercício 9
 
 Cria um programa que:
@@ -118,6 +203,14 @@ Cria um programa que:
         ```
         A tua data de nascimento é: <data>.
         ```
+
+> Resolução:
+
+```python
+data_nascimento = input("Introduz a tua data de nascimento (DD/MM/AAAA): ")
+
+print(f"A tua data de nascimento é: {data_nascimento}.")
+```
 
 # Exercícios Intermédios
 
@@ -146,6 +239,19 @@ Cria um programa que:
     O número <n> é zero.
     ```
 
+> Resolução:
+
+```python
+n = float(input("Introduz um número: "))
+
+if n > 0:
+    print(f"O número {n} é positivo.")
+elif n < 0:
+    print(f"O número {n} é negativo.")
+else:
+    print(f"O número {n} é zero.")
+```
+
 ## Exercício 11
 
 Cria um programa que:
@@ -165,6 +271,17 @@ Cria um programa que:
 
 > Nota: um número é par se o resto da divisão por 2 for igual a 0, ou seja, `n % 2 == 0`. Neste caso `if n % 2 == 0:` é a condição para verificar se o número é par.
 
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro: "))
+
+if n % 2 == 0:
+    print(f"O número {n} é par.")
+else:
+    print(f"O número {n} é ímpar.")
+```
+
 ## Exercício 12
 
 Cria um programa que:
@@ -182,6 +299,17 @@ Cria um programa que:
     ```
 
 > Nota: para verificar o número de letras de um nome, podes usar a função `len(nome)`, que retorna o comprimento da string.
+
+> Resolução:
+
+```python
+nome = input("Introduz um nome: ")
+
+if len(nome) > 5:
+    print(f"O nome {nome} tem mais de 5 letras.")
+else:
+    print(f"O nome {nome} tem 5 ou menos letras.")
+```
 
 ## Exercício 13
 
@@ -205,6 +333,20 @@ Cria um programa que:
     ```
     Os números <n1> e <n2> são iguais.
     ```
+
+> Resolução:
+
+```python
+n1 = int(input("Introduz o primeiro número inteiro: "))
+n2 = int(input("Introduz o segundo número inteiro: "))
+
+if n1 > n2:
+    print(f"O número {n1} é maior do que {n2}.")
+elif n2 > n1:
+    print(f"O número {n2} é maior do que {n1}.")
+else:
+    print(f"Os números {n1} e {n2} são iguais.")
+```
 
 ## Exercício 14
 
@@ -236,6 +378,22 @@ Cria um programa que:
     A idade <n> é maior do que 65. Já és idoso!
     ```
 
+> Resolução:
+
+```python
+idade = int(input("Introduz a idade: "))
+
+if idade < 0 or idade > 100:
+    print(f"A idade {idade} não está entre 0 e 100.")
+else:
+    if idade < 18:
+        print(f"A idade {idade} é menor do que 18. Ainda és jovem!")
+    elif idade <= 65:
+        print(f"A idade {idade} está entre 18 e 65. És adulto!")
+    else:
+        print(f"A idade {idade} é maior do que 65. Já és idoso!")
+```
+
 # Exercício 15
 
 Cria um programa que:
@@ -258,6 +416,19 @@ Cria um programa que:
     ```
     A temperatura <n>°C é maior do que 30. Está muito quente!
     ```
+
+> Resolução:
+
+```python
+temperatura = float(input("Introduz a temperatura em graus Celsius: "))
+
+if temperatura < 0:
+    print(f"A temperatura {temperatura}°C é menor do que 0. Está muito frio!")
+elif temperatura <= 30:
+    print(f"A temperatura {temperatura}°C está entre 0 e 30. O tempo está agradável!")
+else:
+    print(f"A temperatura {temperatura}°C é maior do que 30. Está muito quente!")
+```
 
 ## Exercício 16
 
@@ -290,12 +461,39 @@ Cria um programa que:
 
 > Para verificar se um número é múltiplo de 3, podes usar a condição `n % 3 == 0`, que verifica se o resto da divisão por 3 é igual a 0.
 
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro: "))
+
+if n % 3 == 0 and n % 5 == 0:
+    print(f"O número {n} é múltiplo de 3 e de 5.")
+elif n % 3 == 0:
+    print(f"O número {n} é múltiplo de 3.")
+elif n % 5 == 0:
+    print(f"O número {n} é múltiplo de 5.")
+else:
+    print(f"O número {n} não é múltiplo de 3 nem de 5.")
+```
+
 ## Exercício 17
 
 Cria um programa que:
 
 1. Peça ao utilizador para introduzir um número inteiro e positivo.
 2. O programa deve fazer uma contagem decrescente desde o número introduzido até 0, mostrando cada número numa linha.
+
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro e positivo: "))
+
+if n < 0:
+    print("O número tem de ser positivo.")
+else:
+    for i in range(n, -1, -1):
+        print(i)
+```
 
 ## Exercício 18
 
@@ -304,12 +502,37 @@ Cria um programa que:
 1. Peça ao utilizador para introduzir um número inteiro e positivo.
 2. Usando um `for` ou um `while`, o programa deve mostrar a tabuada do número introduzido, ou seja, os resultados da multiplicação do número por 1, 2, 3, ..., 10.
 
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro e positivo: "))
+
+if n < 0:
+    print("O número tem de ser positivo.")
+else:
+    for i in range(1, 11):
+        print(f"{n} x {i} = {n * i}")
+```
+
 ## Exercício 19
 
 Cria um programa que:
 
 1. Peça ao utilizador para introduzir um número inteiro e positivo.
 2. Usando um `for` ou um `while`, o programa deve mostrar os números pares desde 0 até ao número introduzido (inclusive, se for par).
+
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro e positivo: "))
+
+if n < 0:
+    print("O número tem de ser positivo.")
+else:
+    for i in range(0, n + 1):
+        if i % 2 == 0:
+            print(i)
+```
 
 ## Exercício 20
 
