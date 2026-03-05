@@ -574,3 +574,18 @@ Cria um programa que:
 1. Peça um numero ao utilizador
 2. Calcule a tabuada desse número e guarde os resultados numa lista.
 3. Mostre a lista com os resultados.
+
+## Exercício 25
+
+Cria um programa que:
+
+1. Peça ao utilizador para introduzir um número inteiro e positivo.
+2. Peça esse número de palavras ao utilizador, uma de cada vez, e guarde-as numa lista.
+3. Depois, usando um `for` ou um `while`, o programa deve mostrar todas as palavras introduzidas, uma de cada vez, e dizer se a palavra tem mais de 5 letras ou não.
+
+## Exercício 26
+
+Cria um programa que:
+
+1. Peça uma letra ao utilizador.
+2. Usando a lista do exercício anterior, deve mostrar todas as palavras que começam com a letra introduzida, uma de cada vez.
