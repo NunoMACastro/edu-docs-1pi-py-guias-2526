@@ -589,3 +589,22 @@ Cria um programa que:
 
 1. Peça uma letra ao utilizador.
 2. Usando a lista do exercício anterior, deve mostrar todas as palavras que começam com a letra introduzida, uma de cada vez.
+
+## Exercício 27
+
+Cria um programa que:
+
+1. Peça 10 números inteiros e positivos ao utilizador, um de cada vez, e guarde-os numa lista.
+2. O programa deve verificar, antes de inserir na lista, se o número é positivo e se já não foi introduzido anteriormente. Se o número for negativo ou já tiver sido introduzido, deve mostrar uma mensagem e pedir novo número, até que sejam introduzidos 10 números válidos. A mensagem a mostrar em caso de número inválido deve ser do tipo:
+
+    ```
+    O número <n> é inválido. Introduz um número inteiro e positivo que ainda não tenhas introduzido.
+    ```
+
+3. Depois, o programa deve dizer o valor máximo, mínimo e a média dos números introduzidos, mostrando mensagens do tipo:
+
+    ```
+    O número máximo é: <max>.
+    O número mínimo é: <min>.
+    A média dos números é: <média>.
+    ```
