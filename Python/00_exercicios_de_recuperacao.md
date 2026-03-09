@@ -608,3 +608,88 @@ Cria um programa que:
     O número mínimo é: <min>.
     A média dos números é: <média>.
     ```
+
+## Exercício 28
+
+Cria um programa que:
+
+1. Tenha um dicionário com o teu nome, idade e curso, por exemplo:
+
+    ```python
+    pessoa = {
+        "nome": "Maria",
+        "idade": 16,
+        "curso": "10.º Ano"
+    }
+    ```
+
+2. Mostre uma mensagem do tipo:
+
+    ```
+    Olá, eu sou a/o <nome>, tenho <idade> anos e estou no curso <curso>.
+    ```
+
+3. Peça ao utilizador qual a sua cidade e adicione essa informação ao dicionário, com a chave "cidade".
+4. Mostre uma mensagem do tipo:
+
+    ```
+    A minha cidade é: <cidade>.
+    ```
+
+## Exercício 29
+
+Cria um programa que:
+
+1. Tenha um dicionário com os nomes de 5 países e as suas respetivas capitais, por exemplo:
+
+    ```python
+    paises = {
+        "Portugal": "Lisboa",
+        "Espanha": "Madrid",
+        "França": "Paris",
+        "Itália": "Roma",
+        "Alemanha": "Berlim"
+    }
+    ```
+
+2. Peça ao utilizador para introduzir o nome de um país e mostre a sua capital, ou uma mensagem do tipo:
+
+    ```
+    A capital de <país> é: <capital>.
+    ```
+
+    Se o país não estiver no dicionário, deve mostrar uma mensagem do tipo:
+
+    ```
+    O país <país> não está no dicionário.
+    ```
+
+## Exercício 30
+
+Cria um programa que:
+
+1. Tenha um dicionário com os nomes de 5 frutas e as suas respetivas cores, por exemplo:
+
+    ```python
+    frutas = {
+        "Maçã": "Vermelha",
+        "Banana": "Amarela",
+        "Laranja": "Laranja",
+        "Uva": "Roxa",
+        "Limão": "Verde"
+    }
+    ```
+
+2. Peça ao utilizador para introduzir o nome de uma fruta e mostre a sua cor, ou uma mensagem do tipo:
+
+    ```
+    A cor da fruta <fruta> é: <cor>.
+    ```
+
+    Se a fruta não estiver no dicionário, deve mostrar uma mensagem do tipo:
+
+    ```
+    A fruta <fruta> não está no dicionário.
+    ```
+
+3. Peça ao utilizador para introduzir o nome de uma fruta e a sua cor, e adicione essa informação ao dicionário.
