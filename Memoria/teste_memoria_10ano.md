@@ -1,8 +1,8 @@
 # Teste de Avaliação - Memória e Execução de Programas (10.º Ano)
 
-**Nome:** ________________________________  
-**Turma:** __________  
-**Data:** ____ / ____ / ______  
+**Nome:** **************\_\_\_\_**************  
+**Turma:** ****\_\_****  
+**Data:** \_**\_ / \_\_** / **\_\_**  
 **Duração sugerida:** 60-75 minutos
 
 ## Instruções
@@ -17,58 +17,58 @@
 ## Parte A - Escolha múltipla (15 perguntas)
 
 1. Qual é a principal função da memória **cache**?
-   - A) Guardar dados de forma permanente como um SSD
-   - B) Guardar instruções frequentes perto da CPU para acelerar acessos
-   - C) Substituir a RAM durante falhas de energia
-   - D) Guardar apenas ficheiros multimédia
+    - A) Guardar dados de forma permanente como um SSD
+    - B) Guardar instruções frequentes perto da CPU para acelerar acessos
+    - C) Substituir a RAM durante falhas de energia
+    - D) Guardar apenas ficheiros multimédia
 
 2. A memória RAM é considerada:
-   - A) Não volátil e lenta
-   - B) Volátil e de acesso rápido
-   - C) Não volátil e apenas de leitura
-   - D) Volátil e apenas para backup
+    - A) Não volátil e lenta
+    - B) Volátil e de acesso rápido
+    - C) Não volátil e apenas de leitura
+    - D) Volátil e apenas para backup
 
 3. A ROM é usada principalmente para:
-   - A) Armazenar programas temporários do utilizador
-   - B) Guardar firmware/instruções de arranque
-   - C) Aumentar a frequência do processador
-   - D) Substituir a cache L1
+    - A) Armazenar programas temporários do utilizador
+    - B) Guardar firmware/instruções de arranque
+    - C) Aumentar a frequência do processador
+    - D) Substituir a cache L1
 
 4. Um **byte** corresponde a:
-   - A) 2 bits
-   - B) 4 bits
-   - C) 8 bits
-   - D) 16 bits
+    - A) 2 bits
+    - B) 4 bits
+    - C) 8 bits
+    - D) 16 bits
 
 5. No ciclo de execução da CPU, a sequência correta é:
-   - A) Execute -> Fetch -> Decode
-   - B) Decode -> Execute -> Fetch
-   - C) Fetch -> Decode -> Execute
-   - D) Fetch -> Execute -> Decode
+    - A) Execute -> Fetch -> Decode
+    - B) Decode -> Execute -> Fetch
+    - C) Fetch -> Decode -> Execute
+    - D) Fetch -> Execute -> Decode
 
 6. O que representa um endereço de memória?
-   - A) O valor decimal de uma variável
-   - B) A posição onde um dado/instrução está armazenado
-   - C) O nome da variável no código
-   - D) O tipo de dado (int, str, list)
+    - A) O valor decimal de uma variável
+    - B) A posição onde um dado/instrução está armazenado
+    - C) O nome da variável no código
+    - D) O tipo de dado (int, str, list)
 
 7. Em Python, uma variável guarda principalmente:
-   - A) Sempre o valor físico em RAM
-   - B) Uma referência para um objeto
-   - C) Apenas números inteiros
-   - D) Um endereço IP
+    - A) Sempre o valor físico em RAM
+    - B) Uma referência para um objeto
+    - C) Apenas números inteiros
+    - D) Um endereço IP
 
-8. Qual das seguintes estruturas é tipicamente **LIFO**?
-   - A) Queue (fila)
-   - B) Stack (pilha)
-   - C) Linked list
-   - D) Hash table
+8. Em termos gerais, objetos como listas e dicionários em Python são alocados sobretudo na:
+    - A) ROM
+    - B) Stack de chamadas
+    - C) Heap
+    - D) Cache L1
 
-9. Qual das seguintes operações tende a ter complexidade média **O(1)**?
-   - A) Pesquisa linear numa lista
-   - B) Acesso por chave num dicionário
-   - C) Ordenar uma lista
-   - D) Pesquisa em árvore degenerada
+9. Qual sequência descreve melhor o modelo de execução do Python?
+    - A) Código-fonte (.py) -> código de máquina direto -> execução
+    - B) Código-fonte (.py) -> bytecode -> PVM/interpretador -> CPU
+    - C) Código-fonte (.py) -> ROM -> cache -> SSD
+    - D) Código-fonte (.py) -> BIOS -> execução sem sistema operativo
 
 10. Em Python, `==` e `is` comparam respetivamente:
     - A) Identidade e valor
@@ -112,21 +112,21 @@
 
 Converte os seguintes números **decimais** para binário:
 
-16. 19 = ____________________ (base 2)
+16. 19 = ********\_\_\_\_******** (base 2)
 
-17. 42 = ____________________ (base 2)
+17. 42 = ********\_\_\_\_******** (base 2)
 
-18. 77 = ____________________ (base 2)
+18. 77 = ********\_\_\_\_******** (base 2)
 
-19. 100 = ____________________ (base 2)
+19. 100 = ********\_\_\_\_******** (base 2)
 
-20. 255 = ____________________ (base 2)
+20. 255 = ********\_\_\_\_******** (base 2)
 
 ---
 
 ## Parte C - Desenvolvimento (3 perguntas)
 
-21. Explica, com as tuas palavras, a diferença entre memória cache, memória primária (RAM) e memória secundária (SSD/HDD). Dá um exemplo de uso para cada uma.
+21. Explica a diferença entre um objeto "órfão" e um objeto "inacessível" em Python e descreve como o Garbage Collector atua nesses casos.
 
 22. Em Python, explica o que pode acontecer quando duas variáveis referenciam a mesma lista (alias). Usa um pequeno exemplo e descreve os possíveis efeitos laterais.
 
@@ -138,26 +138,26 @@ Converte os seguintes números **decimais** para binário:
 
 ### Parte A - Escolha múltipla
 
-1. B  
-2. B  
-3. B  
-4. C  
-5. C  
-6. B  
-7. B  
-8. B  
-9. B  
-10. C  
-11. D  
-12. B  
-13. B  
-14. B  
+1. B
+2. B
+3. B
+4. C
+5. C
+6. B
+7. B
+8. C
+9. B
+10. C
+11. D
+12. B
+13. B
+14. B
 15. C
 
 ### Parte B - Conversões
 
-16. 19 = `10011`  
-17. 42 = `101010`  
-18. 77 = `1001101`  
-19. 100 = `1100100`  
+16. 19 = `10011`
+17. 42 = `101010`
+18. 77 = `1001101`
+19. 100 = `1100100`
 20. 255 = `11111111`
