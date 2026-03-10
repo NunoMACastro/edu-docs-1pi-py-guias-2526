@@ -12,22 +12,24 @@
 
 - [1. O mapa geral: processo, código, stack e heap](#1-o-mapa-geral-processo-código-stack-e-heap)
 - [2. O que realmente acontece quando corres um `.py`](#2-o-que-realmente-acontece-quando-corres-um-py)
-- [3. Compilar vs interpretar (com mais detalhe)](#3-compilar-vs-interpretar-com-mais-detalhe)
+- [3. Compilar vs interpretar](#3-compilar-vs-interpretar)
 - [4. Python: modelo híbrido (fonte -> bytecode -> execução)](#4-python-modelo-híbrido-fonte---bytecode---execução)
 - [5. Bytecode e pasta `__pycache__`](#5-bytecode-e-pasta-__pycache__)
 - [6. PVM: o "motor" de execução do Python](#6-pvm-o-motor-de-execução-do-python)
-- [7. Memória de execução: stack vs heap](#7-memória-de-execução-stack-vs-heap)
-- [8. Stack frames: o que um frame contém](#8-stack-frames-o-que-um-frame-contém)
-- [9. Tornar o invisível visível: `locals()`, `id()` e `dis`](#9-tornar-o-invisível-visível-locals-id-e-dis)
-- [10. Exemplo completo de chamada de função (com desenho)](#10-exemplo-completo-de-chamada-de-função-com-desenho)
-- [11. Exemplo com várias funções (pilha em camadas)](#11-exemplo-com-várias-funções-pilha-em-camadas)
-- [12. Retorno, vida dos objetos e garbage collection](#12-retorno-vida-dos-objetos-e-garbage-collection)
-- [13. Recursão e `RecursionError`: causa real](#13-recursão-e-recursionerror-causa-real)
-- [14. Debug real: o traceback é a stack “impressa”](#14-debug-real-o-traceback-é-a-stack-impressa)
-- [15. Erros comuns de alunos neste tema](#15-erros-comuns-de-alunos-neste-tema)
-- [16. Exercícios de consolidação](#16-exercícios-de-consolidação)
-- [17. Resumo final](#17-resumo-final)
-- [18. Changelog](#18-changelog)
+- [7. ISA (Instruction Set Architecture)](#7-isa-instruction-set-architecture)
+- [8. Diagrama sobre todo o processo usando Python](#8-diagrama-sobre-todo-o-processo-usando-python)
+- [9. Memória de execução: stack vs heap (versão mais detalhada)](#9-memória-de-execução-stack-vs-heap-versão-mais-detalhada)
+- [10. Stack frames: o que um frame contém (versão mais detalhada)](#10-stack-frames-o-que-um-frame-contém-versão-mais-detalhada)
+- [11. Tornar o invisível visível: `locals()`, `id()` e `dis`](#11-tornar-o-invisível-visível-locals-id-e-dis)
+- [12. Exemplo completo de chamada de função (com desenho)](#12-exemplo-completo-de-chamada-de-função-com-desenho)
+- [13. Exemplo com várias funções (pilha em camadas)](#13-exemplo-com-várias-funções-pilha-em-camadas)
+- [14. Retorno, vida dos objetos e garbage collection](#14-retorno-vida-dos-objetos-e-garbage-collection)
+- [15. Recursão e `RecursionError`: causa real](#15-recursão-e-recursionerror-causa-real)
+- [16. Debug real: o traceback é a stack “impressa”](#16-debug-real-o-traceback-é-a-stack-impressa)
+- [17. Erros comuns de alunos neste tema](#17-erros-comuns-de-alunos-neste-tema)
+- [18. Exercícios de consolidação](#18-exercícios-de-consolidação)
+- [19. Resumo final](#19-resumo-final)
+- [20. Changelog](#20-changelog)
 
 ---
 
@@ -248,7 +250,7 @@ Por exemplo, no nosso programa com a função `soma`vai ser decomposto em opera�
 - chamar funções do sistema operativo para imprimir resultados, etc.
   O CPU não tem uma instrução “soma de listas” ou “imprime string”, mas tem instruções para manipular dados e chamar o sistema operativo, e é isso que a PVM usa para implementar as funcionalidades do Python.
 
-### 8 Diagrama sobre todo o processo usando Python
+## 8. Diagrama sobre todo o processo usando Python
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -488,17 +490,9 @@ y = "Olá"       # str (imutável) → heap
 z = [1, 2, 3]   # O Z é uma referência → stack; a lista é um objeto → heap. O Z aponta para a lista no heap.
 ```
 
-## Bloco para colar no Módulo 04 — “Para onde vai cada coisa” (Stack/Heap + Referências + Órfãos)
+### 9.7 Para onde vai cada coisa: nomes, referências e objetos
 
-> **Objetivo deste bloco**  
-> Ligar diretamente o que foi dito no Módulo 03 (referências/refcount/GC) com o mapa Stack/Heap do Módulo 04.  
-> Aqui vais “ver” onde fica o **nome**, onde fica a **referência**, e onde fica o **objeto** (e os dados dele).
-
----
-
-### (Sugestão de secção nova) 9. Para onde vai cada coisa: nomes, referências e objetos
-
-#### 9.1 O caso mais importante: criar uma lista
+#### 9.7.1 O caso mais importante: criar uma lista
 
 Código:
 
@@ -532,7 +526,7 @@ a  ───────────────►  (objeto lista)
 
 ---
 
-#### 9.2 O que acontece quando fazes alias?
+#### 9.7.2 O que acontece quando fazes alias?
 
 ```python
 a = [10, 20, 30]
@@ -566,7 +560,7 @@ Porque `a` e `b` são duas referências para o mesmo objeto no heap.
 
 ---
 
-#### 9.3 “A lista desaparece quando a função termina?” (caso A: não devolves)
+#### 9.7.3 “A lista desaparece quando a função termina?” (caso A: não devolves)
 
 ```python
 def f():
@@ -589,7 +583,7 @@ Quando `f()` termina:
 
 ---
 
-#### 9.4 Caso B: devolves a lista (ela continua viva)
+#### 9.7.4 Caso B: devolves a lista (ela continua viva)
 
 ```python
 def criar():
@@ -605,7 +599,7 @@ x = criar()
 
 ---
 
-#### 9.5 Onde entra a contagem de referências neste “mapa”?
+#### 9.7.5 Onde entra a contagem de referências neste “mapa”?
 
 Sempre que aparece uma referência nova para o mesmo objeto, o “peso” (refcount) sobe.
 
@@ -624,7 +618,7 @@ del b      # -1 referência -> pode chegar a 0 -> objeto elegível para remoçã
 
 ---
 
-#### 9.6 O caso especial: ciclos (porque é que o GC é necessário)
+#### 9.7.6 O caso especial: ciclos (porque é que o GC é necessário)
 
 ```python
 def ciclo():
@@ -644,7 +638,7 @@ O Garbage Collector entra para detetar que aquilo já não é alcançável e lim
 
 ---
 
-#### 9.7 Exercício rápido (para consolidar “quem está onde”)
+#### 9.7.7 Exercício rápido (para consolidar “quem está onde”)
 
 1. Desenha stack/heap para isto:
 
@@ -670,9 +664,9 @@ def g():
 g()
 ```
 
-## 8. Stack frames: o que um frame contém (versão mais detalhada)
+## 10. Stack frames: o que um frame contém (versão mais detalhada)
 
-### 8.1 O que é “uma frame” em concreto?
+### 10.1 O que é “uma frame” em concreto?
 
 Uma **frame** (_stack frame_) é o “pacote” de informação necessário para **uma chamada de função** funcionar.
 
@@ -690,7 +684,7 @@ Em termos simples:
 
 ---
 
-### 8.2 O que uma stack frame costuma conter (nível baixo / CPU)
+### 10.2 O que uma stack frame costuma conter (nível baixo / CPU)
 
 Em muitas linguagens, uma frame costuma conter:
 
@@ -703,7 +697,7 @@ Isto é o “lado hardware/baixo nível”: a CPU precisa destes dados para cont
 
 ---
 
-### 8.3 Em Python há um detalhe crucial: duas camadas de “stack”
+### 10.3 Em Python há um detalhe crucial: duas camadas de “stack”
 
 Em Python, acontecem duas coisas ao mesmo tempo:
 
@@ -728,7 +722,7 @@ o Python mantém uma estrutura própria para cada chamada de função Python: um
 
 ---
 
-### 8.4 O que um Python frame contém (nível Python)
+### 10.4 O que um Python frame contém (nível Python)
 
 De forma conceptual (didática), um frame Python guarda:
 
@@ -746,7 +740,7 @@ Não precisas decorar a lista — o essencial é:
 
 ---
 
-### 8.5 Como é que frames são criadas e destruídas?
+### 10.5 Como é que frames são criadas e destruídas?
 
 #### Criar frame (quando chamas uma função)
 
@@ -766,7 +760,7 @@ Atenção:
 
 ---
 
-### 8.6 Frame vs objeto: a confusão que dá bugs
+### 10.6 Frame vs objeto: a confusão que dá bugs
 
 Regra que resolve a maior parte das dúvidas:
 
@@ -793,7 +787,7 @@ x = criar()
 
 ---
 
-### 8.7 Como é que isto aparece em debug (traceback)?
+### 10.7 Como é que isto aparece em debug (traceback)?
 
 Quando dá erro, o Python mostra um traceback com a “pilha de chamadas”:
 
@@ -805,7 +799,7 @@ Isto é literalmente a stack de frames representada em texto.
 
 ---
 
-### 8.8 Mini-diagrama das frames em camadas
+### 10.8 Mini-diagrama das frames em camadas
 
 ```text
 Stack (frames) no momento em que c() está a correr:
@@ -822,7 +816,7 @@ Quando `c()` termina, sai do topo. Depois sai `b()`, depois sai `a()`.
 
 ---
 
-### 8.9 Resumo do capítulo 8
+### 10.9 Resumo do capítulo 10
 
 - Frame = “pacote” de estado para uma chamada de função.
 - Frames são empilhadas (LIFO).
@@ -831,11 +825,11 @@ Quando `c()` termina, sai do topo. Depois sai `b()`, depois sai `a()`.
 
 ---
 
-## 9. Tornar o invisível visível: `locals()`, `id()` e `dis`
+## 11. Tornar o invisível visível: `locals()`, `id()` e `dis`
 
 Esta secção é para veres o que normalmente fica escondido.
 
-### 9.1 Ver as variáveis do frame atual com `locals()`
+### 11.1 Ver as variáveis do frame atual com `locals()`
 
 Dentro de uma função:
 
@@ -851,7 +845,7 @@ exemplo(10)
 O `locals()` devolve um dicionário com as variáveis locais do frame.
 Isto ajuda a pensar: “ok, este frame tem estas referências”.
 
-### 9.2 Ver identidade (não “endereço físico”) com `id()`
+### 11.2 Ver identidade (não “endereço físico”) com `id()`
 
 ```python
 x = [1, 2, 3]
@@ -866,7 +860,7 @@ Se os `id` forem iguais, é uma pista forte de que `x` e `y` apontam para o **me
 > Nota pedagógica: pensa em `id()` como **identidade do objeto**.  
 > Em muitas implementações, pode coincidir com detalhes internos, mas não escrevas lógica a depender disso.
 
-### 9.3 Ver bytecode (curiosidade controlada) com `dis`
+### 11.3 Ver bytecode (curiosidade controlada) com `dis`
 
 Não precisas perceber tudo, mas é útil para perceber que existe uma “camada intermédia”.
 
@@ -883,7 +877,7 @@ Vais ver instruções internas que a PVM executa.
 
 ---
 
-## 10. Exemplo completo de chamada de função (com desenho)
+## 12. Exemplo completo de chamada de função (com desenho)
 
 ```python
 def dobrar(n):
@@ -944,7 +938,7 @@ Base
 
 ---
 
-## 11. Exemplo com várias funções (pilha em camadas)
+## 13. Exemplo com várias funções (pilha em camadas)
 
 ```python
 def c():
@@ -973,7 +967,7 @@ Isto é LIFO puro: **a última função a entrar é a primeira a sair**.
 
 ---
 
-## 12. Retorno, vida dos objetos e garbage collection
+## 14. Retorno, vida dos objetos e garbage collection
 
 Erro mental clássico:
 
@@ -1000,7 +994,7 @@ O frame de `criar` desaparece, mas a lista continua porque `z` aponta para ela.
 
 ---
 
-## 13. Recursão e `RecursionError`: causa real
+## 15. Recursão e `RecursionError`: causa real
 
 Cada chamada recursiva cria um frame novo.
 
@@ -1033,7 +1027,7 @@ Ponto-chave:
 
 ---
 
-## 14. Debug real: o traceback é a stack “impressa”
+## 16. Debug real: o traceback é a stack “impressa”
 
 Quando há erro, Python mostra um **traceback**.
 Isso é (quase literalmente) a lista das chamadas de função que estavam ativas.
@@ -1067,7 +1061,7 @@ Isto liga stack frames a uma coisa prática: **depuração**.
 
 ---
 
-## 15. Erros comuns de alunos neste tema
+## 17. Erros comuns de alunos neste tema
 
 ### Erro 1
 
@@ -1101,7 +1095,7 @@ Isto liga stack frames a uma coisa prática: **depuração**.
 
 ---
 
-## 16. Exercícios de consolidação
+## 18. Exercícios de consolidação
 
 > Faz primeiro sem olhar para explicações anteriores. O objetivo é confirmares se a “imagem mental” ficou certa.
 
@@ -1168,7 +1162,7 @@ Responde:
 
 ---
 
-## 17. Resumo final
+## 19. Resumo final
 
 - Python não executa texto fonte diretamente; executa via **bytecode + PVM**.
 - Cada chamada de função cria um **frame** na stack.
@@ -1183,7 +1177,7 @@ Responde:
 
 ---
 
-## 18. Changelog
+## 20. Changelog
 
 - **2026-02-04**: versão inicial do módulo 04.
 - **2026-02-05**: v2 (mapa mental + observação com ferramentas + debug + exercícios).
