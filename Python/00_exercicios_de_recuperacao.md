@@ -693,3 +693,62 @@ Cria um programa que:
     ```
 
 3. Peça ao utilizador para introduzir o nome de uma fruta e a sua cor, e adicione essa informação ao dicionário.
+
+## Exercício 31
+
+Cria um programa que:
+
+1. Tenha um dicionário com os nomes de 5 animais e as suas respetivas espécies, por exemplo:
+
+    ```python
+    animais = {
+        "Leão": "Felino",
+        "Elefante": "Mamífero",
+        "Águia": "Ave",
+        "Cobra": "Réptil",
+        "Peixe": "Peixe"
+    }
+    ```
+
+2. Peça ao utilizador para introduzir o nome de um animal e mostre a sua espécie, ou uma mensagem do tipo:
+
+    ```
+    O animal <animal> é da espécie: <espécie>.
+    ```
+
+    Se o animal não estiver no dicionário, deve mostrar uma mensagem do tipo:
+
+    ```
+    O animal <animal> não está no dicionário.
+    ```
+
+    E deve adicionar o animal e a sua espécie ao dicionário, pedindo essa informação ao utilizador.
+
+## Exercício 32
+
+Cria um programa que:
+
+1. Tenha um dicionário de um aluno, com as seguintes chaves: "nome", "idade", "curso" e "notas" (que é uma lista de números), por exemplo:
+
+    ```python
+    aluno = {
+        "nome": "Maria",
+        "idade": 16,
+        "curso": "10.º Ano",
+        "notas": [15, 18, 20]
+    }
+    ```
+
+2. Mostre uma mensagem do tipo:
+
+    ```
+    Olá, eu sou a/o <nome>, tenho <idade> anos e estou no curso <curso>.
+    ```
+
+3. Calcule a média das notas e mostre uma mensagem do tipo:
+
+    ```
+    A média das notas é: <média>.
+    ```
+
+4. Peça ao utilizador para introduzir uma nova nota e adicione essa nota à lista de notas do aluno.

@@ -1,7 +1,7 @@
 # Teste de Avaliação - Memória e Execução de Programas (10.º Ano)
 
-**Nome:** **************\_\_\_\_**************  
-**Turma:** ****\_\_****  
+**Nome:** **\*\***\*\***\*\***\_\_\_\_**\*\***\*\***\*\***  
+**Turma:** \***\*\_\_\*\***  
 **Data:** \_**\_ / \_\_** / **\_\_**  
 **Duração sugerida:** 60-75 minutos
 
@@ -112,15 +112,15 @@
 
 Converte os seguintes números **decimais** para binário:
 
-16. 19 = ********\_\_\_\_******** (base 2)
+16. 19 = **\*\*\*\***\_\_\_\_**\*\*\*\*** (base 2)
 
-17. 42 = ********\_\_\_\_******** (base 2)
+17. 42 = **\*\*\*\***\_\_\_\_**\*\*\*\*** (base 2)
 
-18. 77 = ********\_\_\_\_******** (base 2)
+18. 77 = **\*\*\*\***\_\_\_\_**\*\*\*\*** (base 2)
 
-19. 100 = ********\_\_\_\_******** (base 2)
+19. 100 = **\*\*\*\***\_\_\_\_**\*\*\*\*** (base 2)
 
-20. 255 = ********\_\_\_\_******** (base 2)
+20. 255 = **\*\*\*\***\_\_\_\_**\*\*\*\*** (base 2)
 
 ---
 
@@ -132,9 +132,11 @@ Converte os seguintes números **decimais** para binário:
 
 23. Descreve o caminho de execução de um programa desde o código-fonte até à execução no CPU, incluindo pelo menos: sistema operativo, loader, processo, instruções e ciclo fetch-decode-execute.
 
+24. Desenvolve, da forma mais detalhada que conseguires, todo o processo de utilização da RAM por parte de um programa. Tópicos obrigatórios: alocação de memória, stack vs heap, referências, e libertação de memória.
+
 ---
 
-## Gabarito (Professor)
+## Chave de Respostas
 
 ### Parte A - Escolha múltipla
 
