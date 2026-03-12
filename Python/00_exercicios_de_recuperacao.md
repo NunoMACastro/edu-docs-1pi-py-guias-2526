@@ -752,3 +752,92 @@ Cria um programa que:
     ```
 
 4. Peça ao utilizador para introduzir uma nova nota e adicione essa nota à lista de notas do aluno.
+
+## Exercício 33
+
+Cria um programa que:
+
+1. Peça ao utilizador para introduzir uma frase.
+2. Crie um dicionário que guarde quantas vezes aparece cada palavra (ignora diferenças entre maiúsculas e minúsculas).
+3. Mostre o dicionário final com as contagens.
+4. Mostre também a palavra mais frequente e quantas vezes apareceu.
+5. Se houver empate na frequência máxima, mostra todas as palavras empatadas.
+
+## Exercício 34
+
+Cria um programa que:
+
+1. Tenha um dicionário de produtos, onde cada chave é o nome do produto e o valor é outro dicionário com:
+    - `"preco"` (float)
+    - `"stock"` (int)
+
+2. Peça ao utilizador para registar uma venda (produto + quantidade).
+3. Verifique se o produto existe e se há stock suficiente.
+4. Se a venda for válida, atualize o stock e mostre o total a pagar.
+5. No fim, mostre:
+    - valor total vendido
+    - produto com maior faturação
+    - lista de produtos esgotados (stock igual a 0)
+
+## Exercício 35
+
+Cria um programa que:
+
+1. Peça ao utilizador para introduzir nomes de alunos e, para cada aluno, várias disciplinas com a respetiva nota.
+2. Guarde os dados num dicionário aninhado, por exemplo:
+
+    ```python
+    turma = {
+        "Ana": {"Matemática": 17, "Português": 15},
+        "João": {"Matemática": 12, "Português": 14}
+    }
+    ```
+
+3. Calcule e mostre:
+    - média de cada aluno
+    - média de cada disciplina
+    - melhor aluno (maior média geral)
+
+4. Mostre os alunos em risco (média inferior a 10).
+
+## Exercício 36
+
+Cria um programa que:
+
+1. Receba um texto e construa um índice invertido usando dicionários:
+    - cada palavra é uma chave
+    - o valor é uma lista ordenada com as posições em que essa palavra aparece no texto
+
+2. Exemplo:
+    - texto: `"hoje estudei python e hoje revisei python"`
+    - resultado parcial: `{"hoje": [0, 4], "python": [2, 6], ...}`
+
+3. Depois, peça ao utilizador uma palavra e mostre:
+    - se existe no índice
+    - em que posições aparece
+    - quantas ocorrências tem
+
+## Exercício 37
+
+Cria um programa que:
+
+1. Modele um mapa de cidades com um dicionário de dicionários, onde:
+    - cada chave principal é uma cidade
+    - cada valor é outro dicionário com cidades vizinhas e a distância entre elas
+
+2. Exemplo:
+
+    ```python
+    mapa = {
+        "Porto": {"Braga": 55, "Aveiro": 75},
+        "Braga": {"Porto": 55, "Guimarães": 25},
+        "Aveiro": {"Porto": 75, "Coimbra": 65}
+    }
+    ```
+
+3. Peça ao utilizador cidade de origem e destino.
+4. Encontre o caminho com menor distância total entre as duas cidades (podes usar uma abordagem semelhante ao algoritmo de Dijkstra).
+5. Mostre:
+    - caminho encontrado (sequência de cidades)
+    - distância total
+    - mensagem de erro se não existir ligação entre origem e destino
