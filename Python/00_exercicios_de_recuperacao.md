@@ -841,3 +841,55 @@ Cria um programa que:
     - caminho encontrado (sequência de cidades)
     - distância total
     - mensagem de erro se não existir ligação entre origem e destino
+
+# Funções
+
+## Exercício 38
+
+Cria um programa que:
+
+1. Defina uma função que diga "Olá mundo!".
+2. Chame a função para mostrar a mensagem.
+
+# Exercício 39
+
+Cria um programa que:
+
+1. Defina uma função que receba um nome como parâmetro e diga "Olá, <nome>!".
+2. Chame a função com o teu nome para mostrar a mensagem.
+
+## Exercício 40
+
+Cria um programa que:
+
+1. Defina uma função que receba dois números como parâmetros e mostre a soma, subtração, multiplicação e divisão desses números.
+2. Chame a função com dois números à tua escolha para mostrar os resultados.
+
+## Exercício 41
+
+Cria um programa que:
+
+1. Defina uma função que receba um número como parâmetro e diga se é par ou ímpar.
+2. Chame a função com um número à tua escolha para mostrar a mensagem.
+
+## Exercício 42
+
+Usando a função do exercício anterior, cria um programa que:
+
+1. Peça ao utilizador para introduzir 10 números inteiros e positivos, um de cada vez.
+2. Introduza os números numa lista e, para cada número, chame a função para dizer se é par ou ímpar.
+
+## Exercício 43
+
+Cria um programa que:
+
+1. Defina uma função que receba uma lista de números como parâmetro e mostre o número máximo, mínimo e a média dos números da lista.
+2. Chame a função com uma lista de números à tua escolha para mostrar os resultados.
+
+## Exercício 44
+
+Cria um programa que:
+
+1. Defina uma função que receba um dicionário de produtos (com preço e stock) e um produto a comprar (com quantidade) como parâmetros.
+2. A função deve verificar se o produto existe, se há stock suficiente e calcular o total a pagar, atualizando o stock se a compra for válida.
+3. Chame a função com um dicionário de produtos e um produto a comprar para mostrar os resultados.
