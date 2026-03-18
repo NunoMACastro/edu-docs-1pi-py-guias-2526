@@ -25,11 +25,10 @@ Cria um programa que:
 > Resolução:
 
 ```python
-nome = "Maria"
+nome = "João"
 idade = 16
 curso = "10.º Ano"
-
-print(f"Olá, eu sou a/o {nome}, tenho {idade} anos e estou no curso {curso}.")
+print(f"Olá, eu sou {nome}, tenho {idade} anos e estou no curso {curso}.")
 ```
 
 ## Exercício 2
@@ -44,13 +43,12 @@ Cria um programa que:
         O total a pagar é: <total>.
         ```
 
-> Resolução:
+    > Resolução:
 
 ```python
-preco = 12.5
-quantidade = 4
-total = preco * quantidade
-
+preço = 9.99
+quantidade = 3
+total = preço * quantidade
 print(f"O total a pagar é: {total}.")
 ```
 
@@ -72,18 +70,18 @@ Cria um programa que:
 > Resolução:
 
 ```python
-numero1 = float(input("Introduz o primeiro número: "))
-numero2 = float(input("Introduz o segundo número: "))
+num1 = float(input("Introduz o primeiro número: "))
+num2 = float(input("Introduz o segundo número: "))
 
-soma = numero1 + numero2
-subtracao = numero1 - numero2
-multiplicacao = numero1 * numero2
-divisao = numero1 / numero2
+soma = num1 + num2
+subtração = num1 - num2
+multiplicação = num1 * num2
+divisão = num1 / num2
 
 print(f"A soma é: {soma}.")
-print(f"A subtração é: {subtracao}.")
-print(f"A multiplicação é: {multiplicacao}.")
-print(f"A divisão é: {divisao}.")
+print(f"A subtração é: {subtração}.")
+print(f"A multiplicação é: {multiplicação}.")
+print(f"A divisão é: {divisão}.")
 ```
 
 ## Exercício 4
@@ -103,10 +101,8 @@ Cria um programa que:
 ```python
 altura = float(input("Introduz a altura do retângulo: "))
 largura = float(input("Introduz a largura do retângulo: "))
-
-area = altura * largura
-
-print(f"A área do retângulo é: {area}.")
+área = altura * largura
+print(f"A área do retângulo é: {área}.")
 ```
 
 ## Exercício 5
@@ -125,11 +121,11 @@ Cria um programa que:
 > Resolução:
 
 ```python
-celsius = float(input("Introduz a temperatura em graus Celsius: "))
-fahrenheit = (celsius * 9 / 5) + 32
 
-print(f"A temperatura em Celsius é: {celsius}°C.")
-print(f"A temperatura em Fahrenheit é: {fahrenheit}°F.")
+C = float(input("Introduz a temperatura em graus Celsius: "))
+F = (C * 9/5) + 32
+print(f"A temperatura em Celsius é: {C}°C.")
+print(f"A temperatura em Fahrenheit é: {F}°F.")
 ```
 
 ## Exercício 6
@@ -147,7 +143,6 @@ Cria um programa que:
 
 ```python
 morada = input("Introduz a tua morada: ")
-
 print(f"A tua morada é: {morada}.")
 ```
 
@@ -167,7 +162,6 @@ Cria um programa que:
 ```python
 nome = input("Introduz o teu nome: ")
 idade = int(input("Introduz a tua idade: "))
-
 print(f"Olá, {nome}! Tens {idade} anos.")
 ```
 
@@ -186,11 +180,11 @@ Cria um programa que:
 > Resolução:
 
 ```python
-raio = float(input("Introduz o raio do círculo: "))
-pi = 3.14
-area = pi * raio ** 2
 
-print(f"A área do círculo é: {area}.")
+raio = float(input("Introduz o raio do círculo: "))
+π = 3.14
+área = π * (raio ** 2)
+print(f"A área do círculo é: {área}.")
 ```
 
 ## Exercício 9
@@ -208,7 +202,6 @@ Cria um programa que:
 
 ```python
 data_nascimento = input("Introduz a tua data de nascimento (DD/MM/AAAA): ")
-
 print(f"A tua data de nascimento é: {data_nascimento}.")
 ```
 
@@ -274,8 +267,8 @@ Cria um programa que:
 > Resolução:
 
 ```python
-n = int(input("Introduz um número inteiro: "))
 
+n = int(input("Introduz um número inteiro: "))
 if n % 2 == 0:
     print(f"O número {n} é par.")
 else:
@@ -304,7 +297,6 @@ Cria um programa que:
 
 ```python
 nome = input("Introduz um nome: ")
-
 if len(nome) > 5:
     print(f"O nome {nome} tem mais de 5 letras.")
 else:
@@ -337,6 +329,7 @@ Cria um programa que:
 > Resolução:
 
 ```python
+
 n1 = int(input("Introduz o primeiro número inteiro: "))
 n2 = int(input("Introduz o segundo número inteiro: "))
 
@@ -381,7 +374,24 @@ Cria um programa que:
 > Resolução:
 
 ```python
-idade = int(input("Introduz a idade: "))
+
+idade = int(input("Introduz a tua idade: "))
+
+if idade < 0 or idade > 100:
+    print(f"A idade {idade} não está entre 0 e 100.")
+elif idade < 18:
+    print(f"A idade {idade} é menor do que 18. Ainda és jovem!")
+elif idade <= 65:
+    print(f"A idade {idade} está entre 18 e 65. És adulto!")
+else:
+    print(f"A idade {idade} é maior do que 65. Já és idoso!")
+```
+
+Ou com uma estrutura de controlo aninhada:
+
+```python
+
+idade = int(input("Introduz a tua idade: "))
 
 if idade < 0 or idade > 100:
     print(f"A idade {idade} não está entre 0 e 100.")
@@ -420,8 +430,8 @@ Cria um programa que:
 > Resolução:
 
 ```python
-temperatura = float(input("Introduz a temperatura em graus Celsius: "))
 
+temperatura = float(input("Introduz a temperatura em graus Celsius: "))
 if temperatura < 0:
     print(f"A temperatura {temperatura}°C é menor do que 0. Está muito frio!")
 elif temperatura <= 30:
@@ -464,8 +474,8 @@ Cria um programa que:
 > Resolução:
 
 ```python
-n = int(input("Introduz um número inteiro: "))
 
+n = int(input("Introduz um número inteiro: "))
 if n % 3 == 0 and n % 5 == 0:
     print(f"O número {n} é múltiplo de 3 e de 5.")
 elif n % 3 == 0:
@@ -486,10 +496,10 @@ Cria um programa que:
 > Resolução:
 
 ```python
-n = int(input("Introduz um número inteiro e positivo: "))
 
+n = int(input("Introduz um número inteiro e positivo: "))
 if n < 0:
-    print("O número tem de ser positivo.")
+    print("O número deve ser positivo.")
 else:
     for i in range(n, -1, -1):
         print(i)
@@ -505,13 +515,15 @@ Cria um programa que:
 > Resolução:
 
 ```python
+
 n = int(input("Introduz um número inteiro e positivo: "))
 
 if n < 0:
-    print("O número tem de ser positivo.")
+    print("O número deve ser positivo.")
 else:
     for i in range(1, 11):
-        print(f"{n} x {i} = {n * i}")
+        resultado = n * i
+        print(f"{n} x {i} = {resultado}")
 ```
 
 ## Exercício 19
@@ -527,11 +539,10 @@ Cria um programa que:
 n = int(input("Introduz um número inteiro e positivo: "))
 
 if n < 0:
-    print("O número tem de ser positivo.")
+    print("O número deve ser positivo.")
 else:
-    for i in range(0, n + 1):
-        if i % 2 == 0:
-            print(i)
+    for i in range(0, n + 1, 2):
+        print(i)
 ```
 
 ## Exercício 20
@@ -541,6 +552,18 @@ Cria um programa que:
 1. Peça o nome do utilizador e o coloque numa variável.
 2. Depois, usando o `for`ou o `while`, deve dizer quantas vezes a letra `a` aparece no nome.
 
+> Resolução:
+
+```python
+nome = input("Introduz o teu nome: ")
+contador_a = 0
+for letra in nome:
+    if letra.lower() == 'a': # o método lower() é usado para garantir que a comparação seja feita de forma case-insensitive, ou seja, tanto 'a' como 'A' serão contados.
+        contador_a += 1
+
+print(f"A letra 'a' aparece {contador_a} vezes no nome {nome}.")
+```
+
 ## Exercício 21
 
 Cria um programa que:
@@ -548,12 +571,46 @@ Cria um programa que:
 1. Peça ao utilizador 10 números inteiros e positivos, um de cada vez, e guarde-os numa lista.
 2. Depois, usando um `for` ou um `while`, o programa deve mostrar todos os números introduzidos, um de cada vez, e dizer se são pares ou ímpares.
 
+> Resolução:
+
+```python
+
+numeros = []
+for i in range(10):
+    n = int(input(f"Introduz o número {i + 1}: "))
+    if n < 0:
+        print("O número deve ser positivo.")
+    else:
+        numeros.append(n)
+
+for n in numeros:
+    if n % 2 == 0:
+        print(f"O número {n} é par.")
+    else:
+        print(f"O número {n} é ímpar.")
+```
+
 ## Exercício 22
 
 Cria um programa que:
 
 1. Peça ao utilizador 5 palavras, uma de cada vez, e guarde-as numa lista.
 2. Depois, usando um `for` ou um `while`, o programa deve mostrar todas as palavras introduzidas, uma de cada vez, e dizer quantas letras tem cada palavra.
+
+> Resolução:
+
+```python
+
+palavras = []
+
+for i in range(5):
+    palavra = input(f"Introduz a palavra {i + 1}: ")
+    palavras.append(palavra)
+
+for palavra in palavras:
+    comprimento = len(palavra)
+    print(f"A palavra '{palavra}' tem {comprimento} letras.")
+```
 
 ## Exercício 23
 
@@ -567,6 +624,16 @@ Cria um programa que:
 
 2. Usando um `for` ou um `while`, o programa deve mostrar o quadrado de cada número da lista, um de cada vez.
 
+> Resolução:
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+for n in numeros:
+    quadrado = n ** 2
+    print(f"O quadrado de {n} é {quadrado}.")
+```
+
 ## Exercício 24
 
 Cria um programa que:
@@ -574,6 +641,18 @@ Cria um programa que:
 1. Peça um numero ao utilizador
 2. Calcule a tabuada desse número e guarde os resultados numa lista.
 3. Mostre a lista com os resultados.
+
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro: "))
+tabuada = []
+for i in range(1, 11):
+    resultado = n * i
+    tabuada.append(resultado)
+
+print(f"A tabuada de {n} é: {tabuada}.")
+```
 
 ## Exercício 25
 
@@ -583,6 +662,24 @@ Cria um programa que:
 2. Peça esse número de palavras ao utilizador, uma de cada vez, e guarde-as numa lista.
 3. Depois, usando um `for` ou um `while`, o programa deve mostrar todas as palavras introduzidas, uma de cada vez, e dizer se a palavra tem mais de 5 letras ou não.
 
+> Resolução:
+
+```python
+n = int(input("Introduz um número inteiro e positivo: "))
+if n < 0:
+    print("O número deve ser positivo.")
+else:
+    palavras = []
+    for i in range(n):
+        palavra = input(f"Introduz a palavra {i + 1}: ")
+        palavras.append(palavra)
+    for palavra in palavras:
+        if len(palavra) > 5:
+            print(f"A palavra '{palavra}' tem mais de 5 letras.")
+        else:
+            print(f"A palavra '{palavra}' tem 5 ou menos letras.")
+```
+
 ## Exercício 26
 
 Cria um programa que:
@@ -590,7 +687,71 @@ Cria um programa que:
 1. Peça uma letra ao utilizador.
 2. Usando a lista do exercício anterior, deve mostrar todas as palavras que começam com a letra introduzida, uma de cada vez.
 
+> Resolução:
+
+```python
+
+letra = input("Introduz uma letra: ").lower() # converte a letra para minúscula para garantir que a comparação seja case-insensitive.
+palavras_com_letra = []
+
+for palavra in palavras:
+    if palavra.lower().startswith(letra):
+        palavras_com_letra.append(palavra) # o método startswith() é usado para verificar se a palavra começa com a letra introduzida.
+
+if palavras_com_letra:
+    print(f"As palavras que começam com a letra '{letra}' são:")
+    for palavra in palavras_com_letra:
+        print(palavra)
+else:
+    print(f"Não há palavras que começam com a letra '{letra}'.")
+```
+
 ## Exercício 27
+
+Cria um programa que:
+
+1. Tenha um dicionário com o teu nome, idade e cidade.
+2. Mostre uma mensagem do tipo:
+
+    ```
+    O meu nome é <nome>, tenho <idade> anos e vivo em <cidade>.
+    ```
+
+> Resolução:
+
+```python
+pessoa = {
+    "nome": "Maria",
+    "idade": 16,
+    "cidade": "Lisboa"
+}
+
+print(f"O meu nome é {pessoa['nome']}, tenho {pessoa['idade']} anos e vivo em {pessoa['cidade']}.")
+```
+
+## Exercício 28
+
+Cria um programa que:
+
+1. Pede um nome, uma idade e uma cidade ao utilizador e guarde-os num dicionário.
+2. Mostre uma mensagem do tipo:
+
+    ```
+    Foi inserido o nome <nome>, a idade <idade> e a cidade <cidade> no dicionário.
+    ```
+
+> Resolução:
+
+```python
+pessoa = {}
+pessoa["nome"] = input("Introduz o teu nome: ")
+pessoa["idade"] = int(input("Introduz a tua idade: "))
+pessoa["cidade"] = input("Introduz a tua cidade: ")
+
+print(f"Foi inserido o nome {pessoa['nome']}, a idade {pessoa['idade']} e a cidade {pessoa['cidade']} no dicionário.")
+```
+
+## Exercício 29
 
 Cria um programa que:
 
@@ -609,7 +770,28 @@ Cria um programa que:
     A média dos números é: <média>.
     ```
 
-## Exercício 28
+> Resolução:
+
+```python
+numeros = []
+
+while len(numeros) < 10:
+    n = int(input(f"Introduz o número {len(numeros) + 1}: "))
+    if n < 0 or n in numeros:
+        print(f"O número {n} é inválido. Introduz um número inteiro e positivo que ainda não tenhas introduzido.")
+    else:
+        numeros.append(n)
+
+maximo = max(numeros)
+minimo = min(numeros)
+media = sum(numeros) / len(numeros)
+
+print(f"O número máximo é: {maximo}.")
+print(f"O número mínimo é: {minimo}.")
+print(f"A média dos números é: {media}.")
+```
+
+## Exercício 30
 
 Cria um programa que:
 
@@ -636,7 +818,23 @@ Cria um programa que:
     A minha cidade é: <cidade>.
     ```
 
-## Exercício 29
+> Resolução:
+
+```python
+
+pessoa = {
+    "nome": "Maria",
+    "idade": 16,
+    "curso": "10.º Ano"
+}
+
+print(f"Olá, eu sou {pessoa['nome']}, tenho {pessoa['idade']} anos e estou no curso {pessoa['curso']}.")
+cidade = input("Introduz a tua cidade: ")
+pessoa["cidade"] = cidade
+print(f"A minha cidade é: {pessoa['cidade']}.")
+```
+
+## Exercício 31
 
 Cria um programa que:
 
@@ -664,7 +862,26 @@ Cria um programa que:
     O país <país> não está no dicionário.
     ```
 
-## Exercício 30
+> Resolução:
+
+```python
+paises = {
+    "Portugal": "Lisboa",
+    "Espanha": "Madrid",
+    "França": "Paris",
+    "Itália": "Roma",
+    "Alemanha": "Berlim"
+}
+
+pais = input("Introduz o nome de um país: ")
+
+if pais in paises:
+    print(f"A capital de {pais} é: {paises[pais]}.")
+else:
+    print(f"O país {pais} não está no dicionário.")
+```
+
+## Exercício 32
 
 Cria um programa que:
 
@@ -694,64 +911,27 @@ Cria um programa que:
 
 3. Peça ao utilizador para introduzir o nome de uma fruta e a sua cor, e adicione essa informação ao dicionário.
 
-## Exercício 31
+> Resolução:
 
-Cria um programa que:
+```python
 
-1. Tenha um dicionário com os nomes de 5 animais e as suas respetivas espécies, por exemplo:
+frutas = {
+    "Maçã": "Vermelha",
+    "Banana": "Amarela",
+    "Laranja": "Laranja",
+    "Uva": "Roxa",
+    "Limão": "Verde"
+}
 
-    ```python
-    animais = {
-        "Leão": "Felino",
-        "Elefante": "Mamífero",
-        "Águia": "Ave",
-        "Cobra": "Réptil",
-        "Peixe": "Peixe"
-    }
-    ```
-
-2. Peça ao utilizador para introduzir o nome de um animal e mostre a sua espécie, ou uma mensagem do tipo:
-
-    ```
-    O animal <animal> é da espécie: <espécie>.
-    ```
-
-    Se o animal não estiver no dicionário, deve mostrar uma mensagem do tipo:
-
-    ```
-    O animal <animal> não está no dicionário.
-    ```
-
-    E deve adicionar o animal e a sua espécie ao dicionário, pedindo essa informação ao utilizador.
-
-## Exercício 32
-
-Cria um programa que:
-
-1. Tenha um dicionário de um aluno, com as seguintes chaves: "nome", "idade", "curso" e "notas" (que é uma lista de números), por exemplo:
-
-    ```python
-    aluno = {
-        "nome": "Maria",
-        "idade": 16,
-        "curso": "10.º Ano",
-        "notas": [15, 18, 20]
-    }
-    ```
-
-2. Mostre uma mensagem do tipo:
-
-    ```
-    Olá, eu sou a/o <nome>, tenho <idade> anos e estou no curso <curso>.
-    ```
-
-3. Calcule a média das notas e mostre uma mensagem do tipo:
-
-    ```
-    A média das notas é: <média>.
-    ```
-
-4. Peça ao utilizador para introduzir uma nova nota e adicione essa nota à lista de notas do aluno.
+fruta = input("Introduz o nome de uma fruta: ")
+if fruta in frutas:
+    print(f"A cor da fruta {fruta} é: {frutas[fruta]}.")
+else:
+    print(f"A fruta {fruta} não está no dicionário.")
+    cor = input(f"Introduz a cor da fruta {fruta}: ")
+    frutas[fruta] = cor
+    print(f"A fruta {fruta} com a cor {cor} foi adicionada ao dicionário.")
+```
 
 ## Exercício 33
 
@@ -762,6 +942,39 @@ Cria um programa que:
 3. Mostre o dicionário final com as contagens.
 4. Mostre também a palavra mais frequente e quantas vezes apareceu.
 5. Se houver empate na frequência máxima, mostra todas as palavras empatadas.
+
+> Resolução:
+
+```python
+
+frase = input("Introduz uma frase: ")
+palavras = frase.split() # divide a frase em palavras usando o método split(), que por padrão divide a string em partes usando os espaços como separadores.
+contagem = {}
+
+for palavra in palavras:
+    palavra = palavra.lower() # converte a palavra para minúscula para garantir que a contagem seja case-insensitive.
+    if palavra in contagem:
+        contagem[palavra] += 1
+    else:
+        contagem[palavra] = 1
+
+print("Contagem de palavras:", contagem)
+max_frequencia = max(contagem.values())
+palavras_mais_frequentes = [palavra for palavra, frequencia in contagem.items() if frequencia == max_frequencia]
+
+# Ou de forma mais simples, usando uma estrutura de controlo:
+# max_frequencia = 0
+# palavras_mais_frequentes = []
+# for palavra, frequencia in contagem.items():
+#     if frequencia > max_frequencia:
+#         max_frequencia = frequencia
+#         palavras_mais_frequentes = [palavra]
+#     elif frequencia == max_frequencia:
+#         palavras_mais_frequentes.append(palavra)
+
+
+
+```
 
 ## Exercício 34
 
@@ -800,6 +1013,54 @@ Cria um programa que:
 
 4. Mostre os alunos em risco (média inferior a 10).
 
+> Resolução:
+
+```python
+
+turma = {}
+while True:
+    nome = input("Introduz o nome do aluno (ou 'sair' para terminar): ")
+    if nome.lower() == 'sair':
+        break
+
+    disciplinas = {}
+    while True:
+        disciplina = input(f"Introduz o nome da disciplina para o aluno {nome} (ou 'sair' para terminar): ")
+        if disciplina.lower() == 'sair':
+            break
+        nota = float(input(f"Introduz a nota para a disciplina {disciplina}: "))
+        disciplinas[disciplina] = nota
+
+    turma[nome] = disciplinas
+
+medias_alunos = {}
+for aluno, disciplinas in turma.items():
+    media = sum(disciplinas.values()) / len(disciplinas)
+    medias_alunos[aluno] = media
+    print(f"A média do aluno {aluno} é: {media}.")
+
+medias_disciplinas = {}
+for disciplinas in turma.values():
+    for disciplina, nota in disciplinas.items():
+        if disciplina not in medias_disciplinas:
+            medias_disciplinas[disciplina] = []
+        medias_disciplinas[disciplina].append(nota)
+
+for disciplina, notas in medias_disciplinas.items():
+    media = sum(notas) / len(notas)
+    print(f"A média da disciplina {disciplina} é: {media}.")
+
+melhor_aluno = max(medias_alunos, key=medias_alunos.get)
+print(f"O melhor aluno é: {melhor_aluno} com média {medias_alunos[melhor_aluno]}.")
+alunos_em_risco = [aluno for aluno, media in medias_alunos.items() if media < 10]
+if alunos_em_risco:
+    print("Alunos em risco (média inferior a 10):")
+    for aluno in alunos_em_risco:
+        print(aluno)
+else:
+    print("Não há alunos em risco.")
+```
+
 ## Exercício 36
 
 Cria um programa que:
@@ -816,6 +1077,31 @@ Cria um programa que:
     - se existe no índice
     - em que posições aparece
     - quantas ocorrências tem
+
+> Resolução:
+
+```python
+texto = input("Introduz um texto: ")
+palavras = texto.split()
+indice_invertido = {}
+
+for posicao, palavra in enumerate(palavras):
+    palavra = palavra.lower() # converte a palavra para minúscula para garantir que o índice seja case-insensitive.
+    if palavra in indice_invertido:
+        indice_invertido[palavra].append(posicao)
+    else:
+        indice_invertido[palavra] = [posicao]
+
+palavra_busca = input("Introduz a palavra a buscar: ").lower()
+if palavra_busca in indice_invertido:
+    posicoes = indice_invertido[palavra_busca]
+    ocorrencias = len(posicoes)
+    print(f"A palavra '{palavra_busca}' existe no índice.")
+    print(f"Posições: {posicoes}")
+    print(f"Ocorrências: {ocorrencias}")
+else:
+    print(f"A palavra '{palavra_busca}' não existe no índice.")
+```
 
 ## Exercício 37
 
