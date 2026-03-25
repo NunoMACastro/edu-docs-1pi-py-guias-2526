@@ -1179,3 +1179,66 @@ Cria um programa que:
 1. Defina uma função que receba um dicionário de produtos (com preço e stock) e um produto a comprar (com quantidade) como parâmetros.
 2. A função deve verificar se o produto existe, se há stock suficiente e calcular o total a pagar, atualizando o stock se a compra for válida.
 3. Chame a função com um dicionário de produtos e um produto a comprar para mostrar os resultados.
+
+## Exercício 45
+
+Cria um programa que:
+
+1. Defina uma função que receba um dicionário de alunos (com disciplinas e notas) e um nome de aluno como parâmetros.
+2. A função deve calcular e mostrar a média do aluno, as disciplinas em que tem nota inferior a 10 e dizer se o aluno está em risco (média inferior a 10).
+3. Caso o aluno não exista no dicionário, deve mostrar uma mensagem de erro.
+4. Chame a função com um dicionário de alunos e um nome de aluno para
+
+## Exercício 46
+
+Cria um programa que:
+
+1. Defina uma função que receba uma lista de textos e um caracter como parâmetros.
+2. A função deve contar quantas vezes o caracter aparece em cada texto e devolver os resultados.
+3. Chame a função com uma lista de textos e um caracter para mostrar os resultados.
+
+# Funções com argumentos de tamanho variável
+
+## Exercício 47
+
+Cria um programa que:
+
+1. Defina uma função que receba um número variável de argumentos e mostre a soma de todos os números recebidos.
+2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
+
+3. Faz o mesmo para a multiplicação de todos os números recebidos.
+
+## Exercício 48
+
+Cria um programa que:
+
+1. Defina uma função que receba um número variável de argumentos e mostre o número máximo, mínimo e a média dos números recebidos.
+2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
+
+## Exercício 49
+
+Cria um programa que:
+
+1. Defina uma função que receba um número variável de argumentos e mostre quantos são pares e quantos são ímpares.
+2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
+
+## Exercício 50
+
+Cria um programa que:
+
+1. Defina uma função que receba um número variável de argumentos e mostre quantas vezes cada número aparece.
+2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
+
+## Exercício 51
+
+Cria um programa que:
+
+1. Defina uma função que receba um número variável de elementos com chaves e valores (usando `**kwargs`) e mostre cada chave e valor recebido.
+2. Chame a função com diferentes conjuntos de chaves e valores para mostrar os resultados.
+
+## Exercício 52
+
+Cria um programa que:
+
+1. Defina uma função que receba um número variável de elementos com chaves e valores (usando `**kwargs`) e mostre quantas vezes cada chave aparece.
+2. Chame a função com diferentes conjuntos de chaves e valores para mostrar os resultados.
