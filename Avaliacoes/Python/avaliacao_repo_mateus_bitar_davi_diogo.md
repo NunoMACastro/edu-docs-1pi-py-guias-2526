@@ -10,248 +10,164 @@ Jogo de Perguntas em Python
 
 ## Enquadramento da avaliação
 
-Esta avaliação teve em conta que se trata de um trabalho de alunos do 10.º ano e do primeiro projeto deste tipo. O objetivo não é avaliar como se fosse um projeto profissional, mas sim perceber o que já foi conseguido, o que está bem encaminhado e o que ainda precisa de ser melhorado.
+Esta avaliação foi feita com base em:
 
-## 1. Visão geral
+- enunciado do projeto (`Python/11_projeto_final_python.md`);
+- código do repositório (`menu.py`, `logica.py`, `files.py`, `sucesso.py`, `perguntas.json`, `pontuacoes.json`);
+- documentação entregue no repositório (`RELATORIO.MD`);
+- testes de execução feitos durante a revisão.
 
-O grupo desenvolveu um jogo de perguntas em terminal com:
+## 1. Resultado geral
 
-- menu principal;
-- escolha de dificuldade;
-- leitura de perguntas a partir de JSON;
-- seleção aleatória de 10 perguntas;
-- consulta de pontuações;
-- ficheiros separados por responsabilidade.
+O projeto tem uma base de dados de perguntas forte e já inclui menu, ajuda, dificuldade e Top 10. No entanto, o ciclo principal de jogo ainda não está concluído, por isso o MVP não está completo.
 
-A ideia do projeto está alinhada com o enunciado e percebe-se claramente a intenção de organizar o programa em módulos. Há também um volume interessante de perguntas no ficheiro JSON, o que mostra trabalho real na preparação de conteúdos.
+## 2. Evidências de funcionalidades concluídas
 
-Ao mesmo tempo, a implementação final revela problemas importantes de execução, de acabamento e de robustez. Ou seja, o grupo conseguiu avançar na construção do projeto, mas a versão entregue ainda parece mais uma base de trabalho do que um produto final estável.
+### 2.1 Estrutura por ficheiros
 
-## 2. Nível de implementação
+O projeto está dividido em vários ficheiros:
 
-### O que está implementado ou tentado
+- `menu.py` para interação no terminal;
+- `logica.py` para dificuldade e ordenação de pontuações;
+- `files.py` para leitura e escrita de JSON;
+- `sucesso.py` para testes de mensagens de rank.
 
-- menu com opções principais;
-- ajuda/regras;
-- escolha de dificuldade;
-- carregamento de perguntas de um ficheiro JSON;
-- sorteio aleatório de 10 perguntas;
-- top de pontuações;
-- separação em vários ficheiros Python;
-- ficheiro de pontuações.
+### 2.2 Funcionalidades confirmadas
 
-### Estado global
+Foi possível confirmar:
 
-O projeto está num nível intermédio. Existe bastante estrutura, existem dados, existe lógica pensada e há tentativa de cumprir várias partes do enunciado. No entanto, o estado real do código mostra que faltam partes essenciais para o jogo estar verdadeiramente fechado.
+- menu com opções Jogar, Pontuações, Regras/Ajuda e Sair (`menu.py`);
+- menu de ajuda funcional (`menu.py`, função `mostrar_ajuda`);
+- carregamento de perguntas de `perguntas.json` (`files.py`, `importar_perguntas`);
+- sorteio de 10 perguntas por dificuldade com `random.sample` (`logica.py`, `escolher_dificuldade`);
+- visualização de Top 10 com ordenação por pontuação (`logica.py`, `mostrar_top10` + menu opção 2).
 
-### Avaliação do nível de implementação
+### 2.3 Dados do jogo
 
-**Nível de implementação: razoável, mas incompleto e pouco consolidado.**
+`perguntas.json` contém:
 
-O grupo conseguiu construir uma boa base, mas há demasiados sinais de código inacabado, testes insuficientes e problemas de execução para considerar que o projeto ficou totalmente concluído.
+- 50 perguntas no total;
+- 5 categorias com 10 perguntas cada;
+- dificuldades Fácil, Médio e Difícil;
+- campos necessários para o jogo (`pergunta`, `Opções`, `Resposta_correta`, `Categoria`, `Dificuldade`).
 
-## 3. Pontos positivos
+## 3. Problemas encontrados (objetivos)
 
-### 3.1 Organização por ficheiros
+### 3.1 Modo de jogo incompleto
 
-O projeto foi dividido em ficheiros com funções diferentes:
+Na opção `1 | Jogar` em `menu.py`:
 
-- `files.py` para leitura e escrita;
-- `logica.py` para a lógica principal;
-- `menu.py` para interação com o utilizador;
-- `sucesso.py` para testes de mensagens finais.
+- o programa chama `escolher_dificuldade()`;
+- define uma função interna `mostrar_pergunta()`;
+- não executa ciclo de perguntas com validação de respostas e soma de pontos.
 
-Para um primeiro projeto, esta tentativa de separação é positiva e mostra que o grupo não fez tudo num único ficheiro.
+Impacto:
 
-### 3.2 Quantidade de perguntas
+- a jogabilidade principal não está concluída.
 
-O ficheiro `perguntas.json` tem um conjunto grande de perguntas, distribuídas por categorias e dificuldades. Isso é um ponto forte porque torna o jogo mais rico e mais interessante.
+### 3.2 Chamada de jogo no import de módulo
 
-### 3.3 Uso de conceitos importantes
+No fim de `logica.py` existe `escolher_dificuldade()` fora de função.
 
-O grupo aplicou vários conteúdos relevantes:
+Impacto:
 
-- listas e dicionários;
-- leitura de JSON;
-- ordenação com `sorted`;
-- aleatoriedade com `random.sample`;
-- menus e ciclos;
-- tratamento de alguns erros com `try/except`.
+- ao abrir `menu.py`, o utilizador é forçado a escolher dificuldade antes de aparecer o menu principal.
 
-Isto mostra aprendizagem real e aplicação dos conteúdos dados em aula.
+### 3.3 Saída de debug no terminal
 
-## 4. Problemas encontrados
+`escolher_dificuldade()` imprime a lista completa de dicionários das perguntas sorteadas (`print(perguntas_...)`).
 
-### 4.1 Problemas sérios de formatação e sintaxe
+Impacto:
 
-O maior problema deste projeto é que vários ficheiros surgem praticamente todos numa linha ou com formatação muito degradada. Isso dificulta muito a leitura e levanta dúvidas sobre o estado real da execução.
+- interface do jogo fica poluída e mostra dados internos que não deviam aparecer ao utilizador final.
 
-Há também vários indícios de erros de sintaxe ou de escrita:
+### 3.4 MVP incompleto em critérios obrigatórios
 
-- `guardar_pontuacuao` tem o nome mal escrito;
-- mensagens de texto aparecem partidas a meio;
-- há caracteres de barra invertida e decoração de terminal mal organizados;
-- a função `mostrar_pergunta` aparece definida dentro de outra parte do menu e parece ficar incompleta;
-- no fim de `menu.py` há uma chamada direta a `mostrar_menu()` sem proteção do arranque do programa.
+Com base no enunciado, faltam partes obrigatórias:
 
-Mesmo que parte disto possa vir de má formatação do repositório, a entrega final deveria estar limpa e legível.
+- ronda de perguntas totalmente funcional;
+- resumo final com pontuação total, certas, erradas e percentagem;
+- fluxo de re-jogar no fim da partida com resultados da ronda.
 
-### 4.2 Lógica do jogo incompleta
+### 3.5 Validação de utilizador insuficiente
 
-O projeto consegue escolher dificuldade e sortear perguntas, mas a parte mais importante do jogo, que é mostrar cada pergunta, receber resposta, validar e somar pontos de forma clara, não está bem fechada no código entregue.
+Em `menu.py`, `utilizador = input(...)` é aceite sem validação (nome vazio é aceite).
 
-No relatório em PDF, o próprio grupo diz que o programa funciona “com ausência do MVP”, o que é uma admissão importante: o núcleo obrigatório do projeto não está totalmente concluído.
+Impacto:
 
-### 4.3 Separação de responsabilidades ainda fraca
+- o menu pode apresentar “Olá . Bem vindo...”, o que mostra falta de validação mínima.
 
-Apesar da existência de módulos, ainda há mistura entre interface e lógica:
+### 3.6 Mensagens e legibilidade
 
-- a escolha da dificuldade está dentro de `logica.py`, quando devia ser controlada pelo menu;
-- há imports feitos dentro de menus e dependências muito diretas entre ficheiros;
-- a navegação do programa não parece estar centralizada de forma clara.
+Existem vários `print` com sequências como `"\================================================/"`, gerando `SyntaxWarning` no Python atual. Existe também uma mensagem inadequada para contexto escolar na opção inválida.
 
-Ou seja, houve tentativa de modularização, mas ainda sem grande consistência.
+Impacto:
 
-### 4.4 Robustez limitada
+- baixa qualidade de apresentação e experiência do utilizador.
 
-Existe algum tratamento de erros com `try/except`, o que é positivo. Mesmo assim:
+### 3.7 Escrita de pontuações não integrada no fluxo do jogo
 
-- a validação do nome do utilizador é fraca;
-- não se vê um fluxo sólido de recuperação de erro em várias partes;
-- o jogo depende bastante de o utilizador introduzir valores certos;
-- não fica claro que todas as perguntas/respostas estejam mesmo ligadas ao cálculo de pontuação.
+`files.py` tem `guardar_pontuacuao`, mas o fluxo principal de `menu.py` não regista resultados de uma ronda jogada, porque a ronda não está completa.
 
-### 4.5 Código de teste misturado com o projeto
+Impacto:
 
-O ficheiro `sucesso.py` parece mais um teste manual de rankings do que uma parte integrada do jogo. Isso não é necessariamente mau como experiência, mas não devia aparecer como se fosse parte normal da entrega final sem explicação clara.
+- histórico não reflete novas partidas reais.
+
+### 3.8 Código de teste separado e não integrado
+
+`sucesso.py` é um script de testes de rank isolado do jogo principal.
+
+Impacto:
+
+- não acrescenta funcionalidade ao fluxo final entregue.
+
+## 4. Testes de execução feitos nesta revisão
+
+Testes realizados:
+
+- compilação com `python -m py_compile`: passou (com vários `SyntaxWarning` em `menu.py`);
+- execução de `menu.py`: passou;
+- fluxo menu opção 2 (Top 10): passou;
+- fluxo menu opção 1 (Jogar): não inicia ronda completa de perguntas.
 
 ## 5. Qualidade do código
 
-### Avaliação geral
+### Pontos fortes
 
-**Qualidade do código: média-baixa.**
+- base de perguntas bem preenchida e estruturada;
+- uso correto de JSON e `random.sample`;
+- tentativa de modularização em vários ficheiros.
 
-### O que está bem
+### Pontos a melhorar
 
-- há divisão por funções e módulos;
-- o grupo tentou usar nomes que indicam intenção;
-- há aplicação de estruturas de dados adequadas;
-- o JSON está suficientemente rico para suportar o jogo.
+- fechar o ciclo principal de jogo;
+- remover execução automática de lógica no import;
+- melhorar validações de input;
+- remover prints de debug e rever mensagens do utilizador;
+- alinhar scripts de teste com a entrega final.
 
-### O que precisa de melhorar
+## 6. Qualidade da documentação
 
-- legibilidade muito fraca em vários ficheiros;
-- falta de consistência nos nomes;
-- funções incompletas ou mal integradas;
-- pouco acabamento final;
-- sinais de falta de revisão antes da entrega.
+O repositório inclui `RELATORIO.MD`, mas está muito curto para uma entrega final.
 
-A principal sensação ao ler o código é que houve trabalho, mas faltou uma última fase de organizar, limpar e testar.
+Pontos objetivos:
 
-## 6. Qualidade da documentação e comentários
+- não descreve com detalhe o estado real do MVP;
+- não apresenta plano de testes manual com casos e resultados;
+- não documenta claramente o que ficou por concluir.
 
-### Relatório
-
-O grupo entregou relatório, o que é positivo. O relatório explica:
-
-- quem fez parte do grupo;
-- a ideia geral do projeto;
-- os ficheiros;
-- as funções;
-- a distribuição de tarefas.
-
-Isto ajuda a perceber a intenção e a estrutura do trabalho.
-
-### Limitações
-
-No entanto, a documentação apresenta alguns problemas:
-
-- linguagem pouco cuidada em vários pontos;
-- explicações algo vagas;
-- admite que falta o MVP, mas não explica com clareza o que ficou por fazer;
-- não mostra um plano de testes sólido;
-- não evidencia bem as dificuldades técnicas encontradas.
-
-### Comentários no código
-
-Os comentários existem, mas são poucos e em muitos casos não compensam a fraca legibilidade do código.
-
-### Avaliação
-
-**Documentação e comentários: razoáveis, mas abaixo do desejável para uma entrega final.**
-
-## 7. Extras implementados
-
-O grupo tentou ir além do mínimo com:
-
-- dificuldades;
-- top de pontuações;
-- várias categorias;
-- grande conjunto de perguntas;
-- teste de ranks no ficheiro `sucesso.py`.
-
-Isto deve ser valorizado, porque mostra vontade de enriquecer o projeto.
-
-O problema é que os extras acabam por não compensar a falta de solidez da parte principal do jogo.
-
-## 8. Nível das soluções encontradas
-
-As soluções escolhidas são adequadas ao nível de um primeiro projeto:
-
-- JSON para guardar perguntas;
-- `random.sample` para evitar repetições numa sessão;
-- `sorted` para o top;
-- menu por opções numéricas.
-
-São escolhas corretas e apropriadas ao contexto.
-
-Portanto, o problema não está nas ideias. Está sobretudo na execução, integração e revisão final.
-
-## 9. Coerência do projeto
-
-O projeto é coerente na intenção:
-
-- entrar no menu;
-- escolher dificuldade;
-- carregar perguntas;
-- jogar;
-- ver pontuações.
-
-Essa linha existe.
-
-Mas a coerência prática falha porque algumas partes essenciais não estão verdadeiramente fechadas no código. Há distância entre o que o relatório diz que o projeto faz e aquilo que se consegue confirmar com segurança ao ler a implementação.
-
-## 10. Outros pontos importantes
-
-### 10.1 Boa base de dados de perguntas
-
-O conjunto de perguntas é um dos pontos mais fortes do trabalho. Mostra esforço e torna o jogo mais completo.
-
-### 10.2 Falta de acabamento
-
-O projeto precisava claramente de mais uma fase de polimento:
-
-- rever sintaxe;
-- corrigir formatação;
-- testar o fluxo completo;
-- confirmar que todas as opções do menu levam a funcionalidades realmente concluídas.
-
-### 10.3 Potencial de melhoria
-
-Este projeto não está longe de poder melhorar bastante. Com revisão, simplificação e fecho da lógica do jogo, podia subir de forma clara.
-
-## 11. Avaliação final resumida
+## 7. Avaliação final resumida
 
 ### Síntese
 
-O grupo mostrou empenho, criou uma boa base de perguntas e organizou o projeto em vários ficheiros, o que é bastante positivo para um primeiro trabalho. Também tentou implementar extras interessantes e usou conceitos importantes da disciplina.
+O grupo demonstrou esforço na organização inicial e na preparação de conteúdo (perguntas e pontuações). As partes de menu, ajuda, dificuldade e Top 10 existem e funcionam.
 
-No entanto, a entrega final ainda tem problemas relevantes de legibilidade, robustez e completude. O mais importante é que a parte central do jogo não transmite segurança suficiente como MVP concluído.
+A parte principal do projeto, que é jogar uma ronda completa com avaliação de respostas e resumo final, ainda não ficou concluída. Por esse motivo, o projeto fica abaixo do nível esperado para MVP fechado.
 
 ### Classificação qualitativa sugerida
 
-**Projeto com boa base e bom esforço, mas ainda incompleto e com falta de revisão final.**
+**Projeto com boa base de conteúdo e organização inicial, mas com MVP incompleto na jogabilidade principal.**
 
-### Feedback curto para os alunos
+### Feedback curto
 
-Mostraram boas ideias e perceberam bem a estrutura geral do problema. O que vos falta agora é aprender a fechar melhor um projeto: deixar o código limpo, garantir que o jogo principal está mesmo concluído, testar o fluxo inteiro e rever a apresentação final. A base está lá, mas precisa de mais solidez.
+A base do projeto está montada e as perguntas estão bem preparadas. O próximo passo é concluir o essencial: ronda completa de jogo, validação de respostas, soma de pontos e resumo final. Depois disso, devem fazer uma revisão final de mensagens, validações e documentação.
