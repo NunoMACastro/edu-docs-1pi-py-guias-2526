@@ -2,7 +2,8 @@
 
 ## Grupo
 
-Domingos e Enzo
+Domingos: 11
+Enzo: 11
 
 ## Projeto
 

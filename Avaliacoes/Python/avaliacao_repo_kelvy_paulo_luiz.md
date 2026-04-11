@@ -2,7 +2,9 @@
 
 ## Grupo
 
-Kelvy, Paulo e Luiz
+Kelvy: 12
+Paulo: 10
+Luiz: 10
 
 ## Projeto
 

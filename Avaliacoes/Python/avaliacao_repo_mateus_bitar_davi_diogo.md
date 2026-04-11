@@ -2,7 +2,9 @@
 
 ## Grupo
 
-Mateus Bitar, Davi e Diogo
+Diogo: 14
+Davi: 13
+Mateus Bitar: 13
 
 ## Projeto
 

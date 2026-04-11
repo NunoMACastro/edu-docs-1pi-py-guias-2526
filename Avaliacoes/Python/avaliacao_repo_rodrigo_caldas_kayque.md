@@ -2,7 +2,8 @@
 
 ## Grupo
 
-Rodrigo Caldas e Kayque
+Rodrigo Caldas: 17
+Kayque: 11
 
 ## Projeto
 

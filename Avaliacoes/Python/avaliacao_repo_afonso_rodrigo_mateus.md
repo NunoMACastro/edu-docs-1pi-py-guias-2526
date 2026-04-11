@@ -2,7 +2,9 @@
 
 ## Grupo
 
-Afonso, Rodrigo Poça, Mateus das Neves
+Afonso: 17
+Rodrigo Poça: 13
+Mateus: 16
 
 ## Projeto
 
