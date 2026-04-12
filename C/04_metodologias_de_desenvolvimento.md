@@ -1,237 +1,480 @@
-# C (10.º Ano) - 04 · Metodologias de Desenvolvimento de Software
+# C - 04 · Metodologias de Desenvolvimento de Software
 
 > **Objetivo deste ficheiro**  
-> Conhecer metodologias de trabalho em equipa e aplicar uma versão prática em projetos escolares de C.
+> Escolher e aplicar metodologias de trabalho de forma prática, realista e eficiente em projetos de C.
 
 ---
 
 ## Índice
 
 - [0. Como estudar este módulo](#0-como-estudar-este-módulo)
-- [1. Porque precisamos de metodologia?](#1-porque-precisamos-de-metodologia)
-- [2. Modelo em cascata](#2-modelo-em-cascata)
-- [3. Modelo iterativo/incremental](#3-modelo-iterativoincremental)
-- [4. Metodologias ágeis (visão de iniciação)](#4-metodologias-ágeis-visão-de-iniciação)
-- [5. Scrum em versão escolar](#5-scrum-em-versão-escolar)
-- [6. Kanban em versão escolar](#6-kanban-em-versão-escolar)
-- [7. Como escolher abordagem para um projeto de 10.º ano](#7-como-escolher-abordagem-para-um-projeto-de-10º-ano)
-- [8. Exemplo aplicado](#8-exemplo-aplicado)
-- [9. Erros comuns](#9-erros-comuns)
-- [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
-- [11. Changelog](#11-changelog)
+- [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
+- [2. Porque precisamos de metodologia?](#2-porque-precisamos-de-metodologia)
+- [3. Panorama das abordagens](#3-panorama-das-abordagens)
+- [4. Modelo em cascata](#4-modelo-em-cascata)
+- [5. Modelo iterativo/incremental](#5-modelo-iterativoincremental)
+- [6. Metodologias ágeis (visão introdutória)](#6-metodologias-ágeis-visão-introdutória)
+- [7. Scrum](#7-scrum)
+- [8. Kanban na prática](#8-kanban-na-prática)
+- [9. Como escolher metodologia para o projeto](#9-como-escolher-metodologia-para-o-projeto)
+- [10. Artefactos mínimos de gestão de projeto](#10-artefactos-mínimos-de-gestão-de-projeto)
+- [11. Métricas simples para acompanhar progresso](#11-métricas-simples-para-acompanhar-progresso)
+- [12. Exemplo guiado completo: agenda de contactos em C](#12-exemplo-guiado-completo-agenda-de-contactos-em-c)
+- [13. Erros comuns de metodologia](#13-erros-comuns-de-metodologia)
+- [14. Mini-laboratório de gestão ágil](#14-mini-laboratório-de-gestão-ágil)
+- [15. Exercícios (sem resolução)](#15-exercícios-sem-resolução)
+- [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
+- [17. Checklist de execução metodológica](#17-checklist-de-execução-metodológica)
+- [18. Changelog](#18-changelog)
 
 ---
 
 ## 0. Como estudar este módulo
 
-1. Lê cada metodologia e tenta resumir em 3 frases.
-2. Compara vantagens e desvantagens.
-3. Aplica ao teu contexto real de turma e tempo disponível.
+1. Lê primeiro diferenças entre cascata, iterativo e ágil.
+2. Tenta mapear essas diferenças num projeto que já tenhas feito.
+3. Executa o exemplo guiado como se fosse um projeto real.
+4. Usa a rubrica para avaliar se a metodologia foi realmente aplicada.
 
 ---
 
-## 1. Porque precisamos de metodologia?
+## 1. Resultados de aprendizagem
 
-Sem método, aparecem problemas típicos:
+No final deste módulo deves conseguir:
+
+- explicar vantagens e limitações das principais abordagens;
+- escolher metodologia adequada ao contexto do projeto;
+- criar backlog, prioridades e plano iterativo;
+- usar quadro Kanban com critérios claros de transição;
+- conduzir reuniões curtas de acompanhamento;
+- monitorizar progresso com métricas simples;
+- ajustar plano com base em risco e feedback.
+
+---
+
+## 2. Porque precisamos de metodologia?
+
+Sem metodologia, surgem padrões de falha:
 
 - tarefas esquecidas;
-- retrabalho;
-- atrasos;
-- conflitos de equipa;
-- código sem integração.
+- retrabalho frequente;
+- conflitos de equipa por falta de alinhamento;
+- atrasos no fim do projeto;
+- entrega sem qualidade técnica.
 
-Metodologia não é burocracia. É uma forma de manter o trabalho sob controlo.
+Metodologia não é burocracia.
+
+Metodologia é:
+
+- estrutura para decidir prioridades;
+- mecanismo de coordenação da equipa;
+- proteção contra improviso descontrolado.
 
 ---
 
-## 2. Modelo em cascata
+## 3. Panorama das abordagens
 
-Fluxo linear:
+### 3.1 Cascata
 
-1. requisitos
-2. análise
-3. implementação
-4. testes
-5. entrega
+- sequência de fases mais rígida;
+- boa quando requisitos estão estáveis.
+
+### 3.2 Iterativo/incremental
+
+- ciclos curtos com entregas parciais;
+- bom para aprendizagem progressiva.
+
+### 3.3 Ágil
+
+- adaptação contínua;
+- feedback frequente;
+- foco em valor entregue.
+
+Não existe metodologia perfeita para todos os contextos.
+
+Existe metodologia mais adequada para cada projeto.
+
+---
+
+## 4. Modelo em cascata
+
+Fluxo típico:
+
+1. requisitos;
+2. análise;
+3. implementação;
+4. testes;
+5. entrega.
 
 Vantagens:
 
-- simples de entender;
-- bom quando requisitos são estáveis.
+- previsível;
+- simples de explicar;
+- documentação clara por fase.
 
 Limitações:
 
-- pouco flexível a mudanças;
-- feedback tardio.
+- baixa flexibilidade a mudanças tardias;
+- feedback do utilizador chega tarde;
+- risco de descobrir problemas críticos no fim.
+
+Quando usar:
+
+- projeto pequeno, requisitos fixos e prazo curto.
 
 ---
 
-## 3. Modelo iterativo/incremental
+## 5. Modelo iterativo/incremental
 
-Desenvolvimento em ciclos curtos.
+Ideia principal:
 
-Em cada ciclo:
+- construir em partes funcionais (incrementos);
+- melhorar por ciclos.
 
-- planeia;
-- implementa parte;
-- testa;
-- melhora.
+Em cada iteração:
+
+- planear;
+- implementar subset;
+- testar;
+- rever e ajustar.
 
 Vantagens:
 
-- feedback rápido;
-- redução de risco.
+- erro aparece cedo;
+- entrega valor parcial rapidamente;
+- facilita gestão de risco.
+
+Quando usar:
+
+- projetos de 2 a 6 semanas com evolução gradual.
 
 ---
 
-## 4. Metodologias ágeis (visão de iniciação)
+## 6. Metodologias ágeis (visão introdutória)
 
-Princípios centrais:
+Princípios práticos:
 
 - entregas frequentes;
-- comunicação contínua;
-- adaptação a mudanças;
-- foco em valor para utilizador.
+- comunicação curta e constante;
+- adaptação ao feedback do utilizador;
+- foco no essencial antes do extra.
 
-Para 10.º ano, o mais útil é aplicar práticas simples (quadro de tarefas, revisão semanal, pequenos objetivos).
+Aplicação prática:
 
----
-
-## 5. Scrum em versão escolar
-
-Elementos adaptados:
-
-- backlog: lista priorizada de tarefas;
-- sprint: período curto (1 semana, por exemplo);
-- reunião rápida: 5 minutos para alinhamento;
-- revisão: mostrar o que ficou pronto.
-
-Perguntas diárias úteis:
-
-- O que fiz ontem?
-- O que vou fazer hoje?
-- Qual o bloqueio?
+- quadro de tarefas atualizado;
+- revisões semanais;
+- objetivos pequenos e alcançáveis.
 
 ---
 
-## 6. Kanban em versão escolar
+## 7. Scrum
 
-Quadro com colunas:
+Elementos simplificados:
+
+- backlog: lista priorizada de trabalho;
+- sprint: ciclo curto (1 semana recomendado);
+- daily curta: 3 perguntas em 5 min;
+- review: demonstrar o que funciona;
+- retro: decidir melhorias de processo.
+
+Perguntas da daily:
+
+- o que fiz desde a última reunião?
+- o que vou fazer até à próxima?
+- que bloqueio tenho?
+
+Risco comum:
+
+- falar muito e produzir pouco.
+
+Solução:
+
+- foco em bloqueios e decisões concretas.
+
+---
+
+## 8. Kanban na prática
+
+Colunas mínimas:
 
 - por fazer;
 - em progresso;
+- em revisão/teste;
 - concluído.
 
-Regras simples:
+Regras de ouro:
 
-- poucas tarefas "em progresso" ao mesmo tempo;
-- quando concluires, move o cartão;
-- visibilidade para toda a equipa.
+- limite de tarefas em progresso (`WIP`) por elemento;
+- mover cartão apenas quando critério estiver cumprido;
+- não "mascarar" tarefa incompleta como concluída.
 
----
+Critério de "concluído" recomendado:
 
-## 7. Como escolher abordagem para um projeto de 10.º ano
-
-Se tens 2-4 semanas e equipa pequena:
-
-- usa iterativo + Kanban.
-
-Se requisitos são fixos e tarefa curta:
-
-- cascata simplificada pode chegar.
-
-Se há muitas mudanças e feedback do professor:
-
-- usa sprints curtos com revisão frequente.
+- implementado;
+- compilado sem erros;
+- testado nos casos essenciais;
+- documentado minimamente.
 
 ---
 
-## 8. Exemplo aplicado
+## 9. Como escolher metodologia para o projeto
 
-Projeto: "Agenda de contactos em C"
+Matriz prática de decisão:
 
-Backlog inicial:
+| Contexto                    | Abordagem recomendada        |
+| --------------------------- | ---------------------------- |
+| requisitos muito estáveis   | cascata simplificada         |
+| prazo curto com risco médio | iterativo + Kanban           |
+| mudanças frequentes         | ágil com sprints curtos      |
+| equipa inexperiente         | iterativo com regras simples |
 
-1. criar contacto
-2. listar contactos
-3. procurar contacto
-4. guardar em ficheiro
+Estratégia híbrida (frequente e saudável):
 
-Planeamento em 2 iterações:
-
-- Iteração 1: criar/listar
-- Iteração 2: procurar/guardar + testes
-
-Resultados esperados:
-
-- cada iteração entrega algo funcional;
-- erros são detetados cedo.
+- planeamento inicial estilo cascata;
+- execução iterativa;
+- acompanhamento com Kanban.
 
 ---
 
-## 9. Erros comuns
+## 10. Artefactos mínimos de gestão de projeto
 
-1. Copiar termos de metodologia sem aplicar na prática.
-2. Criar plano enorme e nunca atualizar.
-3. Trabalhar sem prioridades.
-4. Começar várias tarefas e não terminar nenhuma.
-5. Não reservar tempo para testes.
+Para um projeto com gestão séria, cria no mínimo:
+
+- backlog priorizado;
+- plano de sprint/iteração;
+- quadro Kanban atualizado;
+- definição de "concluído";
+- registo de riscos;
+- resumo de revisão semanal.
+
+Sem estes artefactos:
+
+- dificilmente consegues provar controlo de projeto.
 
 ---
 
-## 10. Exercícios (sem resolução)
+## 11. Métricas simples para acompanhar progresso
 
-### Exercício 1 - Comparação rápida
+Métricas úteis para este nível:
 
-Faz tabela comparando cascata, iterativo e ágil em 6 critérios.
+- tarefas concluídas por semana;
+- tarefas em atraso;
+- número de bugs abertos/fechados;
+- percentagem de funcionalidades essenciais concluídas;
+- cumprimento dos objetivos da sprint.
 
-### Exercício 2 - Projeto fictício
+O que não fazer:
 
-Escolhe um projeto em C e justifica metodologia escolhida.
+- usar métricas para "culpar" colegas.
+
+O que fazer:
+
+- usar métricas para decidir prioridades e remover bloqueios.
+
+---
+
+## 12. Exemplo guiado completo: agenda de contactos em C
+
+### 12.1 Objetivo
+
+Aplicação para inserir, listar e pesquisar contactos.
+
+### 12.2 Backlog inicial
+
+1. criar contacto;
+2. listar contactos;
+3. pesquisar por nome;
+4. editar contacto;
+5. guardar em ficheiro;
+6. carregar de ficheiro;
+7. validação de input;
+8. documentação de uso.
+
+### 12.3 Planeamento em 3 iterações
+
+Iteração 1:
+
+- criar/listar;
+- menu funcional;
+- testes básicos.
+
+Iteração 2:
+
+- pesquisa/edição;
+- validações;
+- mais testes.
+
+Iteração 3:
+
+- persistência em ficheiro;
+- correções finais;
+- README e entrega.
+
+### 12.4 Quadro Kanban inicial
+
+- por fazer: 8 tarefas;
+- em progresso: 2;
+- revisão/teste: 0;
+- concluído: 0.
+
+### 12.5 Eventos semanais
+
+- segunda: planeamento (20 min);
+- quarta: checkpoint rápido (10 min);
+- sexta: review + retro (20 min).
+
+### 12.6 Resultados esperados
+
+- melhoria contínua por iteração;
+- menos surpresas no fim;
+- entrega com controlo real de qualidade.
+
+---
+
+## 13. Erros comuns de metodologia
+
+1. copiar termos ágeis sem aplicar práticas;
+2. fazer backlog e nunca atualizar;
+3. começar muitas tarefas ao mesmo tempo;
+4. não reservar tempo para testes;
+5. ignorar bloqueios até ao fim;
+6. não fechar tarefas com critérios objetivos;
+7. não fazer retro e repetir os mesmos erros.
+
+Correção prática:
+
+- reduzir WIP;
+- reunião curta focada em decisão;
+- revisão semanal obrigatória.
+
+---
+
+## 14. Mini-laboratório de gestão ágil
+
+Objetivo: executar microprojeto em 60 a 90 min com método.
+
+Problema sugerido:
+
+- "sistema simples de notas em C".
+
+Passos:
+
+1. definir backlog com 12 tarefas;
+2. priorizar em essencial/importante/opcional;
+3. planear sprint de 1 semana (simulada);
+4. criar quadro Kanban;
+5. definir critérios de "concluído";
+6. simular daily (3 perguntas);
+7. fazer review do incremento entregue;
+8. escrever retro com 3 melhorias.
+
+Entrega:
+
+- documento de gestão + evidência de incremento funcional.
+
+---
+
+## 15. Exercícios (sem resolução)
+
+### Exercício 1 - Comparação técnica
+
+Compara cascata, iterativo e ágil em 8 critérios.
+
+### Exercício 2 - Escolha de metodologia
+
+Para 5 cenários diferentes, escolhe abordagem e justifica.
 
 ### Exercício 3 - Backlog
 
-Cria backlog com 15 tarefas para "gestão de biblioteca".
+Cria backlog de 20 itens para "gestão de biblioteca".
 
 ### Exercício 4 - Priorização
 
-Atribui prioridade alta/média/baixa a cada tarefa do backlog.
+Classifica backlog em alta/média/baixa prioridade.
 
-### Exercício 5 - Planeamento por sprint
+### Exercício 5 - Planeamento de iterações
 
-Divide backlog em 3 sprints com objetivos claros.
+Divide backlog em 3 iterações com objetivos claros.
 
-### Exercício 6 - Quadro Kanban
+### Exercício 6 - Kanban com WIP
 
-Desenha quadro Kanban inicial e posiciona tarefas.
+Monta quadro Kanban e define limite de tarefas em progresso.
 
 ### Exercício 7 - Critérios de aceitação
 
-Escreve critérios de aceitação para 5 tarefas.
+Escreve critérios de aceitação para 6 tarefas.
 
 ### Exercício 8 - Riscos
 
-Lista 8 riscos de equipa e respetivas ações preventivas.
+Lista 10 riscos e medidas preventivas.
 
-### Exercício 9 - Reunião de acompanhamento
+### Exercício 9 - Reuniões
 
-Escreve roteiro de reunião semanal de 10 minutos.
+Cria roteiro de reunião semanal de 10 min com foco em decisão.
 
-### Exercício 10 - Avaliação
+### Exercício 10 - Métricas
 
-Define 10 indicadores para saber se o projeto está bem gerido.
+Define dashboard simples para acompanhar evolução do projeto.
 
-### Exercício 11 - Problema real
+### Exercício 11 - Gestão de mudança
 
-Recebes pedido de mudança a meio do projeto.  
-Explica como reagir em cascata e em ágil.
+Pedido novo a meio da sprint: descreve como integrar sem desorganizar.
 
-### Exercício 12 - Reflexão
+### Exercício 12 - Diagnóstico
 
-Em texto curto, explica por que metodologia também é competência técnica.
+Recebes projeto atrasado e sem método. Propõe plano de recuperação.
+
+### Exercício 13 - Simulação Scrum
+
+Executa sprint curta com equipa e regista eventos.
+
+### Exercício 14 - Retro orientada
+
+Escreve retro com "manter", "melhorar", "parar".
+
+### Exercício 15 - Reflexão
+
+Responde: "Porque metodologia também é competência técnica?".
 
 ---
 
-## 11. Changelog
+## 16. Rubrica de autoavaliação
 
+Pontua de 1 a 5:
+
+- consigo escolher metodologia para contexto real;
+- consigo manter backlog atualizado e útil;
+- consigo planear iteração com objetivos mensuráveis;
+- consigo usar Kanban com disciplina;
+- consigo identificar e gerir riscos;
+- consigo medir progresso com indicadores simples;
+- consigo adaptar plano com base em feedback.
+
+Interpretação:
+
+- 7 a 16: base frágil;
+- 17 a 27: base funcional;
+- 28 a 35: base sólida.
+
+---
+
+## 17. Checklist de execução metodológica
+
+Antes da entrega do projeto:
+
+- metodologia escolhida está justificada;
+- backlog foi priorizado e atualizado;
+- tarefas concluídas seguem critério objetivo;
+- há registo de riscos e bloqueios;
+- foram feitas revisões periódicas;
+- testes foram integrados no plano;
+- documentação de processo está presente.
+
+Se faltarem 2 ou mais itens, o processo ainda está incompleto.
+
+---
+
+## 18. Changelog
+
+- **2026-04-12**: expansão completa do módulo com matriz de decisão, artefactos, métricas, laboratório e avaliação.
 - **2026-02-23**: reescrita detalhada do módulo com foco pedagógico e exercícios sem resolução.

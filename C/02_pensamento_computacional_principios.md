@@ -1,143 +1,298 @@
-# C (10.º Ano) - 02 · Pensamento Computacional (Princípios)
+# C - 02 · Pensamento Computacional (Princípios)
 
 > **Objetivo deste ficheiro**  
-> Aprender a pensar como programador: organizar problemas, identificar padrões e desenhar soluções antes de escrever código C.
+> Desenvolver pensamento computacional sólido para transformar problemas reais em soluções estruturadas antes da codificação em C.
 
 ---
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
-- [1. O que é pensamento computacional?](#1-o-que-é-pensamento-computacional)
-- [2. Princípio 1 - Decomposição](#2-princípio-1---decomposição)
-- [3. Princípio 2 - Reconhecimento de padrões](#3-princípio-2---reconhecimento-de-padrões)
-- [4. Princípio 3 - Abstração](#4-princípio-3---abstração)
-- [5. Princípio 4 - Algoritmos](#5-princípio-4---algoritmos)
-- [6. Fluxo E-P-S (Entrada, Processo, Saída)](#6-fluxo-e-p-s-entrada-processo-saída)
-- [7. Do problema real ao código C](#7-do-problema-real-ao-código-c)
-- [8. Exemplo guiado completo](#8-exemplo-guiado-completo)
-- [9. Erros comuns](#9-erros-comuns)
-- [10. Checklist mental antes de programar](#10-checklist-mental-antes-de-programar)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [0. Como estudar este módulo](#0-como-estudar-este-módulo)
+- [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
+- [2. O que é pensamento computacional?](#2-o-que-é-pensamento-computacional)
+- [3. Os 4 princípios fundamentais](#3-os-4-princípios-fundamentais)
+- [4. Princípio 1 - Decomposição](#4-princípio-1---decomposição)
+- [5. Princípio 2 - Reconhecimento de padrões](#5-princípio-2---reconhecimento-de-padrões)
+- [6. Princípio 3 - Abstração](#6-princípio-3---abstração)
+- [7. Princípio 4 - Algoritmos](#7-princípio-4---algoritmos)
+- [8. Modelo E-P-S (Entrada, Processo, Saída)](#8-modelo-e-p-s-entrada-processo-saída)
+- [9. Estratégia completa: do problema ao código](#9-estratégia-completa-do-problema-ao-código)
+- [10. Exemplo guiado A - Média com validação](#10-exemplo-guiado-a---média-com-validação)
+- [11. Exemplo guiado B - Classificação de temperatura](#11-exemplo-guiado-b---classificação-de-temperatura)
+- [12. Erros comuns e como evitar](#12-erros-comuns-e-como-evitar)
+- [13. Mini-laboratório de pensamento computacional](#13-mini-laboratório-de-pensamento-computacional)
+- [14. Exercícios (sem resolução)](#14-exercícios-sem-resolução)
+- [15. Rubrica de autoavaliação](#15-rubrica-de-autoavaliação)
+- [16. Checklist mental antes de programar](#16-checklist-mental-antes-de-programar)
+- [17. Changelog](#17-changelog)
 
 ---
 
-## 0. Como usar este módulo
+## 0. Como estudar este módulo
 
-1. Lê os 4 princípios com atenção.
-2. Tenta aplicar cada princípio a um problema do dia a dia.
-3. Só depois passa aos exemplos em C.
-4. Faz os exercícios sem saltar os básicos.
-
----
-
-## 1. O que é pensamento computacional?
-
-É uma forma de resolver problemas de maneira organizada, lógica e repetível.
-
-Não depende de linguagem.  
-Primeiro pensamos na solução. Depois codificamos.
-
-Vantagens:
-
-- reduz erros;
-- evita bloqueios;
-- melhora clareza do código;
-- acelera depuração.
+1. Estuda cada princípio com calma antes de ver código.
+2. Em cada exemplo, escreve primeiro algoritmo textual e só depois C.
+3. Valida sempre casos normais, limite e inválidos.
+4. Usa a checklist final como rotina obrigatória antes de programar.
 
 ---
 
-## 2. Princípio 1 - Decomposição
+## 1. Resultados de aprendizagem
 
-Decompor = partir um problema grande em partes menores.
+No final deste módulo deves conseguir:
 
-Exemplo: "Sistema de notas"
+- explicar os 4 princípios com exemplos próprios;
+- decompor problemas em subtarefas executáveis;
+- identificar padrões e reutilizar lógica;
+- separar essencial de detalhe técnico através de abstração;
+- escrever algoritmos claros e testáveis;
+- mapear qualquer problema para E-P-S;
+- converter plano mental em código C com menor taxa de erro.
+
+---
+
+## 2. O que é pensamento computacional?
+
+É um método para resolver problemas de forma estruturada, lógica e repetível.
+
+Não depende da linguagem.
+
+Ordem correta:
+
+1. compreender problema;
+2. estruturar solução;
+3. só depois programar.
+
+Sem este método, quem programa tende a:
+
+- improvisar código;
+- bloquear em decisões básicas;
+- corrigir sintomas e não causas.
+
+Com este método, quem programa consegue:
+
+- antecipar problemas;
+- justificar decisões;
+- produzir código mais limpo.
+
+---
+
+## 3. Os 4 princípios fundamentais
+
+1. Decomposição
+2. Reconhecimento de padrões
+3. Abstração
+4. Algoritmos
+
+Estes princípios funcionam em conjunto, não isolados.
+
+Fluxo típico:
+
+- decompor para reduzir complexidade;
+- encontrar padrões para evitar repetição;
+- abstrair para focar no que importa;
+- formalizar em algoritmo para executar e testar.
+
+---
+
+## 4. Princípio 1 - Decomposição
+
+Decompor é dividir um problema grande em partes menores controláveis.
+
+Exemplo: "gestão de notas"
 
 - ler dados;
-- validar notas;
+- validar intervalo;
 - calcular média;
+- classificar resultado;
 - mostrar relatório.
 
-Cada parte fica mais simples de construir e testar.
+Critério de boa decomposição:
+
+- cada subproblema deve ter objetivo claro;
+- deve ser testável de forma independente;
+- deve reduzir carga cognitiva.
+
+Erro típico:
+
+- decompor demais (fragmentação excessiva) ou de menos (blocos gigantes).
 
 ---
 
-## 3. Princípio 2 - Reconhecimento de padrões
+## 5. Princípio 2 - Reconhecimento de padrões
 
-Padrão = algo que se repete.
+Padrão é estrutura que se repete em problemas diferentes.
 
-Exemplos:
+Padrões comuns em C inicial:
 
-- validar vários valores com regras iguais;
-- percorrer listas com ciclos;
-- usar menus com estrutura semelhante.
+- validação repetida de input;
+- acumulação em ciclo;
+- menu com `switch`;
+- comparação por intervalos com `if/else`.
 
-Quando encontras padrão, podes reaproveitar lógica em funções.
+Vantagem:
 
----
-
-## 4. Princípio 3 - Abstração
-
-Abstrair = focar no essencial e ignorar detalhes desnecessários naquele momento.
+- reaproveitar abordagem diminui erros e acelera implementação.
 
 Exemplo:
 
-- essencial: "calcular média";
-- detalhe adiado: "cor da interface".
-
-Abstração ajuda a não misturar tudo ao mesmo tempo.
+- classificar temperatura, nota e idade usa a mesma ideia: intervalos + decisão.
 
 ---
 
-## 5. Princípio 4 - Algoritmos
+## 6. Princípio 3 - Abstração
 
-Algoritmo = sequência de passos finitos para resolver um problema.
+Abstrair é focar no essencial para a decisão atual.
 
-Bom algoritmo é:
+Nível 1 (problema):
 
-- claro;
+- "quero calcular média de três notas".
+
+Nível 2 (algoritmo):
+
+- ler 3 valores -> somar -> dividir por 3 -> mostrar.
+
+Nível 3 (implementação C):
+
+- variáveis `float`, `scanf`, `printf`.
+
+Erro comum:
+
+- mergulhar em detalhe técnico cedo demais e perder objetivo do problema.
+
+---
+
+## 7. Princípio 4 - Algoritmos
+
+Algoritmo é sequência finita e precisa de passos para resolver um problema.
+
+Bom algoritmo deve ser:
+
 - correto;
+- claro;
 - finito;
+- geral;
 - testável.
 
+Representações úteis:
+
+- texto estruturado;
+- pseudocódigo;
+- fluxograma;
+- implementação em C.
+
 ---
 
-## 6. Fluxo E-P-S (Entrada, Processo, Saída)
+## 8. Modelo E-P-S (Entrada, Processo, Saída)
 
-Modelo simples para qualquer problema:
+E-P-S é uma ferramenta prática para organizar pensamento.
 
-- Entrada: dados recebidos.
-- Processo: regras/cálculos aplicados.
+- Entrada: dados recebidos;
+- Processo: regras e cálculos;
 - Saída: resultado produzido.
 
-Exemplo (média):
+Exemplo (desconto):
 
-- Entrada: 3 notas.
-- Processo: somar e dividir por 3.
-- Saída: média final.
+- Entrada: preço e percentagem;
+- Processo: cálculo do valor descontado;
+- Saída: preço final.
+
+Vantagem pedagógica:
+
+- obriga a clarificar o problema antes de codificar.
 
 ---
 
-## 7. Do problema real ao código C
+## 9. Estratégia completa: do problema ao código
 
-Processo recomendado:
+Processo recomendado em 8 passos:
 
-1. Escreve o problema em 2-3 frases.
-2. Lista entradas e saídas.
-3. Faz algoritmo em texto/pseudocódigo.
-4. Só depois escreve C.
-5. Testa com casos normais e inválidos.
+1. escrever problema em 2 a 4 frases;
+2. identificar E-P-S;
+3. listar regras e exceções;
+4. decompor em subtarefas;
+5. identificar padrões reaproveitáveis;
+6. escrever algoritmo/pseudocódigo;
+7. converter para C;
+8. testar casos normal, limite e inválido.
 
-Exemplo mínimo em C:
+Atalho perigoso:
+
+- começar em `main()` sem passar pelos passos anteriores.
+
+---
+
+## 10. Exemplo guiado A - Média com validação
+
+Problema:
+
+- ler 3 notas (0 a 20), calcular média e indicar aprovação (`>= 10`).
+
+### 10.1 E-P-S
+
+Entrada:
+
+- `n1`, `n2`, `n3`.
+
+Processo:
+
+- validar cada nota;
+- calcular média;
+- comparar com limiar.
+
+Saída:
+
+- média + estado (aprovado/reprovado).
+
+### 10.2 Decomposição
+
+1. ler notas;
+2. validar;
+3. calcular média;
+4. classificar;
+5. mostrar resultado.
+
+### 10.3 Pseudocódigo
+
+```text
+ler n1, n2, n3
+se alguma nota < 0 ou > 20 então
+    escrever "Notas invalidas"
+    terminar
+fim-se
+media <- (n1 + n2 + n3) / 3
+se media >= 10 então
+    escrever "Aprovado"
+senao
+    escrever "Reprovado"
+fim-se
+escrever media
+```
+
+### 10.4 Código C
 
 ```c
 #include <stdio.h>
 
 int main(void) {
     float n1, n2, n3;
+
+    printf("Introduz 3 notas: ");
     scanf("%f %f %f", &n1, &n2, &n3);
+
+    if (n1 < 0 || n1 > 20 || n2 < 0 || n2 > 20 || n3 < 0 || n3 > 20) {
+        printf("Notas invalidas. Use valores entre 0 e 20.\n");
+        return 1;
+    }
+
     float media = (n1 + n2 + n3) / 3.0f;
+
+    if (media >= 10.0f) {
+        printf("Aprovado\n");
+    } else {
+        printf("Reprovado\n");
+    }
+
     printf("Media: %.2f\n", media);
     return 0;
 }
@@ -145,43 +300,26 @@ int main(void) {
 
 ---
 
-## 8. Exemplo guiado completo
+## 11. Exemplo guiado B - Classificação de temperatura
 
-Problema: "Classificar temperatura ambiente"
+Problema:
 
-Regra:
+- classificar temperatura como frio, ameno ou quente.
 
-- < 10: frio
-- 10 a 24: ameno
-- >= 25: quente
+Regras:
 
-Passo 1 - Decomposição
+- `< 10` -> frio;
+- `10` a `24` -> ameno;
+- `>= 25` -> quente.
 
-- ler temperatura;
-- aplicar decisão;
-- mostrar classificação.
-
-Passo 2 - Padrão
-
-- decisão por intervalos (if/else).
-
-Passo 3 - Abstração
-
-- ignorar origem da temperatura (sensor/manual).
-
-Passo 4 - Algoritmo
-
-- ler valor;
-- comparar intervalos;
-- imprimir classe.
-
-Código:
+Código C:
 
 ```c
 #include <stdio.h>
 
 int main(void) {
     float t;
+
     printf("Temperatura: ");
     scanf("%f", &t);
 
@@ -197,89 +335,156 @@ int main(void) {
 }
 ```
 
----
+Aprendizagem:
 
-## 9. Erros comuns
-
-1. Querer resolver tudo de uma vez.
-2. Não identificar entradas antes de programar.
-3. Ignorar validação de dados.
-4. Copiar código sem compreender o algoritmo.
-5. Confundir detalhe técnico com objetivo principal.
+- mesma estrutura mental serve para muitos problemas de classificação.
 
 ---
 
-## 10. Checklist mental antes de programar
+## 12. Erros comuns e como evitar
 
-- Qual é exatamente o problema?
-- Quais são as entradas?
-- Qual é a saída esperada?
-- Quais regras devo aplicar?
-- Que casos de erro podem acontecer?
+1. querer resolver tudo de uma vez;
+2. ignorar definição de entradas e saídas;
+3. não tratar dados inválidos;
+4. copiar código sem entender;
+5. confundir detalhe técnico com objetivo do problema;
+6. saltar pseudocódigo;
+7. não testar casos limite.
+
+Plano de prevenção:
+
+- checklist E-P-S;
+- algoritmo escrito antes do C;
+- 3 testes mínimos por funcionalidade.
 
 ---
 
-## 11. Exercícios (sem resolução)
+## 13. Mini-laboratório de pensamento computacional
 
-### Exercício 1 - E-P-S
+Objetivo: aplicar os 4 princípios num problema real em 45 a 75 min.
 
-Para cada problema abaixo, identifica entrada, processo e saída:
+Problema sugerido:
 
-1. cálculo de IMC;
-2. cálculo de desconto;
-3. classificar idade em faixa etária.
+- "classificar consumo de água diário".
 
-### Exercício 2 - Decomposição
+Passos:
 
-Decompõe "gestão de biblioteca escolar" em pelo menos 8 subtarefas.
+1. descrever problema em 3 frases;
+2. montar E-P-S;
+3. decompor em 5 subtarefas;
+4. identificar 3 padrões reutilizáveis;
+5. escrever pseudocódigo;
+6. implementar em C;
+7. criar 8 testes;
+8. registar erros e melhorias.
+
+Entrega:
+
+- um documento curto + código C funcional.
+
+---
+
+## 14. Exercícios (sem resolução)
+
+### Exercício 1 - E-P-S básico
+
+Para 8 problemas do dia a dia, identifica Entrada, Processo e Saída.
+
+### Exercício 2 - Decomposição avançada
+
+Decompõe "sistema de biblioteca" em 12 subtarefas com ordem lógica.
 
 ### Exercício 3 - Padrões
 
-Analisa 5 programas simples e identifica padrões repetidos.
+Identifica padrões comuns em 6 programas simples já disponíveis.
 
-### Exercício 4 - Abstração
+### Exercício 4 - Abstração por níveis
 
-Escreve dois níveis de descrição do mesmo problema:
-
-- nível geral (negócio);
-- nível técnico (programação em C).
+Escreve 3 níveis de descrição para o mesmo problema: utilizador, algoritmo e C.
 
 ### Exercício 5 - Algoritmo textual
 
-Cria algoritmo textual para validar password com regras mínimas.
+Cria algoritmo para validação de password com 4 regras.
 
 ### Exercício 6 - Pseudocódigo
 
-Escreve pseudocódigo para calcular o maior de 4 números.
+Escreve pseudocódigo para maior de 4 números com tratamento de empate.
 
 ### Exercício 7 - Conversão para C
 
-Implementa em C o algoritmo do exercício 6.
+Implementa o exercício 6 em C com mensagens claras.
 
-### Exercício 8 - Casos de teste
+### Exercício 8 - Validação de input
 
-Define 12 testes para o programa do exercício 7.
+Refatora um programa para rejeitar valores fora de intervalo.
 
-### Exercício 9 - Diagnóstico
+### Exercício 9 - Casos de teste
 
-Um colega programou sem decomposição e está bloqueado.  
-Escreve um plano de apoio em 6 passos.
+Define 12 testes para um algoritmo de classificação.
 
-### Exercício 10 - Melhorias
+### Exercício 10 - Depuração orientada
 
-Recebes um código funcional mas confuso.  
-Lista 10 melhorias orientadas por pensamento computacional.
+Programa com bug lógico: descreve hipótese, teste e correção.
 
-### Exercício 11 - Aplicação real
+### Exercício 11 - Aplicação prática
 
-Escolhe um problema da escola e descreve como aplicarias os 4 princípios.
+Escolhe um problema real e aplica os 4 princípios em relatório curto.
 
-### Exercício 12 - Reflexão curta
+### Exercício 12 - Revisão crítica
 
-Em 12 linhas, explica porque "pensar antes de codificar" poupa tempo.
+Recebes solução funcional mas confusa. Reescreve com melhor pensamento computacional.
+
+### Exercício 13 - Comparação de soluções
+
+Resolve o mesmo problema por duas abordagens e compara clareza.
+
+### Exercício 14 - Planeamento pré-código
+
+Proibido programar durante 20 min: prepara todo o plano antes de escrever C.
+
+### Exercício 15 - Reflexão
+
+Responde: "Porque pensar antes de codificar acelera o desenvolvimento?".
 
 ---
 
-## 12. Changelog
+## 15. Rubrica de autoavaliação
 
+Pontua de 1 a 5:
+
+- identifico E-P-S com segurança;
+- decomponho problemas sem perder coerência;
+- reconheço padrões e reaproveito lógica;
+- separo essencial de detalhe técnico;
+- escrevo algoritmos claros;
+- converto algoritmo para C com poucos erros;
+- valido casos normais, limite e inválidos.
+
+Interpretação:
+
+- 7 a 16: base frágil;
+- 17 a 27: base funcional;
+- 28 a 35: base sólida.
+
+---
+
+## 16. Checklist mental antes de programar
+
+Antes de abrir `main.c`, confirma:
+
+- sei exatamente qual problema estou a resolver;
+- defini entradas e saídas;
+- escrevi regras e exceções;
+- decompus em blocos pequenos;
+- identifiquei padrões reutilizáveis;
+- escrevi pseudocódigo;
+- preparei casos de teste mínimos.
+
+Se responderes "não" a 2 ou mais itens, ainda não é hora de programar.
+
+---
+
+## 17. Changelog
+
+- **2026-04-12**: expansão completa do módulo com mais profundidade, estratégia operacional, exemplos e laboratório.
 - **2026-02-23**: reescrita completa do módulo com explicação detalhada e exercícios sem resolução.

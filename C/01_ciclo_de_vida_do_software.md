@@ -1,294 +1,541 @@
-# C (10.º Ano) - 01 · Ciclo de Vida do Software
+# C - 01 · Ciclo de Vida do Software
 
 > **Objetivo deste ficheiro**  
-> Perceber, com linguagem simples e exemplos concretos, como nasce, evolui e se mantém um programa de computador.
+> Compreender como um software nasce, evolui e se mantém, usando um processo técnico claro e aplicável a projetos em C.
 
 ---
 
 ## Índice
 
 - [0. Como estudar este módulo](#0-como-estudar-este-módulo)
-- [1. O que é o ciclo de vida do software?](#1-o-que-é-o-ciclo-de-vida-do-software)
-- [2. Fase 1 - Requisitos](#2-fase-1---requisitos)
-- [3. Fase 2 - Análise e planeamento](#3-fase-2---análise-e-planeamento)
-- [4. Fase 3 - Desenho da solução](#4-fase-3---desenho-da-solução)
-- [5. Fase 4 - Implementação (codificação)](#5-fase-4---implementação-codificação)
-- [6. Fase 5 - Testes](#6-fase-5---testes)
-- [7. Fase 6 - Entrega e operação](#7-fase-6---entrega-e-operação)
-- [8. Fase 7 - Manutenção e evolução](#8-fase-7---manutenção-e-evolução)
-- [9. Exemplo guiado: mini sistema de gestão de biblioteca](#9-exemplo-guiado-mini-sistema-de-gestão-de-biblioteca)
-- [10. Erros comuns de iniciantes](#10-erros-comuns-de-iniciantes)
-- [11. Checklist rápido](#11-checklist-rápido)
-- [12. Exercícios (sem resolução)](#12-exercícios-sem-resolução)
-- [13. Changelog](#13-changelog)
+- [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
+- [2. O que é o ciclo de vida do software?](#2-o-que-é-o-ciclo-de-vida-do-software)
+- [3. Porque o ciclo de vida é importante](#3-porque-o-ciclo-de-vida-é-importante)
+- [4. Visão geral das fases](#4-visão-geral-das-fases)
+- [5. Fase 1 - Requisitos](#5-fase-1---requisitos)
+- [6. Fase 2 - Análise e planeamento](#6-fase-2---análise-e-planeamento)
+- [7. Fase 3 - Desenho da solução](#7-fase-3---desenho-da-solução)
+- [8. Fase 4 - Implementação (codificação)](#8-fase-4---implementação-codificação)
+- [9. Fase 5 - Testes](#9-fase-5---testes)
+- [10. Fase 6 - Entrega e operação](#10-fase-6---entrega-e-operação)
+- [11. Fase 7 - Manutenção e evolução](#11-fase-7---manutenção-e-evolução)
+- [12. Artefactos e documentação mínima por fase](#12-artefactos-e-documentação-mínima-por-fase)
+- [13. Exemplo guiado completo: mini biblioteca](#13-exemplo-guiado-completo-mini-biblioteca)
+- [14. Erros comuns de iniciantes](#14-erros-comuns-de-iniciantes)
+- [15. Mini-laboratório de planeamento](#15-mini-laboratório-de-planeamento)
+- [16. Exercícios (sem resolução)](#16-exercícios-sem-resolução)
+- [17. Rubrica de autoavaliação](#17-rubrica-de-autoavaliação)
+- [18. Checklist final do módulo](#18-checklist-final-do-módulo)
+- [19. Changelog](#19-changelog)
 
 ---
 
 ## 0. Como estudar este módulo
 
-1. Lê primeiro as fases por ordem.
-2. Em cada fase, tenta responder: "que documento/resultado sai daqui?".
-3. No exemplo guiado, tenta imaginar como farias o projeto na tua turma.
-4. No fim, resolve os exercícios por ordem crescente de dificuldade.
+1. Lê as fases por ordem e tenta responder: "qual é a saída desta fase?".
+2. Relaciona cada fase com trabalhos reais que já fizeste.
+3. No exemplo guiado, identifica decisões boas e decisões arriscadas.
+4. Faz primeiro os exercícios de diagnóstico e depois os de projeto.
 
 ---
 
-## 1. O que é o ciclo de vida do software?
+## 1. Resultados de aprendizagem
 
-O ciclo de vida do software é o "caminho" de um programa:
+No fim deste módulo deves conseguir:
 
-- começa numa necessidade (problema real);
-- passa por planeamento e desenvolvimento;
-- chega ao utilizador;
-- continua com correções e melhorias.
-
-Em palavras simples: **um programa não acaba quando compila**. Ele só faz sentido quando resolve bem um problema e continua utilizável ao longo do tempo.
-
----
-
-## 2. Fase 1 - Requisitos
-
-Nesta fase respondemos: **o que o software deve fazer?**
-
-Tipos de requisitos:
-
-- funcionais: ações que o sistema executa (ex.: "registar aluno");
-- não funcionais: qualidade/limites (ex.: "responder em menos de 2s");
-- restrições: tecnologia, prazo, orçamento, regras legais.
-
-Exemplo de requisitos simples:
-
-- O programa deve permitir inserir nomes de livros.
-- O programa deve permitir pesquisar por título.
-- O programa não deve perder dados ao fechar.
-
-Se requisitos estiverem mal escritos, todo o projeto sofre depois.
+- explicar, com linguagem técnica correta, as 7 fases do ciclo de vida;
+- distinguir requisitos funcionais, não funcionais e restrições;
+- criar um planeamento simples (tarefas, prioridades e prazos);
+- propor desenho inicial de solução (módulos, dados, interação);
+- definir uma estratégia de testes com casos normais e limite;
+- preparar entrega com documentação mínima;
+- classificar pedidos de manutenção como corretiva, adaptativa, evolutiva ou preventiva.
 
 ---
 
-## 3. Fase 2 - Análise e planeamento
+## 2. O que é o ciclo de vida do software?
 
-Aqui transformamos ideias em trabalho organizado.
+É o processo completo que vai da necessidade inicial até à manutenção do sistema em utilização.
 
-Decisões comuns:
+Resumo simples:
 
-- dividir o problema em módulos;
-- identificar riscos (pouco tempo, pouco conhecimento);
-- definir calendário (o que fazer em cada semana);
-- escolher ordem de implementação.
+- nasce de um problema real;
+- passa por análise e construção;
+- é validado por testes;
+- é entregue a utilizadores;
+- continua a ser melhorado.
 
-Saídas típicas:
+Ideia-chave:
+
+- software não termina quando "compila";
+- termina quando resolve o problema com qualidade e continuidade.
+
+---
+
+## 3. Porque o ciclo de vida é importante
+
+Sem processo, surgem problemas previsíveis:
+
+- começar a programar sem objetivo claro;
+- perder tempo com retrabalho;
+- entregar algo que funciona "às vezes";
+- não conseguir justificar decisões técnicas.
+
+Com processo, mesmo em projetos pequenos:
+
+- ganhas controlo sobre o trabalho;
+- comunicas melhor com a equipa e com quem acompanha o projeto;
+- detetas erros mais cedo;
+- constróis hábitos profissionais desde cedo.
+
+---
+
+## 4. Visão geral das fases
+
+Fluxo base de referência:
+
+1. Requisitos
+2. Análise e planeamento
+3. Desenho da solução
+4. Implementação
+5. Testes
+6. Entrega e operação
+7. Manutenção e evolução
+
+Importante:
+
+- o fluxo parece linear, mas na prática há retornos;
+- se um teste falha, voltas a implementação ou desenho;
+- se surge pedido novo, voltas a requisitos.
+
+---
+
+## 5. Fase 1 - Requisitos
+
+Pergunta central: **o que o sistema deve fazer e em que condições?**
+
+### 5.1 Tipos de requisitos
+
+- funcionais: funcionalidades observáveis;
+- não funcionais: qualidade, desempenho, segurança, usabilidade;
+- restrições: tecnologia, tempo, orçamento, regras do contexto.
+
+### 5.2 Exemplos práticos (biblioteca)
+
+Funcionais:
+
+- registar livro;
+- listar livros disponíveis;
+- marcar empréstimo.
+
+Não funcionais:
+
+- operação básica em menos de 2 segundos;
+- mensagens de erro claras para utilizador;
+- dados guardados sem perda ao terminar.
+
+Restrições:
+
+- linguagem C;
+- prazo de 3 semanas;
+- execução em computadores disponíveis.
+
+### 5.3 Critérios de qualidade de requisitos
+
+Bons requisitos devem ser:
+
+- claros;
+- testáveis;
+- sem ambiguidades;
+- relevantes para objetivo.
+
+Mau exemplo:
+
+- "o programa deve ser bom".
+
+Bom exemplo:
+
+- "o programa deve permitir inserir até 500 registos".
+
+---
+
+## 6. Fase 2 - Análise e planeamento
+
+Pergunta central: **como transformar requisitos em trabalho executável?**
+
+### 6.1 Decisões típicas
+
+- dividir projeto em módulos;
+- identificar riscos técnicos e de tempo;
+- priorizar tarefas essenciais;
+- definir sequência de implementação.
+
+### 6.2 Planeamento mínimo recomendado
 
 - lista de tarefas;
-- prioridades;
-- cronograma simples.
+- prioridade (alta, média, baixa);
+- estimativa (horas/blocos de aula);
+- responsável por tarefa;
+- estado (`por fazer`, `em progresso`, `concluído`).
+
+### 6.3 Gestão de risco simples
+
+Exemplo de riscos:
+
+- pouco domínio de ficheiros em C;
+- faltas de elementos da equipa;
+- subestimação do tempo de testes.
+
+Mitigação:
+
+- protótipo cedo;
+- checkpoints semanais;
+- reservar 20% do tempo para correções.
 
 ---
 
-## 4. Fase 3 - Desenho da solução
+## 7. Fase 3 - Desenho da solução
 
-Aqui pensamos na arquitetura antes de codificar tudo.
+Pergunta central: **como a solução será estruturada antes de codificar?**
 
-Para 10.º ano, desenho pode ser:
+### 7.1 Elementos de desenho para este nível
 
-- fluxograma;
-- pseudocódigo;
-- esquema de ficheiros (`main.c`, `menu.c`, `dados.c`).
+- modelo de dados (ex.: `struct Livro`);
+- estrutura de ficheiros (`main.c`, `dados.c`, `menu.c`);
+- pseudocódigo do fluxo principal;
+- desenho de menus e interações.
 
-Perguntas úteis:
+### 7.2 Benefícios
 
-- que dados vou guardar?
-- que funções preciso criar?
-- como o utilizador interage com o programa?
+- evita começar "às cegas";
+- reduz decisões improvisadas durante codificação;
+- facilita comunicação na equipa.
+
+### 7.3 Saída esperada
+
+No mínimo, deves produzir:
+
+- desenho de módulos;
+- lista de funções principais;
+- representação E-P-S (Entrada, Processo, Saída) do programa.
 
 ---
 
-## 5. Fase 4 - Implementação (codificação)
+## 8. Fase 4 - Implementação (codificação)
 
-É a fase de escrever código, mas com método.
+Pergunta central: **como transformar desenho em código funcional com controlo?**
 
-Boas práticas:
+### 8.1 Princípios de implementação
 
-- implementar por partes pequenas;
+- começar por núcleo mínimo funcional;
+- evoluir em incrementos pequenos;
 - compilar frequentemente;
-- escrever nomes claros em variáveis/funções;
-- comentar apenas o que não é óbvio.
+- corrigir warnings cedo;
+- isolar funcionalidades por módulo.
 
-Exemplo de organização:
+### 8.2 Estratégia prática
 
-- `main.c`: fluxo principal;
-- `menu.c`: interação com utilizador;
-- `dados.c`: guardar e processar dados.
+Ordem sugerida:
+
+1. estrutura base e menu;
+2. inserção e listagem;
+3. pesquisa e atualização;
+4. persistência em ficheiro;
+5. validações e melhorias.
+
+### 8.3 Indicadores de progresso real
+
+Sinal bom:
+
+- funcionalidade completa + testada.
+
+Sinal enganador:
+
+- "escrevi muito código" sem validação.
 
 ---
 
-## 6. Fase 5 - Testes
+## 9. Fase 5 - Testes
 
-Testar não é "correr uma vez e aceitar".
+Pergunta central: **o software funciona corretamente em condições normais e difíceis?**
 
-Tipos básicos:
+### 9.1 Tipos essenciais de teste
 
-- teste normal: comportamento esperado;
-- teste de limite: valores extremos (0, máximo);
-- teste inválido: entradas erradas (texto quando esperava número).
+- caso normal;
+- caso limite;
+- caso inválido;
+- regressão (algo que já funcionava continua a funcionar?).
 
-Um bom teste responde:
+### 9.2 Formato simples de caso de teste
 
-- entrada usada;
+- identificador: `T01`;
+- entrada;
 - resultado esperado;
 - resultado obtido;
-- passou/falhou.
+- estado: passou/falhou.
+
+### 9.3 Erro frequente
+
+Testar só "o melhor cenário" e ignorar entradas erradas.
 
 ---
 
-## 7. Fase 6 - Entrega e operação
+## 10. Fase 6 - Entrega e operação
 
-Nesta fase o software é disponibilizado.
+Pergunta central: **como disponibilizar o software de forma utilizável?**
 
-Pode incluir:
+Entrega mínima técnica:
 
-- instruções de execução;
-- versão estável;
-- documentação para utilizador;
-- recolha de feedback.
+- executável ou instruções de compilação;
+- `README` com passos para correr;
+- limitações conhecidas;
+- versão identificada.
 
-Entrega sem documentação costuma gerar muitas dúvidas desnecessárias.
+Operação inclui:
+
+- uso real por utilizadores;
+- recolha de feedback;
+- registo de problemas.
 
 ---
 
-## 8. Fase 7 - Manutenção e evolução
+## 11. Fase 7 - Manutenção e evolução
 
-Depois da entrega aparecem:
-
-- bugs reais;
-- novos pedidos;
-- melhoria de desempenho;
-- adaptação a novas necessidades.
+Pergunta central: **como manter valor após entrega?**
 
 Tipos de manutenção:
 
-- corretiva: corrigir erro;
-- adaptativa: ajustar ao ambiente;
-- evolutiva: adicionar funcionalidades;
-- preventiva: melhorar estrutura para reduzir problemas futuros.
+- corretiva: corrigir bug;
+- adaptativa: adaptar a novo ambiente;
+- evolutiva: adicionar funcionalidade;
+- preventiva: melhorar estrutura para evitar falhas futuras.
+
+Exemplo rápido:
+
+- crash ao procurar livro inexistente -> corretiva;
+- mudança para novo formato de ficheiro -> adaptativa;
+- filtro por autor -> evolutiva;
+- refatorar função gigante em funções pequenas -> preventiva.
 
 ---
 
-## 9. Exemplo guiado: mini sistema de gestão de biblioteca
+## 12. Artefactos e documentação mínima por fase
 
-Problema: escola quer registar livros emprestados.
+| Fase | Artefacto mínimo | Objetivo |
+|---|---|---|
+| Requisitos | lista de requisitos | definir "o quê" |
+| Análise/planeamento | backlog + cronograma curto | definir "quando" e "quem" |
+| Desenho | pseudocódigo + estrutura de módulos | definir "como" |
+| Implementação | código compilável por incrementos | construir solução |
+| Testes | tabela de casos de teste | validar comportamento |
+| Entrega | README + versão | permitir uso sem ambiguidade |
+| Manutenção | registo de issues/melhorias | evoluir com histórico |
 
-Aplicação das fases:
+Regra prática:
 
-1. Requisitos
-- registar livro (título, autor, estado);
+- sem artefacto mínimo, a fase está incompleta.
+
+---
+
+## 13. Exemplo guiado completo: mini biblioteca
+
+### 13.1 Contexto
+
+Objetivo: criar aplicação em C para gerir livros emprestados.
+
+### 13.2 Aplicação fase a fase
+
+Fase 1 (Requisitos):
+
+- inserir livro;
+- listar disponíveis;
 - marcar empréstimo/devolução;
-- listar livros disponíveis.
+- guardar dados em ficheiro texto.
 
-2. Planeamento
-- semana 1: menu + estrutura de dados;
-- semana 2: operações básicas;
-- semana 3: testes e melhorias.
+Fase 2 (Planeamento):
 
-3. Desenho
-- `struct Livro` com campos essenciais;
-- funções para inserir/listar/atualizar;
-- menu em ciclo.
+- semana 1: estrutura de dados + menu;
+- semana 2: operações principais;
+- semana 3: persistência, testes e documentação.
 
-4. Implementação
-- primeiro inserir/listar;
+Fase 3 (Desenho):
+
+- `struct Livro { titulo, autor, disponivel }`;
+- módulos `menu`, `dados`, `ficheiro`;
+- fluxo de menu em ciclo até sair.
+
+Fase 4 (Implementação):
+
+- primeiro versão mínima (inserir/listar);
 - depois empréstimo/devolução;
-- por fim persistência em ficheiro.
+- no fim leitura/escrita em ficheiro.
 
-5. Testes
-- livro normal;
+Fase 5 (Testes):
+
 - lista vazia;
-- índice inválido.
+- livro duplicado;
+- índice inválido;
+- caracteres especiais no título.
 
-6. Entrega
-- instruções de compilação e execução.
+Fase 6 (Entrega):
 
-7. Manutenção
-- adicionar pesquisa por autor.
+- README com compilação e execução;
+- exemplos de utilização.
 
----
+Fase 7 (Manutenção):
 
-## 10. Erros comuns de iniciantes
+- nova funcionalidade: pesquisa por autor;
+- correção: validação de índice no menu.
 
-1. Começar logo a codificar sem requisitos.
-2. Fazer tudo num único ficheiro gigante.
-3. Não testar entradas inválidas.
-4. Mudar muitas coisas ao mesmo tempo e perder controlo.
-5. Entregar sem instruções mínimas.
+### 13.3 Aprendizagens do exemplo
 
----
-
-## 11. Checklist rápido
-
-- O problema está claramente definido?
-- Há lista de funcionalidades obrigatórias?
-- O trabalho foi dividido em tarefas?
-- Existe plano de testes?
-- Há registo de alterações?
-
-Se respondeste "não" a várias perguntas, volta às fases anteriores.
+- fases reduzem improviso;
+- testes evitam regressões;
+- documentação acelera suporte.
 
 ---
 
-## 12. Exercícios (sem resolução)
+## 14. Erros comuns de iniciantes
 
-### Exercício 1 - Identificar fases
+1. começar a codificar antes de escrever requisitos;
+2. confundir atividade com progresso (muito código sem validação);
+3. deixar testes para o último dia;
+4. não versionar alterações;
+5. ignorar feedback de utilizadores e revisores;
+6. entregar sem instruções;
+7. não manter registo de bugs e melhorias.
 
-Lê a situação: "A turma quer criar uma app de registo de material da sala."  
-Escreve uma frase para cada fase do ciclo de vida explicando o que farias.
+Como evitar:
 
-### Exercício 2 - Requisitos funcionais
+- ciclos curtos de planeamento e validação;
+- checklist por fase;
+- revisão semanal de estado real.
 
-Define 8 requisitos funcionais para um programa de gestão de alunos.
+---
 
-### Exercício 3 - Requisitos não funcionais
+## 15. Mini-laboratório de planeamento
 
-Define 5 requisitos não funcionais para o mesmo programa.
+Objetivo: praticar o ciclo de vida num problema pequeno em 45 a 60 min.
+
+Problema sugerido:
+
+- "Sistema de registo de presenças".
+
+Passos:
+
+1. escrever 6 requisitos funcionais e 3 não funcionais;
+2. criar backlog com 10 tarefas priorizadas;
+3. desenhar módulos e funções principais;
+4. definir 8 casos de teste;
+5. preparar mini plano de entrega;
+6. listar 4 melhorias de manutenção.
+
+Entrega do laboratório:
+
+- 1 documento curto (1 a 2 páginas) com todas as saídas.
+
+---
+
+## 16. Exercícios (sem resolução)
+
+### Exercício 1 - Definição técnica
+
+Explica ciclo de vida do software em 8 a 10 linhas, sem usar exemplos genéricos.
+
+### Exercício 2 - Classificação de requisitos
+
+Para 20 frases, classifica em funcional, não funcional ou restrição.
+
+### Exercício 3 - Reescrita de requisitos ambíguos
+
+Recebes 10 requisitos mal escritos. Reescreve-os de forma testável.
 
 ### Exercício 4 - Planeamento semanal
 
-Cria um plano de 3 semanas para desenvolver um mini projeto em C.
+Cria plano de 4 semanas para um projeto em C com equipa de 3 elementos.
 
-### Exercício 5 - Riscos
+### Exercício 5 - Matriz de risco
 
-Lista 5 riscos do teu projeto e uma estratégia de mitigação para cada um.
+Lista 8 riscos e define probabilidade, impacto e mitigação.
 
 ### Exercício 6 - Desenho de módulos
 
-Propõe estrutura de ficheiros para um programa com menu, dados e ficheiros.
+Propõe arquitetura para "agenda de contactos" com separação em ficheiros.
 
 ### Exercício 7 - Casos de teste
 
-Cria 10 casos de teste para um programa que calcula médias de notas.
+Define 12 testes para programa de cálculo de média com validação de input.
 
-### Exercício 8 - Priorização
+### Exercício 8 - Diagnóstico de projeto mal gerido
 
-Classifica 12 tarefas em: essencial, importante, opcional.
+Projeto sem requisitos, sem testes e atrasado. Propõe plano de recuperação em 9 passos.
 
-### Exercício 9 - Correção de processo
+### Exercício 9 - Entrega técnica
 
-Recebes um projeto sem testes e sem requisitos escritos.  
-Escreve um plano de recuperação em 7 passos.
+Escreve estrutura completa de README para entrega de programa em C.
 
-### Exercício 10 - Manutenção corretiva vs evolutiva
+### Exercício 10 - Manutenção
 
-Para 8 mudanças propostas, indica se são corretivas ou evolutivas e justifica.
+Classifica 12 pedidos de alteração nos 4 tipos de manutenção.
 
-### Exercício 11 - Documento de entrega
+### Exercício 11 - Debate técnico
 
-Escreve a estrutura (títulos) de um documento de entrega para utilizador final.
+Compara "fazer rápido" vs "fazer com processo" num texto argumentativo curto.
 
-### Exercício 12 - Reflexão
+### Exercício 12 - Aplicação real
 
-Explica por que razão "programa a funcionar" não é o mesmo que "projeto concluído".
+Escolhe um problema real e aplica todas as 7 fases em formato resumido.
+
+### Exercício 13 - Auditoria de fase
+
+Recebes projeto pronto para entrega. Identifica sinais de fase mal executada e corrige.
+
+### Exercício 14 - Planeamento de testes
+
+Cria estratégia mínima de testes para um sistema de menu com ficheiros.
+
+### Exercício 15 - Reflexão final
+
+Responde: "Quando é que um projeto pode ser considerado realmente concluído?".
 
 ---
 
-## 13. Changelog
+## 17. Rubrica de autoavaliação
 
+Pontua cada item de 1 (fraco) a 5 (forte):
+
+- sei explicar cada fase com exemplo próprio;
+- sei produzir artefactos mínimos por fase;
+- consigo transformar requisitos em plano executável;
+- consigo definir testes antes de terminar código;
+- consigo preparar entrega técnica clara;
+- consigo distinguir os 4 tipos de manutenção;
+- consigo justificar decisões com critério técnico.
+
+Interpretação:
+
+- 7 a 16: base frágil (repetir laboratório);
+- 17 a 27: base funcional (ganhar consistência);
+- 28 a 35: base sólida (pronto para avançar).
+
+---
+
+## 18. Checklist final do módulo
+
+Antes de fechar este módulo:
+
+- escreveste requisitos claros e testáveis;
+- montaste backlog com prioridade;
+- definiste desenho inicial por módulos;
+- registaste casos de teste;
+- preparaste entrega com README;
+- listaste manutenção futura com classificação correta.
+
+Se falhar algum item, volta à fase correspondente e corrige.
+
+---
+
+## 19. Changelog
+
+- **2026-04-12**: expansão completa do módulo com foco em profundidade, artefactos por fase, laboratório e avaliação.
 - **2026-02-23**: reescrita completa do módulo com versão detalhada, foco pedagógico e exercícios sem resolução.
