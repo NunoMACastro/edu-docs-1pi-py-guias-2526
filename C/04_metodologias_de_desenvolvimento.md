@@ -327,13 +327,46 @@ Explicação detalhada do Nível 3:
 
 ### 8.1 Scrum (framework)
 
+Scrum organiza o trabalho em ciclos curtos com objetivo claro de entrega (sprint goal).
+
 Elementos simplificados:
 
 - backlog: lista priorizada de trabalho;
-- sprint: ciclo curto (de 1 dia a 1 semana recomendado);
+- sprint: ciclo curto com duração fixa (1 a 2 semanas recomendado para este contexto);
 - daily curta: reunião rápida para sincronizar e identificar bloqueios;
 - review: demonstrar o que funciona;
 - retro: decidir melhorias de processo.
+
+Como funciona na prática (fluxo da sprint):
+
+1. planeamento: escolher itens do backlog e definir objetivo da sprint;
+2. execução: implementar e testar itens selecionados;
+3. daily: verificar progresso para o objetivo e remover bloqueios;
+4. review: mostrar incremento funcional e recolher feedback;
+5. retro: ajustar forma de trabalho para a sprint seguinte.
+
+Papéis (versão simplificada para projetos académicos):
+
+- responsável por prioridades do backlog (visão de produto);
+- equipa de desenvolvimento (implementação e testes);
+- facilitador do processo (garante foco e remove impedimentos).
+
+Gestão de mudança no Scrum:
+
+- durante a sprint, evita-se mudar objetivo constantemente;
+- pedidos novos entram primeiro no backlog e são priorizados para a sprint seguinte;
+- se for urgente, faz-se troca explícita de escopo para não sobrecarregar a equipa.
+
+Sinais de boa aplicação:
+
+- sprint goal claro e visível;
+- backlog da sprint realista para a capacidade da equipa;
+- incremento demonstrável no fim de cada sprint.
+
+Quando tende a funcionar melhor:
+
+- equipa pequena a média com necessidade de cadência fixa;
+- contexto com incerteza moderada/alta e necessidade de feedback frequente.
 
 Risco comum:
 
@@ -346,6 +379,8 @@ Solução:
 
 ### 8.2 Kanban (método de gestão de fluxo)
 
+Kanban gere trabalho em fluxo contínuo, sem obrigar ciclos fixos de sprint.
+
 Colunas mínimas:
 
 - por fazer;
@@ -353,11 +388,30 @@ Colunas mínimas:
 - em revisão/teste;
 - concluído.
 
+Como funciona na prática (fluxo contínuo):
+
+1. puxar nova tarefa só quando há capacidade livre;
+2. limitar trabalho em progresso (`WIP`) por pessoa/coluna;
+3. tornar políticas explícitas para mover cartões entre colunas;
+4. bloquear menos trabalho, acabar mais trabalho.
+
 Regras de ouro:
 
 - limite de tarefas em progresso (`WIP`) por elemento;
 - mover cartão apenas quando critério estiver cumprido;
 - não "mascarar" tarefa incompleta como concluída.
+
+Métricas úteis no Kanban:
+
+- `lead time`: tempo entre pedido e conclusão;
+- `cycle time`: tempo em execução até concluído;
+- `throughput`: número de tarefas concluídas por período.
+
+Gestão de mudança no Kanban:
+
+- novos pedidos entram na coluna de entrada e são repriorizados facilmente;
+- como não há sprint fechado, a prioridade pode mudar com menor fricção;
+- mesmo assim, mantém-se disciplina de `WIP` para evitar multitarefa excessiva.
 
 Critério de "concluído" recomendado:
 
@@ -366,11 +420,31 @@ Critério de "concluído" recomendado:
 - testado nos casos essenciais;
 - documentado minimamente.
 
+Sinais de boa aplicação:
+
+- colunas representam estados reais do processo;
+- limites de `WIP` são respeitados;
+- bloqueios são visíveis e resolvidos rapidamente.
+
+Quando tende a funcionar melhor:
+
+- trabalho com chegadas irregulares (bugs, pedidos rápidos, suporte);
+- equipas que precisam de flexibilidade diária sem perder controlo.
+
 Exemplo de ferramentas que usam Kanban:
 
 - Trello;
 - Jira;
 - GitHub Projects.
+
+### 8.3 Scrum vs Kanban (escolha rápida)
+
+| Critério                    | Scrum                                      | Kanban                                           |
+| --------------------------- | ------------------------------------------ | ------------------------------------------------ |
+| Cadência                    | sprints com duração fixa                   | fluxo contínuo                                   |
+| Planeamento                 | mais estruturado no início da sprint       | contínuo, por reposição de capacidade            |
+| Mudança de prioridade       | preferencialmente entre sprints            | pode acontecer a qualquer momento (com disciplina) |
+| Melhor para                 | evolução por objetivos de sprint           | operação contínua e trabalho variável            |
 
 ---
 
