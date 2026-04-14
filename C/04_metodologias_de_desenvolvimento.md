@@ -10,14 +10,14 @@
 - [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. Porque precisamos de metodologia?](#2-porque-precisamos-de-metodologia)
-- [3. Panorama das abordagens](#3-panorama-das-abordagens)
-- [4. Modelo em cascata](#4-modelo-em-cascata)
-- [5. Modelo iterativo/incremental](#5-modelo-iterativoincremental)
-- [6. Metodologias ágeis (visão introdutória)](#6-metodologias-ágeis-visão-introdutória)
-- [7. Scrum](#7-scrum)
-- [8. Kanban na prática](#8-kanban-na-prática)
-- [9. Como escolher metodologia para o projeto](#9-como-escolher-metodologia-para-o-projeto)
-- [10. Artefactos mínimos de gestão de projeto](#10-artefactos-mínimos-de-gestão-de-projeto)
+- [3. Níveis de decisão em desenvolvimento (explicação detalhada)](#3-níveis-de-decisão-em-desenvolvimento-explicação-detalhada)
+- [4. Nível 1 · Modelos de ciclo de vida (Cascata e Iterativo)](#4-nível-1--modelos-de-ciclo-de-vida-cascata-e-iterativo)
+- [5. Modelo em cascata (Nível 1)](#5-modelo-em-cascata-nível-1)
+- [6. Modelo iterativo/incremental (Nível 1)](#6-modelo-iterativoincremental-nível-1)
+- [7. Nível 2 · Abordagem Ágil (princípios)](#7-nível-2--abordagem-ágil-princípios)
+- [8. Nível 3 · Scrum e Kanban (framework e método)](#8-nível-3--scrum-e-kanban-framework-e-método)
+- [9. Como escolher e combinar níveis no projeto](#9-como-escolher-e-combinar-níveis-no-projeto)
+- [10. Nível 4 · Ferramentas e artefactos mínimos](#10-nível-4--ferramentas-e-artefactos-mínimos)
 - [11. Métricas simples para acompanhar progresso](#11-métricas-simples-para-acompanhar-progresso)
 - [12. Exemplo guiado completo: agenda de contactos em C](#12-exemplo-guiado-completo-agenda-de-contactos-em-c)
 - [13. Erros comuns de metodologia](#13-erros-comuns-de-metodologia)
@@ -32,9 +32,10 @@
 ## 0. Como estudar este módulo
 
 1. Lê primeiro diferenças entre cascata, iterativo e ágil.
-2. Tenta mapear essas diferenças num projeto que já tenhas feito.
-3. Executa o exemplo guiado como se fosse um projeto real.
-4. Usa a rubrica para avaliar se a metodologia foi realmente aplicada.
+2. Distingue explicitamente os 4 níveis (modelo, abordagem, framework/método, ferramentas).
+3. Tenta mapear essas diferenças num projeto que já tenhas feito.
+4. Executa o exemplo guiado como se fosse um projeto real.
+5. Usa a rubrica para avaliar se a metodologia foi realmente aplicada.
 
 ---
 
@@ -43,6 +44,7 @@
 No final deste módulo deves conseguir:
 
 - explicar vantagens e limitações das principais abordagens;
+- distinguir modelo de ciclo de vida, abordagem, framework/método e ferramenta;
 - escolher metodologia adequada ao contexto do projeto;
 - criar backlog, prioridades e plano iterativo;
 - usar quadro Kanban com critérios claros de transição;
@@ -72,31 +74,88 @@ Metodologia é:
 
 ---
 
-## 3. Panorama das abordagens
+## 3. Níveis de decisão em desenvolvimento
 
-### 3.1 Cascata
+Antes de escolher "uma metodologia", tens de perceber que existem níveis diferentes de decisão.
 
-- sequência de fases mais rígida;
-- boa quando requisitos estão estáveis.
+Se misturares níveis, o projeto fica confuso: discute-se Scrum vs Cascata como se fossem alternativas diretas, quando não são do mesmo tipo.
 
-### 3.2 Iterativo/incremental
+### 3.1 Nível 1 · Modelo de ciclo de vida (macroestrutura)
 
-- ciclos curtos com entregas parciais;
-- bom para aprendizagem progressiva.
+O modelo de ciclo de vida define a estrutura macro do trabalho ao longo do tempo.
 
-### 3.3 Ágil
+Responde a perguntas como:
 
-- adaptação contínua;
-- feedback frequente;
-- foco em valor entregue.
+- "vamos fazer por fases sequenciais ou por iterações?"
+- "quando validamos com utilizadores?"
+- "como distribuímos risco ao longo do projeto?"
 
-Não existe metodologia perfeita para todos os contextos.
+Exemplos neste módulo: Cascata e Iterativo/Incremental.
 
-Existe metodologia mais adequada para cada projeto.
+### 3.2 Nível 2 · Abordagem (princípios de decisão)
+
+A abordagem define como a equipa pensa e decide no dia a dia.
+
+Responde a perguntas como:
+
+- "mudança é exceção ou parte normal do processo?"
+- "priorizamos plano fechado ou adaptação contínua?"
+- "qual o peso do feedback frequente?"
+
+Exemplo neste módulo: Ágil (como conjunto de princípios, não como um único processo fechado).
+
+### 3.3 Nível 3 · Framework/método operacional (ritmo e gestão do fluxo)
+
+Este nível traduz princípios em rotinas operacionais concretas.
+
+Responde a perguntas como:
+
+- "que eventos fazemos por semana?"
+- "como gerimos prioridades e bloqueios?"
+- "como limitamos trabalho em progresso?"
+
+Exemplos neste módulo: Scrum (framework com papéis/eventos/artefactos) e Kanban (método de gestão de fluxo).
+
+### 3.4 Nível 4 · Ferramentas e artefactos (instrumentos práticos)
+
+Ferramentas e artefactos suportam os níveis anteriores, mas não os substituem.
+
+Responde a perguntas como:
+
+- "onde registamos trabalho e prioridades?"
+- "como visualizamos o estado das tarefas?"
+- "como definimos 'concluído'?"
+
+Exemplos neste módulo: backlog, quadro Kanban, definição de concluído, métricas e registo de riscos.
+
+### 3.5 Mapa rápido
+
+| Elemento                | Classificação correta               |
+| ----------------------- | ----------------------------------- |
+| Cascata                 | Nível 1 · Modelo de ciclo de vida   |
+| Iterativo/Incremental   | Nível 1 · Modelo de ciclo de vida   |
+| Ágil                    | Nível 2 · Abordagem                 |
+| Scrum                   | Nível 3 · Framework operacional     |
+| Kanban                  | Nível 3 · Método de gestão de fluxo |
+| Quadro Kanban / Backlog | Nível 4 · Ferramenta/artefacto      |
+
+Não existe combinação perfeita para todos os contextos.
+
+Existe combinação de níveis mais adequada para cada projeto.
 
 ---
 
-## 4. Modelo em cascata
+## 4. Nível 1 · Modelos de ciclo de vida (Cascata e Iterativo)
+
+Explicação detalhada do Nível 1:
+
+- define a arquitetura temporal do projeto do início ao fim;
+- influencia previsibilidade, gestão de risco e forma de validação;
+- deve ser decidido cedo, porque afeta prazos, planeamento e pontos de controlo.
+
+---
+
+## 5. Modelo em cascata (Nível 1)
 
 Fluxo típico:
 
@@ -124,7 +183,7 @@ Quando usar:
 
 ---
 
-## 5. Modelo iterativo/incremental
+## 6. Modelo iterativo/incremental (Nível 1)
 
 Ideia principal:
 
@@ -150,7 +209,16 @@ Quando usar:
 
 ---
 
-## 6. Metodologias ágeis (visão introdutória)
+## 7. Nível 2 · Abordagem Ágil (princípios)
+
+Explicação detalhada do Nível 2:
+
+- define princípios de decisão, não um roteiro único obrigatório;
+- orienta como a equipa reage a mudança, incerteza e feedback;
+- pode ser combinada com diferentes modelos de ciclo de vida no Nível 1.
+
+Nesta perspetiva, "Ágil" não concorre diretamente com "Scrum" ou "Kanban".  
+Ágil é a orientação de base; Scrum e Kanban são formas de operacionalizar essa orientação.
 
 Princípios práticos:
 
@@ -167,33 +235,34 @@ Aplicação prática:
 
 ---
 
-## 7. Scrum
+## 8. Nível 3 · Scrum e Kanban (framework e método)
+
+Explicação detalhada do Nível 3:
+
+- define o mecanismo de execução semanal/diário;
+- transforma princípios em cadência, regras de trabalho e pontos de inspeção;
+- pode variar sem mudar o Nível 1 (por exemplo, manter iterativo e trocar Scrum por Kanban).
+
+### 8.1 Scrum (framework)
 
 Elementos simplificados:
 
 - backlog: lista priorizada de trabalho;
-- sprint: ciclo curto (1 semana recomendado);
-- daily curta: 3 perguntas em 5 min;
+- sprint: ciclo curto (de 1 dia a 1 semana recomendado);
+- daily curta: reunião rápida para sincronizar e identificar bloqueios;
 - review: demonstrar o que funciona;
 - retro: decidir melhorias de processo.
-
-Perguntas da daily:
-
-- o que fiz desde a última reunião?
-- o que vou fazer até à próxima?
-- que bloqueio tenho?
 
 Risco comum:
 
 - falar muito e produzir pouco.
+- muitas reuniões por sprint sem foco em decisão.
 
 Solução:
 
 - foco em bloqueios e decisões concretas.
 
----
-
-## 8. Kanban na prática
+### 8.2 Kanban (método de gestão de fluxo)
 
 Colunas mínimas:
 
@@ -215,20 +284,33 @@ Critério de "concluído" recomendado:
 - testado nos casos essenciais;
 - documentado minimamente.
 
+Exemplo de ferramentas que usam Kanban:
+
+- Trello;
+- Jira;
+- GitHub Projects.
+
 ---
 
-## 9. Como escolher metodologia para o projeto
+## 9. Como escolher e combinar níveis no projeto
+
+Regra prática:
+
+1. decidir Nível 1 (macroestrutura do ciclo de vida);
+2. definir Nível 2 (princípios de decisão);
+3. escolher Nível 3 (framework/método de execução);
+4. configurar Nível 4 (ferramentas e artefactos de suporte).
 
 Matriz prática de decisão:
 
-| Contexto                    | Abordagem recomendada        |
-| --------------------------- | ---------------------------- |
-| requisitos muito estáveis   | cascata simplificada         |
-| prazo curto com risco médio | iterativo + Kanban           |
-| mudanças frequentes         | ágil com sprints curtos      |
-| equipa inexperiente         | iterativo com regras simples |
+| Contexto                    | Combinação recomendada                                            |
+| --------------------------- | ----------------------------------------------------------------- |
+| requisitos muito estáveis   | N1: cascata simplificada + N4: checklist forte                    |
+| prazo curto com risco médio | N1: iterativo + N3: Kanban + N4: métricas semanais                |
+| mudanças frequentes         | N1: iterativo + N2: ágil + N3: Scrum ou Kanban                    |
+| equipa inexperiente         | N1: iterativo simples + N3: Kanban com poucas regras + N4: básico |
 
-Estratégia híbrida (frequente e saudável):
+Estratégia híbrida:
 
 - planeamento inicial estilo cascata;
 - execução iterativa;
@@ -236,7 +318,13 @@ Estratégia híbrida (frequente e saudável):
 
 ---
 
-## 10. Artefactos mínimos de gestão de projeto
+## 10. Nível 4 · Ferramentas e artefactos mínimos
+
+Explicação detalhada do Nível 4:
+
+- é o nível mais visível no dia a dia, mas também o mais confundido com "metodologia";
+- ferramentas não definem processo sozinhas: um quadro sem regras não melhora execução;
+- artefactos servem para dar evidência e controlo ao que foi decidido nos níveis 1, 2 e 3.
 
 Para um projeto com gestão séria, cria no mínimo:
 
@@ -382,7 +470,7 @@ Compara cascata, iterativo e ágil em 8 critérios.
 
 ### Exercício 2 - Escolha de metodologia
 
-Para 5 cenários diferentes, escolhe abordagem e justifica.
+Para 5 cenários diferentes, escolhe combinação de níveis (N1, N2, N3, N4) e justifica.
 
 ### Exercício 3 - Backlog
 
@@ -476,5 +564,6 @@ Se faltarem 2 ou mais itens, o processo ainda está incompleto.
 
 ## 18. Changelog
 
+- **2026-04-14**: reestruturação por níveis (modelo, abordagem, framework/método, ferramentas) para evitar mistura de conceitos.
 - **2026-04-12**: expansão completa do módulo com matriz de decisão, artefactos, métricas, laboratório e avaliação.
 - **2026-02-23**: reescrita detalhada do módulo com foco pedagógico e exercícios sem resolução.
