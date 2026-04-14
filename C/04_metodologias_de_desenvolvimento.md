@@ -265,6 +265,43 @@ Explicação detalhada do Nível 2:
 Nesta perspetiva, "Ágil" não concorre diretamente com "Scrum" ou "Kanban".  
 Ágil é a orientação de base; Scrum e Kanban são formas de operacionalizar essa orientação.
 
+Como funciona na prática (lógica de decisão):
+
+1. assumir que requisitos vão evoluir com a aprendizagem do projeto;
+2. entregar pequenas partes funcionais cedo para validar valor real;
+3. recolher feedback frequente de utilizadores, equipa e testes;
+4. reordenar prioridades com base em valor, risco e esforço;
+5. melhorar processo continuamente (não só o código).
+
+Pilares operacionais da abordagem ágil:
+
+- valor primeiro: começar pelo que resolve problema real do utilizador;
+- ciclos curtos: reduzir tempo entre "ideia" e "resultado validado";
+- transparência: tornar visível o estado real do trabalho e bloqueios;
+- adaptação: ajustar plano quando surgem dados novos.
+
+Gestão de mudança na abordagem ágil:
+
+- mudança não é tratada como falha de planeamento por defeito;
+- pedidos novos entram na priorização, em vez de entrar "por fora" do processo;
+- o objetivo é proteger foco da iteração atual e negociar o resto para a seguinte.
+
+O que Ágil não é:
+
+- não é ausência de planeamento;
+- não é "aceitar tudo a qualquer momento";
+- não é fazer reuniões sem decisões objetivas.
+
+Sinais de boa aplicação:
+
+- backlog vivo e reordenado com critério;
+- entregas pequenas com validação frequente;
+- decisões baseadas em feedback, não em opinião isolada.
+
+Risco comum quando mal aplicado:
+
+- usar linguagem ágil, mas manter trabalho grande, invisível e sem revisão real.
+
 Princípios práticos:
 
 - entregas frequentes;
