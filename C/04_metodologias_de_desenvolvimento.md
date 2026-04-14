@@ -165,6 +165,21 @@ Fluxo típico:
 4. testes;
 5. entrega.
 
+Como funciona na prática (passo a passo):
+
+1. no início, a equipa tenta fechar requisitos com o máximo de detalhe;
+2. depois transforma esses requisitos em análise técnica e desenho de solução;
+3. a implementação acontece com foco em concluir o escopo planeado;
+4. a validação mais pesada acontece perto do fim (testes integrados);
+5. só depois vem a entrega formal.
+
+Isto cria "portas" entre fases: normalmente só avanças quando a fase anterior é dada como concluída.
+
+Gestão de mudança no cascata:
+
+- mudança tardia custa mais, porque pode obrigar a rever documentação, código e testes já fechados;
+- por isso, pedidos novos costumam passar por controlo formal de alteração (impacto em prazo/custo/escopo).
+
 Vantagens:
 
 - previsível;
@@ -181,6 +196,12 @@ Quando usar:
 
 - projeto pequeno, requisitos fixos e prazo curto.
 
+Sinal de boa aplicação:
+
+- requisitos estáveis desde cedo;
+- poucas alterações a meio;
+- documentação de fase realmente usada para decisão.
+
 ---
 
 ## 6. Modelo iterativo/incremental (Nível 1)
@@ -190,12 +211,32 @@ Ideia principal:
 - construir em partes funcionais (incrementos);
 - melhorar por ciclos.
 
+Diferença-chave:
+
+- `iteração` = ciclo de trabalho com planeamento -> execução -> teste -> revisão;
+- `incremento` = parte funcional entregue no fim da iteração.
+
 Em cada iteração:
 
 - planear;
 - implementar subset;
 - testar;
 - rever e ajustar.
+
+Como funciona na prática (ritmo real):
+
+1. escolhes um conjunto pequeno de funcionalidades prioritárias;
+2. implementas apenas esse conjunto com qualidade mínima de entrega;
+3. mostras resultado, recolhes feedback técnico/funcional;
+4. ajustas prioridades do backlog para a próxima iteração.
+
+Assim, em vez de "apostar tudo no fim", vais reduzindo risco em ciclos curtos.
+
+Gestão de mudança no iterativo:
+
+- mudança entra naturalmente entre iterações;
+- cada novo pedido é priorizado com os restantes;
+- o plano é atualizado sem perder visibilidade do que já foi concluído.
 
 Vantagens:
 
@@ -206,6 +247,10 @@ Vantagens:
 Quando usar:
 
 - projetos de 2 a 6 semanas com evolução gradual.
+
+Risco comum quando mal aplicado:
+
+- abrir demasiadas tarefas por iteração e não fechar nada com qualidade.
 
 ---
 
