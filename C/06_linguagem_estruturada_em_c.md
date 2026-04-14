@@ -16,8 +16,7 @@
 - [6. Legibilidade e indentação](#6-legibilidade-e-indentação)
 - [7. Exemplo guiado de programa estruturado](#7-exemplo-guiado-de-programa-estruturado)
 - [8. Erros comuns](#8-erros-comuns)
-- [9. Exercícios (sem resolução)](#9-exercícios-sem-resolução)
-- [10. Changelog](#10-changelog)
+- [9. Changelog](#10-changelog)
 
 ---
 
@@ -159,60 +158,6 @@ O que este exemplo ensina:
 
 ---
 
-## 9. Exercícios (sem resolução)
-
-### Exercício 1 - Estrutura mínima
-
-Escreve programa mínimo em C sem consultar apontamentos.
-
-### Exercício 2 - Decomposição em funções
-
-Refatora um programa simples para usar pelo menos 3 funções.
-
-### Exercício 3 - Sequência
-
-Cria programa que lê 2 números e mostra soma, produto e média.
-
-### Exercício 4 - Seleção
-
-Cria programa que classifica nota (0-20) em insuficiente/suficiente/bom.
-
-### Exercício 5 - Repetição
-
-Imprime números de 1 a 100 com `for` e com `while`.
-
-### Exercício 6 - Estilo
-
-Recebes código mal indentado.  
-Reescreve com formatação correta.
-
-### Exercício 7 - Escopo
-
-Cria exemplo com variável local e explica porque não é visível fora do bloco.
-
-### Exercício 8 - Modularidade
-
-Cria função para calcular área do círculo e usa-a na `main`.
-
-### Exercício 9 - Código duplicado
-
-Identifica duplicação num programa e elimina com função.
-
-### Exercício 10 - Diagnóstico
-
-Recebes erro de compilação por chaveta em falta.  
-Mostra como localizar.
-
-### Exercício 11 - Organização
-
-Propõe estrutura de ficheiros para programa com menu e operações matemáticas.
-
-### Exercício 12 - Reflexão
-
-Explica por que programação estruturada facilita manutenção.
-
----
-
-## 10. Changelog
+## 9. Changelog
 
 - **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.

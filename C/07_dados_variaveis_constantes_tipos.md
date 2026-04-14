@@ -198,54 +198,55 @@ Pontos-chave:
 
 ### Exercício 1 - Declarações
 
-Declara 12 variáveis com tipos adequados para um sistema escolar.
+Cria a "ficha digital" de um aluno: número, nome, turma, idade, média atual e percentagem de faltas. Declara variáveis com tipos adequados e nomes claros.
 
 ### Exercício 2 - Tipos corretos
 
-Para 15 situações, escolhe tipo mais apropriado e justifica.
+Dado um sistema de bicicletas partilhadas, escolhe tipos para: id da bicicleta, quilómetros totais, custo por minuto, estado (disponível/ocupada) e nível de bateria. Justifica cada escolha.
 
 ### Exercício 3 - Constantes
 
-Cria constantes para IVA, limite de faltas e nota máxima.
+Define constantes para: limite de velocidade de trotinete elétrica, preço fixo de desbloqueio e taxa por minuto. Usa `const` e/ou `#define` de forma consistente.
 
 ### Exercício 4 - Expressões
 
-Escreve 10 expressões matemáticas em C com resultado previsto.
+Num simulador de treino, calcula calorias estimadas com base em tempo (min), peso (kg) e fator de intensidade. Escreve as expressões em C e prevê os resultados para dois casos de teste.
 
 ### Exercício 5 - Casting
 
-Mostra diferença entre divisão inteira e real em 6 exemplos.
+Num painel de estatísticas, calcula média de pontos por jogo e taxa de vitórias. Mostra o resultado sem cast e com cast, explicando a diferença no valor apresentado.
 
 ### Exercício 6 - Entrada/saída
 
-Lê nome, idade e média; imprime relatório formatado.
+Lê nome do produto, quantidade e preço unitário. Imprime um resumo de compra alinhado com subtotal e total com 2 casas decimais.
 
 ### Exercício 7 - Conversão de unidades
 
-Converte Celsius para Fahrenheit usando `float`.
+Cria um mini conversor de meteorologia: lê temperatura em Celsius e velocidade do vento em km/h, depois mostra Fahrenheit e m/s com formatação adequada.
 
 ### Exercício 8 - Validação básica
 
-Lê idade e valida se está entre 0 e 120.
+Lê a percentagem de bateria de um dispositivo (0 a 100) e valida o valor. Se estiver fora do intervalo, imprime mensagem de erro clara.
 
 ### Exercício 9 - Formatação
 
-Imprime tabela com alinhamento simples (`printf`) para 5 alunos.
+Mostra um "placar" com 3 jogadores: nome, pontos e precisão (%) com colunas alinhadas em `printf`.
 
 ### Exercício 10 - Diagnóstico
 
-Corrige um conjunto de 8 linhas com erros de tipos/formato.
+Analisa um trecho com erros de tipos e formatos (`%d`, `%f`, `%lf`, uso de `&` no `scanf`) e corrige cada linha, explicando o motivo técnico.
 
 ### Exercício 11 - Mini programa
 
-Cria calculadora de área e perímetro de retângulo com entradas do utilizador.
+Desenvolve um simulador de consumo elétrico doméstico: lê potência (W), horas de uso por dia e preço por kWh; calcula consumo mensal e custo estimado.
 
 ### Exercício 12 - Reflexão
 
-Explica por que a escolha do tipo de dados influencia qualidade do programa.
+Escreve uma reflexão curta: em que situações um `int` pode causar erro silencioso e quando `float`/`double` é realmente necessário?
 
 ---
 
 ## 11. Changelog
 
 - **2026-02-23**: reescrita completa com abordagem detalhada, pedagógica e exercícios sem resolução.
+- **2026-04-14**: revisão dos exercícios
