@@ -415,33 +415,61 @@ Diagnóstico técnico:
 
 ## 11. Exercícios (sem resolução)
 
-### Exercício 1 - Leitura validada de inteiro
+Ordem recomendada: resolver por sequência, do 1 ao 10.
 
-Lê um inteiro positivo e repete pedido enquanto a entrada for inválida.
+### Exercício 1 - `printf` básico sem input
 
-### Exercício 2 - Tabela formatada
+Declara `int`, `double`, `char` e `char nome[]`, e imprime tudo com formatos corretos (`%d`, `%.2f`, `%c`, `%s`).
 
-Lê nome, idade e média de 3 alunos e imprime tabela alinhada com largura fixa.
+### Exercício 2 - Largura e precisão
 
-### Exercício 3 - `float` vs `double` no `scanf`
+Imprime 3 valores numéricos em colunas alinhadas, usando largura fixa e 2 casas decimais.
 
-Cria um programa com duas variáveis (`float` e `double`), lê valores e justifica tecnicamente os formatos usados.
+### Exercício 3 - Leitura de um inteiro
 
-### Exercício 4 - Menu com `char`
+Lê um `int` com `scanf`, valida retorno (`== 1`) e imprime valor lido.
 
-Implementa menu (`A`, `B`, `C`, `S`) e garante leitura correta do `char` após leitura de números.
+### Exercício 4 - Leitura de `double`
 
-### Exercício 5 - Palavra vs frase
+Lê um `double` com `scanf("%lf", ...)`, valida retorno e imprime com 3 casas decimais.
 
-Lê primeiro uma palavra com `scanf("%Ns")` e depois uma frase com `fgets`, explicando a diferença no resultado.
+### Exercício 5 - Valor e endereço
 
-### Exercício 6 - Diagnóstico de bugs
+Lê um inteiro e imprime:
 
-Recebe código com 5 erros de I/O formatada (incluindo `&`, `%lf`, overflow e retorno ignorado) e corrige com justificação.
+- o valor (`%d`);
+- o endereço (`%p` com cast para `(void *)`).
 
-### Exercício 7 - Mini ficha de aluno
+### Exercício 6 - Dois inteiros na mesma linha
 
-Lê número, nome completo, turma e média; valida e imprime relatório final com formatação consistente.
+Lê `a` e `b` com `scanf("%d %d", &a, &b)` e valida se foram lidos 2 campos.
+
+### Exercício 7 - Leitura de `char` após número
+
+Lê primeiro um número e depois uma opção (`A`, `B` ou `C`), usando `" %c"` para evitar leitura do `\n`.
+
+### Exercício 8 - Palavra com limite de tamanho
+
+Lê uma palavra para `char codigo[20]` usando `scanf("%19s", codigo)` e imprime o resultado.
+
+### Exercício 9 - Frase completa com `fgets`
+
+Lê uma linha completa para `char frase[80]` com `fgets`, remove o `\n` final (se existir) e imprime a frase.
+
+### Exercício 10 - Mini ficha (integração)
+
+Cria um programa que lê e imprime:
+
+- número do aluno (`int`);
+- média (`double`);
+- turma (`char`);
+- nome completo (`fgets`).
+
+Regras:
+
+- validar retornos de `scanf`;
+- usar formato correto em cada tipo;
+- imprimir resumo final alinhado e legível.
 
 ---
 
@@ -462,4 +490,5 @@ Relação prática:
 
 ## 13. Changelog
 
+- **2026-04-15**: exercícios refeitos com progressão incremental e foco apenas na matéria coberta até este módulo.
 - **2026-04-15**: criação do módulo dedicado de `printf`/`scanf` com explicação de `&` e `*`, validação de input e comparação `scanf` vs `fgets`.

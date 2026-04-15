@@ -23,10 +23,9 @@
 - [13. Exemplo guiado completo: mini biblioteca](#13-exemplo-guiado-completo-mini-biblioteca)
 - [14. Erros comuns de iniciantes](#14-erros-comuns-de-iniciantes)
 - [15. Mini-laboratório de planeamento](#15-mini-laboratório-de-planeamento)
-- [16. Exercícios (sem resolução)](#16-exercícios-sem-resolução)
-- [17. Rubrica de autoavaliação](#17-rubrica-de-autoavaliação)
-- [18. Checklist final do módulo](#18-checklist-final-do-módulo)
-- [19. Changelog](#19-changelog)
+- [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
+- [17. Checklist final do módulo](#17-checklist-final-do-módulo)
+- [18. Changelog](#18-changelog)
 
 ---
 
@@ -35,7 +34,7 @@
 1. Lê as fases por ordem e tenta responder: "qual é a saída desta fase?".
 2. Relaciona cada fase com trabalhos reais que já fizeste.
 3. No exemplo guiado, identifica decisões boas e decisões arriscadas.
-4. Faz primeiro os exercícios de diagnóstico e depois os de projeto.
+4. Faz primeiro o mini-laboratório e só depois a autoavaliação.
 
 ---
 
@@ -436,71 +435,7 @@ Entrega do laboratório:
 
 ---
 
-## 16. Exercícios (sem resolução)
-
-### Exercício 1 - Definição técnica
-
-Explica ciclo de vida do software em 8 a 10 linhas, sem usar exemplos genéricos.
-
-### Exercício 2 - Classificação de requisitos
-
-Para 20 frases, classifica em funcional, não funcional ou restrição.
-
-### Exercício 3 - Reescrita de requisitos ambíguos
-
-Recebes 10 requisitos mal escritos. Reescreve-os de forma testável.
-
-### Exercício 4 - Planeamento semanal
-
-Cria plano de 4 semanas para um projeto em C com equipa de 3 elementos.
-
-### Exercício 5 - Matriz de risco
-
-Lista 8 riscos e define probabilidade, impacto e mitigação.
-
-### Exercício 6 - Desenho de módulos
-
-Propõe arquitetura para "agenda de contactos" com separação em ficheiros.
-
-### Exercício 7 - Casos de teste
-
-Define 12 testes para programa de cálculo de média com validação de input.
-
-### Exercício 8 - Diagnóstico de projeto mal gerido
-
-Projeto sem requisitos, sem testes e atrasado. Propõe plano de recuperação em 9 passos.
-
-### Exercício 9 - Entrega técnica
-
-Escreve estrutura completa de README para entrega de programa em C.
-
-### Exercício 10 - Manutenção
-
-Classifica 12 pedidos de alteração nos 4 tipos de manutenção.
-
-### Exercício 11 - Debate técnico
-
-Compara "fazer rápido" vs "fazer com processo" num texto argumentativo curto.
-
-### Exercício 12 - Aplicação real
-
-Escolhe um problema real e aplica todas as 7 fases em formato resumido.
-
-### Exercício 13 - Auditoria de fase
-
-Recebes projeto pronto para entrega. Identifica sinais de fase mal executada e corrige.
-
-### Exercício 14 - Planeamento de testes
-
-Cria estratégia mínima de testes para um sistema de menu com ficheiros.
-
-### Exercício 15 - Reflexão final
-
-Responde: "Quando é que um projeto pode ser considerado realmente concluído?".
-
----
-
-## 17. Rubrica de autoavaliação
+## 16. Rubrica de autoavaliação
 
 Pontua cada item de 1 (fraco) a 5 (forte):
 
@@ -520,7 +455,7 @@ Interpretação:
 
 ---
 
-## 18. Checklist final do módulo
+## 17. Checklist final do módulo
 
 Antes de fechar este módulo:
 
@@ -535,7 +470,7 @@ Se falhar algum item, volta à fase correspondente e corrige.
 
 ---
 
-## 19. Changelog
+## 18. Changelog
 
 - **2026-04-12**: expansão completa do módulo com foco em profundidade, artefactos por fase, laboratório e avaliação.
-- **2026-02-23**: reescrita completa do módulo com versão detalhada, foco pedagógico e exercícios sem resolução.
+- **2026-02-23**: reescrita completa do módulo com versão detalhada e foco pedagógico.

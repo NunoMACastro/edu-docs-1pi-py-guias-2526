@@ -10,7 +10,7 @@
 - [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. Porque precisamos de metodologia?](#2-porque-precisamos-de-metodologia)
-- [3. Níveis de decisão em desenvolvimento (explicação detalhada)](#3-níveis-de-decisão-em-desenvolvimento-explicação-detalhada)
+- [3. Níveis de decisão em desenvolvimento](#3-níveis-de-decisão-em-desenvolvimento)
 - [4. Nível 1 · Modelos de ciclo de vida (Cascata e Iterativo)](#4-nível-1--modelos-de-ciclo-de-vida-cascata-e-iterativo)
 - [5. Modelo em cascata (Nível 1)](#5-modelo-em-cascata-nível-1)
 - [6. Modelo iterativo/incremental (Nível 1)](#6-modelo-iterativoincremental-nível-1)
@@ -22,10 +22,9 @@
 - [12. Exemplo guiado completo: agenda de contactos em C](#12-exemplo-guiado-completo-agenda-de-contactos-em-c)
 - [13. Erros comuns de metodologia](#13-erros-comuns-de-metodologia)
 - [14. Mini-laboratório de gestão ágil](#14-mini-laboratório-de-gestão-ágil)
-- [15. Exercícios (sem resolução)](#15-exercícios-sem-resolução)
-- [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
-- [17. Checklist de execução metodológica](#17-checklist-de-execução-metodológica)
-- [18. Changelog](#18-changelog)
+- [15. Rubrica de autoavaliação](#15-rubrica-de-autoavaliação)
+- [16. Checklist de execução metodológica](#16-checklist-de-execução-metodológica)
+- [17. Changelog](#17-changelog)
 
 ---
 
@@ -618,71 +617,7 @@ Entrega:
 
 ---
 
-## 15. Exercícios (sem resolução)
-
-### Exercício 1 - Comparação técnica
-
-Compara cascata, iterativo e ágil em 8 critérios.
-
-### Exercício 2 - Escolha de metodologia
-
-Para 5 cenários diferentes, escolhe combinação de níveis (N1, N2, N3, N4) e justifica.
-
-### Exercício 3 - Backlog
-
-Cria backlog de 20 itens para "gestão de biblioteca".
-
-### Exercício 4 - Priorização
-
-Classifica backlog em alta/média/baixa prioridade.
-
-### Exercício 5 - Planeamento de iterações
-
-Divide backlog em 3 iterações com objetivos claros.
-
-### Exercício 6 - Kanban com WIP
-
-Monta quadro Kanban e define limite de tarefas em progresso.
-
-### Exercício 7 - Critérios de aceitação
-
-Escreve critérios de aceitação para 6 tarefas.
-
-### Exercício 8 - Riscos
-
-Lista 10 riscos e medidas preventivas.
-
-### Exercício 9 - Reuniões
-
-Cria roteiro de reunião semanal de 10 min com foco em decisão.
-
-### Exercício 10 - Métricas
-
-Define dashboard simples para acompanhar evolução do projeto.
-
-### Exercício 11 - Gestão de mudança
-
-Pedido novo a meio da sprint: descreve como integrar sem desorganizar.
-
-### Exercício 12 - Diagnóstico
-
-Recebes projeto atrasado e sem método. Propõe plano de recuperação.
-
-### Exercício 13 - Simulação Scrum
-
-Executa sprint curta com equipa e regista eventos.
-
-### Exercício 14 - Retro orientada
-
-Escreve retro com "manter", "melhorar", "parar".
-
-### Exercício 15 - Reflexão
-
-Responde: "Porque metodologia também é competência técnica?".
-
----
-
-## 16. Rubrica de autoavaliação
+## 15. Rubrica de autoavaliação
 
 Pontua de 1 a 5:
 
@@ -702,7 +637,7 @@ Interpretação:
 
 ---
 
-## 17. Checklist de execução metodológica
+## 16. Checklist de execução metodológica
 
 Antes da entrega do projeto:
 
@@ -718,8 +653,8 @@ Se faltarem 2 ou mais itens, o processo ainda está incompleto.
 
 ---
 
-## 18. Changelog
+## 17. Changelog
 
 - **2026-04-14**: reestruturação por níveis (modelo, abordagem, framework/método, ferramentas) para evitar mistura de conceitos.
 - **2026-04-12**: expansão completa do módulo com matriz de decisão, artefactos, métricas, laboratório e avaliação.
-- **2026-02-23**: reescrita detalhada do módulo com foco pedagógico e exercícios sem resolução.
+- **2026-02-23**: reescrita detalhada do módulo com foco pedagógico.

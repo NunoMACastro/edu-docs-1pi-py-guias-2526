@@ -21,10 +21,9 @@
 - [11. Exemplo guiado B - Classificação de temperatura](#11-exemplo-guiado-b---classificação-de-temperatura)
 - [12. Erros comuns e como evitar](#12-erros-comuns-e-como-evitar)
 - [13. Mini-laboratório de pensamento computacional](#13-mini-laboratório-de-pensamento-computacional)
-- [14. Exercícios (sem resolução)](#14-exercícios-sem-resolução)
-- [15. Rubrica de autoavaliação](#15-rubrica-de-autoavaliação)
-- [16. Checklist mental antes de programar](#16-checklist-mental-antes-de-programar)
-- [17. Changelog](#17-changelog)
+- [14. Rubrica de autoavaliação](#14-rubrica-de-autoavaliação)
+- [15. Checklist mental antes de programar](#15-checklist-mental-antes-de-programar)
+- [16. Changelog](#16-changelog)
 
 ---
 
@@ -384,71 +383,7 @@ Entrega:
 
 ---
 
-## 14. Exercícios (sem resolução)
-
-### Exercício 1 - E-P-S básico
-
-Para 8 problemas do dia a dia, identifica Entrada, Processo e Saída.
-
-### Exercício 2 - Decomposição avançada
-
-Decompõe "sistema de biblioteca" em 12 subtarefas com ordem lógica.
-
-### Exercício 3 - Padrões
-
-Identifica padrões comuns em 6 programas simples já disponíveis.
-
-### Exercício 4 - Abstração por níveis
-
-Escreve 3 níveis de descrição para o mesmo problema: utilizador, algoritmo e C.
-
-### Exercício 5 - Algoritmo textual
-
-Cria algoritmo para validação de password com 4 regras.
-
-### Exercício 6 - Pseudocódigo
-
-Escreve pseudocódigo para maior de 4 números com tratamento de empate.
-
-### Exercício 7 - Conversão para C
-
-Implementa o exercício 6 em C com mensagens claras.
-
-### Exercício 8 - Validação de input
-
-Refatora um programa para rejeitar valores fora de intervalo.
-
-### Exercício 9 - Casos de teste
-
-Define 12 testes para um algoritmo de classificação.
-
-### Exercício 10 - Depuração orientada
-
-Programa com bug lógico: descreve hipótese, teste e correção.
-
-### Exercício 11 - Aplicação prática
-
-Escolhe um problema real e aplica os 4 princípios em relatório curto.
-
-### Exercício 12 - Revisão crítica
-
-Recebes solução funcional mas confusa. Reescreve com melhor pensamento computacional.
-
-### Exercício 13 - Comparação de soluções
-
-Resolve o mesmo problema por duas abordagens e compara clareza.
-
-### Exercício 14 - Planeamento pré-código
-
-Proibido programar durante 20 min: prepara todo o plano antes de escrever C.
-
-### Exercício 15 - Reflexão
-
-Responde: "Porque pensar antes de codificar acelera o desenvolvimento?".
-
----
-
-## 15. Rubrica de autoavaliação
+## 14. Rubrica de autoavaliação
 
 Pontua de 1 a 5:
 
@@ -468,7 +403,7 @@ Interpretação:
 
 ---
 
-## 16. Checklist mental antes de programar
+## 15. Checklist mental antes de programar
 
 Antes de abrir `main.c`, confirma:
 
@@ -484,7 +419,7 @@ Se responderes "não" a 2 ou mais itens, ainda não é hora de programar.
 
 ---
 
-## 17. Changelog
+## 16. Changelog
 
 - **2026-04-12**: expansão completa do módulo com mais profundidade, estratégia operacional, exemplos e laboratório.
-- **2026-02-23**: reescrita completa do módulo com explicação detalhada e exercícios sem resolução.
+- **2026-02-23**: reescrita completa do módulo com explicação detalhada.

@@ -23,10 +23,9 @@
 - [13. Git no ambiente de desenvolvimento](#13-git-no-ambiente-de-desenvolvimento)
 - [14. Tabela de problemas frequentes (troubleshooting)](#14-tabela-de-problemas-frequentes-troubleshooting)
 - [15. Mini-laboratório guiado (completo)](#15-mini-laboratório-guiado-completo)
-- [16. Exercícios (sem resolução)](#16-exercícios-sem-resolução)
-- [17. Rubrica de autoavaliação](#17-rubrica-de-autoavaliação)
-- [18. Checklist final de entrega técnica](#18-checklist-final-de-entrega-técnica)
-- [19. Changelog](#19-changelog)
+- [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
+- [17. Checklist final de entrega técnica](#17-checklist-final-de-entrega-técnica)
+- [18. Changelog](#18-changelog)
 
 ---
 
@@ -35,7 +34,7 @@
 1. Lê as secções 1 a 6 para perceberes o "porquê" técnico.
 2. Executa os comandos das secções 7 a 11 no teu computador.
 3. Faz o mini-laboratório completo da secção 15 sem saltar etapas.
-4. No fim, resolve exercícios da secção 16 por ordem.
+4. No fim, repete o mini-laboratório com variantes e compara os resultados.
 5. Usa a rubrica e checklist para validar se o teu ambiente está realmente sólido.
 
 ---
@@ -759,77 +758,7 @@ Aprendizagem real acontece aqui: erro controlado + diagnóstico.
 
 ---
 
-## 16. Exercícios (sem resolução)
-
-### Exercício 1 - Inventário do ambiente
-
-Regista versões de compilador, make e git. Explica em 5 linhas para que serve cada ferramenta.
-
-### Exercício 2 - Primeiro build limpo
-
-Compila `hello world` com `-Wall -Wextra -std=c11`. Entrega comando usado e evidência de execução.
-
-### Exercício 3 - Anatomia da compilação
-
-Executa `-E`, `-S`, `-c` e explica em texto curto o ficheiro gerado em cada etapa.
-
-### Exercício 4 - Warnings intencionais
-
-Cria 3 warnings diferentes e corrige-os todos. Documenta: warning, causa, correção.
-
-### Exercício 5 - Projeto multi-ficheiro
-
-Separa um programa em pelo menos 2 ficheiros `.c` e 1 `.h` com include guard.
-
-### Exercício 6 - Erro de linker
-
-Provoca `undefined reference` e descreve o processo de resolução.
-
-### Exercício 7 - Makefile funcional
-
-Cria Makefile com targets `debug`, `release`, `run`, `clean`.
-
-### Exercício 8 - Diagnóstico de include path
-
-Provoca erro de header não encontrado e corrige com `-Iinclude`.
-
-### Exercício 9 - Debug com `printf`
-
-Escolhe um bug lógico simples, usa prints de debug e apresenta conclusão.
-
-### Exercício 10 - Debugger com breakpoint
-
-Usa breakpoint numa função e regista o valor de 3 variáveis durante execução.
-
-### Exercício 11 - Perfil de build
-
-Compara binário debug e release: tamanho, comportamento e utilidade.
-
-### Exercício 12 - Sanitizer
-
-Compila com `-fsanitize=address,undefined`, executa e descreve o que observaste.
-
-### Exercício 13 - Git básico aplicado
-
-Inicializa repositório, faz 4 commits com mensagens técnicas claras.
-
-### Exercício 14 - Projeto final curto do módulo
-
-Cria mini aplicação em C com:
-
-- estrutura `src/include/bin`;
-- pelo menos 3 funções próprias;
-- Makefile;
-- README com instruções de compilação/execução;
-- zero warnings no perfil debug.
-
-### Exercício 15 - Reflexão técnica
-
-Responde em 15 a 20 linhas: "Porque um bom ambiente de desenvolvimento reduz bugs antes de eles chegarem ao utilizador?"
-
----
-
-## 17. Rubrica de autoavaliação
+## 16. Rubrica de autoavaliação
 
 Classifica cada critério de 1 (fraco) a 5 (forte):
 
@@ -850,7 +779,7 @@ Interpretação rápida:
 
 ---
 
-## 18. Checklist final de entrega técnica
+## 17. Checklist final de entrega técnica
 
 Antes de considerares o módulo fechado:
 
@@ -867,7 +796,7 @@ Se algum item falhar, não é fim do mundo: é sinal claro do que corrigir prime
 
 ---
 
-## 19. Changelog
+## 18. Changelog
 
 - **2026-04-12**: expansão completa do módulo com foco em profundidade técnica, prática guiada, troubleshooting, laboratório e critérios de autoavaliação.
-- **2026-02-23**: reescrita completa com abordagem detalhada e exercícios sem resolução.
+- **2026-02-23**: reescrita completa com abordagem detalhada.

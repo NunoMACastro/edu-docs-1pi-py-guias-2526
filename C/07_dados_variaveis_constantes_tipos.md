@@ -67,37 +67,192 @@ char inicial = 'A';
 
 ## 3. Tipos de dados simples em C
 
-- `char`: 1 carácter.
-- `int`: inteiro.
-- `float`: decimal com precisão simples.
-- `double`: decimal com precisão maior.
+Em C, o tipo define:
 
-Qual usar?
+- que tipo de valor a variável guarda;
+- quanto espaço de memória ocupa;
+- intervalo de valores possível;
+- como esse valor é interpretado nas operações.
 
-- contagens: `int`;
-- medições comuns: `float`;
-- cálculos mais sensíveis: `double`.
+### 3.1 Inteiros
+
+Tipos principais para números sem parte decimal:
+
+- `short int` (ou `short`)
+- `int`
+- `long int` (ou `long`)
+- `long long int` (ou `long long`)
+
+Versões com sinal:
+
+- `signed` (permite negativos e positivos)
+- `unsigned` (apenas zero e positivos, com intervalo máximo maior)
+
+Exemplo:
+
+```c
+short ano = 2026;
+int alunos = 28;
+unsigned int tentativas = 3;
+long long populacao = 10500000LL;
+```
+
+Limites de cada int:
+
+| Tipo        | Intervalo (signed)                                     | Intervalo (unsigned)           |
+| ----------- | ------------------------------------------------------ | ------------------------------ |
+| `short`     | -32,768 a 32,767                                       | 0 a 65,535                     |
+| `int`       | -2,147,483,648 a 2,147,483,647                         | 0 a 4,294,967295               |
+| `long`      | -2,147,483,648 a 2,147,483,647                         | 0 a 4,294,967295               |
+| `long long` | -9,223,372,036,854,775,808 a 9,223,372,036,854,775,807 | 0 a 18,446,744,073,709,551,615 |
+
+### 3.2 Reais (vírgula flutuante)
+
+Tipos para valores com casas decimais:
+
+- `float`: precisão simples (aprox. 6 a 7 algarismos significativos);
+- `double`: precisão dupla (aprox. 15 a 16 algarismos significativos);
+- `long double`: precisão ainda maior (depende do compilador/plataforma).
+
+O que é `double` na prática:
+
+- é um tipo decimal mais preciso que `float`;
+- reduz erros de arredondamento em cálculos mais exigentes;
+- é normalmente a escolha padrão para cálculos científicos e médias mais sensíveis.
+
+Exemplo:
+
+```c
+float temperatura = 21.5f;     // nota o sufixo f
+double media = 14.7564231;     // mais precisão
+long double constante = 3.141592653589793238L;
+```
+
+### 3.3 Caracteres e texto
+
+- `char`: guarda um único carácter (ex.: `'A'`, `'7'`, `'\n'`);
+- string em C: array de `char` terminado por `'\0'`.
+
+Exemplo:
+
+```c
+char inicial = 'N';
+char nome[] = "Nuno";
+```
+
+### 3.4 Lógicos e tipo sem valor
+
+- `_Bool` (ou `bool` com `#include <stdbool.h>`): representa verdadeiro/falso;
+- `void`: significa "sem valor" (ex.: função que não devolve resultado).
+
+Exemplo:
+
+```c
+#include <stdbool.h>
+bool ativo = true;
+```
+
+### 3.5 Nota sobre tamanhos
+
+O tamanho em bytes pode variar com sistema e compilador. Regra segura:
+
+- não assumir tamanho fixo de `int`, `long`, etc.;
+- usar `sizeof(tipo)` para confirmar quando necessário.
+
+Exemplo:
+
+```c
+printf("int: %zu bytes\n", sizeof(int));
+printf("double: %zu bytes\n", sizeof(double));
+```
+
+Qual usar no dia a dia:
+
+- contagens e índices: `int`;
+- valores decimais simples: `float` ou `double`;
+- cálculos com mais exigência de precisão: `double`;
+- estados lógico/sim-não: `bool`;
+- texto: `char` e `char[]`.
 
 ---
 
 ## 4. Constantes: `const` e `#define`
 
-### `const`
+Ambos servem para evitar "números mágicos", mas funcionam de forma diferente.
+
+### 4.1 `const` (constante com tipo)
+
+`const` cria uma variável cujo valor não deve ser alterado.
 
 ```c
 const int MAX_ALUNOS = 30;
+const double PI = 3.141592653589793;
 ```
 
-### `#define`
+Características:
+
+- tem tipo (`int`, `double`, etc.);
+- é validado pelo compilador com mais segurança;
+- respeita escopo (global ou local da função).
+
+Exemplo de erro detetado:
 
 ```c
-#define PI 3.1415926535
+const int LIMITE = 10;
+// LIMITE = 20; // erro: tentativa de alterar constante
 ```
 
-Uso recomendado:
+### 4.2 `#define` (substituição do pré-processador)
 
-- valores fixos e significativos;
-- evitar "números mágicos" no código.
+`#define` não cria variável. Ele substitui texto antes da compilação.
+
+```c
+#define PI 3.141592653589793
+#define MAX_NOME 64
+```
+
+Características:
+
+- não tem tipo próprio;
+- não ocupa "nome de variável" no código compilado;
+- costuma ser usado para constantes simples, flags de compilação e macros.
+
+### 4.3 Diferença prática rápida
+
+- `const`: constante tipada e mais segura.
+- `#define`: substituição textual, mais flexível, mas mais propensa a erro.
+
+Regra pedagógica útil:
+
+- para valores fixos numéricos, prefere `const`;
+- usa `#define` quando precisas mesmo de macro textual.
+
+### 4.4 Cuidado com macros sem parênteses
+
+Macro mal definida:
+
+```c
+#define DOBRO(x) x * 2
+```
+
+Uso:
+
+```c
+int r = DOBRO(3 + 1); // vira 3 + 1 * 2 -> 5 (inesperado)
+```
+
+Forma correta:
+
+```c
+#define DOBRO(x) ((x) * 2)
+```
+
+### 4.5 Boas práticas
+
+1. Usa nomes significativos e em maiúsculas para macros (`MAX_BUFFER`).
+2. Prefere `const` para constantes de valor.
+3. Evita macros complexas no início; prioriza clareza.
+4. Centraliza constantes no topo do ficheiro ou em headers.
 
 ---
 

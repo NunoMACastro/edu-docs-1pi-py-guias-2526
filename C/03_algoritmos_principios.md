@@ -22,10 +22,9 @@
 - [12. Exemplo guiado C - Contagem de positivos/negativos/zeros](#12-exemplo-guiado-c---contagem-de-positivosnegativoszeros)
 - [13. Erros comuns e correções](#13-erros-comuns-e-correções)
 - [14. Mini-laboratório de algoritmia](#14-mini-laboratório-de-algoritmia)
-- [15. Exercícios (sem resolução)](#15-exercícios-sem-resolução)
-- [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
-- [17. Checklist de qualidade algorítmica](#17-checklist-de-qualidade-algorítmica)
-- [18. Changelog](#18-changelog)
+- [15. Rubrica de autoavaliação](#15-rubrica-de-autoavaliação)
+- [16. Checklist de qualidade algorítmica](#16-checklist-de-qualidade-algorítmica)
+- [17. Changelog](#17-changelog)
 
 ---
 
@@ -384,71 +383,7 @@ Passos:
 
 ---
 
-## 15. Exercícios (sem resolução)
-
-### Exercício 1 - Definições
-
-Define: algoritmo, finitude, precisão, generalidade, correção.
-
-### Exercício 2 - Classificação de estruturas
-
-Para 15 blocos de pseudocódigo, identifica sequência/seleção/repetição.
-
-### Exercício 3 - Pseudocódigo básico
-
-Cria pseudocódigo para área de retângulo, par/ímpar e conversão de tempo.
-
-### Exercício 4 - Implementação em C
-
-Converte os 3 algoritmos do exercício 3 para C.
-
-### Exercício 5 - Máximo e mínimo
-
-Lê 6 valores e determina maior, menor e diferença entre ambos.
-
-### Exercício 6 - Acumuladores
-
-Calcula média de `n` números com validação de `n`.
-
-### Exercício 7 - Contadores
-
-Conta quantos valores são múltiplos de 3 numa sequência.
-
-### Exercício 8 - Eficiência introdutória
-
-Compara duas abordagens para o mesmo problema e descreve custos qualitativos.
-
-### Exercício 9 - Trace obrigatório
-
-Faz trace manual completo de algoritmo com ciclo e seleção.
-
-### Exercício 10 - Debug lógico
-
-Recebes algoritmo que "quase" funciona. Identifica erro de limite e corrige.
-
-### Exercício 11 - Casos de teste
-
-Define 12 testes para um algoritmo de classificação de notas.
-
-### Exercício 12 - Refatoração
-
-Recebes código duplicado. Reescreve com melhor estrutura algorítmica.
-
-### Exercício 13 - Robustez
-
-Adiciona tratamento de entradas inválidas a programa já existente.
-
-### Exercício 14 - Comparação `for` vs `while`
-
-Resolve um problema com os dois ciclos e discute legibilidade.
-
-### Exercício 15 - Reflexão
-
-Responde: "Porque um algoritmo pode parecer certo e ainda falhar?".
-
----
-
-## 16. Rubrica de autoavaliação
+## 15. Rubrica de autoavaliação
 
 Pontua de 1 a 5:
 
@@ -468,7 +403,7 @@ Interpretação:
 
 ---
 
-## 17. Checklist de qualidade algorítmica
+## 16. Checklist de qualidade algorítmica
 
 Antes de considerar algoritmo concluído:
 
@@ -482,7 +417,7 @@ Antes de considerar algoritmo concluído:
 
 ---
 
-## 18. Changelog
+## 17. Changelog
 
 - **2026-04-12**: expansão completa do módulo com foco em correção, trace, eficiência inicial, laboratório e avaliação.
-- **2026-02-23**: reescrita detalhada do módulo com foco em fundamentos e exercícios sem resolução.
+- **2026-02-23**: reescrita detalhada do módulo com foco em fundamentos.

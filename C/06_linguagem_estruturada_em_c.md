@@ -16,7 +16,7 @@
 - [6. Legibilidade e indentação](#6-legibilidade-e-indentação)
 - [7. Exemplo guiado de programa estruturado](#7-exemplo-guiado-de-programa-estruturado)
 - [8. Erros comuns](#8-erros-comuns)
-- [9. Changelog](#10-changelog)
+- [9. Changelog](#9-changelog)
 
 ---
 
@@ -160,4 +160,4 @@ O que este exemplo ensina:
 
 ## 9. Changelog
 
-- **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.
+- **2026-02-23**: reescrita completa com explicação detalhada.
