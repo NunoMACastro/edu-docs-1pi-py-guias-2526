@@ -14,7 +14,7 @@
 - [4. Constantes: `const` e `#define`](#4-constantes-const-e-define)
 - [5. Expressões e atribuições](#5-expressões-e-atribuições)
 - [6. Conversões de tipo (casting)](#6-conversões-de-tipo-casting)
-- [7. Especificadores de formato (`printf`/`scanf`)](#7-especificadores-de-formato-printfscanf)
+- [7. Resumo de IO formatada e ponte para modulo 07A](#7-resumo-de-io-formatada-e-ponte-para-modulo-07a)
 - [8. Exemplo guiado](#8-exemplo-guiado)
 - [9. Erros comuns](#9-erros-comuns)
 - [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
@@ -25,7 +25,7 @@
 ## 0. Como usar este módulo
 
 1. Memoriza os tipos mais usados (`int`, `float`, `double`, `char`).
-2. Pratica `printf` e `scanf` com formatos corretos.
+2. Revê o resumo de I/O neste módulo e aprofunda no módulo `07A`.
 3. Treina validação básica de dados.
 
 ---
@@ -133,25 +133,33 @@ Sem cast, `a / b` seria divisão inteira (`2`).
 
 ---
 
-## 7. Especificadores de formato (`printf`/`scanf`)
+## 7. Resumo de IO formatada e ponte para modulo 07A
 
-Comuns:
+Resumo mínimo neste módulo:
 
-- `%d` para `int`
-- `%f` para `float`
-- `%lf` para `double` em `scanf`
-- `%c` para `char`
-- `%s` para string (`char[]`)
+- `printf` imprime valores formatados (ex.: `%d`, `%f`, `%c`, `%s`);
+- `scanf` lê valores e precisa de endereço (`&`) para variáveis simples;
+- formatos errados em `printf`/`scanf` geram warnings e bugs;
+- validar retorno de `scanf` evita usar dados inválidos.
 
-Exemplo:
+Exemplo curto:
 
 ```c
 int idade;
-scanf("%d", &idade);
-printf("Idade: %d\n", idade);
+if (scanf("%d", &idade) == 1) {
+    printf("Idade: %d\n", idade);
+}
 ```
 
-Cuidado: `scanf` precisa de endereço (`&`) para variáveis simples.
+Para explicação detalhada de:
+
+- `printf` (largura, precisão, alinhamento e `%p`);
+- `scanf` (retorno, whitespace, newline e validação robusta);
+- `&` e `*` (valor vs endereço) e comparação `scanf("%s")` vs `fgets`;
+
+consulta:
+
+- [07a_entrada_saida_formatada_printf_scanf_e_enderecos.md](./07a_entrada_saida_formatada_printf_scanf_e_enderecos.md)
 
 ---
 
@@ -171,7 +179,7 @@ int main(void) {
     double area = PI * raio * raio;
 
     printf("Ano: %d\n", ANO);
-    printf("Area: %.2lf\n", area);
+    printf("Area: %.2f\n", area);
     return 0;
 }
 ```
@@ -250,3 +258,4 @@ Escreve uma reflexão curta: em que situações um `int` pode causar erro silenc
 
 - **2026-02-23**: reescrita completa com abordagem detalhada, pedagógica e exercícios sem resolução.
 - **2026-04-14**: revisão dos exercícios
+- **2026-04-15**: secção de I/O reduzida para resumo e ligação para o novo módulo `07A`.

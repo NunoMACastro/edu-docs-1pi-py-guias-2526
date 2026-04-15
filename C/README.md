@@ -35,6 +35,7 @@ Cada módulo inclui:
 ├── 05_ambiente_de_desenvolvimento_c.md
 ├── 06_linguagem_estruturada_em_c.md
 ├── 07_dados_variaveis_constantes_tipos.md
+├── 07a_entrada_saida_formatada_printf_scanf_e_enderecos.md
 ├── 08_operadores_em_c.md
 ├── 09_estruturas_de_controlo_em_c.md
 ├── 10_subprogramas_funcoes_e_parametros.md
@@ -75,40 +76,43 @@ Cada módulo inclui:
 7. [Dados, variáveis, constantes e tipos](./07_dados_variaveis_constantes_tipos.md)  
    Objetivo: usar tipos simples e expressões corretamente.
 
-8. [Operadores em C](./08_operadores_em_c.md)  
+8. [Entrada/saída formatada: `printf`, `scanf`, `&` e `*`](./07a_entrada_saida_formatada_printf_scanf_e_enderecos.md)  
+   Objetivo: dominar I/O formatada com validação e compreender o uso de endereços.
+
+9. [Operadores em C](./08_operadores_em_c.md)  
    Objetivo: aplicar operadores aritméticos, relacionais, lógicos e de atribuição.
 
-9. [Estruturas de controlo](./09_estruturas_de_controlo_em_c.md)  
+10. [Estruturas de controlo](./09_estruturas_de_controlo_em_c.md)  
    Objetivo: usar decisões e ciclos com segurança.
 
-10. [Subprogramas (funções e parâmetros)](./10_subprogramas_funcoes_e_parametros.md)  
+11. [Subprogramas (funções e parâmetros)](./10_subprogramas_funcoes_e_parametros.md)  
     Objetivo: modularizar código e compreender escopo e passagem por parâmetros.
 
-11. [Funcionalidades de editor de texto](./11_funcionalidades_editor_de_texto.md)  
+12. [Funcionalidades de editor de texto](./11_funcionalidades_editor_de_texto.md)  
     Objetivo: melhorar produtividade básica no editor.
 
-12. [Estruturas estáticas: strings, arrays e matrizes](./12_estruturas_estaticas_strings_arrays_matrizes.md)  
+13. [Estruturas estáticas: strings, arrays e matrizes](./12_estruturas_estaticas_strings_arrays_matrizes.md)  
     Objetivo: manipular dados estáticos com segurança.
 
-13. [Estruturas compostas: `struct`, `union`, `enum`](./13_estruturas_compostas_struct_union_enum.md)  
+14. [Estruturas compostas: `struct`, `union`, `enum`](./13_estruturas_compostas_struct_union_enum.md)  
     Objetivo: representar dados complexos e estados.
 
-14. [Estruturas dinâmicas e apontadores](./14_estruturas_dinamicas_apontadores.md)  
+15. [Estruturas dinâmicas e apontadores](./14_estruturas_dinamicas_apontadores.md)  
     Objetivo: gerir memória dinâmica e ponteiros com disciplina.
 
-15. [Classes e objetos (contexto em C)](./15_classes_e_objetos_contexto_c.md)  
+16. [Classes e objetos (contexto em C)](./15_classes_e_objetos_contexto_c.md)  
     Objetivo: aplicar equivalente de modelação orientada a objetos em C.
 
-16. [Herança e polimorfismo (contexto em C)](./16_heranca_e_polimorfismo_contexto_c.md)  
+17. [Herança e polimorfismo (contexto em C)](./16_heranca_e_polimorfismo_contexto_c.md)  
     Objetivo: compreender e simular estes conceitos em C.
 
-17. [Exceções e tratamento de erros em C](./17_excecoes_e_tratamento_de_erros_em_c.md)  
+18. [Exceções e tratamento de erros em C](./17_excecoes_e_tratamento_de_erros_em_c.md)  
     Objetivo: implementar tratamento de erro robusto sem `try/catch`.
 
-18. [Ficheiros: acesso e manipulação](./18_ficheiros_acesso_e_manipulacao_em_c.md)  
+19. [Ficheiros: acesso e manipulação](./18_ficheiros_acesso_e_manipulacao_em_c.md)  
     Objetivo: persistir dados em ficheiros texto/binário com validação.
 
-19. [Editor de texto: produtividade e debug](./19_editor_texto_produtividade_e_debug.md)  
+20. [Editor de texto: produtividade e debug](./19_editor_texto_produtividade_e_debug.md)  
     Objetivo: consolidar práticas avançadas de depuração e manutenção.
 
 ---
@@ -128,11 +132,12 @@ Nestes materiais:
 ## Rota de estudo recomendada
 
 1. `01` a `05` (base de engenharia e ambiente)
-2. `06` a `10` (núcleo da linguagem C)
-3. `11` + `19` (produtividade e debug no editor)
-4. `12` a `14` (dados em memória: estáticos e dinâmicos)
-5. `15` a `17` (conceitos avançados em contexto C)
-6. `18` (ficheiros e persistência)
+2. `06`, `07` e `07a` (núcleo da linguagem C + I/O formatada com endereços)
+3. `08` a `10` (operadores, controlo e funções)
+4. `11` + `19` (produtividade e debug no editor)
+5. `12` a `14` (dados em memória: estáticos e dinâmicos)
+6. `15` a `17` (conceitos avançados em contexto C e robustez)
+7. `18` (ficheiros e persistência; recomendado após base sólida de input/output)
 
 ---
 
@@ -150,3 +155,4 @@ Nestes materiais:
 
 - **2026-02-23**: reestruturação completa da pasta `C` para versão detalhada e pedagógica.
 - **2026-02-23**: todos os módulos atualizados com exercícios sem resolução (apenas enunciados).
+- **2026-04-15**: adicionado módulo `07a` para aprofundar `printf`/`scanf`, `&` e `*`, com atualização da rota de estudo.
