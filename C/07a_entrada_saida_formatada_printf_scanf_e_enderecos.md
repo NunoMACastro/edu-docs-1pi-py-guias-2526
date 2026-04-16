@@ -300,6 +300,28 @@ Observação:
 - palavra única (ex.: código curto): `scanf("%Ns", ...)` com limite;
 - nome completo, morada, frase: `fgets`.
 
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char nome[100];
+
+    printf("Nome completo: ");
+    if (fgets(nome, sizeof nome, stdin) == NULL) {
+        printf("Erro na leitura.\n");
+        return 1;
+    }
+
+    // remove o '\n' final, se existir
+    nome[strcspn(nome, "\n")] = '\0';
+
+    printf("Leste: %s\n", nome);
+    return 0;
+}
+```
+
 ---
 
 ## 8. Segurança e robustez na entrada de dados
