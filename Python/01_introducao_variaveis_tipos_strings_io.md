@@ -52,7 +52,7 @@ Há duas formas principais de experimentar Python:
    Escreves um comando, carregas em Enter e vês logo o resultado.  
    Exemplo na consola de Python:
 
-    ```python
+    ```text
     >>> 2 + 3
     5
     >>> "Olá" * 3

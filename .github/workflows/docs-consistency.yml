@@ -1,0 +1,28 @@
+name: docs-consistency
+
+on:
+  push:
+    paths:
+      - "**/*.md"
+      - "scripts/validate_docs.py"
+      - ".github/workflows/docs-consistency.yml"
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "scripts/validate_docs.py"
+      - ".github/workflows/docs-consistency.yml"
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate docs (PT base)
+        run: python3 scripts/validate_docs.py

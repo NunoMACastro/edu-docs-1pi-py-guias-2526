@@ -319,7 +319,7 @@ print(numero)
 
 ---
 
-## 10) Usando excepções juntamente com módulos
+## 9) Usando excepções juntamente com módulos
 
 Podemos e devemos integrar excepções em todos os pontos de quebra do código, mesmo usando módulos.
 
@@ -363,7 +363,7 @@ def main():
 main()
 ```
 
-## 11) Exercícios
+## 10) Exercícios
 
 ### Exercício 1 - Primeiro módulo
 
@@ -796,14 +796,6 @@ if __name__ == "__main__":
 
 ---
 
-## 10) Changelog
+## 11) Changelog
 
 - `2025-02-XX` · Criacao inicial do ficheiro com introducao a modulos, imports e organizacao de projetos.
-
-```
-
-```
-
-```
-
-```

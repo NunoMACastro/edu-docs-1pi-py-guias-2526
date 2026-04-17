@@ -16,8 +16,10 @@
 -   [6. `else` e `finally` · \[EXTRA / curiosidade\]](#6-else-e-finally--extra--curiosidade)
 -   [7. Lançar erros com `raise` (e `assert`) · \[EXTRA\]](#7-lançar-erros-com-raise-e-assert--extra)
 -   [8. Boas práticas ao tratar erros](#8-boas-práticas-ao-tratar-erros)
--   [9. Exercícios - Exceções e Tratamento de Erros](#9-exercícios---exceções-e-tratamento-de-erros)
--   [10. Changelog](#10-changelog)
+-   [9. Padrões comuns de exceções](#9-padrões-comuns-de-exceções)
+-   [10. Lista de erros comuns em Python](#10-lista-de-erros-comuns-em-python)
+-   [11. Exercícios - Exceções e Tratamento de Erros](#11-exercícios---exceções-e-tratamento-de-erros)
+-   [12. Changelog](#12-changelog)
 
 ---
 
@@ -51,7 +53,7 @@ São erros em que o Python **nem sequer consegue começar a correr** o programa.
 
 Exemplo:
 
-```python
+```text
 if x > 0
     print("positivo")
 ```
@@ -327,7 +329,7 @@ Podemos usar:
 
 ```python
 try:
-    # código
+    pass  # código
 except Exception as e:
     print("Ocorreu um erro:", e)
 ```
@@ -994,10 +996,10 @@ def main():
         except ValueError:
             print("Por favor escreve um número inteiro válido.")
 main()
+```
 
 ---
 
-## 10. Changelog
+## 12. Changelog
 
 -   `2025-02-XX` · Criação inicial do ficheiro com introdução a exceções, leitura de mensagens de erro e `try`/`except` básico.
-```

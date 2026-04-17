@@ -1,6 +1,6 @@
 # Material de Apoio — PI (10.º Ano)
 
-Materiais de apoio em **Markdown** para aulas de Programação e Git do **10.º ano (Curso Profissional de Técnico de Programação de Informática)**. O conteúdo está organizado por temas e pensado para servir como apontamentos, exercícios e guias de referência.
+Materiais de apoio em **Markdown** para Programação no **10.º ano (Curso Profissional de Técnico de Programação de Informática)**.
 
 ## Conteúdo
 
@@ -8,60 +8,57 @@ Materiais de apoio em **Markdown** para aulas de Programação e Git do **10.º 
 
 [Ver sub-readme](./Python/README.md)
 
-Apontamentos e exercícios graduais de Python, com ficha de consulta rápida e um projeto final.
+Apontamentos e exercícios graduais, ficha de consulta e projeto final.
 
-- [`Python/00_formulario_apoio.md`](./Python/00_formulario_apoio.md) — ficha de consulta rápida para testes.
-- [`Python/00_exercicios_de_preparacao.md`](./Python/00_exercicios_de_preparacao.md) — exercícios de revisão (funções e JSON).
-- [`Python/01_introducao_variaveis_tipos_strings_io.md`](./Python/01_introducao_variaveis_tipos_strings_io.md) — primeiros passos, tipos e I/O.
-- [`Python/02_operadores_e_controlo_de_fluxo_if_ciclos.md`](./Python/02_operadores_e_controlo_de_fluxo_if_ciclos.md) — operadores, decisões e ciclos.
-- [`Python/03_listas_dicionarios_estruturas_aninhadas.md`](./Python/03_listas_dicionarios_estruturas_aninhadas.md) — listas, dicionários e estruturas aninhadas.
-- [`Python/04_funcoes_do_basico_ao_avancado.md`](./Python/04_funcoes_do_basico_ao_avancado.md) — funções do essencial ao extra.
-- [`Python/05_algoritmos_e_padroes_de_programacao.md`](./Python/05_algoritmos_e_padroes_de_programacao.md) — padrões de resolução e decomposição de problemas.
-- [`Python/06_slicing_list_comprehensions.md`](./Python/06_slicing_list_comprehensions.md) — slicing e compreensões de lista.
-- [`Python/07_ficheiros_texto_json_csv.md`](./Python/07_ficheiros_texto_json_csv.md) — ficheiros de texto, JSON e CSV.
-- [`Python/08_excecoes_e_tratamento_de_erros.md`](./Python/08_excecoes_e_tratamento_de_erros.md) — exceções e tratamento de erros.
-- [`Python/09_modulos_e_organizacao_de_projetos.md`](./Python/09_modulos_e_organizacao_de_projetos.md) — módulos e organização de projetos.
-- [`Python/10_estruturas_e_algoritmos_classicos.md`](./Python/10_estruturas_e_algoritmos_classicos.md) — pesquisa e ordenação básicas.
-- [`Python/11_projeto_final_python.md`](./Python/11_projeto_final_python.md) — projeto final (quiz em consola).
+- [`Python/README.md`](./Python/README.md) — índice completo do percurso Python.
+- [`Python/11_projeto_final_python.md`](./Python/11_projeto_final_python.md) — enunciado do projeto final.
+- [`Python/00_exercicios_de_recuperacao.md`](./Python/00_exercicios_de_recuperacao.md) — exercícios extra de recuperação/consolidação.
 
 ### C
 
 [Ver sub-readme](./C/README.md)
 
-Apontamentos e exercícios graduais de C alinhados ao programa, desde fundamentos de engenharia de software até memória dinâmica e ficheiros.
+Percurso completo de C, de fundamentos até ficheiros, robustez e debug.
 
-- [`C/README.md`](./C/README.md) — índice completo dos 19 módulos.
+- [`C/README.md`](./C/README.md) — índice completo dos **20 módulos**.
+
+### Memória e Execução
+
+[Ver sub-readme](./Memoria/README.md)
+
+Módulos sobre hardware base, RAM/ROM, execução Python, heap/stack e complexidade.
+
+- [`Memoria/README.md`](./Memoria/README.md) — guia de estudo.
+- [`Memoria/teste_memoria_10ano.md`](./Memoria/teste_memoria_10ano.md) — versão de teste.
+- [`Memoria/teste_memoria_10ano_v2.md`](./Memoria/teste_memoria_10ano_v2.md) — versão alternativa.
 
 ### Git
 
 - [`Git/git-guia.md`](./Git/git-guia.md) — guia prático com comandos e fluxo básico.
 - [`Git/template-gitignore.md`](./Git/template-gitignore.md) — template `.gitignore` para projetos escolares.
 
-## Estrutura rápida
+### Vários
 
-```text
-.
-├── C
-│   ├── README.md
-│   ├── 01_ciclo_de_vida_do_software.md
-│   ├── ...
-│   └── 19_editor_texto_produtividade_e_debug.md
-├── Git
-│   ├── git-guia.md
-│   └── template-gitignore.md
-└── Python
-    ├── README.md
-    ├── 00_formulario_apoio.md
-    ├── 00_exercicios_de_preparacao.md
-    ├── 01_introducao_variaveis_tipos_strings_io.md
-    ├── 02_operadores_e_controlo_de_fluxo_if_ciclos.md
-    ├── 03_listas_dicionarios_estruturas_aninhadas.md
-    ├── 04_funcoes_do_basico_ao_avancado.md
-    ├── 05_algoritmos_e_padroes_de_programacao.md
-    ├── 06_slicing_list_comprehensions.md
-    ├── 07_ficheiros_texto_json_csv.md
-    ├── 08_excecoes_e_tratamento_de_erros.md
-    ├── 09_modulos_e_organizacao_de_projetos.md
-    ├── 10_estruturas_e_algoritmos_classicos.md
-    └── 11_projeto_final_python.md
+- [`Varios/terminal-consola-guia.md`](./Varios/terminal-consola-guia.md) — terminal/consola.
+- [`Varios/markdown-guia.md`](./Varios/markdown-guia.md) — Markdown.
+
+### Materiais de Professor
+
+Documentos de avaliação e feedback pedagógico (não são fichas de aluno):
+
+- [`Avaliacoes/Python/`](./Avaliacoes/Python/) — avaliações de repositórios/projetos.
+- [`modulo_804_projeto_recuperacao.md`](./modulo_804_projeto_recuperacao.md) — proposta de trabalho de recuperação.
+
+## Validação dos docs
+
+Para validar consistência editorial/técnica do conteúdo PT base:
+
+```bash
+python3 scripts/validate_docs.py
 ```
+
+O comando valida:
+
+- paridade de code fences;
+- links relativos quebrados;
+- sintaxe de blocos `python`.

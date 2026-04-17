@@ -275,8 +275,10 @@ Cenários em que o GC atua:
       Por exemplo:
 
     ```python
-        def f(): temp = [1, 2, 3]
-        f()
+    def f():
+        temp = [1, 2, 3]
+
+    f()
     ```
 
     Depois de `f()` terminar, a lista `[1, 2, 3]` fica órfã (sem referências) e pode ser removida. O GC é responsável por identificar e limpar esses objetos órfãos.
@@ -285,8 +287,9 @@ Cenários em que o GC atua:
     - O GC também é responsável por detectar e limpar ciclos de referência, onde um grupo de objetos se referenciam mutuamente mas não são acessíveis a partir do programa.
       Por exemplo:
     ```python
-        a = [] a.append(a)
-        # cria um ciclo de referência
+    a = []
+    a.append(a)
+    # cria um ciclo de referência
     ```
     Aqui temos uma lista `a` que contém uma referência para si mesma. Mesmo que façamos `del a`, o objeto lista ainda tem uma referência para si mesmo, então o refcount não chega a zero. O GC entra em ação para identificar e limpar esse ciclo de referência.
 

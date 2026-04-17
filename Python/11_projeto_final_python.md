@@ -48,11 +48,18 @@ Uma aplicação com:
 - Organizar o projeto em **módulos** (mais do que 1 ficheiro `.py`)
 - Guardar pontuações num ficheiro (ex.: `pontuacoes.json`) para manter histórico
 
+### Uso de IA (regra deste projeto)
+
+- É permitido usar IA **apenas** para ajudar a gerar dados de perguntas (`perguntas.json`).
+- Código, planificação (`PLANIFICACAO.md`) e documentação técnica devem ser autoria do grupo.
+- Qualquer uso de IA para dados deve ser declarado no `README.md`/relatório final.
+
 ---
 
 ## 4) Ficheiro de perguntas (JSON)
 
-Devem criar um ficheiro JSON com perguntas para o jogo. Depois de terem uma estrutura para o ficheiro, podem pedir a um agente de IA (ex.: ChatGPT) para gerar perguntas automaticamente.
+Devem criar um ficheiro JSON com perguntas para o jogo.  
+Depois de terem uma estrutura para o ficheiro, podem usar IA (ex.: ChatGPT) **somente** para gerar dados de perguntas.
 
 ### Estrutura do JSON (schema esperado)
 
@@ -292,6 +299,7 @@ Entregar o link do repositório GitHub com:
     - como executar
     - funcionalidades implementadas
     - extras feitos
+    - declaração de uso de IA (se foi usada na geração de `perguntas.json`)
 
 ---
 
@@ -316,4 +324,4 @@ No fim da Fase 1, o grupo deve conseguir:
 
 ### Entrega do projeto final
 
-Todos os ficheiros e o md de planificação devem ser entregues via Guithub até à data definida pelo professor.
+Todos os ficheiros e o md de planificação devem ser entregues via GitHub até à data definida pelo professor.

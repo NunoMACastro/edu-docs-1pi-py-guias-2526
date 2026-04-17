@@ -440,7 +440,7 @@ else:
     print(f"A temperatura {temperatura}°C é maior do que 30. Está muito quente!")
 ```
 
-## Exercício 16
+## Exercício 15
 
 Cria um programa que:
 
@@ -486,7 +486,7 @@ else:
     print(f"O número {n} não é múltiplo de 3 nem de 5.")
 ```
 
-## Exercício 17
+## Exercício 16
 
 Cria um programa que:
 
@@ -505,7 +505,7 @@ else:
         print(i)
 ```
 
-## Exercício 18
+## Exercício 17
 
 Cria um programa que:
 
@@ -526,7 +526,7 @@ else:
         print(f"{n} x {i} = {resultado}")
 ```
 
-## Exercício 19
+## Exercício 18
 
 Cria um programa que:
 
@@ -545,7 +545,7 @@ else:
         print(i)
 ```
 
-## Exercício 20
+## Exercício 19
 
 Cria um programa que:
 
@@ -564,7 +564,7 @@ for letra in nome:
 print(f"A letra 'a' aparece {contador_a} vezes no nome {nome}.")
 ```
 
-## Exercício 21
+## Exercício 20
 
 Cria um programa que:
 
@@ -590,7 +590,7 @@ for n in numeros:
         print(f"O número {n} é ímpar.")
 ```
 
-## Exercício 22
+## Exercício 21
 
 Cria um programa que:
 
@@ -612,7 +612,7 @@ for palavra in palavras:
     print(f"A palavra '{palavra}' tem {comprimento} letras.")
 ```
 
-## Exercício 23
+## Exercício 22
 
 Cria um programa que:
 
@@ -634,7 +634,7 @@ for n in numeros:
     print(f"O quadrado de {n} é {quadrado}.")
 ```
 
-## Exercício 24
+## Exercício 23
 
 Cria um programa que:
 
@@ -654,7 +654,7 @@ for i in range(1, 11):
 print(f"A tabuada de {n} é: {tabuada}.")
 ```
 
-## Exercício 25
+## Exercício 24
 
 Cria um programa que:
 
@@ -680,7 +680,7 @@ else:
             print(f"A palavra '{palavra}' tem 5 ou menos letras.")
 ```
 
-## Exercício 26
+## Exercício 25
 
 Cria um programa que:
 
@@ -706,7 +706,7 @@ else:
     print(f"Não há palavras que começam com a letra '{letra}'.")
 ```
 
-## Exercício 27
+## Exercício 26
 
 Cria um programa que:
 
@@ -729,7 +729,7 @@ pessoa = {
 print(f"O meu nome é {pessoa['nome']}, tenho {pessoa['idade']} anos e vivo em {pessoa['cidade']}.")
 ```
 
-## Exercício 28
+## Exercício 27
 
 Cria um programa que:
 
@@ -751,7 +751,7 @@ pessoa["cidade"] = input("Introduz a tua cidade: ")
 print(f"Foi inserido o nome {pessoa['nome']}, a idade {pessoa['idade']} e a cidade {pessoa['cidade']} no dicionário.")
 ```
 
-## Exercício 29
+## Exercício 28
 
 Cria um programa que:
 
@@ -791,7 +791,7 @@ print(f"O número mínimo é: {minimo}.")
 print(f"A média dos números é: {media}.")
 ```
 
-## Exercício 30
+## Exercício 29
 
 Cria um programa que:
 
@@ -834,7 +834,7 @@ pessoa["cidade"] = cidade
 print(f"A minha cidade é: {pessoa['cidade']}.")
 ```
 
-## Exercício 31
+## Exercício 30
 
 Cria um programa que:
 
@@ -881,7 +881,7 @@ else:
     print(f"O país {pais} não está no dicionário.")
 ```
 
-## Exercício 32
+## Exercício 31
 
 Cria um programa que:
 
@@ -933,7 +933,7 @@ else:
     print(f"A fruta {fruta} com a cor {cor} foi adicionada ao dicionário.")
 ```
 
-## Exercício 33
+## Exercício 32
 
 Cria um programa que:
 
@@ -976,7 +976,7 @@ palavras_mais_frequentes = [palavra for palavra, frequencia in contagem.items() 
 
 ```
 
-## Exercício 34
+## Exercício 33
 
 Cria um programa que:
 
@@ -992,7 +992,7 @@ Cria um programa que:
     - produto com maior faturação
     - lista de produtos esgotados (stock igual a 0)
 
-## Exercício 35
+## Exercício 34
 
 Cria um programa que:
 
@@ -1061,7 +1061,7 @@ else:
     print("Não há alunos em risco.")
 ```
 
-## Exercício 36
+## Exercício 35
 
 Cria um programa que:
 
@@ -1103,7 +1103,7 @@ else:
     print(f"A palavra '{palavra_busca}' não existe no índice.")
 ```
 
-## Exercício 37
+## Exercício 36
 
 Cria um programa que:
 
@@ -1130,7 +1130,7 @@ Cria um programa que:
 
 # Funções
 
-## Exercício 38
+## Exercício 37
 
 Cria um programa que:
 
@@ -1144,35 +1144,35 @@ Cria um programa que:
 1. Defina uma função que receba um nome como parâmetro e diga "Olá, <nome>!".
 2. Chame a função com o teu nome para mostrar a mensagem.
 
-## Exercício 40
+## Exercício 38
 
 Cria um programa que:
 
 1. Defina uma função que receba dois números como parâmetros e mostre a soma, subtração, multiplicação e divisão desses números.
 2. Chame a função com dois números à tua escolha para mostrar os resultados.
 
-## Exercício 41
+## Exercício 39
 
 Cria um programa que:
 
 1. Defina uma função que receba um número como parâmetro e diga se é par ou ímpar.
 2. Chame a função com um número à tua escolha para mostrar a mensagem.
 
-## Exercício 42
+## Exercício 40
 
 Usando a função do exercício anterior, cria um programa que:
 
 1. Peça ao utilizador para introduzir 10 números inteiros e positivos, um de cada vez.
 2. Introduza os números numa lista e, para cada número, chame a função para dizer se é par ou ímpar.
 
-## Exercício 43
+## Exercício 41
 
 Cria um programa que:
 
 1. Defina uma função que receba uma lista de números como parâmetro e mostre o número máximo, mínimo e a média dos números da lista.
 2. Chame a função com uma lista de números à tua escolha para mostrar os resultados.
 
-## Exercício 44
+## Exercício 42
 
 Cria um programa que:
 
@@ -1180,7 +1180,7 @@ Cria um programa que:
 2. A função deve verificar se o produto existe, se há stock suficiente e calcular o total a pagar, atualizando o stock se a compra for válida.
 3. Chame a função com um dicionário de produtos e um produto a comprar para mostrar os resultados.
 
-## Exercício 45
+## Exercício 43
 
 Cria um programa que:
 
@@ -1189,7 +1189,7 @@ Cria um programa que:
 3. Caso o aluno não exista no dicionário, deve mostrar uma mensagem de erro.
 4. Chame a função com um dicionário de alunos e um nome de aluno para
 
-## Exercício 46
+## Exercício 44
 
 Cria um programa que:
 
@@ -1199,7 +1199,7 @@ Cria um programa que:
 
 # Funções com argumentos de tamanho variável
 
-## Exercício 47
+## Exercício 45
 
 Cria um programa que:
 
@@ -1208,35 +1208,35 @@ Cria um programa que:
 
 3. Faz o mesmo para a multiplicação de todos os números recebidos.
 
-## Exercício 48
+## Exercício 46
 
 Cria um programa que:
 
 1. Defina uma função que receba um número variável de argumentos e mostre o número máximo, mínimo e a média dos números recebidos.
 2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
 
-## Exercício 49
+## Exercício 47
 
 Cria um programa que:
 
 1. Defina uma função que receba um número variável de argumentos e mostre quantos são pares e quantos são ímpares.
 2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
 
-## Exercício 50
+## Exercício 48
 
 Cria um programa que:
 
 1. Defina uma função que receba um número variável de argumentos e mostre quantas vezes cada número aparece.
 2. Chame a função com diferentes conjuntos de números para mostrar os resultados.
 
-## Exercício 51
+## Exercício 49
 
 Cria um programa que:
 
 1. Defina uma função que receba um número variável de elementos com chaves e valores (usando `**kwargs`) e mostre cada chave e valor recebido.
 2. Chame a função com diferentes conjuntos de chaves e valores para mostrar os resultados.
 
-## Exercício 52
+## Exercício 50
 
 Cria um programa que:
 

@@ -270,7 +270,7 @@ else:
 
 É muito comum o padrão:
 
-```python
+```text
 if chave in dicionario:
     # usar dicionario[chave]
 else:

@@ -12,6 +12,8 @@ Cada módulo inclui:
 - secção de **exercícios apenas com enunciado** (sem resolução);
 - secção de changelog.
 
+O percurso desta pasta está organizado em **20 módulos** (incluindo o módulo intermédio `07a`).
+
 ---
 
 ## Índice
