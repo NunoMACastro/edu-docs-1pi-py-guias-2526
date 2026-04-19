@@ -18,8 +18,7 @@
 - [8. Exemplo guiado](#8-exemplo-guiado)
 - [9. Boas práticas de robustez](#9-boas-práticas-de-robustez)
 - [10. Erros comuns](#10-erros-comuns)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [11. Changelog](#11-changelog)
 
 ---
 
@@ -175,58 +174,6 @@ int main(void) {
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-### Exercício 1 - Divisão segura
-
-Implementa função de divisão com tratamento de divisor zero.
-
-### Exercício 2 - Entrada robusta
-
-Lê inteiro com validação de formato e intervalo.
-
-### Exercício 3 - Códigos de erro
-
-Define tabela de códigos de erro para um mini projeto.
-
-### Exercício 4 - Ficheiros
-
-Abre ficheiro para leitura e trata todos os possíveis erros básicos.
-
-### Exercício 5 - Memória
-
-Aloca vetor dinâmico com validação e mensagens de erro adequadas.
-
-### Exercício 6 - Propagação
-
-Cria cadeia de 3 funções que propagam erros até `main`.
-
-### Exercício 7 - Limpeza de recursos
-
-Garante que ficheiro e memória são libertados em qualquer caminho de erro.
-
-### Exercício 8 - Refatoração
-
-Melhora um código sem tratamento de erros.
-
-### Exercício 9 - Diagnóstico
-
-Usa `perror` e `errno` em 5 cenários distintos.
-
-### Exercício 10 - Testes de erro
-
-Define 15 testes focados apenas em cenários inválidos.
-
-### Exercício 11 - Mensagens de utilizador
-
-Reescreve mensagens técnicas para linguagem compreensível por utilizador final.
-
-### Exercício 12 - Reflexão
-
-Explica por que tratamento de erros faz parte da qualidade do software.
-
----
-
-## 12. Changelog
+## 11. Changelog
 
 - **2026-02-23**: reescrita completa com abordagem detalhada e exercícios sem resolução.

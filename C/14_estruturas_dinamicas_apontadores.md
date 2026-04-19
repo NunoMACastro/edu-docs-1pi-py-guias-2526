@@ -18,8 +18,7 @@
 - [8. Segurança e boas práticas](#8-segurança-e-boas-práticas)
 - [9. Exemplo guiado](#9-exemplo-guiado)
 - [10. Erros comuns graves](#10-erros-comuns-graves)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [11. Changelog](#11-changelog)
 
 ---
 
@@ -187,58 +186,6 @@ int main(void) {
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-### Exercício 1 - Endereços
-
-Cria programa que mostra valor e endereço de 3 variáveis.
-
-### Exercício 2 - Ponteiro básico
-
-Usa ponteiro para alterar valor de uma variável inteira.
-
-### Exercício 3 - Vetor dinâmico
-
-Aloca vetor de `n` inteiros e calcula soma dos elementos.
-
-### Exercício 4 - `calloc`
-
-Repete exercício 3 usando `calloc` e compara comportamento inicial.
-
-### Exercício 5 - `realloc`
-
-Começa com 5 elementos e expande para 10 com `realloc`.
-
-### Exercício 6 - Struct dinâmica
-
-Aloca dinamicamente uma `struct Aluno` e preenche campos.
-
-### Exercício 7 - Array de structs dinâmico
-
-Aloca turma com tamanho informado pelo utilizador.
-
-### Exercício 8 - Lista ligada (nó único)
-
-Cria nó, atribui valor, imprime e liberta memória.
-
-### Exercício 9 - Lista ligada (vários nós)
-
-Insere 5 nós no fim e percorre para imprimir.
-
-### Exercício 10 - Gestão de memória
-
-Faz auditoria de um código e identifica pontos de leak.
-
-### Exercício 11 - Segurança
-
-Corrige um exemplo com risco de use-after-free.
-
-### Exercício 12 - Reflexão
-
-Explica por que gestão manual de memória exige disciplina técnica.
-
----
-
-## 12. Changelog
+## 11. Changelog
 
 - **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.

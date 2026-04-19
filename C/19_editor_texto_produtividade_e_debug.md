@@ -18,8 +18,7 @@
 - [8. Gestão de produtividade pessoal](#8-gestão-de-produtividade-pessoal)
 - [9. Exemplo de rotina diária para aluno de 10.º ano](#9-exemplo-de-rotina-diária-para-aluno-de-10º-ano)
 - [10. Erros comuns](#10-erros-comuns)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [11. Changelog](#11-changelog)
 
 ---
 
@@ -151,58 +150,6 @@ Produtividade é processo, não velocidade sem controlo.
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-### Exercício 1 - Atalhos avançados
-
-Seleciona 15 atalhos do editor e aplica em tarefa real.
-
-### Exercício 2 - Pipeline local
-
-Configura build + run num único comando/tarefa no editor.
-
-### Exercício 3 - Debug guiado
-
-Coloca breakpoints em função com ciclo e analisa evolução de variáveis.
-
-### Exercício 4 - Rastreio de bug
-
-Recebe programa com erro lógico e usa debugger para localizar causa.
-
-### Exercício 5 - Navegação
-
-Num projeto com 8+ ficheiros, localiza rapidamente função e todas as referências.
-
-### Exercício 6 - Refatoração
-
-Renomeia função globalmente sem quebrar build.
-
-### Exercício 7 - Extração
-
-Extrai bloco repetido para função reutilizável.
-
-### Exercício 8 - Qualidade
-
-Cria checklist final de 12 pontos antes de entregar projeto.
-
-### Exercício 9 - Métricas pessoais
-
-Regista tempo gasto em tarefa antes e depois de configurar automações.
-
-### Exercício 10 - Organização
-
-Reorganiza projeto desestruturado em pastas claras (`src`, `include`, `bin`).
-
-### Exercício 11 - Simulação de revisão
-
-Faz revisão de código de colega usando ferramentas do editor.
-
-### Exercício 12 - Reflexão
-
-Explica como domínio de editor influencia qualidade e aprendizagem em C.
-
----
-
-## 12. Changelog
+## 11. Changelog
 
 - **2026-02-23**: reescrita completa com foco em produtividade real e exercícios sem resolução.

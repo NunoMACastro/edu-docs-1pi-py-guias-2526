@@ -17,8 +17,7 @@
 - [7. Exemplo guiado: "Conta" como objeto em C](#7-exemplo-guiado-conta-como-objeto-em-c)
 - [8. Limitações e vantagens desta abordagem](#8-limitações-e-vantagens-desta-abordagem)
 - [9. Erros comuns](#9-erros-comuns)
-- [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
-- [11. Changelog](#11-changelog)
+- [10. Changelog](#10-changelog)
 
 ---
 
@@ -186,58 +185,6 @@ Vantagens:
 
 ---
 
-## 10. Exercícios (sem resolução)
-
-### Exercício 1 - Modelação
-
-Modela entidade `Aluno` como "objeto" em C (`struct` + funções).
-
-### Exercício 2 - API mínima
-
-Cria API para `Livro`: criar, atualizar estado e consultar dados.
-
-### Exercício 3 - Inicialização
-
-Implementa função `init` para 3 tipos diferentes.
-
-### Exercício 4 - Encapsulamento
-
-Reorganiza código para ocultar detalhes internos num `.c`.
-
-### Exercício 5 - Validação de regras
-
-Implementa função que recusa operações inválidas (ex.: saldo negativo).
-
-### Exercício 6 - Modularização
-
-Divide programa em `main.c`, `entidade.c`, `entidade.h`.
-
-### Exercício 7 - Const-correctness
-
-Cria funções de consulta que recebem ponteiro `const`.
-
-### Exercício 8 - Testes manuais
-
-Define 12 testes para validar API de uma entidade.
-
-### Exercício 9 - Refatoração
-
-Converte programa monolítico num design baseado em "objetos" simulados.
-
-### Exercício 10 - Documentação
-
-Escreve documentação de API para uma entidade criada por ti.
-
-### Exercício 11 - Evolução
-
-Acrescenta novo comportamento mantendo compatibilidade da API.
-
-### Exercício 12 - Reflexão
-
-Explica semelhanças e diferenças entre este modelo em C e classes em OOP.
-
----
-
-## 11. Changelog
+## 10. Changelog
 
 - **2026-02-23**: reescrita detalhada do módulo com foco em equivalentes de POO e exercícios sem resolução.

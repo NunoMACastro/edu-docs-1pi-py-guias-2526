@@ -19,8 +19,7 @@
 - [9. Organização em `.h` e `.c`](#9-organização-em-h-e-c)
 - [10. Exemplo guiado](#10-exemplo-guiado)
 - [11. Erros comuns](#11-erros-comuns)
-- [12. Exercícios (sem resolução)](#12-exercícios-sem-resolução)
-- [13. Changelog](#13-changelog)
+- [12. Changelog](#12-changelog)
 
 ---
 
@@ -202,58 +201,6 @@ int main(void) {
 
 ---
 
-## 12. Exercícios (sem resolução)
-
-### Exercício 1 - Funções básicas
-
-Cria funções para somar, subtrair, multiplicar e dividir.
-
-### Exercício 2 - Retorno
-
-Cria função que devolve maior de dois inteiros.
-
-### Exercício 3 - `void`
-
-Cria procedimento que imprime linha separadora no ecrã.
-
-### Exercício 4 - Locais e globais
-
-Constrói exemplo com uma variável global e duas locais.
-
-### Exercício 5 - Passagem por valor
-
-Demonstra, com programa curto, que variável original não é alterada.
-
-### Exercício 6 - Passagem por ponteiro
-
-Cria função para trocar dois inteiros.
-
-### Exercício 7 - Validação de parâmetros
-
-Cria função de divisão que trate divisor zero.
-
-### Exercício 8 - Modularização
-
-Separa projeto em `main.c`, `operacoes.c`, `operacoes.h`.
-
-### Exercício 9 - Contador de chamadas
-
-Usa variável global para contar quantas vezes função foi chamada.
-
-### Exercício 10 - Refatoração
-
-Transforma programa monolítico em pelo menos 5 funções.
-
-### Exercício 11 - Mini biblioteca
-
-Cria conjunto de funções para manipular notas de alunos.
-
-### Exercício 12 - Reflexão
-
-Explica quando usar retorno e quando usar parâmetro por ponteiro.
-
----
-
-## 13. Changelog
+## 12. Changelog
 
 - **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.

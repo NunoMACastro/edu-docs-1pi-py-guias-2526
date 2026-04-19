@@ -17,8 +17,7 @@
 - [7. Segurança em leitura de strings](#7-segurança-em-leitura-de-strings)
 - [8. Exemplo guiado](#8-exemplo-guiado)
 - [9. Erros comuns](#9-erros-comuns)
-- [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
-- [11. Changelog](#11-changelog)
+- [10. Changelog](#10-changelog)
 
 ---
 
@@ -178,58 +177,6 @@ int main(void) {
 
 ---
 
-## 10. Exercícios (sem resolução)
-
-### Exercício 1 - Vetor básico
-
-Lê 10 inteiros para um vetor e imprime-os na ordem inversa.
-
-### Exercício 2 - Estatísticas
-
-Num vetor de 20 valores, calcula soma, média, máximo e mínimo.
-
-### Exercício 3 - Pares e ímpares
-
-Conta quantos elementos pares e ímpares existem no vetor.
-
-### Exercício 4 - Pesquisa
-
-Implementa pesquisa linear de um valor num array.
-
-### Exercício 5 - Strings
-
-Lê nome completo e imprime quantidade de caracteres.
-
-### Exercício 6 - Comparação de strings
-
-Lê duas palavras e indica se são iguais.
-
-### Exercício 7 - Concatenação
-
-Lê nome e apelido e constrói nome completo.
-
-### Exercício 8 - Matriz 3x3
-
-Lê matriz 3x3 e calcula soma da diagonal principal.
-
-### Exercício 9 - Matriz e condição
-
-Conta quantos valores de matriz 4x4 são maiores que 10.
-
-### Exercício 10 - Ordenação simples
-
-Ordena vetor de 10 elementos por método simples à tua escolha.
-
-### Exercício 11 - Segurança
-
-Reescreve programa de leitura de nomes para evitar overflow.
-
-### Exercício 12 - Reflexão
-
-Explica diferenças práticas entre arrays e estruturas dinâmicas.
-
----
-
-## 11. Changelog
+## 10. Changelog
 
 - **2026-02-23**: reescrita detalhada do módulo com foco pedagógico e exercícios sem resolução.

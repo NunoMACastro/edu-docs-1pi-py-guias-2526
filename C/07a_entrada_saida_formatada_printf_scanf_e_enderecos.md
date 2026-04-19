@@ -18,9 +18,8 @@
 - [8. Segurança e robustez na entrada de dados](#8-segurança-e-robustez-na-entrada-de-dados)
 - [9. Exemplo guiado progressivo](#9-exemplo-guiado-progressivo)
 - [10. Erros comuns e diagnóstico](#10-erros-comuns-e-diagnóstico)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Ponte para apontadores](#12-ponte-para-apontadores)
-- [13. Changelog](#13-changelog)
+- [11. Ponte para apontadores](#11-ponte-para-apontadores)
+- [12. Changelog](#12-changelog)
 
 ---
 
@@ -435,67 +434,7 @@ Diagnóstico técnico:
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-Ordem recomendada: resolver por sequência, do 1 ao 10.
-
-### Exercício 1 - `printf` básico sem input
-
-Declara `int`, `double`, `char` e `char nome[]`, e imprime tudo com formatos corretos (`%d`, `%.2f`, `%c`, `%s`).
-
-### Exercício 2 - Largura e precisão
-
-Imprime 3 valores numéricos em colunas alinhadas, usando largura fixa e 2 casas decimais.
-
-### Exercício 3 - Leitura de um inteiro
-
-Lê um `int` com `scanf`, valida retorno (`== 1`) e imprime valor lido.
-
-### Exercício 4 - Leitura de `double`
-
-Lê um `double` com `scanf("%lf", ...)`, valida retorno e imprime com 3 casas decimais.
-
-### Exercício 5 - Valor e endereço
-
-Lê um inteiro e imprime:
-
-- o valor (`%d`);
-- o endereço (`%p` com cast para `(void *)`).
-
-### Exercício 6 - Dois inteiros na mesma linha
-
-Lê `a` e `b` com `scanf("%d %d", &a, &b)` e valida se foram lidos 2 campos.
-
-### Exercício 7 - Leitura de `char` após número
-
-Lê primeiro um número e depois uma opção (`A`, `B` ou `C`), usando `" %c"` para evitar leitura do `\n`.
-
-### Exercício 8 - Palavra com limite de tamanho
-
-Lê uma palavra para `char codigo[20]` usando `scanf("%19s", codigo)` e imprime o resultado.
-
-### Exercício 9 - Frase completa com `fgets`
-
-Lê uma linha completa para `char frase[80]` com `fgets`, remove o `\n` final (se existir) e imprime a frase.
-
-### Exercício 10 - Mini ficha (integração)
-
-Cria um programa que lê e imprime:
-
-- número do aluno (`int`);
-- média (`double`);
-- turma (`char`);
-- nome completo (`fgets`).
-
-Regras:
-
-- validar retornos de `scanf`;
-- usar formato correto em cada tipo;
-- imprimir resumo final alinhado e legível.
-
----
-
-## 12. Ponte para apontadores
+## 11. Ponte para apontadores
 
 Neste módulo viste `&` e `*` no contexto de I/O.
 
@@ -510,7 +449,7 @@ Relação prática:
 
 ---
 
-## 13. Changelog
+## 12. Changelog
 
 - **2026-04-15**: exercícios refeitos com progressão incremental e foco apenas na matéria coberta até este módulo.
 - **2026-04-15**: criação do módulo dedicado de `printf`/`scanf` com explicação de `&` e `*`, validação de input e comparação `scanf` vs `fgets`.

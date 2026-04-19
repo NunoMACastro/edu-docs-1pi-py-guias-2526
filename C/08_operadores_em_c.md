@@ -18,8 +18,7 @@
 - [8. Expressões compostas (boas práticas)](#8-expressões-compostas-boas-práticas)
 - [9. Exemplo guiado](#9-exemplo-guiado)
 - [10. Erros comuns](#10-erros-comuns)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [11. Changelog](#11-changelog)
 
 ---
 
@@ -209,58 +208,6 @@ Conceitos usados:
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-### Exercício 1 - Aritmética básica
-
-Escreve programa que lê dois inteiros e mostra soma, diferença, produto, quociente e resto.
-
-### Exercício 2 - Divisão inteira vs real
-
-Demonstra com 8 exemplos a diferença entre divisão inteira e divisão real.
-
-### Exercício 3 - Atribuição composta
-
-Reescreve 10 atribuições simples usando operadores compostos.
-
-### Exercício 4 - Comparações
-
-Para 12 pares de valores, imprime resultados de todos os operadores relacionais.
-
-### Exercício 5 - Lógica booleana
-
-Implementa validador: idade >= 18 e nota >= 10.
-
-### Exercício 6 - Intervalos
-
-Verifica se número está no intervalo fechado [1, 100].
-
-### Exercício 7 - Incremento
-
-Cria programa com contador e demonstra pré/pós incremento.
-
-### Exercício 8 - Precedência
-
-Calcula e compara resultados de 10 expressões com e sem parênteses.
-
-### Exercício 9 - Refatoração
-
-Recebes 6 condições complexas; reescreve em forma mais legível.
-
-### Exercício 10 - Mini calculadora
-
-Implementa mini calculadora para `+`, `-`, `*`, `/`, `%`.
-
-### Exercício 11 - Diagnóstico
-
-Encontra e corrige erros de operadores num código fornecido pelo professor.
-
-### Exercício 12 - Reflexão
-
-Explica por que compreender operadores evita muitos bugs lógicos.
-
----
-
-## 12. Changelog
+## 11. Changelog
 
 - **2026-02-23**: reescrita completa com detalhe pedagógico e exercícios sem resolução.

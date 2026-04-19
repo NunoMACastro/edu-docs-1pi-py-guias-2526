@@ -17,8 +17,7 @@
 - [7. Escolha entre `struct`, `union` e `enum`](#7-escolha-entre-struct-union-e-enum)
 - [8. Exemplo guiado](#8-exemplo-guiado)
 - [9. Erros comuns](#9-erros-comuns)
-- [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
-- [11. Changelog](#11-changelog)
+- [10. Changelog](#10-changelog)
 
 ---
 
@@ -160,58 +159,6 @@ int main(void) {
 
 ---
 
-## 10. Exercícios (sem resolução)
-
-### Exercício 1 - `struct` básico
-
-Cria `struct Livro` com título, autor, ano e disponibilidade.
-
-### Exercício 2 - Leitura e impressão
-
-Lê dados de 3 livros e imprime relatório.
-
-### Exercício 3 - Array de structs
-
-Cria array de 20 alunos e calcula média da turma.
-
-### Exercício 4 - Pesquisa
-
-Procura aluno por número dentro de array de structs.
-
-### Exercício 5 - Atualização
-
-Atualiza estado de um registo (ativo/inativo).
-
-### Exercício 6 - `enum`
-
-Define `enum` para dias da semana e usa em programa simples.
-
-### Exercício 7 - `union`
-
-Cria `union` para representar valor numérico em formatos diferentes.
-
-### Exercício 8 - `struct` com `enum`
-
-Combina `struct Pedido` com `enum EstadoPedido`.
-
-### Exercício 9 - Ponteiros
-
-Manipula `struct` através de ponteiro e operador `->`.
-
-### Exercício 10 - Modularização
-
-Move definições para ficheiro `.h` e implementação para `.c`.
-
-### Exercício 11 - Validação
-
-Valida campos de registo antes de guardar.
-
-### Exercício 12 - Reflexão
-
-Explica porque estruturas compostas tornam o código mais próximo de problemas reais.
-
----
-
-## 11. Changelog
+## 10. Changelog
 
 - **2026-02-23**: reescrita completa do módulo com detalhe pedagógico e exercícios sem resolução.

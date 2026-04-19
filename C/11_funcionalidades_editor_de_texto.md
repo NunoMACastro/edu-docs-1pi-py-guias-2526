@@ -17,8 +17,7 @@
 - [7. Terminal integrado e tarefas de build](#7-terminal-integrado-e-tarefas-de-build)
 - [8. Debug no editor (visão inicial)](#8-debug-no-editor-visão-inicial)
 - [9. Boas práticas de utilização](#9-boas-práticas-de-utilização)
-- [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
-- [11. Changelog](#11-changelog)
+- [10. Changelog](#10-changelog)
 
 ---
 
@@ -140,58 +139,6 @@ Objetivo: encontrar causa do erro, não apenas "apagar sintomas".
 
 ---
 
-## 10. Exercícios (sem resolução)
-
-### Exercício 1 - Configuração base
-
-Configura editor com linha, coluna e indentação de 4 espaços.
-
-### Exercício 2 - Atalhos
-
-Lista e pratica 12 atalhos úteis para programação C.
-
-### Exercício 3 - Pesquisa global
-
-Localiza todas as ocorrências de uma função num projeto com vários ficheiros.
-
-### Exercício 4 - Substituição segura
-
-Renomeia variável em projeto sem quebrar outras partes.
-
-### Exercício 5 - Navegação
-
-Usa "go to definition" para navegar entre `.h` e `.c`.
-
-### Exercício 6 - Formatação
-
-Aplica formatação consistente a um ficheiro propositalmente desorganizado.
-
-### Exercício 7 - Terminal
-
-Compila e executa programa apenas com terminal integrado.
-
-### Exercício 8 - Tarefa automática
-
-Cria tarefa de build no editor para um projeto C.
-
-### Exercício 9 - Debug inicial
-
-Configura breakpoint e observa valor de uma variável por iteração.
-
-### Exercício 10 - Refatoração assistida
-
-Extrai bloco de código para função com apoio do editor.
-
-### Exercício 11 - Produtividade
-
-Mede tempo de tarefa com e sem atalhos; compara resultados.
-
-### Exercício 12 - Reflexão
-
-Explica como editor bem usado melhora aprendizagem para iniciantes.
-
----
-
-## 11. Changelog
+## 10. Changelog
 
 - **2026-02-23**: reescrita completa do módulo com foco pedagógico e exercícios sem resolução.

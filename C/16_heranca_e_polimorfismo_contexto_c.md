@@ -17,8 +17,7 @@
 - [7. Exemplo guiado](#7-exemplo-guiado)
 - [8. Limites da abordagem](#8-limites-da-abordagem)
 - [9. Erros comuns](#9-erros-comuns)
-- [10. Exercícios (sem resolução)](#10-exercícios-sem-resolução)
-- [11. Changelog](#11-changelog)
+- [10. Changelog](#10-changelog)
 
 ---
 
@@ -153,58 +152,6 @@ Ainda assim, é excelente para entender conceitos com profundidade.
 
 ---
 
-## 10. Exercícios (sem resolução)
-
-### Exercício 1 - Composição
-
-Cria `struct Veiculo` e `struct Carro` reutilizando campos comuns.
-
-### Exercício 2 - Interface por função
-
-Define interface de impressão para dois tipos diferentes.
-
-### Exercício 3 - Polimorfismo simples
-
-Implementa duas funções de comportamento e seleciona em runtime.
-
-### Exercício 4 - Vetor de "objetos"
-
-Cria array de estruturas com ponteiro para função e executa comportamento.
-
-### Exercício 5 - Organização
-
-Separa interface e implementação em ficheiros distintos.
-
-### Exercício 6 - Validação
-
-Evita chamada de ponteiro de função nulo com verificações.
-
-### Exercício 7 - Refatoração
-
-Converte código com muitos `if` de tipo para abordagem polimórfica.
-
-### Exercício 8 - Testes
-
-Define testes para validar interface comum entre tipos.
-
-### Exercício 9 - Limitações
-
-Escreve 6 limitações desta abordagem em comparação com C++.
-
-### Exercício 10 - Expansão
-
-Adiciona um novo tipo à interface sem alterar código cliente principal.
-
-### Exercício 11 - Segurança
-
-Analisa código e identifica riscos com ponteiros para função.
-
-### Exercício 12 - Reflexão
-
-Explica como este módulo ajuda a entender OOP mesmo em C.
-
----
-
-## 11. Changelog
+## 10. Changelog
 
 - **2026-02-23**: reescrita detalhada com foco em equivalentes de herança/polimorfismo e exercícios sem resolução.

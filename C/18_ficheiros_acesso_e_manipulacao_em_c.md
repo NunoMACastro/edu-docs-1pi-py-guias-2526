@@ -18,8 +18,7 @@
 - [8. Tratamento de erros em I/O](#8-tratamento-de-erros-em-io)
 - [9. Exemplo guiado](#9-exemplo-guiado)
 - [10. Erros comuns](#10-erros-comuns)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [11. Changelog](#11-changelog)
 
 ---
 
@@ -180,58 +179,6 @@ int main(void) {
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-### Exercício 1 - Escrita simples
-
-Cria programa que grava 5 linhas num ficheiro texto.
-
-### Exercício 2 - Leitura simples
-
-Lê ficheiro linha a linha e imprime no ecrã.
-
-### Exercício 3 - Cópia de ficheiro
-
-Implementa cópia de um ficheiro texto para outro.
-
-### Exercício 4 - Contagem
-
-Conta número de linhas e caracteres de um ficheiro.
-
-### Exercício 5 - Registos
-
-Guarda registos de alunos no formato `nome;nota`.
-
-### Exercício 6 - Pesquisa
-
-Lê ficheiro e procura registo por nome.
-
-### Exercício 7 - Acrescentar dados
-
-Abre ficheiro em modo append e adiciona novos registos.
-
-### Exercício 8 - Binário básico
-
-Grava e lê array de inteiros em ficheiro binário.
-
-### Exercício 9 - Validação de I/O
-
-Melhora programa com tratamento de erro em cada operação de ficheiro.
-
-### Exercício 10 - Navegação
-
-Usa `fseek` e `ftell` para descobrir tamanho de ficheiro.
-
-### Exercício 11 - Projeto curto
-
-Cria mini agenda persistente em ficheiro (inserir/listar).
-
-### Exercício 12 - Reflexão
-
-Explica diferenças práticas entre guardar dados em texto e em binário.
-
----
-
-## 12. Changelog
+## 11. Changelog
 
 - **2026-02-23**: reescrita detalhada do módulo com exercícios sem resolução.

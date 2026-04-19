@@ -18,8 +18,7 @@
 - [8. Ciclos aninhados](#8-ciclos-aninhados)
 - [9. Exemplo guiado completo](#9-exemplo-guiado-completo)
 - [10. Erros comuns](#10-erros-comuns)
-- [11. Exercícios (sem resolução)](#11-exercícios-sem-resolução)
-- [12. Changelog](#12-changelog)
+- [11. Changelog](#11-changelog)
 
 ---
 
@@ -190,58 +189,6 @@ int main(void) {
 
 ---
 
-## 11. Exercícios (sem resolução)
-
-### Exercício 1 - Classificação
-
-Lê nota e classifica em 4 níveis usando `if/else if/else`.
-
-### Exercício 2 - Menu
-
-Cria menu com `switch` para 4 operações matemáticas.
-
-### Exercício 3 - Contagem
-
-Imprime números de 1 a 50 com `while`.
-
-### Exercício 4 - Soma acumulada
-
-Lê números até aparecer 0 e mostra soma total.
-
-### Exercício 5 - Tabuada
-
-Mostra tabuada de um número com `for`.
-
-### Exercício 6 - Adivinhação
-
-Cria jogo de adivinhar número com limite de tentativas.
-
-### Exercício 7 - `break` e `continue`
-
-Faz exemplo que salta múltiplos de 3 e termina em valor específico.
-
-### Exercício 8 - Matriz
-
-Percorre matriz 4x4 e calcula soma dos elementos.
-
-### Exercício 9 - Validação
-
-Repete pedido de nota enquanto valor estiver fora de 0-20.
-
-### Exercício 10 - Menu persistente
-
-Menu com `do while` que só termina quando utilizador escolhe sair.
-
-### Exercício 11 - Conversão
-
-Converte um algoritmo textual com repetição para C.
-
-### Exercício 12 - Reflexão
-
-Explica quando escolher `for`, `while` e `do while`.
-
----
-
-## 12. Changelog
+## 11. Changelog
 
 - **2026-02-23**: reescrita completa, foco pedagógico e exercícios sem resolução.

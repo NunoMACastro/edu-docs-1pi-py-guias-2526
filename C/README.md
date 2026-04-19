@@ -9,10 +9,11 @@ Cada módulo inclui:
 - explicação teórica detalhada em linguagem clara;
 - exemplos práticos em C;
 - alertas de erros comuns;
-- secção de **exercícios apenas com enunciado** (sem resolução);
 - secção de changelog.
 
-O percurso desta pasta está organizado em **20 módulos** (incluindo o módulo intermédio `07a`).
+Os exercícios sem resolução estão centralizados no ficheiro [20_exercicios_c.md](./20_exercicios_c.md).
+
+O percurso desta pasta está organizado em **20 módulos tutoriais** (incluindo o módulo intermédio `07a`) + **1 caderno de exercícios**.
 
 ---
 
@@ -50,6 +51,7 @@ O percurso desta pasta está organizado em **20 módulos** (incluindo o módulo 
 ├── 17_excecoes_e_tratamento_de_erros_em_c.md
 ├── 18_ficheiros_acesso_e_manipulacao_em_c.md
 ├── 19_editor_texto_produtividade_e_debug.md
+├── 20_exercicios_c.md
 └── README.md
 ```
 
@@ -117,6 +119,8 @@ O percurso desta pasta está organizado em **20 módulos** (incluindo o módulo 
 20. [Editor de texto: produtividade e debug](./19_editor_texto_produtividade_e_debug.md)  
     Objetivo: consolidar práticas avançadas de depuração e manutenção.
 
+Exercícios sem resolução (todos os módulos): [20_exercicios_c.md](./20_exercicios_c.md)
+
 ---
 
 ## Nota sobre POO e exceções em C
@@ -147,7 +151,7 @@ Nestes materiais:
 
 1. Estuda a teoria com calma.
 2. Reproduz exemplos no teu computador.
-3. Faz os exercícios por ordem.
+3. Faz os exercícios por ordem no ficheiro [20_exercicios_c.md](./20_exercicios_c.md).
 4. Marca dúvidas para discutir em aula.
 5. Revê módulos anteriores antes de temas mais avançados.
 
@@ -158,3 +162,4 @@ Nestes materiais:
 - **2026-02-23**: reestruturação completa da pasta `C` para versão detalhada e pedagógica.
 - **2026-02-23**: todos os módulos atualizados com exercícios sem resolução (apenas enunciados).
 - **2026-04-15**: adicionado módulo `07a` para aprofundar `printf`/`scanf`, `&` e `*`, com atualização da rota de estudo.
+- **2026-04-19**: exercícios removidos dos tutoriais e centralizados em `20_exercicios_c.md`.
