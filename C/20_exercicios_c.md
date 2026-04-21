@@ -39,7 +39,8 @@ Define constantes para: limite de velocidade de trotinete elétrica, preço fixo
 
 ### Exercício 4 - Expressões
 
-Num simulador de treino, calcula calorias estimadas com base em tempo (min), peso (kg) e fator de intensidade. Escreve as expressões em C e prevê os resultados para dois casos de teste.
+Calcula o custo total de uma viagem de 15 minutos numa trotinete, considerando preço fixo e taxa por minuto. Imprime o resultado com formatação adequada.
+Usa como preço fixo `#define PRECO_FIXO 1.00` e taxa por minuto `const double TAXA_MINUTO = 0.15`.
 
 ### Exercício 5 - Casting
 

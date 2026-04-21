@@ -210,6 +210,20 @@ const int LIMITE = 10;
 #define MAX_NOME 64
 ```
 
+Exemplo de uso com main:
+
+```c
+#include <stdio.h>
+
+#define PI 3.141592653589793
+
+int main(void) {
+    double area = PI * 2 * 2; // PI é substituído por 3.141592653589793
+    printf("Area: %.2f\n", area);
+    return 0;
+}
+```
+
 Características:
 
 - não tem tipo próprio;
