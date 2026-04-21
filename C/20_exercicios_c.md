@@ -27,52 +27,195 @@ Fonte: [07_dados_variaveis_constantes_tipos.md](./07_dados_variaveis_constantes_
 
 ### Exercício 1 - Declarações
 
-Cria a "ficha digital" de um aluno: número, nome, turma, idade, média atual e percentagem de faltas. Declara variáveis com tipos adequados e nomes claros.
+Objetivo: treinar declaração de variáveis com nomes claros e tipos corretos.
+
+Cria um programa que declara variáveis para os seguintes campos de uma ficha digital de aluno:
+
+Número, nome, turma, idade, média e faltas (%).
+
+Passo a passo:
+
+1. Lista os campos da "ficha digital": número, nome, turma, idade, média e faltas (%).
+2. Decide o tipo de cada campo antes de escrever código.
+3. Define nomes descritivos (evita nomes genéricos como `x`, `a1`, `valor`).
+4. Escreve apenas as declarações (com ou sem inicialização, conforme preferires).
+5. Revê se cada variável representa exatamente um dado real da ficha.
 
 ### Exercício 2 - Tipos corretos
 
-Dado um sistema de bicicletas partilhadas, escolhe tipos para: id da bicicleta, quilómetros totais, custo por minuto, estado (disponível/ocupada) e nível de bateria. Justifica cada escolha.
+Objetivo: justificar escolhas de tipos com base no domínio do problema.
+
+Num cenário de bicicletas partilhadas, escolhe e justifica os tipos para:
+
+id da bicicleta, quilómetros totais, custo por minuto, estado (disponível/ocupada) e nível de bateria.
+
+Passo a passo:
+
+1. Separa os dados do sistema: id, quilómetros, custo/minuto, estado e bateria.
+2. Para cada dado, pergunta: "é inteiro, decimal, texto ou estado lógico?"
+3. Escolhe um tipo para cada campo e escreve uma mini justificação técnica.
+4. Verifica se o tipo escolhido suporta o intervalo esperado de valores.
+5. Confirma consistência entre campos parecidos (ex.: valores monetários).
 
 ### Exercício 3 - Constantes
 
-Define constantes para: limite de velocidade de trotinete elétrica, preço fixo de desbloqueio e taxa por minuto. Usa `const` e/ou `#define` de forma consistente.
+Objetivo: distinguir quando usar `const` e quando usar `#define`.
+
+Define as constantes de um sistema de mobilidade elétrica:
+
+limite de velocidade, preço fixo de desbloqueio e taxa por minuto.
+
+Passo a passo:
+
+1. Identifica os valores fixos: limite de velocidade, preço de desbloqueio e taxa por minuto.
+2. Decide quais constantes vais declarar com `const` e/ou com `#define`.
+3. Mantém uma convenção única de nomes para todas as constantes.
+4. Coloca as constantes numa zona visível do programa (topo do ficheiro).
+5. Revê se nenhuma constante ficou "hardcoded" no meio dos cálculos.
 
 ### Exercício 4 - Expressões
 
-Calcula o custo total de uma viagem de 15 minutos numa trotinete, considerando preço fixo e taxa por minuto. Imprime o resultado com formatação adequada.
-Usa como preço fixo `#define PRECO_FIXO 1.00` e taxa por minuto `const double TAXA_MINUTO = 0.15`.
+Objetivo: montar uma expressão aritmética e apresentar resultado formatado.
+
+Calcula o custo total de uma viagem de 15 minutos de trotinete, usando:
+
+`#define PRECO_FIXO 1.00` e `const double TAXA_MINUTO = 0.15`.
+
+Passo a passo:
+
+1. Declara as constantes obrigatórias: `PRECO_FIXO` e `TAXA_MINUTO`.
+2. Define a duração da viagem (15 minutos) numa variável apropriada.
+3. Escreve a expressão do custo total separando parte fixa e parte variável.
+4. Guarda o resultado numa variável de tipo adequado.
+5. Imprime o valor final com formatação monetária (casas decimais consistentes).
 
 ### Exercício 5 - Casting
 
-Num painel de estatísticas, calcula média de pontos por jogo e taxa de vitórias. Mostra o resultado sem cast e com cast, explicando a diferença no valor apresentado.
+Objetivo: perceber o impacto do casting em divisões e percentagens.
+
+Num painel de estatísticas, calcula média de pontos por jogo e taxa de vitórias:
+
+primeiro sem cast e depois com cast, comparando os resultados.
+
+Passo a passo:
+
+1. Cria dados de teste para jogos, pontos totais e vitórias.
+2. Calcula média e taxa usando apenas divisão inteira.
+3. Calcula novamente os mesmos indicadores com cast explícito.
+4. Mostra os dois resultados lado a lado no output.
+5. Escreve uma explicação curta sobre porque os valores mudam.
 
 ### Exercício 6 - Entrada/saída
 
-Lê nome do produto, quantidade e preço unitário. Imprime um resumo de compra alinhado com subtotal e total com 2 casas decimais.
+Objetivo: praticar leitura de dados e impressão alinhada.
+
+Lê nome do produto, quantidade e preço unitário, e apresenta:
+
+um resumo de compra alinhado, com subtotal e total a 2 casas decimais.
+
+Passo a passo:
+
+1. Declara variáveis para nome do produto, quantidade e preço unitário.
+2. Lê os dados com formatos adequados para cada tipo.
+3. Calcula subtotal e total (se aplicável ao teu cenário).
+4. Imprime um resumo em colunas alinhadas com `printf`.
+5. Garante que valores monetários aparecem com 2 casas decimais.
 
 ### Exercício 7 - Conversão de unidades
 
-Cria um mini conversor de meteorologia: lê temperatura em Celsius e velocidade do vento em km/h, depois mostra Fahrenheit e m/s com formatação adequada.
+Objetivo: aplicar fórmulas de conversão com atenção ao tipo de dados.
+
+Cria um mini conversor de meteorologia que lê:
+
+temperatura em Celsius e velocidade do vento em km/h, mostrando Fahrenheit e m/s.
+
+Passo a passo:
+
+1. Declara variáveis para Celsius e velocidade em km/h.
+2. Lê os dois valores introduzidos pelo utilizador.
+3. Implementa a conversão de Celsius para Fahrenheit.
+4. Implementa a conversão de km/h para m/s.
+5. Mostra os resultados com unidades e formatação clara.
 
 ### Exercício 8 - Validação básica
 
-Lê a percentagem de bateria de um dispositivo (0 a 100) e valida o valor. Se estiver fora do intervalo, imprime mensagem de erro clara.
+Objetivo: validar limites antes de aceitar um valor como válido.
+
+Lê a percentagem de bateria de um dispositivo (0 a 100) e:
+
+valida o valor, emitindo erro claro se estiver fora do intervalo.
+
+Passo a passo:
+
+1. Lê a percentagem de bateria para uma variável numérica.
+2. Define explicitamente o intervalo válido: 0 a 100.
+3. Cria uma condição para detetar valores fora do intervalo.
+4. Se inválido, apresenta mensagem de erro objetiva.
+5. Se válido, mostra confirmação com o valor lido.
 
 ### Exercício 9 - Formatação
 
-Mostra um "placar" com 3 jogadores: nome, pontos e precisão (%) com colunas alinhadas em `printf`.
+Objetivo: melhorar legibilidade de output em formato de tabela.
+
+Mostra um placar com 3 jogadores contendo:
+
+nome, pontos e precisão (%), com colunas alinhadas em `printf`.
+
+Passo a passo:
+
+1. Define dados de 3 jogadores (nome, pontos e precisão).
+2. Planeia a largura de cada coluna antes de imprimir.
+3. Imprime cabeçalho do placar.
+4. Imprime as 3 linhas com especificadores de largura em `printf`.
+5. Revê alinhamento visual no terminal e ajusta larguras se necessário.
 
 ### Exercício 10 - Diagnóstico
 
-Analisa um trecho com erros de tipos e formatos (`%d`, `%f`, `%lf`, uso de `&` no `scanf`) e corrige cada linha, explicando o motivo técnico.
+Objetivo: diagnosticar e corrigir erros clássicos de formatação e leitura.
+
+Analisa um trecho com erros em `%d`, `%f`, `%lf` e no uso de `&` no `scanf`,
+
+depois corrige e justifica tecnicamente cada ajuste.
+
+Passo a passo:
+
+1. Prepara um pequeno trecho com erros propositados de `%d`, `%f`, `%lf` e `&`.
+2. Compila com avisos ativos (`-Wall -Wextra`) para localizar problemas.
+3. Corrige cada linha um erro de cada vez.
+4. Em cada correção, escreve uma frase com o motivo técnico.
+5. Recompila até não existirem avisos relacionados com formatos.
 
 ### Exercício 11 - Mini programa
 
-Desenvolve um simulador de consumo elétrico doméstico: lê potência (W), horas de uso por dia e preço por kWh; calcula consumo mensal e custo estimado.
+Objetivo: integrar entrada, cálculo e apresentação num mini projeto.
+
+Desenvolve um simulador de consumo elétrico doméstico que lê:
+
+potência (W), horas de uso por dia e preço por kWh, e estima consumo e custo mensais.
+
+Passo a passo:
+
+1. Lê potência (W), horas por dia e preço por kWh.
+2. Converte potência para kW antes de calcular energia.
+3. Calcula consumo diário e depois consumo mensal.
+4. Calcula custo mensal estimado com base no preço por kWh.
+5. Apresenta um resumo final com unidades e casas decimais adequadas.
 
 ### Exercício 12 - Reflexão
 
-Escreve uma reflexão curta: em que situações um `int` pode causar erro silencioso e quando `float`/`double` é realmente necessário?
+Objetivo: consolidar decisão de tipos com pensamento crítico.
+
+Escreve uma reflexão curta sobre:
+
+quando `int` pode causar erro silencioso e quando `float`/`double` é necessário.
+
+Passo a passo:
+
+1. Escreve 2 exemplos onde usar `int` pode produzir erro silencioso.
+2. Escreve 2 exemplos onde `float` ou `double` é necessário.
+3. Explica brevemente a diferença entre precisão e desempenho.
+4. Indica quando preferes `double` em vez de `float`.
+5. Fecha com 3 regras práticas para escolher tipos em exercícios futuros.
 
 ---
 
