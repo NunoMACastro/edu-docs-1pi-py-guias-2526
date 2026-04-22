@@ -233,11 +233,11 @@ int main() {
     double preco_unitario; // Preço por unidade
 
     // Lê os dados do utilizador
-    printf("Digite o nome do produto: ");
+    printf("Escreve o nome do produto: ");
     scanf("%49s", nome_produto); // Limita a leitura para evitar overflow
-    printf("Digite a quantidade: ");
+    printf("Escreve a quantidade: ");
     scanf("%d", &quantidade);
-    printf("Digite o preço unitário: ");
+    printf("Escreve o preço unitário: ");
     scanf("%lf", &preco_unitario);
 
     // Calcula subtotal e total (sem impostos para simplicidade)
@@ -279,9 +279,9 @@ int main() {
     double velocidade_kmh;      // Velocidade do vento em km/h
 
     // Lê os dados do utilizador
-    printf("Digite a temperatura em Celsius: ");
+    printf("Escreve a temperatura em Celsius: ");
     scanf("%lf", &temperatura_celsius);
-    printf("Digite a velocidade do vento em km/h: ");
+    printf("Escreve a velocidade do vento em km/h: ");
     scanf("%lf", &velocidade_kmh);
 
     // Converte Celsius para Fahrenheit
@@ -324,7 +324,7 @@ int main() {
     double percentagem_bateria; // Percentagem de bateria
 
     // Lê a percentagem de bateria do utilizador
-    printf("Digite a percentagem de bateria (0-100): ");
+    printf("Escreve a percentagem de bateria (0-100): ");
     scanf("%lf", &percentagem_bateria);
 
     // Valida o valor lido
@@ -405,13 +405,13 @@ int main() {
     char nome[50]; // Correção: tipo deve ser char array para nome
 
     // Lê os dados do utilizador
-    printf("Digite sua idade: ");
+    printf("Escreve a tua idade: ");
     scanf("%d", &idade); // Correção: %d para int e uso de & para variável
 
-    printf("Digite sua altura em metros: ");
+    printf("Escreve a tua altura em metros: ");
     scanf("%lf", &altura); // Correção: %lf para double e uso de & para variável
 
-    printf("Digite seu nome: ");
+    printf("Escreve o teu nome: ");
     scanf("%49s", nome); // Correção: %s para string e limite de leitura
 
     // Imprime os dados lidos
@@ -451,11 +451,11 @@ int main() {
     double preco_kwh;     // Preço por kWh
 
     // Lê os dados do utilizador
-    printf("Digite a potência do aparelho em watts: ");
+    printf("Escreve a potência do aparelho em watts: ");
     scanf("%lf", &potencia_watts);
-    printf("Digite as horas de uso por dia: ");
+    printf("Escreve as horas de uso por dia: ");
     scanf("%lf", &horas_por_dia);
-    printf("Digite o preço por kWh: ");
+    printf("Escreve o preço por kWh: ");
     scanf("%lf", &preco_kwh);
 
     // Converte potência para kW
