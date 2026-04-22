@@ -201,83 +201,153 @@ Passo a passo:
 4. Calcula custo mensal estimado com base no preço por kWh.
 5. Apresenta um resumo final com unidades e casas decimais adequadas.
 
-### Exercício 12 - Reflexão
-
-Objetivo: consolidar decisão de tipos com pensamento crítico.
-
-Escreve uma reflexão curta sobre:
-
-quando `int` pode causar erro silencioso e quando `float`/`double` é necessário.
-
-Passo a passo:
-
-1. Escreve 2 exemplos onde usar `int` pode produzir erro silencioso.
-2. Escreve 2 exemplos onde `float` ou `double` é necessário.
-3. Explica brevemente a diferença entre precisão e desempenho.
-4. Indica quando preferes `double` em vez de `float`.
-5. Fecha com 3 regras práticas para escolher tipos em exercícios futuros.
-
 ---
 
 ## 07A · Entrada/Saída Formatada (`printf`/`scanf`) e Endereços (`&` e `*`)
 
 Fonte: [07a_entrada_saida_formatada_printf_scanf_e_enderecos.md](./07a_entrada_saida_formatada_printf_scanf_e_enderecos.md)
 
-Ordem recomendada: resolver por sequência, do 1 ao 10.
+Ordem recomendada: resolver por sequência, do 12 ao 21.
 
-### Exercício 1 - `printf` básico sem input
+### Exercício 12 - `printf` básico sem input
 
-Declara `int`, `double`, `char` e `char nome[]`, e imprime tudo com formatos corretos (`%d`, `%.2f`, `%c`, `%s`).
+Objetivo: consolidar impressão formatada sem leitura de dados.
 
-### Exercício 2 - Largura e precisão
+Cria um programa que declara `int`, `double`, `char` e `char nome[]` e imprime os 4 valores com os especificadores corretos.
 
-Imprime 3 valores numéricos em colunas alinhadas, usando largura fixa e 2 casas decimais.
+Passo a passo:
 
-### Exercício 3 - Leitura de um inteiro
+1. Escolhe valores simples para cada variável (`int`, `double`, `char`, `string`).
+2. Declara as variáveis com nomes claros.
+3. Escreve uma linha de `printf` para cada tipo, usando `%d`, `%.2f`, `%c` e `%s`.
+4. Compila e verifica se o output aparece na ordem esperada.
+5. Ajusta os textos de apresentação para ficarem legíveis.
 
-Lê um `int` com `scanf`, valida retorno (`== 1`) e imprime valor lido.
+### Exercício 13 - Percentagens e casas decimais no `printf`
 
-### Exercício 4 - Leitura de `double`
+Objetivo: praticar formatação de números reais e impressão do símbolo `%`.
 
-Lê um `double` com `scanf("%lf", ...)`, valida retorno e imprime com 3 casas decimais.
+Cria um programa que apresenta um mini estado de bateria com nome do dispositivo, carga atual e meta de carregamento.
 
-### Exercício 5 - Valor e endereço
+Passo a passo:
 
-Lê um inteiro e imprime:
+1. Declara variáveis para nome do dispositivo, carga atual e meta (em percentagem).
+2. Atribui valores de teste realistas às variáveis.
+3. Imprime o nome com `%s` e as percentagens com precisão fixa (por exemplo, 1 casa decimal).
+4. Mostra o símbolo de percentagem corretamente usando `%%`.
+5. Revê o output final para confirmar legibilidade e consistência das casas decimais.
 
-- o valor (`%d`);
-- o endereço (`%p` com cast para `(void *)`).
+### Exercício 14 - Leitura de um inteiro
 
-### Exercício 6 - Dois inteiros na mesma linha
+Objetivo: ler e validar um valor inteiro com segurança.
 
-Lê `a` e `b` com `scanf("%d %d", &a, &b)` e valida se foram lidos 2 campos.
+Lê um `int` com `scanf`, valida o retorno e imprime o valor lido apenas quando a leitura for válida.
 
-### Exercício 7 - Leitura de `char` após número
+Passo a passo:
 
-Lê primeiro um número e depois uma opção (`A`, `B` ou `C`), usando `" %c"` para evitar leitura do `\n`.
+1. Declara uma variável `int` para guardar o valor.
+2. Pede o número ao utilizador com um `printf` curto.
+3. Usa `scanf` e guarda o valor devolvido (número de campos lidos).
+4. Se o retorno for `1`, imprime o número lido.
+5. Se o retorno for diferente de `1`, mostra mensagem de erro clara.
 
-### Exercício 8 - Palavra com limite de tamanho
+### Exercício 15 - Leitura de `double`
 
-Lê uma palavra para `char codigo[20]` usando `scanf("%19s", codigo)` e imprime o resultado.
+Objetivo: usar formato correto para leitura e impressão de `double`.
 
-### Exercício 9 - Frase completa com `fgets`
+Lê um `double` com `scanf("%lf", ...)`, valida a leitura e imprime o resultado com 3 casas decimais.
 
-Lê uma linha completa para `char frase[80]` com `fgets`, remove o `\n` final (se existir) e imprime a frase.
+Passo a passo:
 
-### Exercício 10 - Mini ficha (integração)
+1. Declara uma variável `double`.
+2. Mostra uma mensagem a pedir um valor decimal.
+3. Lê com `scanf("%lf", &variavel)` e verifica o retorno.
+4. Em caso válido, imprime com `%.3f`.
+5. Em caso inválido, apresenta erro sem continuar cálculos.
 
-Cria um programa que lê e imprime:
+### Exercício 16 - Valor e endereço
 
-- número do aluno (`int`);
-- média (`double`);
-- turma (`char`);
-- nome completo (`fgets`).
+Objetivo: distinguir valor armazenado de endereço em memória.
 
-Regras:
+Lê um inteiro e imprime o valor (`%d`) e o endereço (`%p`, com cast para `(void *)`).
 
-- validar retornos de `scanf`;
-- usar formato correto em cada tipo;
-- imprimir resumo final alinhado e legível.
+Passo a passo:
+
+1. Declara um `int` e lê o valor com `scanf`.
+2. Verifica se a leitura foi bem-sucedida.
+3. Imprime o valor com `%d`.
+4. Imprime o endereço com `%p`, convertendo para `(void *)`.
+5. Compara visualmente valor e endereço para reforçar a diferença.
+
+### Exercício 17 - Dois inteiros na mesma linha
+
+Objetivo: ler múltiplos campos numa única chamada de `scanf`.
+
+Lê `a` e `b` na mesma linha com `scanf("%d %d", &a, &b)` e valida se foram lidos os 2 valores.
+
+Passo a passo:
+
+1. Declara duas variáveis `int` (`a` e `b`).
+2. Mostra instrução para o utilizador inserir os dois valores na mesma linha.
+3. Faz a leitura numa única chamada `scanf`.
+4. Verifica se o retorno é `2`.
+5. Se válido, imprime os dois valores; se inválido, mostra erro.
+
+### Exercício 18 - Leitura de `char` após número
+
+Objetivo: evitar erro comum de leitura de `char` após `int`.
+
+Lê primeiro um número e depois uma opção (`A`, `B` ou `C`), usando `" %c"` para ignorar whitespace pendente.
+
+Passo a passo:
+
+1. Declara um `int` e um `char`.
+2. Lê o número e valida retorno.
+3. Lê a opção com `scanf(" %c", &opcao)`.
+4. Confirma se a opção está no conjunto esperado (`A`, `B`, `C`).
+5. Imprime resumo final com número e opção escolhida.
+
+### Exercício 19 - Palavra com limite de tamanho
+
+Objetivo: prevenir overflow em leitura de string com `scanf`.
+
+Lê uma palavra para `char codigo[20]` usando limite no especificador (`%19s`) e imprime o resultado.
+
+Passo a passo:
+
+1. Declara o array `char codigo[20]`.
+2. Pede ao utilizador um código sem espaços.
+3. Lê com `scanf("%19s", codigo)`.
+4. Verifica se a leitura retornou `1`.
+5. Imprime o valor lido e testa com palavras curtas e longas.
+
+### Exercício 20 - Frase completa com `fgets`
+
+Objetivo: ler linha completa com espaços e limpar newline final.
+
+Lê uma frase para `char frase[80]` com `fgets`, remove `\n` final (quando existir) e imprime o texto limpo.
+
+Passo a passo:
+
+1. Declara `char frase[80]`.
+2. Pede uma frase completa ao utilizador.
+3. Lê com `fgets(frase, sizeof(frase), stdin)`.
+4. Procura `\n` no fim e substitui por `\0` quando necessário.
+5. Imprime a frase final entre delimitadores visuais para confirmar limpeza.
+
+### Exercício 21 - Mini ficha (integração)
+
+Objetivo: integrar leitura e apresentação de vários tipos no mesmo programa.
+
+Cria uma mini ficha de aluno que lê: número (`int`), média (`double`), turma (`char`) e nome completo (`fgets`).
+
+Passo a passo:
+
+1. Declara todas as variáveis necessárias com tipos corretos.
+2. Lê número, média e turma com `scanf`, validando cada retorno.
+3. Garante limpeza de input antes de ler o nome completo.
+4. Lê o nome com `fgets` e remove `\n` final se existir.
+5. Imprime um resumo final alinhado, claro e consistente.
 
 ---
 
@@ -285,51 +355,51 @@ Regras:
 
 Fonte: [08_operadores_em_c.md](./08_operadores_em_c.md)
 
-### Exercício 1 - Aritmética básica
+### Exercício 22 - Aritmética básica
 
 Escreve programa que lê dois inteiros e mostra soma, diferença, produto, quociente e resto.
 
-### Exercício 2 - Divisão inteira vs real
+### Exercício 23 - Divisão inteira vs real
 
 Demonstra com 8 exemplos a diferença entre divisão inteira e divisão real.
 
-### Exercício 3 - Atribuição composta
+### Exercício 24 - Atribuição composta
 
 Reescreve 10 atribuições simples usando operadores compostos.
 
-### Exercício 4 - Comparações
+### Exercício 25 - Comparações
 
 Para 12 pares de valores, imprime resultados de todos os operadores relacionais.
 
-### Exercício 5 - Lógica booleana
+### Exercício 26 - Lógica booleana
 
 Implementa validador: idade >= 18 e nota >= 10.
 
-### Exercício 6 - Intervalos
+### Exercício 27 - Intervalos
 
 Verifica se número está no intervalo fechado [1, 100].
 
-### Exercício 7 - Incremento
+### Exercício 28 - Incremento
 
 Cria programa com contador e demonstra pré/pós incremento.
 
-### Exercício 8 - Precedência
+### Exercício 29 - Precedência
 
 Calcula e compara resultados de 10 expressões com e sem parênteses.
 
-### Exercício 9 - Refatoração
+### Exercício 30 - Refatoração
 
 Recebes 6 condições complexas; reescreve em forma mais legível.
 
-### Exercício 10 - Mini calculadora
+### Exercício 31 - Mini calculadora
 
 Implementa mini calculadora para `+`, `-`, `*`, `/`, `%`.
 
-### Exercício 11 - Diagnóstico
+### Exercício 32 - Diagnóstico
 
 Encontra e corrige erros de operadores num código fornecido pelo professor.
 
-### Exercício 12 - Reflexão
+### Exercício 33 - Reflexão
 
 Explica por que compreender operadores evita muitos bugs lógicos.
 
@@ -339,51 +409,51 @@ Explica por que compreender operadores evita muitos bugs lógicos.
 
 Fonte: [09_estruturas_de_controlo_em_c.md](./09_estruturas_de_controlo_em_c.md)
 
-### Exercício 1 - Classificação
+### Exercício 34 - Classificação
 
 Lê nota e classifica em 4 níveis usando `if/else if/else`.
 
-### Exercício 2 - Menu
+### Exercício 35 - Menu
 
 Cria menu com `switch` para 4 operações matemáticas.
 
-### Exercício 3 - Contagem
+### Exercício 36 - Contagem
 
 Imprime números de 1 a 50 com `while`.
 
-### Exercício 4 - Soma acumulada
+### Exercício 37 - Soma acumulada
 
 Lê números até aparecer 0 e mostra soma total.
 
-### Exercício 5 - Tabuada
+### Exercício 38 - Tabuada
 
 Mostra tabuada de um número com `for`.
 
-### Exercício 6 - Adivinhação
+### Exercício 39 - Adivinhação
 
 Cria jogo de adivinhar número com limite de tentativas.
 
-### Exercício 7 - `break` e `continue`
+### Exercício 40 - `break` e `continue`
 
 Faz exemplo que salta múltiplos de 3 e termina em valor específico.
 
-### Exercício 8 - Matriz
+### Exercício 41 - Matriz
 
 Percorre matriz 4x4 e calcula soma dos elementos.
 
-### Exercício 9 - Validação
+### Exercício 42 - Validação
 
 Repete pedido de nota enquanto valor estiver fora de 0-20.
 
-### Exercício 10 - Menu persistente
+### Exercício 43 - Menu persistente
 
 Menu com `do while` que só termina quando utilizador escolhe sair.
 
-### Exercício 11 - Conversão
+### Exercício 44 - Conversão
 
 Converte um algoritmo textual com repetição para C.
 
-### Exercício 12 - Reflexão
+### Exercício 45 - Reflexão
 
 Explica quando escolher `for`, `while` e `do while`.
 
@@ -393,51 +463,51 @@ Explica quando escolher `for`, `while` e `do while`.
 
 Fonte: [10_subprogramas_funcoes_e_parametros.md](./10_subprogramas_funcoes_e_parametros.md)
 
-### Exercício 1 - Funções básicas
+### Exercício 46 - Funções básicas
 
 Cria funções para somar, subtrair, multiplicar e dividir.
 
-### Exercício 2 - Retorno
+### Exercício 47 - Retorno
 
 Cria função que devolve maior de dois inteiros.
 
-### Exercício 3 - `void`
+### Exercício 48 - `void`
 
 Cria procedimento que imprime linha separadora no ecrã.
 
-### Exercício 4 - Locais e globais
+### Exercício 49 - Locais e globais
 
 Constrói exemplo com uma variável global e duas locais.
 
-### Exercício 5 - Passagem por valor
+### Exercício 50 - Passagem por valor
 
 Demonstra, com programa curto, que variável original não é alterada.
 
-### Exercício 6 - Passagem por ponteiro
+### Exercício 51 - Passagem por ponteiro
 
 Cria função para trocar dois inteiros.
 
-### Exercício 7 - Validação de parâmetros
+### Exercício 52 - Validação de parâmetros
 
 Cria função de divisão que trate divisor zero.
 
-### Exercício 8 - Modularização
+### Exercício 53 - Modularização
 
 Separa projeto em `main.c`, `operacoes.c`, `operacoes.h`.
 
-### Exercício 9 - Contador de chamadas
+### Exercício 54 - Contador de chamadas
 
 Usa variável global para contar quantas vezes função foi chamada.
 
-### Exercício 10 - Refatoração
+### Exercício 55 - Refatoração
 
 Transforma programa monolítico em pelo menos 5 funções.
 
-### Exercício 11 - Mini biblioteca
+### Exercício 56 - Mini biblioteca
 
 Cria conjunto de funções para manipular notas de alunos.
 
-### Exercício 12 - Reflexão
+### Exercício 57 - Reflexão
 
 Explica quando usar retorno e quando usar parâmetro por ponteiro.
 
@@ -447,51 +517,51 @@ Explica quando usar retorno e quando usar parâmetro por ponteiro.
 
 Fonte: [11_funcionalidades_editor_de_texto.md](./11_funcionalidades_editor_de_texto.md)
 
-### Exercício 1 - Configuração base
+### Exercício 58 - Configuração base
 
 Configura editor com linha, coluna e indentação de 4 espaços.
 
-### Exercício 2 - Atalhos
+### Exercício 59 - Atalhos
 
 Lista e pratica 12 atalhos úteis para programação C.
 
-### Exercício 3 - Pesquisa global
+### Exercício 60 - Pesquisa global
 
 Localiza todas as ocorrências de uma função num projeto com vários ficheiros.
 
-### Exercício 4 - Substituição segura
+### Exercício 61 - Substituição segura
 
 Renomeia variável em projeto sem quebrar outras partes.
 
-### Exercício 5 - Navegação
+### Exercício 62 - Navegação
 
 Usa "go to definition" para navegar entre `.h` e `.c`.
 
-### Exercício 6 - Formatação
+### Exercício 63 - Formatação
 
 Aplica formatação consistente a um ficheiro propositalmente desorganizado.
 
-### Exercício 7 - Terminal
+### Exercício 64 - Terminal
 
 Compila e executa programa apenas com terminal integrado.
 
-### Exercício 8 - Tarefa automática
+### Exercício 65 - Tarefa automática
 
 Cria tarefa de build no editor para um projeto C.
 
-### Exercício 9 - Debug inicial
+### Exercício 66 - Debug inicial
 
 Configura breakpoint e observa valor de uma variável por iteração.
 
-### Exercício 10 - Refatoração assistida
+### Exercício 67 - Refatoração assistida
 
 Extrai bloco de código para função com apoio do editor.
 
-### Exercício 11 - Produtividade
+### Exercício 68 - Produtividade
 
 Mede tempo de tarefa com e sem atalhos; compara resultados.
 
-### Exercício 12 - Reflexão
+### Exercício 69 - Reflexão
 
 Explica como editor bem usado melhora aprendizagem para iniciantes.
 
@@ -501,51 +571,51 @@ Explica como editor bem usado melhora aprendizagem para iniciantes.
 
 Fonte: [12_estruturas_estaticas_strings_arrays_matrizes.md](./12_estruturas_estaticas_strings_arrays_matrizes.md)
 
-### Exercício 1 - Vetor básico
+### Exercício 70 - Vetor básico
 
 Lê 10 inteiros para um vetor e imprime-os na ordem inversa.
 
-### Exercício 2 - Estatísticas
+### Exercício 71 - Estatísticas
 
 Num vetor de 20 valores, calcula soma, média, máximo e mínimo.
 
-### Exercício 3 - Pares e ímpares
+### Exercício 72 - Pares e ímpares
 
 Conta quantos elementos pares e ímpares existem no vetor.
 
-### Exercício 4 - Pesquisa
+### Exercício 73 - Pesquisa
 
 Implementa pesquisa linear de um valor num array.
 
-### Exercício 5 - Strings
+### Exercício 74 - Strings
 
 Lê nome completo e imprime quantidade de caracteres.
 
-### Exercício 6 - Comparação de strings
+### Exercício 75 - Comparação de strings
 
 Lê duas palavras e indica se são iguais.
 
-### Exercício 7 - Concatenação
+### Exercício 76 - Concatenação
 
 Lê nome e apelido e constrói nome completo.
 
-### Exercício 8 - Matriz 3x3
+### Exercício 77 - Matriz 3x3
 
 Lê matriz 3x3 e calcula soma da diagonal principal.
 
-### Exercício 9 - Matriz e condição
+### Exercício 78 - Matriz e condição
 
 Conta quantos valores de matriz 4x4 são maiores que 10.
 
-### Exercício 10 - Ordenação simples
+### Exercício 79 - Ordenação simples
 
 Ordena vetor de 10 elementos por método simples à tua escolha.
 
-### Exercício 11 - Segurança
+### Exercício 80 - Segurança
 
 Reescreve programa de leitura de nomes para evitar overflow.
 
-### Exercício 12 - Reflexão
+### Exercício 81 - Reflexão
 
 Explica diferenças práticas entre arrays e estruturas dinâmicas.
 
@@ -555,51 +625,51 @@ Explica diferenças práticas entre arrays e estruturas dinâmicas.
 
 Fonte: [13_estruturas_compostas_struct_union_enum.md](./13_estruturas_compostas_struct_union_enum.md)
 
-### Exercício 1 - `struct` básico
+### Exercício 82 - `struct` básico
 
 Cria `struct Livro` com título, autor, ano e disponibilidade.
 
-### Exercício 2 - Leitura e impressão
+### Exercício 83 - Leitura e impressão
 
 Lê dados de 3 livros e imprime relatório.
 
-### Exercício 3 - Array de structs
+### Exercício 84 - Array de structs
 
 Cria array de 20 alunos e calcula média da turma.
 
-### Exercício 4 - Pesquisa
+### Exercício 85 - Pesquisa
 
 Procura aluno por número dentro de array de structs.
 
-### Exercício 5 - Atualização
+### Exercício 86 - Atualização
 
 Atualiza estado de um registo (ativo/inativo).
 
-### Exercício 6 - `enum`
+### Exercício 87 - `enum`
 
 Define `enum` para dias da semana e usa em programa simples.
 
-### Exercício 7 - `union`
+### Exercício 88 - `union`
 
 Cria `union` para representar valor numérico em formatos diferentes.
 
-### Exercício 8 - `struct` com `enum`
+### Exercício 89 - `struct` com `enum`
 
 Combina `struct Pedido` com `enum EstadoPedido`.
 
-### Exercício 9 - Ponteiros
+### Exercício 90 - Ponteiros
 
 Manipula `struct` através de ponteiro e operador `->`.
 
-### Exercício 10 - Modularização
+### Exercício 91 - Modularização
 
 Move definições para ficheiro `.h` e implementação para `.c`.
 
-### Exercício 11 - Validação
+### Exercício 92 - Validação
 
 Valida campos de registo antes de guardar.
 
-### Exercício 12 - Reflexão
+### Exercício 93 - Reflexão
 
 Explica porque estruturas compostas tornam o código mais próximo de problemas reais.
 
@@ -609,51 +679,51 @@ Explica porque estruturas compostas tornam o código mais próximo de problemas 
 
 Fonte: [14_estruturas_dinamicas_apontadores.md](./14_estruturas_dinamicas_apontadores.md)
 
-### Exercício 1 - Endereços
+### Exercício 94 - Endereços
 
 Cria programa que mostra valor e endereço de 3 variáveis.
 
-### Exercício 2 - Ponteiro básico
+### Exercício 95 - Ponteiro básico
 
 Usa ponteiro para alterar valor de uma variável inteira.
 
-### Exercício 3 - Vetor dinâmico
+### Exercício 96 - Vetor dinâmico
 
 Aloca vetor de `n` inteiros e calcula soma dos elementos.
 
-### Exercício 4 - `calloc`
+### Exercício 97 - `calloc`
 
 Repete exercício 3 usando `calloc` e compara comportamento inicial.
 
-### Exercício 5 - `realloc`
+### Exercício 98 - `realloc`
 
 Começa com 5 elementos e expande para 10 com `realloc`.
 
-### Exercício 6 - Struct dinâmica
+### Exercício 99 - Struct dinâmica
 
 Aloca dinamicamente uma `struct Aluno` e preenche campos.
 
-### Exercício 7 - Array de structs dinâmico
+### Exercício 100 - Array de structs dinâmico
 
 Aloca turma com tamanho informado pelo utilizador.
 
-### Exercício 8 - Lista ligada (nó único)
+### Exercício 101 - Lista ligada (nó único)
 
 Cria nó, atribui valor, imprime e liberta memória.
 
-### Exercício 9 - Lista ligada (vários nós)
+### Exercício 102 - Lista ligada (vários nós)
 
 Insere 5 nós no fim e percorre para imprimir.
 
-### Exercício 10 - Gestão de memória
+### Exercício 103 - Gestão de memória
 
 Faz auditoria de um código e identifica pontos de leak.
 
-### Exercício 11 - Segurança
+### Exercício 104 - Segurança
 
 Corrige um exemplo com risco de use-after-free.
 
-### Exercício 12 - Reflexão
+### Exercício 105 - Reflexão
 
 Explica por que gestão manual de memória exige disciplina técnica.
 
@@ -663,51 +733,51 @@ Explica por que gestão manual de memória exige disciplina técnica.
 
 Fonte: [15_classes_e_objetos_contexto_c.md](./15_classes_e_objetos_contexto_c.md)
 
-### Exercício 1 - Modelação
+### Exercício 106 - Modelação
 
 Modela entidade `Aluno` como "objeto" em C (`struct` + funções).
 
-### Exercício 2 - API mínima
+### Exercício 107 - API mínima
 
 Cria API para `Livro`: criar, atualizar estado e consultar dados.
 
-### Exercício 3 - Inicialização
+### Exercício 108 - Inicialização
 
 Implementa função `init` para 3 tipos diferentes.
 
-### Exercício 4 - Encapsulamento
+### Exercício 109 - Encapsulamento
 
 Reorganiza código para ocultar detalhes internos num `.c`.
 
-### Exercício 5 - Validação de regras
+### Exercício 110 - Validação de regras
 
 Implementa função que recusa operações inválidas (ex.: saldo negativo).
 
-### Exercício 6 - Modularização
+### Exercício 111 - Modularização
 
 Divide programa em `main.c`, `entidade.c`, `entidade.h`.
 
-### Exercício 7 - Const-correctness
+### Exercício 112 - Const-correctness
 
 Cria funções de consulta que recebem ponteiro `const`.
 
-### Exercício 8 - Testes manuais
+### Exercício 113 - Testes manuais
 
 Define 12 testes para validar API de uma entidade.
 
-### Exercício 9 - Refatoração
+### Exercício 114 - Refatoração
 
 Converte programa monolítico num design baseado em "objetos" simulados.
 
-### Exercício 10 - Documentação
+### Exercício 115 - Documentação
 
 Escreve documentação de API para uma entidade criada por ti.
 
-### Exercício 11 - Evolução
+### Exercício 116 - Evolução
 
 Acrescenta novo comportamento mantendo compatibilidade da API.
 
-### Exercício 12 - Reflexão
+### Exercício 117 - Reflexão
 
 Explica semelhanças e diferenças entre este modelo em C e classes em OOP.
 
@@ -717,51 +787,51 @@ Explica semelhanças e diferenças entre este modelo em C e classes em OOP.
 
 Fonte: [16_heranca_e_polimorfismo_contexto_c.md](./16_heranca_e_polimorfismo_contexto_c.md)
 
-### Exercício 1 - Composição
+### Exercício 118 - Composição
 
 Cria `struct Veiculo` e `struct Carro` reutilizando campos comuns.
 
-### Exercício 2 - Interface por função
+### Exercício 119 - Interface por função
 
 Define interface de impressão para dois tipos diferentes.
 
-### Exercício 3 - Polimorfismo simples
+### Exercício 120 - Polimorfismo simples
 
 Implementa duas funções de comportamento e seleciona em runtime.
 
-### Exercício 4 - Vetor de "objetos"
+### Exercício 121 - Vetor de "objetos"
 
 Cria array de estruturas com ponteiro para função e executa comportamento.
 
-### Exercício 5 - Organização
+### Exercício 122 - Organização
 
 Separa interface e implementação em ficheiros distintos.
 
-### Exercício 6 - Validação
+### Exercício 123 - Validação
 
 Evita chamada de ponteiro de função nulo com verificações.
 
-### Exercício 7 - Refatoração
+### Exercício 124 - Refatoração
 
 Converte código com muitos `if` de tipo para abordagem polimórfica.
 
-### Exercício 8 - Testes
+### Exercício 125 - Testes
 
 Define testes para validar interface comum entre tipos.
 
-### Exercício 9 - Limitações
+### Exercício 126 - Limitações
 
 Escreve 6 limitações desta abordagem em comparação com C++.
 
-### Exercício 10 - Expansão
+### Exercício 127 - Expansão
 
 Adiciona um novo tipo à interface sem alterar código cliente principal.
 
-### Exercício 11 - Segurança
+### Exercício 128 - Segurança
 
 Analisa código e identifica riscos com ponteiros para função.
 
-### Exercício 12 - Reflexão
+### Exercício 129 - Reflexão
 
 Explica como este módulo ajuda a entender OOP mesmo em C.
 
@@ -771,51 +841,51 @@ Explica como este módulo ajuda a entender OOP mesmo em C.
 
 Fonte: [17_excecoes_e_tratamento_de_erros_em_c.md](./17_excecoes_e_tratamento_de_erros_em_c.md)
 
-### Exercício 1 - Divisão segura
+### Exercício 130 - Divisão segura
 
 Implementa função de divisão com tratamento de divisor zero.
 
-### Exercício 2 - Entrada robusta
+### Exercício 131 - Entrada robusta
 
 Lê inteiro com validação de formato e intervalo.
 
-### Exercício 3 - Códigos de erro
+### Exercício 132 - Códigos de erro
 
 Define tabela de códigos de erro para um mini projeto.
 
-### Exercício 4 - Ficheiros
+### Exercício 133 - Ficheiros
 
 Abre ficheiro para leitura e trata todos os possíveis erros básicos.
 
-### Exercício 5 - Memória
+### Exercício 134 - Memória
 
 Aloca vetor dinâmico com validação e mensagens de erro adequadas.
 
-### Exercício 6 - Propagação
+### Exercício 135 - Propagação
 
 Cria cadeia de 3 funções que propagam erros até `main`.
 
-### Exercício 7 - Limpeza de recursos
+### Exercício 136 - Limpeza de recursos
 
 Garante que ficheiro e memória são libertados em qualquer caminho de erro.
 
-### Exercício 8 - Refatoração
+### Exercício 137 - Refatoração
 
 Melhora um código sem tratamento de erros.
 
-### Exercício 9 - Diagnóstico
+### Exercício 138 - Diagnóstico
 
 Usa `perror` e `errno` em 5 cenários distintos.
 
-### Exercício 10 - Testes de erro
+### Exercício 139 - Testes de erro
 
 Define 15 testes focados apenas em cenários inválidos.
 
-### Exercício 11 - Mensagens de utilizador
+### Exercício 140 - Mensagens de utilizador
 
 Reescreve mensagens técnicas para linguagem compreensível por utilizador final.
 
-### Exercício 12 - Reflexão
+### Exercício 141 - Reflexão
 
 Explica por que tratamento de erros faz parte da qualidade do software.
 
@@ -825,51 +895,51 @@ Explica por que tratamento de erros faz parte da qualidade do software.
 
 Fonte: [18_ficheiros_acesso_e_manipulacao_em_c.md](./18_ficheiros_acesso_e_manipulacao_em_c.md)
 
-### Exercício 1 - Escrita simples
+### Exercício 142 - Escrita simples
 
 Cria programa que grava 5 linhas num ficheiro texto.
 
-### Exercício 2 - Leitura simples
+### Exercício 143 - Leitura simples
 
 Lê ficheiro linha a linha e imprime no ecrã.
 
-### Exercício 3 - Cópia de ficheiro
+### Exercício 144 - Cópia de ficheiro
 
 Implementa cópia de um ficheiro texto para outro.
 
-### Exercício 4 - Contagem
+### Exercício 145 - Contagem
 
 Conta número de linhas e caracteres de um ficheiro.
 
-### Exercício 5 - Registos
+### Exercício 146 - Registos
 
 Guarda registos de alunos no formato `nome;nota`.
 
-### Exercício 6 - Pesquisa
+### Exercício 147 - Pesquisa
 
 Lê ficheiro e procura registo por nome.
 
-### Exercício 7 - Acrescentar dados
+### Exercício 148 - Acrescentar dados
 
 Abre ficheiro em modo append e adiciona novos registos.
 
-### Exercício 8 - Binário básico
+### Exercício 149 - Binário básico
 
 Grava e lê array de inteiros em ficheiro binário.
 
-### Exercício 9 - Validação de I/O
+### Exercício 150 - Validação de I/O
 
 Melhora programa com tratamento de erro em cada operação de ficheiro.
 
-### Exercício 10 - Navegação
+### Exercício 151 - Navegação
 
 Usa `fseek` e `ftell` para descobrir tamanho de ficheiro.
 
-### Exercício 11 - Projeto curto
+### Exercício 152 - Projeto curto
 
 Cria mini agenda persistente em ficheiro (inserir/listar).
 
-### Exercício 12 - Reflexão
+### Exercício 153 - Reflexão
 
 Explica diferenças práticas entre guardar dados em texto e em binário.
 
@@ -879,51 +949,51 @@ Explica diferenças práticas entre guardar dados em texto e em binário.
 
 Fonte: [19_editor_texto_produtividade_e_debug.md](./19_editor_texto_produtividade_e_debug.md)
 
-### Exercício 1 - Atalhos avançados
+### Exercício 154 - Atalhos avançados
 
 Seleciona 15 atalhos do editor e aplica em tarefa real.
 
-### Exercício 2 - Pipeline local
+### Exercício 155 - Pipeline local
 
 Configura build + run num único comando/tarefa no editor.
 
-### Exercício 3 - Debug guiado
+### Exercício 156 - Debug guiado
 
 Coloca breakpoints em função com ciclo e analisa evolução de variáveis.
 
-### Exercício 4 - Rastreio de bug
+### Exercício 157 - Rastreio de bug
 
 Recebe programa com erro lógico e usa debugger para localizar causa.
 
-### Exercício 5 - Navegação
+### Exercício 158 - Navegação
 
 Num projeto com 8+ ficheiros, localiza rapidamente função e todas as referências.
 
-### Exercício 6 - Refatoração
+### Exercício 159 - Refatoração
 
 Renomeia função globalmente sem quebrar build.
 
-### Exercício 7 - Extração
+### Exercício 160 - Extração
 
 Extrai bloco repetido para função reutilizável.
 
-### Exercício 8 - Qualidade
+### Exercício 161 - Qualidade
 
 Cria checklist final de 12 pontos antes de entregar projeto.
 
-### Exercício 9 - Métricas pessoais
+### Exercício 162 - Métricas pessoais
 
 Regista tempo gasto em tarefa antes e depois de configurar automações.
 
-### Exercício 10 - Organização
+### Exercício 163 - Organização
 
 Reorganiza projeto desestruturado em pastas claras (`src`, `include`, `bin`).
 
-### Exercício 11 - Simulação de revisão
+### Exercício 164 - Simulação de revisão
 
 Faz revisão de código de colega usando ferramentas do editor.
 
-### Exercício 12 - Reflexão
+### Exercício 165 - Reflexão
 
 Explica como domínio de editor influencia qualidade e aprendizagem em C.
 
