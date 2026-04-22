@@ -41,6 +41,23 @@ Passo a passo:
 4. Escreve apenas as declarações (com ou sem inicialização, conforme preferires).
 5. Revê se cada variável representa exatamente um dado real da ficha.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numero_aluno; // Número de identificação do aluno
+    char nome[50];   // Nome completo do aluno (máximo 49 caracteres + '\0')
+    char turma[10];  // Turma do aluno (ex.: "10A")
+    int idade;       // Idade do aluno em anos
+    double media;    // Média final do aluno (pode ter casas decimais)
+    double faltas;   // Percentagem de faltas (0.0 a 100.0)
+
+    return 0;
+}
+```
+
 ### Exercício 2 - Tipos corretos
 
 Objetivo: justificar escolhas de tipos com base no domínio do problema.
@@ -56,6 +73,23 @@ Passo a passo:
 3. Escolhe um tipo para cada campo e escreve uma mini justificação técnica.
 4. Verifica se o tipo escolhido suporta o intervalo esperado de valores.
 5. Confirma consistência entre campos parecidos (ex.: valores monetários).
+
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int id_bicicleta;          // ID único da bicicleta, geralmente um número inteiro
+    double quilometros_totais; // Quilómetros totais percorridos, pode ter casas decimais
+    double custo_por_minuto;   // Custo por minuto de uso, valor monetário com casas decimais
+    int estado;                // Estado da bicicleta: 0 para disponível, 1 para ocupada (pode ser enum ou bool)
+    int nivel_bateria;         // Nível de bateria em percentagem (0 a 100), pode ser inteiro
+
+    return 0;
+}
+```
 
 ### Exercício 3 - Constantes
 
@@ -73,6 +107,25 @@ Passo a passo:
 4. Coloca as constantes numa zona visível do programa (topo do ficheiro).
 5. Revê se nenhuma constante ficou "hardcoded" no meio dos cálculos.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define LIMITE_VELOCIDADE 25.0 // Limite de velocidade em km/h
+#define PRECO_DESBLOQUEIO 1.00 // Preço fixo para desbloquear a bicicleta
+
+const double TAXA_POR_MINUTO = 0.15; // Taxa por minuto de uso
+
+int main() {
+    // O programa pode usar as constantes definidas acima para cálculos e lógica
+    // Exemplo de uso:
+    double custo_total = PRECO_DESBLOQUEIO + (TAXA_POR_MINUTO * 15); // Custo para 15 minutos de uso
+    printf("Custo total para 15 minutos: %.2f euros\n", custo_total);
+    return 0;
+}
+```
+
 ### Exercício 4 - Expressões
 
 Objetivo: montar uma expressão aritmética e apresentar resultado formatado.
@@ -88,6 +141,26 @@ Passo a passo:
 3. Escreve a expressão do custo total separando parte fixa e parte variável.
 4. Guarda o resultado numa variável de tipo adequado.
 5. Imprime o valor final com formatação monetária (casas decimais consistentes).
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define PRECO_FIXO 1.00 // Preço fixo para desbloquear a trotinete
+const double TAXA_MINUTO = 0.15; // Taxa por minuto de uso
+int main() {
+    int duracao_minutos = 15; // Duração da viagem em minutos
+
+    // Calcula o custo total
+    double custo_total = PRECO_FIXO + (TAXA_MINUTO * duracao_minutos);
+
+    // Imprime o resultado formatado como valor monetário
+    printf("Custo total para %d minutos: %.2f euros\n", duracao_minutos, custo_total);
+
+    return 0;
+}
+```
 
 ### Exercício 5 - Casting
 
@@ -105,6 +178,34 @@ Passo a passo:
 4. Mostra os dois resultados lado a lado no output.
 5. Escreve uma explicação curta sobre porque os valores mudam.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int jogos = 10;          // Total de jogos
+    int pontos_totais = 85;  // Total de pontos marcados
+    int vitorias = 6;        // Total de vitórias
+
+    // Cálculo sem cast (divisão inteira)
+    int media_pontos_sem_cast = pontos_totais / jogos; // Resultado inteiro
+    int taxa_vitorias_sem_cast = (vitorias * 100) / jogos; // Resultado inteiro em percentagem
+
+    // Cálculo com cast (divisão real)
+    double media_pontos_com_cast = (double)pontos_totais / jogos; // Resultado com casas decimais
+    double taxa_vitorias_com_cast = ((double)vitorias * 100) / jogos; // Resultado com casas decimais
+
+    // Imprime os resultados
+    printf("Média de pontos por jogo (sem cast): %d\n", media_pontos_sem_cast);
+    printf("Taxa de vitórias (sem cast): %d%%\n", taxa_vitorias_sem_cast);
+    printf("Média de pontos por jogo (com cast): %.2f\n", media_pontos_com_cast);
+    printf("Taxa de vitórias (com cast): %.2f%%\n", taxa_vitorias_com_cast);
+
+    return 0;
+}
+```
+
 ### Exercício 6 - Entrada/saída
 
 Objetivo: praticar leitura de dados e impressão alinhada.
@@ -120,6 +221,37 @@ Passo a passo:
 3. Calcula subtotal e total (se aplicável ao teu cenário).
 4. Imprime um resumo em colunas alinhadas com `printf`.
 5. Garante que valores monetários aparecem com 2 casas decimais.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    char nome_produto[50]; // Nome do produto
+    int quantidade;        // Quantidade comprada
+    double preco_unitario; // Preço por unidade
+
+    // Lê os dados do utilizador
+    printf("Digite o nome do produto: ");
+    scanf("%49s", nome_produto); // Limita a leitura para evitar overflow
+    printf("Digite a quantidade: ");
+    scanf("%d", &quantidade);
+    printf("Digite o preço unitário: ");
+    scanf("%lf", &preco_unitario);
+
+    // Calcula subtotal e total (sem impostos para simplicidade)
+    double subtotal = quantidade * preco_unitario;
+
+    // Imprime o resumo da compra alinhado
+    printf("\nResumo da Compra:\n");
+    printf("%-20s %10s %15s\n", "Produto", "Quantidade", "Preço Unitário");
+    printf("%-20s %10d %15.2f\n", nome_produto, quantidade, preco_unitario);
+    printf("\nSubtotal: %.2f euros\n", subtotal);
+
+    return 0;
+}
+```
 
 ### Exercício 7 - Conversão de unidades
 
@@ -137,6 +269,35 @@ Passo a passo:
 4. Implementa a conversão de km/h para m/s.
 5. Mostra os resultados com unidades e formatação clara.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    double temperatura_celsius; // Temperatura em Celsius
+    double velocidade_kmh;      // Velocidade do vento em km/h
+
+    // Lê os dados do utilizador
+    printf("Digite a temperatura em Celsius: ");
+    scanf("%lf", &temperatura_celsius);
+    printf("Digite a velocidade do vento em km/h: ");
+    scanf("%lf", &velocidade_kmh);
+
+    // Converte Celsius para Fahrenheit
+    double temperatura_fahrenheit = (temperatura_celsius * 9.0 / 5.0) + 32.0;
+
+    // Converte km/h para m/s
+    double velocidade_ms = velocidade_kmh / 3.6;
+
+    // Imprime os resultados
+    printf("\nTemperatura: %.2f °C = %.2f °F\n", temperatura_celsius, temperatura_fahrenheit);
+    printf("Velocidade do vento: %.2f km/h = %.2f m/s\n", velocidade_kmh, velocidade_ms);
+
+    return 0;
+}
+```
+
 ### Exercício 8 - Validação básica
 
 Objetivo: validar limites antes de aceitar um valor como válido.
@@ -152,6 +313,30 @@ Passo a passo:
 3. Cria uma condição para detetar valores fora do intervalo.
 4. Se inválido, apresenta mensagem de erro objetiva.
 5. Se válido, mostra confirmação com o valor lido.
+
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    double percentagem_bateria; // Percentagem de bateria
+
+    // Lê a percentagem de bateria do utilizador
+    printf("Digite a percentagem de bateria (0-100): ");
+    scanf("%lf", &percentagem_bateria);
+
+    // Valida o valor lido
+    if (percentagem_bateria < 0.0 || percentagem_bateria > 100.0) {
+        printf("Erro: A percentagem de bateria deve estar entre 0 e 100.\n");
+    } else {
+        printf("Percentagem de bateria válida: %.2f%%\n", percentagem_bateria);
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 9 - Formatação
 
@@ -169,6 +354,29 @@ Passo a passo:
 4. Imprime as 3 linhas com especificadores de largura em `printf`.
 5. Revê alinhamento visual no terminal e ajusta larguras se necessário.
 
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    // Dados dos jogadores
+    char nome_jogadores[3][20] = {"Alice", "Bob", "Charlie"};
+    int pontos[3] = {1500, 1200, 1800};
+    double precisao[3] = {85.5, 78.2, 92.3};
+
+    // Imprime o placar com colunas alinhadas
+    printf("%-20s %10s %15s\n", "Nome", "Pontos", "Precisão (%)");
+    printf("--------------------------------------------------\n");
+    for (int i = 0; i < 3; i++) {
+        printf("%-20s %10d %15.2f\n", nome_jogadores[i], pontos[i], precisao[i]);
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 10 - Diagnóstico
 
 Objetivo: diagnosticar e corrigir erros clássicos de formatação e leitura.
@@ -185,6 +393,36 @@ Passo a passo:
 4. Em cada correção, escreve uma frase com o motivo técnico.
 5. Recompila até não existirem avisos relacionados com formatos.
 
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int idade; // Correção: tipo deve ser int para idade
+    double altura; // Correção: tipo deve ser double para altura
+    char nome[50]; // Correção: tipo deve ser char array para nome
+
+    // Lê os dados do utilizador
+    printf("Digite sua idade: ");
+    scanf("%d", &idade); // Correção: %d para int e uso de & para variável
+
+    printf("Digite sua altura em metros: ");
+    scanf("%lf", &altura); // Correção: %lf para double e uso de & para variável
+
+    printf("Digite seu nome: ");
+    scanf("%49s", nome); // Correção: %s para string e limite de leitura
+
+    // Imprime os dados lidos
+    printf("\nIdade: %d anos\n", idade);
+    printf("Altura: %.2f metros\n", altura);
+    printf("Nome: %s\n", nome);
+
+    return 0;
+}
+```
+
 ### Exercício 11 - Mini programa
 
 Objetivo: integrar entrada, cálculo e apresentação num mini projeto.
@@ -200,6 +438,44 @@ Passo a passo:
 3. Calcula consumo diário e depois consumo mensal.
 4. Calcula custo mensal estimado com base no preço por kWh.
 5. Apresenta um resumo final com unidades e casas decimais adequadas.
+
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    double potencia_watts; // Potência em watts
+    double horas_por_dia; // Horas de uso por dia
+    double preco_kwh;     // Preço por kWh
+
+    // Lê os dados do utilizador
+    printf("Digite a potência do aparelho em watts: ");
+    scanf("%lf", &potencia_watts);
+    printf("Digite as horas de uso por dia: ");
+    scanf("%lf", &horas_por_dia);
+    printf("Digite o preço por kWh: ");
+    scanf("%lf", &preco_kwh);
+
+    // Converte potência para kW
+    double potencia_kw = potencia_watts / 1000.0;
+
+    // Calcula consumo diário e mensal
+    double consumo_diario_kwh = potencia_kw * horas_por_dia;
+    double consumo_mensal_kwh = consumo_diario_kwh * 30; // Aproximando 30 dias
+
+    // Calcula custo mensal
+    double custo_mensal = consumo_mensal_kwh * preco_kwh;
+
+    // Apresenta o resumo final
+    printf("\nConsumo diário: %.2f kWh\n", consumo_diario_kwh);
+    printf("Consumo mensal: %.2f kWh\n", consumo_mensal_kwh);
+    printf("Custo mensal estimado: %.2f euros\n", custo_mensal);
+
+    return 0;
+}
+```
 
 ---
 
