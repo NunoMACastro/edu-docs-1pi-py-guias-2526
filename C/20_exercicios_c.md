@@ -687,51 +687,322 @@ Fonte: [09_estruturas_de_controlo_em_c.md](./09_estruturas_de_controlo_em_c.md)
 
 ### Exercício 34 - Classificação
 
-Lê nota e classifica em 4 níveis usando `if/else if/else`.
+Objetivo: praticar decisões encadeadas com `if`, `else if` e `else`.
+
+Cria um programa que lê a nota final de um aluno, entre 0 e 20, e apresenta uma classificação textual em quatro níveis.
+
+Usa os seguintes níveis:
+
+- `Insuficiente`: nota menor que 10
+- `Suficiente`: nota entre 10 e 13
+- `Bom`: nota entre 14 e 17
+- `Muito Bom`: nota entre 18 e 20
+
+Requisitos:
+
+- O programa deve pedir a nota ao utilizador.
+- A classificação deve ser feita com uma estrutura `if/else if/else`.
+- Assume, nesta fase, que o utilizador introduz uma nota válida entre 0 e 20.
+- O output deve mostrar a nota lida e a respetiva classificação.
+
+Passo a passo:
+
+1. Declara uma variável para guardar a nota.
+2. Lê a nota introduzida pelo utilizador.
+3. Identifica primeiro os intervalos de classificação em papel.
+4. Implementa os testes do intervalo mais baixo para o mais alto, ou ao contrário, mas sem sobreposições.
+5. Mostra uma mensagem final clara com a classificação obtida.
 
 ### Exercício 35 - Menu
 
-Cria menu com `switch` para 4 operações matemáticas.
+Objetivo: usar `switch` para escolher uma operação a partir de uma opção do utilizador.
+
+Cria uma mini calculadora com menu para quatro operações matemáticas: soma, subtração, multiplicação e divisão.
+
+O programa deve apresentar um menu semelhante a:
+
+- `1` - Somar
+- `2` - Subtrair
+- `3` - Multiplicar
+- `4` - Dividir
+
+Requisitos:
+
+- O utilizador deve escolher a operação através de um número.
+- O programa deve ler dois valores numéricos.
+- A escolha da operação deve ser feita com `switch`.
+- Deve existir um caso `default` para opções inválidas.
+- Na divisão, não permitas divisão por zero.
+
+Passo a passo:
+
+1. Mostra o menu antes de pedir a opção.
+2. Lê a opção escolhida.
+3. Lê os dois operandos necessários para o cálculo.
+4. Cria um `switch` com um `case` para cada operação.
+5. Trata a opção inválida no `default` e a divisão por zero no caso da divisão.
 
 ### Exercício 36 - Contagem
 
-Imprime números de 1 a 50 com `while`.
+Objetivo: controlar uma repetição com `while` e aplicar regras simples dentro do ciclo.
+
+Cria um programa que percorre os números de 1 a 50 e imprime apenas os que respeitam uma regra escolhida pelo utilizador.
+
+Antes da contagem, o programa deve perguntar que tipo de números mostrar:
+
+- `1` - todos os números
+- `2` - apenas números pares
+- `3` - apenas números ímpares
+- `4` - apenas múltiplos de 5
+
+Requisitos:
+
+- A contagem principal deve ser feita com `while`.
+- O contador deve começar em 1 e terminar em 50.
+- O programa deve usar condições dentro do ciclo para decidir se imprime cada número.
+- Se a opção for inválida, o programa deve mostrar uma mensagem de erro.
+
+Passo a passo:
+
+1. Declara uma variável para a opção e outra para o contador.
+2. Mostra o menu de filtros e lê a escolha do utilizador.
+3. Inicializa o contador com o primeiro valor da contagem.
+4. Dentro do `while`, verifica se o número atual cumpre a regra escolhida.
+5. No fim de cada repetição, atualiza sempre o contador para evitar um ciclo infinito.
 
 ### Exercício 37 - Soma acumulada
 
-Lê números até aparecer 0 e mostra soma total.
+Objetivo: usar um ciclo com sentinela e acumular valores ao longo da execução.
+
+Cria um programa que lê números inteiros introduzidos pelo utilizador até ser introduzido o valor `0`.
+
+O valor `0` serve apenas para terminar a leitura e não deve entrar na soma.
+
+Requisitos:
+
+- O programa deve manter uma variável acumuladora para a soma.
+- O programa deve contar quantos números foram efetivamente somados.
+- No final, deve mostrar a soma total e a quantidade de números introduzidos antes do `0`.
+- A leitura deve continuar enquanto o valor introduzido for diferente de `0`.
+
+Passo a passo:
+
+1. Cria uma variável para o número lido.
+2. Cria uma variável para a soma acumulada, iniciada a zero.
+3. Cria uma variável para contar quantos números válidos foram introduzidos.
+4. Lê números repetidamente até surgir o valor sentinela `0`.
+5. Depois do ciclo, apresenta o total acumulado e o número de entradas usadas.
 
 ### Exercício 38 - Tabuada
 
-Mostra tabuada de um número com `for`.
+Objetivo: usar `for` quando o número de repetições é conhecido antecipadamente.
+
+Cria um programa que lê um número inteiro e imprime a sua tabuada de 1 a 10.
+
+Exemplo de comportamento esperado, sem precisares de copiar este formato exatamente:
+
+`7 x 1 = 7`
+
+`7 x 2 = 14`
+
+Requisitos:
+
+- O programa deve pedir ao utilizador o número da tabuada.
+- A repetição deve ser feita com `for`.
+- A variável de controlo deve representar o multiplicador.
+- O output deve ser organizado e fácil de ler.
+
+Passo a passo:
+
+1. Declara uma variável para o número escolhido pelo utilizador.
+2. Lê esse número.
+3. Cria um ciclo `for` que percorra os multiplicadores de 1 a 10.
+4. Em cada iteração, calcula o produto entre o número e o multiplicador.
+5. Imprime cada linha da tabuada no formato mais legível possível.
 
 ### Exercício 39 - Adivinhação
 
-Cria jogo de adivinhar número com limite de tentativas.
+Objetivo: combinar repetição, condições e controlo de tentativas num pequeno jogo.
+
+Cria um jogo em que o utilizador tenta adivinhar um número secreto definido no programa.
+
+O número secreto pode estar fixo no código, por exemplo entre 1 e 100. O jogador deve ter um número máximo de tentativas.
+
+Requisitos:
+
+- Define um número secreto numa variável.
+- Define um limite máximo de tentativas.
+- A cada tentativa, o utilizador introduz um palpite.
+- O programa deve indicar se o palpite é demasiado baixo, demasiado alto ou correto.
+- O jogo termina quando o utilizador acerta ou quando esgota as tentativas.
+- No final, mostra uma mensagem de vitória ou derrota.
+
+Passo a passo:
+
+1. Decide o valor do número secreto e o número máximo de tentativas.
+2. Cria variáveis para o palpite, o número de tentativas e o estado do jogo.
+3. Enquanto ainda houver tentativas e o jogador não tiver acertado, pede um novo palpite.
+4. Compara o palpite com o número secreto usando `if/else`.
+5. Atualiza a contagem de tentativas e apresenta o resultado final quando o ciclo terminar.
 
 ### Exercício 40 - `break` e `continue`
 
-Faz exemplo que salta múltiplos de 3 e termina em valor específico.
+Objetivo: perceber quando `continue` salta uma iteração e quando `break` termina um ciclo.
+
+Cria um programa que percorre números de 1 até 100, mas com duas regras especiais:
+
+- os múltiplos de 3 não devem ser impressos;
+- a contagem deve terminar imediatamente quando chegar a um valor limite escolhido pelo utilizador.
+
+Requisitos:
+
+- O valor limite deve ser lido no início do programa.
+- Usa `continue` para saltar os múltiplos de 3.
+- Usa `break` para terminar o ciclo quando o limite for atingido.
+- O programa deve validar de forma simples se o limite está entre 1 e 100.
+
+Passo a passo:
+
+1. Lê o valor limite.
+2. Antes do ciclo, confirma se o limite está dentro do intervalo permitido.
+3. Cria um ciclo que percorra os valores de 1 a 100.
+4. Dentro do ciclo, verifica primeiro se chegou ao valor limite.
+5. Depois, verifica se o número é múltiplo de 3 e decide se deve saltar a impressão.
 
 ### Exercício 41 - Matriz
 
-Percorre matriz 4x4 e calcula soma dos elementos.
+Objetivo: praticar ciclos encadeados para percorrer uma matriz.
+
+Cria um programa que guarda valores inteiros numa matriz 4x4 e calcula estatísticas simples sobre os seus elementos.
+
+O programa deve calcular:
+
+- a soma de todos os elementos;
+- a quantidade de números pares;
+- o maior valor existente na matriz.
+
+Requisitos:
+
+- Usa uma matriz 4x4 de inteiros.
+- Podes preencher a matriz com valores fixos no código ou pedir os valores ao utilizador.
+- O percurso da matriz deve ser feito com dois ciclos encadeados.
+- Não uses 16 instruções separadas para aceder manualmente a cada posição.
+
+Passo a passo:
+
+1. Declara uma matriz 4x4.
+2. Decide se vais inicializar a matriz diretamente ou preenchê-la com leitura do utilizador.
+3. Cria um ciclo para percorrer as linhas.
+4. Dentro dele, cria outro ciclo para percorrer as colunas.
+5. Em cada posição, atualiza a soma, verifica se o valor é par e compara com o maior valor encontrado até ao momento.
 
 ### Exercício 42 - Validação
 
-Repete pedido de nota enquanto valor estiver fora de 0-20.
+Objetivo: repetir a leitura até o utilizador introduzir um valor válido.
+
+Cria um programa que pede uma nota entre 0 e 20 e só aceita o valor quando este estiver dentro do intervalo permitido.
+
+Enquanto a nota for inválida, o programa deve mostrar uma mensagem de erro e voltar a pedir a nota.
+
+Requisitos:
+
+- A nota deve ser lida como valor numérico.
+- O intervalo válido é de 0 a 20, inclusive.
+- A repetição deve continuar enquanto a nota estiver fora do intervalo.
+- Quando a nota for válida, o programa deve mostrar uma mensagem de confirmação.
+
+Passo a passo:
+
+1. Declara uma variável para guardar a nota.
+2. Lê a primeira tentativa do utilizador.
+3. Cria uma condição que identifique notas menores que 0 ou maiores que 20.
+4. Enquanto a condição indicar erro, mostra uma mensagem e volta a ler.
+5. Quando o ciclo terminar, apresenta a nota aceite.
 
 ### Exercício 43 - Menu persistente
 
-Menu com `do while` que só termina quando utilizador escolhe sair.
+Objetivo: usar `do while` quando o menu deve aparecer pelo menos uma vez.
 
-### Exercício 44 - Conversão
+Cria um programa com um menu persistente de gestão de notas.
 
-Converte um algoritmo textual com repetição para C.
+O menu deve ter as seguintes opções:
+
+- `1` - Inserir nota
+- `2` - Mostrar última nota inserida
+- `3` - Classificar última nota
+- `0` - Sair
+
+Requisitos:
+
+- O menu deve aparecer pelo menos uma vez.
+- A repetição deve ser feita com `do while`.
+- O programa só deve terminar quando o utilizador escolher `0`.
+- Se ainda não existir nota inserida, as opções 2 e 3 devem informar o utilizador.
+- A opção inválida deve ser tratada com uma mensagem adequada.
+
+Passo a passo:
+
+1. Cria uma variável para a opção do menu.
+2. Cria uma variável para guardar a última nota e outra para indicar se já existe nota.
+3. Dentro do `do`, mostra o menu e lê a opção.
+4. Usa `switch` ou `if/else` para tratar cada opção.
+5. Mantém o ciclo ativo enquanto a opção escolhida for diferente de `0`.
+
+### Exercício 44 - Simulação de saldo
+
+Objetivo: integrar menu, validação, repetição e decisões num programa mais próximo de um caso real.
+
+Cria uma simulação simples de saldo bancário. O utilizador começa com um saldo inicial e pode escolher operações através de um menu.
+
+O menu deve incluir:
+
+- `1` - Consultar saldo
+- `2` - Depositar dinheiro
+- `3` - Levantar dinheiro
+- `0` - Terminar
+
+Requisitos:
+
+- O saldo inicial deve ser pedido ao utilizador.
+- O menu deve repetir até o utilizador escolher sair.
+- Um depósito só deve ser aceite se o valor for positivo.
+- Um levantamento só deve ser aceite se o valor for positivo e não ultrapassar o saldo disponível.
+- O programa deve mostrar mensagens claras para operações aceites e recusadas.
+
+Passo a passo:
+
+1. Lê e guarda o saldo inicial.
+2. Cria um ciclo de menu que continue até à opção `0`.
+3. Para cada opção, decide que dados adicionais precisas de pedir.
+4. Valida os valores antes de alterar o saldo.
+5. Atualiza o saldo apenas quando a operação for válida.
 
 ### Exercício 45 - Reflexão
 
-Explica quando escolher `for`, `while` e `do while`.
+Objetivo: escolher a estrutura de repetição adequada a diferentes problemas.
+
+Para cada situação abaixo, indica se usarias `for`, `while` ou `do while` e justifica a escolha em duas ou três frases:
+
+1. Imprimir os números de 1 a 100.
+2. Pedir uma palavra-passe até estar correta.
+3. Mostrar um menu que deve aparecer pelo menos uma vez.
+4. Ler temperaturas até ser introduzido o valor `-999`.
+5. Percorrer todas as posições de um array com tamanho conhecido.
+6. Repetir uma pergunta enquanto o utilizador responder `S`.
+
+Requisitos:
+
+- Não escrevas código completo.
+- Justifica com base no tipo de problema, não apenas no nome da estrutura.
+- Refere se o número de repetições é conhecido, desconhecido ou se o ciclo tem de executar pelo menos uma vez.
+
+Passo a passo:
+
+1. Lê cada situação e identifica o que controla a repetição.
+2. Decide se sabes antecipadamente o número de repetições.
+3. Verifica se a ação precisa de acontecer antes do primeiro teste.
+4. Escolhe a estrutura mais adequada.
+5. Escreve uma justificação curta e técnica para cada caso.
 
 ---
 
