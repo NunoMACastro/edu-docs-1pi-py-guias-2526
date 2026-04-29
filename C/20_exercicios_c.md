@@ -594,6 +594,28 @@ Passo a passo:
 4. Compila e verifica se o output aparece na ordem esperada.
 5. Ajusta os textos de apresentação para ficarem legíveis.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Cada variável usa um tipo diferente para treinar os especificadores do printf.
+    int idade = 16;
+    double altura = 1.72;
+    char turma = 'A';
+    char nome[] = "Ana";
+
+    // Cada printf usa o especificador adequado ao tipo da variável.
+    printf("Idade: %d\n", idade);
+    printf("Altura: %.2f\n", altura);
+    printf("Turma: %c\n", turma);
+    printf("Nome: %s\n", nome);
+
+    return 0;
+}
+```
+
 ### Exercício 13 - Percentagens e casas decimais no `printf`
 
 Objetivo: praticar formatação de números reais e impressão do símbolo `%`.
@@ -615,6 +637,26 @@ Passo a passo:
 3. Imprime o nome com `%s` e as percentagens com precisão fixa (por exemplo, 1 casa decimal).
 4. Mostra o símbolo de percentagem corretamente usando `%%`.
 5. Revê o output final para confirmar legibilidade e consistência das casas decimais.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Valores fixos de teste para não ser necessário ler input neste exercício.
+    char dispositivo[] = "Telemovel";
+    double carga_atual = 63.5;
+    double meta_carregamento = 90.0;
+
+    // O símbolo %% imprime uma percentagem literal no ecrã.
+    printf("Dispositivo: %s\n", dispositivo);
+    printf("Carga atual: %.1f%%\n", carga_atual);
+    printf("Meta de carregamento: %.1f%%\n", meta_carregamento);
+
+    return 0;
+}
+```
 
 ### Exercício 14 - Leitura de um inteiro
 
@@ -638,6 +680,29 @@ Passo a passo:
 4. Se o retorno for `1`, imprime o número lido.
 5. Se o retorno for diferente de `1`, mostra mensagem de erro clara.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+    int lidos; // Guarda quantos valores o scanf conseguiu ler corretamente.
+
+    printf("Escreve um numero inteiro: ");
+    lidos = scanf("%d", &numero);
+
+    // Se scanf devolver 1, significa que leu exatamente um inteiro.
+    if (lidos == 1) {
+        printf("Numero lido: %d\n", numero);
+    } else {
+        printf("Erro: valor invalido.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 15 - Leitura de `double`
 
 Objetivo: usar formato correto para leitura e impressão de `double`.
@@ -659,6 +724,29 @@ Passo a passo:
 3. Lê com `scanf("%lf", &variavel)` e verifica o retorno.
 4. Em caso válido, imprime com `%.3f`.
 5. Em caso inválido, apresenta erro sem continuar cálculos.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    double valor;
+    int lidos; // Permite confirmar se a leitura foi bem-sucedida.
+
+    printf("Escreve um valor decimal: ");
+    lidos = scanf("%lf", &valor);
+
+    // Para ler double com scanf usa-se %lf.
+    if (lidos == 1) {
+        printf("Valor lido: %.3f\n", valor);
+    } else {
+        printf("Erro: valor invalido.\n");
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 16 - Valor e endereço
 
@@ -682,6 +770,31 @@ Passo a passo:
 4. Imprime o endereço com `%p`, convertendo para `(void *)`.
 5. Compara visualmente valor e endereço para reforçar a diferença.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+    int lidos;
+
+    printf("Escreve um numero inteiro: ");
+    lidos = scanf("%d", &numero);
+
+    if (lidos == 1) {
+        // O valor é o conteúdo guardado na variável.
+        printf("Valor: %d\n", numero);
+        // O endereço indica onde a variável está guardada na memória.
+        printf("Endereco: %p\n", (void *)&numero);
+    } else {
+        printf("Erro: valor invalido.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 17 - Dois inteiros na mesma linha
 
 Objetivo: ler múltiplos campos numa única chamada de `scanf`.
@@ -703,6 +816,31 @@ Passo a passo:
 3. Faz a leitura numa única chamada `scanf`.
 4. Verifica se o retorno é `2`.
 5. Se válido, imprime os dois valores; se inválido, mostra erro.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    int lidos;
+
+    printf("Escreve dois numeros inteiros: ");
+    // A mesma chamada scanf pode ler mais do que um valor.
+    lidos = scanf("%d %d", &a, &b);
+
+    // Neste caso, o valor esperado é 2 porque queremos ler dois inteiros.
+    if (lidos == 2) {
+        printf("Primeiro numero: %d\n", a);
+        printf("Segundo numero: %d\n", b);
+    } else {
+        printf("Erro: tens de escrever dois numeros inteiros.\n");
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 18 - Leitura de `char` após número
 
@@ -726,6 +864,41 @@ Passo a passo:
 4. Confirma se a opção está no conjunto esperado (`A`, `B`, `C`).
 5. Imprime resumo final com número e opção escolhida.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+    char opcao;
+
+    printf("Escreve um numero: ");
+    // Primeiro validamos o número, porque o programa depende dele.
+    if (scanf("%d", &numero) != 1) {
+        printf("Erro: numero invalido.\n");
+        return 1;
+    }
+
+    printf("Escolhe uma opcao (A, B ou C): ");
+    // O espaço antes de %c ignora ENTERs ou espaços deixados no input.
+    if (scanf(" %c", &opcao) != 1) {
+        printf("Erro: opcao invalida.\n");
+        return 1;
+    }
+
+    // Só aceitamos as opções definidas no enunciado.
+    if (opcao == 'A' || opcao == 'B' || opcao == 'C') {
+        printf("Numero: %d\n", numero);
+        printf("Opcao escolhida: %c\n", opcao);
+    } else {
+        printf("Erro: a opcao deve ser A, B ou C.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 19 - Palavra com limite de tamanho
 
 Objetivo: prevenir overflow em leitura de string com `scanf`.
@@ -747,6 +920,28 @@ Passo a passo:
 3. Lê com `scanf("%19s", codigo)`.
 4. Verifica se a leitura retornou `1`.
 5. Imprime o valor lido e testa com palavras curtas e longas.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    char codigo[20];
+
+    printf("Escreve um codigo sem espacos: ");
+
+    // %19s impede que sejam guardados mais de 19 caracteres no array.
+    // O último espaço fica reservado para o caractere final '\0'.
+    if (scanf("%19s", codigo) == 1) {
+        printf("Codigo lido: %s\n", codigo);
+    } else {
+        printf("Erro: nao foi possivel ler o codigo.\n");
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 20 - Frase completa com `fgets`
 
@@ -770,6 +965,36 @@ Passo a passo:
 4. Procura `\n` no fim e substitui por `\0` quando necessário.
 5. Imprime a frase final entre delimitadores visuais para confirmar limpeza.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    char frase[80];
+    int i = 0; // Índice usado para percorrer a string caractere a caractere.
+
+    printf("Escreve uma frase: ");
+
+    // fgets lê a linha completa, incluindo espaços.
+    if (fgets(frase, sizeof(frase), stdin) != NULL) {
+        while (frase[i] != '\0') {
+            // Se encontrarmos o ENTER final, substituímos por fim de string.
+            if (frase[i] == '\n') {
+                frase[i] = '\0';
+            }
+            i++;
+        }
+
+        printf("Frase: [%s]\n", frase);
+    } else {
+        printf("Erro: nao foi possivel ler a frase.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 21 - Mini ficha (integração)
 
 Objetivo: integrar leitura e apresentação de vários tipos no mesmo programa.
@@ -791,6 +1016,64 @@ Passo a passo:
 3. Garante limpeza de input antes de ler o nome completo.
 4. Lê o nome com `fgets` e remove `\n` final se existir.
 5. Imprime um resumo final alinhado, claro e consistente.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+    double media;
+    char turma;
+    char nome[80];
+    int i = 0;
+
+    // Cada leitura com scanf é validada antes de continuar.
+    printf("Numero do aluno: ");
+    if (scanf("%d", &numero) != 1) {
+        printf("Erro: numero invalido.\n");
+        return 1;
+    }
+
+    printf("Media: ");
+    if (scanf("%lf", &media) != 1) {
+        printf("Erro: media invalida.\n");
+        return 1;
+    }
+
+    printf("Turma: ");
+    if (scanf(" %c", &turma) != 1) {
+        printf("Erro: turma invalida.\n");
+        return 1;
+    }
+
+    getchar(); // Limpa o '\n' deixado pelo scanf anterior
+
+    printf("Nome completo: ");
+    // fgets é usado para permitir nomes com espaços.
+    if (fgets(nome, sizeof(nome), stdin) == NULL) {
+        printf("Erro: nome invalido.\n");
+        return 1;
+    }
+
+    // Remove o ENTER final, caso exista.
+    while (nome[i] != '\0') {
+        if (nome[i] == '\n') {
+            nome[i] = '\0';
+        }
+        i++;
+    }
+
+    printf("\nResumo do aluno\n");
+    printf("%-15s %d\n", "Numero:", numero);
+    printf("%-15s %.2f\n", "Media:", media);
+    printf("%-15s %c\n", "Turma:", turma);
+    printf("%-15s %s\n", "Nome:", nome);
+
+    return 0;
+}
+```
 
 ---
 
@@ -820,6 +1103,38 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Escreve dois numeros inteiros: ");
+    // Validamos se foram realmente lidos dois inteiros.
+    if (scanf("%d %d", &a, &b) != 2) {
+        printf("Erro: valores invalidos.\n");
+        return 1;
+    }
+
+    // Operações aritméticas básicas entre os dois valores.
+    printf("Soma: %d\n", a + b);
+    printf("Diferenca: %d\n", a - b);
+    printf("Produto: %d\n", a * b);
+
+    // Divisão e resto só são possíveis se o divisor não for zero.
+    if (b != 0) {
+        printf("Quociente: %d\n", a / b);
+        printf("Resto: %d\n", a % b);
+    } else {
+        printf("Nao e possivel dividir por zero.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 23 - Divisão inteira vs real
 
 Objetivo: praticar divisão inteira vs real aplicando os conceitos de operadores em C.
@@ -841,6 +1156,35 @@ Passo a passo:
 3. Implementa a lógica principal usando a estrutura ou conceito pedido.
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Cada par de inteiros permite comparar divisão inteira e real.
+    int a1 = 5, b1 = 2;
+    int a2 = 7, b2 = 3;
+    int a3 = 10, b3 = 4;
+    int a4 = 9, b4 = 2;
+
+    printf("Divisao inteira:\n");
+    printf("%d / %d = %d\n", a1, b1, a1 / b1);
+    printf("%d / %d = %d\n", a2, b2, a2 / b2);
+    printf("%d / %d = %d\n", a3, b3, a3 / b3);
+    printf("%d / %d = %d\n", a4, b4, a4 / b4);
+
+    printf("\nDivisao real:\n");
+    // O cast para double força a divisão a produzir casas decimais.
+    printf("%d / %d = %.2f\n", a1, b1, (double)a1 / b1);
+    printf("%d / %d = %.2f\n", a2, b2, (double)a2 / b2);
+    printf("%d / %d = %.2f\n", a3, b3, (double)a3 / b3);
+    printf("%d / %d = %.2f\n", a4, b4, (double)a4 / b4);
+
+    return 0;
+}
+```
 
 ### Exercício 24 - Atribuição composta
 
@@ -864,6 +1208,42 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Valores iniciais simples para observar o efeito das atribuições compostas.
+    int a = 10;
+    int b = 20;
+    int c = 30;
+    int d = 40;
+    int e = 50;
+
+    // Cada operador composto altera a própria variável.
+    a += 5;  // a = a + 5
+    b -= 3;  // b = b - 3
+    c *= 2;  // c = c * 2
+    d /= 4;  // d = d / 4
+    e %= 6;  // e = e % 6
+
+    a += 10; // a = a + 10
+    b -= 7;  // b = b - 7
+    c *= 3;  // c = c * 3
+    d /= 2;  // d = d / 2
+    e %= 2;  // e = e % 2
+
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+    printf("c = %d\n", c);
+    printf("d = %d\n", d);
+    printf("e = %d\n", e);
+
+    return 0;
+}
+```
+
 ### Exercício 25 - Comparações
 
 Objetivo: praticar comparações aplicando os conceitos de operadores em C.
@@ -885,6 +1265,91 @@ Passo a passo:
 3. Implementa a lógica principal usando a estrutura ou conceito pedido.
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    // Em C, o resultado de uma comparação é 1 (verdadeiro) ou 0 (falso).
+    a = 1;
+    b = 2;
+    printf("Par 1: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 5;
+    b = 5;
+    printf("Par 2: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 8;
+    b = 6;
+    printf("Par 3: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 10;
+    b = 10;
+    printf("Par 4: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 3;
+    b = 9;
+    printf("Par 5: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 7;
+    b = 1;
+    printf("Par 6: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 12;
+    b = 12;
+    printf("Par 7: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 4;
+    b = 8;
+    printf("Par 8: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 9;
+    b = 3;
+    printf("Par 9: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 6;
+    b = 6;
+    printf("Par 10: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 15;
+    b = 10;
+    printf("Par 11: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    a = 20;
+    b = 25;
+    printf("Par 12: a = %d, b = %d\n", a, b);
+    printf("== %d | != %d | > %d | < %d | >= %d | <= %d\n",
+           a == b, a != b, a > b, a < b, a >= b, a <= b);
+
+    return 0;
+}
+```
 
 ### Exercício 26 - Lógica booleana
 
@@ -908,6 +1373,39 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int idade;
+    double nota;
+
+    // O programa só continua se conseguir ler uma idade válida.
+    printf("Idade: ");
+    if (scanf("%d", &idade) != 1) {
+        printf("Erro: idade invalida.\n");
+        return 1;
+    }
+
+    printf("Nota: ");
+    if (scanf("%lf", &nota) != 1) {
+        printf("Erro: nota invalida.\n");
+        return 1;
+    }
+
+    // O operador && exige que as duas condições sejam verdadeiras.
+    if (idade >= 18 && nota >= 10) {
+        printf("Valido: idade e nota cumprem os requisitos.\n");
+    } else {
+        printf("Invalido: idade ou nota nao cumprem os requisitos.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 27 - Intervalos
 
 Objetivo: praticar intervalos aplicando os conceitos de operadores em C.
@@ -929,6 +1427,32 @@ Passo a passo:
 3. Implementa a lógica principal usando a estrutura ou conceito pedido.
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+
+    printf("Escreve um numero: ");
+    // Antes de testar o intervalo, confirmamos se foi lido um inteiro.
+    if (scanf("%d", &numero) != 1) {
+        printf("Erro: numero invalido.\n");
+        return 1;
+    }
+
+    // O intervalo fechado inclui os limites 1 e 100.
+    if (numero >= 1 && numero <= 100) {
+        printf("O numero esta no intervalo [1, 100].\n");
+    } else {
+        printf("O numero esta fora do intervalo [1, 100].\n");
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 28 - Incremento
 
@@ -952,6 +1476,29 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int contador = 5;
+    int resultado;
+
+    printf("Valor inicial: %d\n", contador);
+
+    // Pós-incremento: primeiro usa o valor, depois incrementa.
+    resultado = contador++;
+    printf("Pos-incremento: resultado = %d, contador = %d\n", resultado, contador);
+
+    // Pré-incremento: primeiro incrementa, depois usa o novo valor.
+    resultado = ++contador;
+    printf("Pre-incremento: resultado = %d, contador = %d\n", resultado, contador);
+
+    return 0;
+}
+```
+
 ### Exercício 29 - Precedência
 
 Objetivo: praticar precedência aplicando os conceitos de operadores em C.
@@ -973,6 +1520,32 @@ Passo a passo:
 3. Implementa a lógica principal usando a estrutura ou conceito pedido.
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Os pares de expressões mostram como os parênteses podem mudar o resultado.
+    printf("1) 2 + 3 * 4 = %d\n", 2 + 3 * 4);
+    printf("   (2 + 3) * 4 = %d\n", (2 + 3) * 4);
+
+    printf("2) 10 - 6 / 2 = %d\n", 10 - 6 / 2);
+    printf("   (10 - 6) / 2 = %d\n", (10 - 6) / 2);
+
+    printf("3) 8 + 2 > 5 = %d\n", 8 + 2 > 5);
+    printf("   8 + (2 > 5) = %d\n", 8 + (2 > 5));
+
+    printf("4) 1 || 0 && 0 = %d\n", 1 || 0 && 0);
+    printf("   (1 || 0) && 0 = %d\n", (1 || 0) && 0);
+
+    printf("5) 20 / 5 * 2 = %d\n", 20 / 5 * 2);
+    printf("   20 / (5 * 2) = %d\n", 20 / (5 * 2));
+
+    return 0;
+}
+```
 
 ### Exercício 30 - Refatoração
 
@@ -996,6 +1569,39 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Dados de exemplo para transformar condições longas em nomes mais claros.
+    int idade = 19;
+    double nota = 14.5;
+    int faltas = 3;
+    int tem_cartao = 1;
+    int saldo = 25;
+    int produto_disponivel = 1;
+
+    // Cada variável booleana representa uma parte simples da decisão.
+    int maior_de_idade = idade >= 18;
+    int nota_positiva = nota >= 10;
+    int poucas_faltas = faltas <= 5;
+    int pode_entrar = maior_de_idade && tem_cartao;
+    int pode_comprar = saldo > 0 && produto_disponivel;
+    int aluno_aprovado = nota_positiva && poucas_faltas;
+
+    printf("Maior de idade: %d\n", maior_de_idade);
+    printf("Nota positiva: %d\n", nota_positiva);
+    printf("Poucas faltas: %d\n", poucas_faltas);
+    printf("Pode entrar: %d\n", pode_entrar);
+    printf("Pode comprar: %d\n", pode_comprar);
+    printf("Aluno aprovado: %d\n", aluno_aprovado);
+
+    return 0;
+}
+```
+
 ### Exercício 31 - Mini calculadora
 
 Objetivo: praticar mini calculadora aplicando os conceitos de operadores em C.
@@ -1018,6 +1624,51 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    char operador;
+
+    printf("Escreve uma operacao (ex.: 10 + 2): ");
+    // Lê operando, operador e segundo operando na mesma linha.
+    if (scanf("%d %c %d", &a, &operador, &b) != 3) {
+        printf("Erro: operacao invalida.\n");
+        return 1;
+    }
+
+    // Cada ramo trata um operador possível.
+    if (operador == '+') {
+        printf("Resultado: %d\n", a + b);
+    } else if (operador == '-') {
+        printf("Resultado: %d\n", a - b);
+    } else if (operador == '*') {
+        printf("Resultado: %d\n", a * b);
+    } else if (operador == '/') {
+        // Não se pode dividir por zero.
+        if (b != 0) {
+            printf("Resultado: %d\n", a / b);
+        } else {
+            printf("Erro: divisao por zero.\n");
+        }
+    } else if (operador == '%') {
+        // O operador % também não pode ter divisor zero.
+        if (b != 0) {
+            printf("Resultado: %d\n", a % b);
+        } else {
+            printf("Erro: resto por zero.\n");
+        }
+    } else {
+        printf("Erro: operador desconhecido.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 32 - Diagnóstico
 
 Objetivo: identificar problemas, explicar a causa e aplicar uma correção tecnicamente correta.
@@ -1039,6 +1690,43 @@ Passo a passo:
 4. Aplica a correção mínima necessária.
 5. Volta a testar ou reler o código para confirmar que o problema ficou resolvido.
 
+> Resolução:
+
+Exemplo de correções comuns:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int idade = 18;
+    int nota = 12;
+    int total = 7;
+    int quantidade = 2;
+    double media;
+
+    // Correto: usa == para comparar.
+    if (idade == 18) {
+        printf("Idade igual a 18\n");
+    }
+
+    // Correto: usa && para exigir as duas condições.
+    if (idade >= 18 && nota >= 10) {
+        printf("Aluno valido\n");
+    }
+
+    // Correto: faz cast para evitar divisao inteira.
+    media = (double)total / quantidade;
+    printf("Media: %.2f\n", media);
+
+    // Correto: usa parenteses para deixar a intencao clara.
+    if ((nota >= 10) && (nota <= 20)) {
+        printf("Nota dentro do intervalo\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 33 - Reflexão
 
 Objetivo: consolidar os conceitos de operadores em C através de uma explicação escrita e justificada.
@@ -1059,6 +1747,18 @@ Passo a passo:
 3. Justifica cada escolha com base no tipo de problema apresentado.
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+
+> Resolução:
+
+Compreender operadores evita muitos bugs lógicos porque grande parte das decisões de um programa depende de expressões.
+
+Por exemplo, `=` e `==` têm significados diferentes: `=` atribui um valor, enquanto `==` compara dois valores. Confundir estes operadores pode fazer com que uma condição produza um resultado errado.
+
+Também é importante compreender a diferença entre divisão inteira e divisão real. Em C, `5 / 2` dá `2`, porque os dois valores são inteiros. Para obter `2.5`, é necessário usar um valor real, por exemplo `(double)5 / 2`.
+
+Outro ponto importante é a precedência. A expressão `2 + 3 * 4` vale `14`, não `20`, porque a multiplicação é feita antes da soma. Quando há dúvida, usar parênteses torna o código mais claro e reduz erros.
+
+Por isso, conhecer bem os operadores ajuda a escrever condições, cálculos e validações mais corretas, legíveis e previsíveis.
 
 ---
 
@@ -1093,6 +1793,35 @@ Passo a passo:
 3. Identifica primeiro os intervalos de classificação em papel.
 4. Implementa os testes do intervalo mais baixo para o mais alto, ou ao contrário, mas sem sobreposições.
 5. Mostra uma mensagem final clara com a classificação obtida.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int nota;
+
+    printf("Escreve a nota final (0 a 20): ");
+    scanf("%d", &nota);
+
+    // Testamos os intervalos por ordem crescente.
+    if (nota < 10) {
+        printf("Nota: %d - Classificacao: Insuficiente\n", nota);
+    } else if (nota <= 13) {
+        // Aqui já sabemos que a nota é pelo menos 10.
+        printf("Nota: %d - Classificacao: Suficiente\n", nota);
+    } else if (nota <= 17) {
+        // Aqui já sabemos que a nota é pelo menos 14.
+        printf("Nota: %d - Classificacao: Bom\n", nota);
+    } else {
+        // Como assumimos nota válida, resta o intervalo 18 a 20.
+        printf("Nota: %d - Classificacao: Muito Bom\n", nota);
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 35 - Menu
 
