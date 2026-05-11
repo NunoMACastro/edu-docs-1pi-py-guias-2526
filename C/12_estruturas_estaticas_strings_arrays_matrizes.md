@@ -127,9 +127,9 @@ Um array unidimensional é uma sequência de elementos do mesmo tipo.
 
 Podemos imaginá-lo como uma fila de caixas:
 
-| Índice | 0  | 1  | 2  | 3  | 4  |
-| ------ | -- | -- | -- | -- | -- |
-| Valor  | 10 | 20 | 30 | 40 | 50 |
+| Índice | 0   | 1   | 2   | 3   | 4   |
+| ------ | --- | --- | --- | --- | --- |
+| Valor  | 10  | 20  | 30  | 40  | 50  |
 
 Declaração em C:
 
@@ -186,9 +186,9 @@ As primeiras duas posições recebem `10` e `20`. As restantes ficam a `0`.
 
 Resultado:
 
-| Índice | 0  | 1  | 2 | 3 | 4 |
-| ------ | -- | -- | - | - | - |
-| Valor  | 10 | 20 | 0 | 0 | 0 |
+| Índice | 0   | 1   | 2   | 3   | 4   |
+| ------ | --- | --- | --- | --- | --- |
+| Valor  | 10  | 20  | 0   | 0   | 0   |
 
 ---
 
@@ -475,13 +475,13 @@ Para usar funções de strings:
 
 Funções frequentes:
 
-| Função | Para que serve | Exemplo de ideia |
-| ------ | -------------- | ---------------- |
-| `strlen` | calcular comprimento da string | quantos caracteres tem o nome |
-| `strcmp` | comparar strings | ver se duas palavras são iguais |
-| `strcpy` | copiar string | copiar um nome para outro array |
-| `strcat` | juntar strings | acrescentar apelido ao nome |
-| `strcspn` | procurar primeira ocorrência de certos caracteres | remover `\n` do `fgets` |
+| Função    | Para que serve                                    | Exemplo de ideia                |
+| --------- | ------------------------------------------------- | ------------------------------- |
+| `strlen`  | calcular comprimento da string                    | quantos caracteres tem o nome   |
+| `strcmp`  | comparar strings                                  | ver se duas palavras são iguais |
+| `strcpy`  | copiar string                                     | copiar um nome para outro array |
+| `strcat`  | juntar strings                                    | acrescentar apelido ao nome     |
+| `strcspn` | procurar primeira ocorrência de certos caracteres | remover `\n` do `fgets`         |
 
 ### 10.1 `strlen`
 
@@ -534,10 +534,10 @@ Uma matriz é um array bidimensional. Podemos imaginá-la como uma tabela.
 
 Exemplo de matriz com 2 linhas e 3 colunas:
 
-|     | Coluna 0 | Coluna 1 | Coluna 2 |
-| --- | -------- | -------- | -------- |
-| Linha 0 | 1 | 2 | 3 |
-| Linha 1 | 4 | 5 | 6 |
+|         | Coluna 0 | Coluna 1 | Coluna 2 |
+| ------- | -------- | -------- | -------- |
+| Linha 0 | 1        | 2        | 3        |
+| Linha 1 | 4        | 5        | 6        |
 
 Declaração:
 

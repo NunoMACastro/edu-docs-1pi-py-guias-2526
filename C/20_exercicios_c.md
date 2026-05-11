@@ -2910,268 +2910,278 @@ Passo a passo:
 
 Fonte: [12_estruturas_estaticas_strings_arrays_matrizes.md](./12_estruturas_estaticas_strings_arrays_matrizes.md)
 
-### Exercício 70 - Vetor básico
+### Exercício 70 - Vetor básico e ordem inversa
 
-Objetivo: praticar vetor básico aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: praticar declaração, preenchimento e percurso de um array de inteiros.
 
 Lê 10 inteiros para um vetor e imprime-os na ordem inversa.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa uma constante para representar o tamanho do vetor.
+- Guarda todos os valores num array antes de os imprimir.
+- Usa um ciclo para ler os valores e outro ciclo para os imprimir pela ordem inversa.
+- Não acedas a posições fora dos limites do array.
+- O output deve deixar claro que a segunda listagem está em ordem inversa.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define uma constante, por exemplo `TOTAL_NUMEROS`, com valor 10.
+2. Declara um array de inteiros com esse tamanho.
+3. Lê cada número para a posição correta do array.
+4. Percorre o array do último índice até ao primeiro.
+5. Testa com valores fáceis de verificar, como `1 2 3 4 5 6 7 8 9 10`.
 
 ### Exercício 71 - Estatísticas
 
-Objetivo: praticar estatísticas aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: calcular informação simples a partir dos valores guardados num array.
 
-Num vetor de 20 valores, calcula soma, média, máximo e mínimo.
+Lê 20 valores inteiros para um vetor e calcula soma, média, máximo e mínimo.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa uma constante para o tamanho do vetor.
+- Guarda os valores num array antes de calcular os resultados.
+- Inicializa o máximo e o mínimo com o primeiro elemento do array, não com `0`.
+- A média deve poder apresentar casas decimais.
+- Mostra soma, média, máximo e mínimo com mensagens claras.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Lê todos os valores para o array.
+2. Começa a soma em `0`.
+3. Define máximo e mínimo com o valor da posição `0`.
+4. Percorre o array e atualiza soma, máximo e mínimo.
+5. Calcula a média com conversão para `double` ou `float`.
+6. Testa também com valores negativos para confirmar que máximo e mínimo estão corretos.
 
 ### Exercício 72 - Pares e ímpares
 
-Objetivo: praticar pares e ímpares aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: praticar condições dentro do percurso de um array.
 
-Conta quantos elementos pares e ímpares existem no vetor.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 73 - Pesquisa
-
-Objetivo: praticar pesquisa aplicando os conceitos de strings, arrays e matrizes.
-
-Implementa pesquisa linear de um valor num array.
+Lê 12 inteiros para um vetor, conta quantos são pares e quantos são ímpares, e mostra também os valores pares encontrados.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa o operador `%` para distinguir pares e ímpares.
+- Não precisas de criar dois arrays separados; podes contar e mostrar durante o percurso.
+- Mostra no final o total de pares e o total de ímpares.
+- O programa deve funcionar também se todos os números forem pares ou todos forem ímpares.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Lê os 12 valores para um array.
+2. Cria dois contadores: um para pares e outro para ímpares.
+3. Percorre o array.
+4. Se o valor for par, aumenta o contador de pares e mostra esse valor.
+5. Caso contrário, aumenta o contador de ímpares.
+6. Testa com uma lista mista e com uma lista só de números pares.
 
-### Exercício 74 - Strings
+### Exercício 73 - Array passado para função
 
-Objetivo: praticar strings aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: praticar passagem de arrays para funções, passando também o tamanho.
 
-Lê nome completo e imprime quantidade de caracteres.
+Cria uma função `calcular_soma` que receba um array de inteiros e o seu tamanho, devolvendo a soma dos elementos.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- O programa principal deve ler 8 valores para um array.
+- A função deve ter um parâmetro para o array e outro para o tamanho.
+- A função não deve pedir valores ao utilizador nem imprimir resultados; apenas calcula e devolve a soma.
+- O `main` deve chamar a função e mostrar o resultado.
+- Usa nomes de variáveis que deixem claro o papel de cada elemento.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Escreve o protótipo da função antes do `main`.
+2. No `main`, declara e preenche o array.
+3. Chama `calcular_soma`.
+4. Dentro da função, percorre o array com `for`.
+5. Devolve a soma com `return`.
+6. Testa com valores cuja soma seja fácil de confirmar.
 
-### Exercício 75 - Comparação de strings
+### Exercício 74 - Pesquisa linear
 
-Objetivo: praticar comparação de strings aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: procurar um valor dentro de um array usando pesquisa linear.
+
+Lê 10 inteiros para um array. Depois lê um valor a pesquisar e indica se esse valor existe no array e em que posição aparece pela primeira vez.
+
+Requisitos:
+
+- Usa uma variável para indicar se o valor foi encontrado.
+- Quando encontrares a primeira ocorrência, podes terminar a pesquisa.
+- Se o valor não existir, mostra uma mensagem clara.
+- A posição apresentada ao utilizador pode ser em formato humano, começando em 1, mas o índice interno continua a começar em 0.
+
+Passo a passo:
+
+1. Lê os valores do array.
+2. Lê o valor a procurar.
+3. Percorre o array desde a posição `0`.
+4. Compara cada elemento com o valor procurado.
+5. Guarda o índice quando encontrares o valor.
+6. Testa um caso em que o valor existe e outro em que não existe.
+
+### Exercício 75 - String com nome completo
+
+Objetivo: praticar leitura segura de strings com espaços.
+
+Lê o nome completo de uma pessoa e mostra quantos caracteres tem, sem contar o Enter final.
+
+Requisitos:
+
+- Usa um array de `char` com tamanho definido por constante.
+- Usa `fgets` para permitir nomes com espaços.
+- Remove o `\n` final, se existir.
+- Usa `strlen` para calcular o comprimento da string.
+- Não uses `gets`.
+
+Passo a passo:
+
+1. Inclui as bibliotecas necessárias.
+2. Declara uma constante para o tamanho máximo do nome.
+3. Lê o nome com `fgets`.
+4. Remove o `\n` usando uma técnica segura, como `strcspn`.
+5. Calcula o comprimento com `strlen`.
+6. Testa com um nome simples e com um nome composto.
+
+### Exercício 76 - Comparação de strings
+
+Objetivo: comparar o conteúdo de duas strings corretamente.
 
 Lê duas palavras e indica se são iguais.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa arrays de `char` com tamanho definido por constante.
+- Podes ler palavras com `scanf` usando largura máxima, por exemplo `%29s`, ou usar `fgets`.
+- Compara as strings com `strcmp`.
+- Não compares strings com `==`.
+- Mostra mensagens diferentes para strings iguais e diferentes.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Lê a primeira palavra.
+2. Lê a segunda palavra.
+3. Usa `strcmp` para comparar as duas strings.
+4. Verifica se o resultado da comparação é `0`.
+5. Testa com duas palavras iguais e com duas palavras diferentes.
 
-### Exercício 76 - Concatenação
+### Exercício 77 - Construção de nome completo
 
-Objetivo: praticar concatenação aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: juntar strings respeitando a capacidade dos arrays.
 
-Lê nome e apelido e constrói nome completo.
+Lê um primeiro nome e um apelido. Depois constrói e mostra o nome completo com um espaço entre eles.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa arrays de `char` para o primeiro nome, apelido e nome completo.
+- Garante que o array do nome completo tem capacidade suficiente.
+- Podes usar `strcpy` e `strcat`, desde que controles os tamanhos usados no exercício.
+- O nome completo deve incluir exatamente um espaço entre o nome e o apelido.
+- Não uses atribuição direta para copiar strings depois da declaração.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define constantes para os tamanhos máximos.
+2. Lê o primeiro nome e o apelido.
+3. Copia o primeiro nome para o array do nome completo.
+4. Acrescenta um espaço.
+5. Acrescenta o apelido.
+6. Mostra o resultado e testa com nomes curtos.
 
-### Exercício 77 - Matriz 3x3
+### Exercício 78 - Lista de nomes
 
-Objetivo: praticar matriz 3x3 aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: praticar matriz de caracteres, ou seja, vários textos guardados numa só estrutura.
 
-Lê matriz 3x3 e calcula soma da diagonal principal.
+Lê nomes completos de 5 alunos e mostra a lista numerada no final.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa uma matriz de caracteres, por exemplo `char nomes[5][50]`.
+- Usa constantes para o número de alunos e para o tamanho máximo de cada nome.
+- Usa `fgets` para permitir nomes com espaços.
+- Remove o `\n` final de cada nome.
+- Mostra a lista com numeração de 1 a 5.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara a matriz de caracteres.
+2. Usa um ciclo para ler cada nome.
+3. Em cada leitura, remove o `\n` final.
+4. Usa outro ciclo para mostrar os nomes.
+5. Testa com nomes simples e nomes com espaços.
 
-### Exercício 78 - Matriz e condição
+### Exercício 79 - Matriz 3x3: leitura, visualização e soma
 
-Objetivo: praticar matriz e condição aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: praticar leitura e percurso completo de uma matriz.
 
-Conta quantos valores de matriz 4x4 são maiores que 10.
+Lê uma matriz 3x3 de inteiros, mostra-a em formato de tabela e calcula a soma de todos os elementos.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa constantes para o número de linhas e colunas.
+- Usa dois ciclos `for` para ler os valores.
+- Usa dois ciclos `for` para mostrar a matriz.
+- Calcula a soma total dos elementos.
+- O output deve manter a estrutura de linhas e colunas.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara a matriz.
+2. Lê cada valor indicando linha e coluna ao utilizador.
+3. Soma os valores durante a leitura ou num segundo percurso.
+4. Mostra a matriz com quebras de linha no fim de cada linha.
+5. Mostra a soma total.
 
-### Exercício 79 - Ordenação simples
+### Exercício 80 - Matriz 3x3: diagonal, linhas e colunas
 
-Objetivo: praticar ordenação simples aplicando os conceitos de strings, arrays e matrizes.
+Objetivo: praticar acesso a posições específicas de uma matriz.
 
-Ordena vetor de 10 elementos por método simples à tua escolha.
+Lê uma matriz 3x3 de inteiros e calcula:
+
+- a soma da diagonal principal;
+- a soma de cada linha;
+- a soma de cada coluna.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa dois ciclos para ler a matriz.
+- Para a diagonal principal, usa posições em que linha e coluna têm o mesmo índice.
+- Mostra a soma de cada linha de forma identificada.
+- Mostra a soma de cada coluna de forma identificada.
+- Mantém os limites corretos: índices de `0` a `2`.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Lê a matriz completa.
+2. Calcula a soma da diagonal principal.
+3. Percorre cada linha e calcula a sua soma.
+4. Percorre cada coluna e calcula a sua soma.
+5. Testa com uma matriz simples, como valores de 1 a 9.
 
-### Exercício 80 - Segurança
+### Exercício 81 - Desafio final: ordenação e reflexão
 
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
+Objetivo: consolidar arrays através de um desafio um pouco mais exigente e de uma explicação escrita.
 
-Reescreve programa de leitura de nomes para evitar overflow.
+Lê 10 inteiros para um array, ordena-os por ordem crescente usando um método simples e explica, por palavras tuas, a diferença entre arrays estáticos e estruturas dinâmicas.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa um método simples de ordenação, como bubble sort ou selection sort.
+- Não uses funções prontas de ordenação.
+- Mostra o array antes e depois da ordenação.
+- Na explicação escrita, refere tamanho fixo, memória reservada e limites do array.
+- A parte de reflexão deve ter linguagem clara e pelo menos um exemplo prático.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 81 - Reflexão
-
-Objetivo: consolidar os conceitos de strings, arrays e matrizes através de uma explicação escrita e justificada.
-
-Explica diferenças práticas entre arrays e estruturas dinâmicas.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+1. Lê os 10 valores para o array.
+2. Mostra o array original.
+3. Aplica um algoritmo simples de ordenação.
+4. Mostra o array ordenado.
+5. Escreve uma explicação curta sobre quando um array estático é suficiente e quando uma estrutura dinâmica pode ser necessária.
+6. Testa com valores repetidos, valores já ordenados e valores em ordem inversa.
 
 ---
 
