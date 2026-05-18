@@ -2932,6 +2932,33 @@ Passo a passo:
 4. Percorre o array do último índice até ao primeiro.
 5. Testa com valores fáceis de verificar, como `1 2 3 4 5 6 7 8 9 10`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL_NUMEROS 10
+
+int main() {
+    int numeros[TOTAL_NUMEROS];
+
+    // Lê os números para o array
+    printf("Escreve %d números inteiros:\n", TOTAL_NUMEROS);
+    for (int i = 0; i < TOTAL_NUMEROS; i++) {
+        scanf("%d", &numeros[i]);
+    }
+
+    // Imprime os números na ordem inversa
+    printf("Números na ordem inversa:\n");
+    for (int i = TOTAL_NUMEROS - 1; i >= 0; i--) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
+
 ### Exercício 71 - Estatísticas
 
 Objetivo: calcular informação simples a partir dos valores guardados num array.
@@ -3022,6 +3049,49 @@ Passo a passo:
 5. Guarda o índice quando encontrares o valor.
 6. Testa um caso em que o valor existe e outro em que não existe.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL_NUMEROS 10
+
+int main() {
+    int numeros[TOTAL_NUMEROS];
+    int valorProcurado;
+    int encontrado = 0; // Variável para indicar se o valor foi encontrado
+    int posicaoEncontrada = -1; // Variável para guardar a posição do valor encontrado
+
+    // Lê os números para o array
+    printf("Escreve %d números inteiros:\n", TOTAL_NUMEROS);
+    for (int i = 0; i < TOTAL_NUMEROS; i++) {
+        scanf("%d", &numeros[i]);
+    }
+
+    // Lê o valor a procurar
+    printf("Escreve o valor a procurar: ");
+    scanf("%d", &valorProcurado);
+
+    // Pesquisa linear no array
+    for (int i = 0; i < TOTAL_NUMEROS; i++) {
+        if (numeros[i] == valorProcurado) {
+            encontrado = 1;
+            posicaoEncontrada = i; // Guarda a posição do valor encontrado
+            break; // Termina a pesquisa após encontrar a primeira ocorrência
+        }
+    }
+
+    // Mostra o resultado da pesquisa
+    if (encontrado) {
+        printf("Valor %d encontrado na posição %d.\n", valorProcurado, posicaoEncontrada + 1); // +1 para formato humano
+    } else {
+        printf("Valor %d não encontrado no array.\n", valorProcurado);
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 75 - String com nome completo
 
 Objetivo: praticar leitura segura de strings com espaços.
@@ -3041,9 +3111,56 @@ Passo a passo:
 1. Inclui as bibliotecas necessárias.
 2. Declara uma constante para o tamanho máximo do nome.
 3. Lê o nome com `fgets`.
-4. Remove o `\n` usando uma técnica segura, como `strcspn`.
+4. Remove o `\n` usando uma técnica segura, como `strcspn`. O `strcspn` retorna o índice do primeiro caractere encontrado que é `\n`, ou o tamanho da string se não encontrar. Substituir esse índice por `\0` remove o `\n`.
 5. Calcula o comprimento com `strlen`.
 6. Testa com um nome simples e com um nome composto.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_NOME 100
+int main() {
+    char nome[MAX_NOME];
+
+    printf("Escreve o nome completo: ");
+    fgets(nome, MAX_NOME, stdin);
+
+    // Remove o \n final, se existir
+    nome[strcspn(nome, "\n")] = '\0';
+
+    int comprimento = strlen(nome);
+    printf("O nome tem %d caracteres.\n", comprimento);
+
+    return 0;
+}
+```
+
+Sem contra os espaços entre nomes:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_NOME 100
+int main() {
+    char nome[MAX_NOME];
+    printf("Escreve o nome completo: ");
+    fgets(nome, MAX_NOME, stdin);
+    // Remove o \n final, se existir
+    nome[strcspn(nome, "\n")] = '\0';
+    int comprimento = 0;
+    for (int i = 0; nome[i] != '\0'; i++) {
+        if (nome[i] != ' ') {
+            comprimento++;
+        }
+    }
+    printf("O nome tem %d caracteres (sem contar os espaços).\n", comprimento);
+    return 0;
+}
+```
 
 ### Exercício 76 - Comparação de strings
 
@@ -3189,252 +3306,278 @@ Passo a passo:
 
 Fonte: [13_estruturas_compostas_struct_union_enum.md](./13_estruturas_compostas_struct_union_enum.md)
 
+Ordem recomendada: resolver por sequência, do 82 ao 93. Os exercícios 82 a 87 devem consolidar bem `struct` antes de avançares para `enum`, apontadores e `union`.
+
 ### Exercício 82 - `struct` básico
 
-Objetivo: praticar `struct` básico aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: criar uma primeira `struct` e perceber que ela representa uma entidade com vários campos relacionados.
 
-Cria `struct Livro` com título, autor, ano e disponibilidade.
+Cria uma `struct Livro` com título, autor, ano de publicação, preço e disponibilidade. Depois cria uma variável desse tipo com valores fixos e imprime todos os campos.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa `typedef struct` para poderes declarar variáveis apenas com `Livro`.
+- Usa arrays de `char` para título e autor.
+- Usa `int` para o ano, `double` ou `float` para o preço e `int` para a disponibilidade.
+- Inicializa a variável diretamente na declaração.
+- O output deve identificar cada campo pelo nome.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define o tipo `Livro` antes do `main`.
+2. Escolhe os campos: `titulo`, `autor`, `ano`, `preco` e `disponivel`.
+3. No `main`, cria uma variável `Livro livro`.
+4. Inicializa todos os campos com valores simples.
+5. Mostra os campos usando o operador ponto (`.`).
+6. Para a disponibilidade, mostra uma mensagem como "disponível" ou "indisponível".
 
 ### Exercício 83 - Leitura e impressão
 
-Objetivo: praticar leitura e impressão aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: preencher uma `struct` com dados introduzidos pelo utilizador.
 
-Lê dados de 3 livros e imprime relatório.
+Lê os dados de um livro e imprime uma ficha organizada no final.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Reutiliza uma `struct Livro` com título, autor, ano e preço.
+- Lê título e autor com `fgets`, para permitir espaços.
+- Remove o `\n` final das strings, se existir.
+- Valida que o ano é positivo.
+- Valida que o preço não é negativo.
+- Mostra uma mensagem de erro clara se algum valor numérico for inválido.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara uma variável `Livro livro`.
+2. Lê primeiro os campos de texto com `fgets`.
+3. Remove o `\n` de cada campo de texto com `strcspn`.
+4. Lê o ano e o preço com `scanf`.
+5. Antes de imprimir a ficha, verifica se o ano e o preço são válidos.
+6. Testa com um título com espaços, por exemplo `Os Maias`.
 
 ### Exercício 84 - Array de structs
 
-Objetivo: praticar array de structs aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: guardar vários registos do mesmo tipo num array de `struct`.
 
-Cria array de 20 alunos e calcula média da turma.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 85 - Pesquisa
-
-Objetivo: praticar pesquisa aplicando os conceitos de `struct`, `union` e `enum`.
-
-Procura aluno por número dentro de array de structs.
+Cria um array com 5 livros e mostra apenas os livros publicados depois de 2020.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa uma constante para o número de livros.
+- Podes inicializar os livros diretamente no código.
+- Cada livro deve ter pelo menos título, autor, ano e preço.
+- Percorre o array com um ciclo `for`.
+- Mostra também quantos livros foram encontrados.
+- Se nenhum livro cumprir a condição, mostra uma mensagem adequada.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define `#define TOTAL_LIVROS 5`.
+2. Declara `Livro livros[TOTAL_LIVROS]`.
+3. Inicializa o array com dados fáceis de verificar.
+4. Cria um contador para livros publicados depois de 2020.
+5. Percorre o array e compara `livros[i].ano > 2020`.
+6. Mostra título, autor e ano dos livros encontrados.
 
-### Exercício 86 - Atualização
+### Exercício 85 - Função que recebe uma `struct`
 
-Objetivo: praticar atualização aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: separar responsabilidades criando uma função que recebe uma `struct` por valor.
 
-Atualiza estado de um registo (ativo/inativo).
+Define uma `struct Produto` com código, nome, preço e stock. Cria uma função `mostrar_produto` que recebe um `Produto` e imprime os seus dados.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- A função deve receber um parâmetro do tipo `Produto`.
+- A função não deve alterar o produto.
+- O `main` deve criar pelo menos dois produtos e chamar a função para cada um.
+- O stock deve ser inteiro e o preço deve permitir casas decimais.
+- O output deve ficar em formato de ficha ou linha de relatório.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define o tipo `Produto`.
+2. Escreve o protótipo `void mostrar_produto(Produto produto);`.
+3. No `main`, cria dois produtos com valores fixos.
+4. Chama `mostrar_produto` para cada produto.
+5. Implementa a função depois do `main`.
+6. Confirma que todos os campos aparecem no output.
 
-### Exercício 87 - `enum`
+### Exercício 86 - Turma com array de `struct`
 
-Objetivo: praticar `enum` aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: combinar arrays, strings e `struct` para representar uma pequena turma.
 
-Define `enum` para dias da semana e usa em programa simples.
+Cria uma `struct Aluno` com número, nome e média. Lê 5 alunos, calcula a média da turma e mostra os alunos com média positiva.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa uma constante para o número de alunos.
+- Guarda todos os alunos num array de `Aluno`.
+- O nome deve permitir espaços.
+- A média de cada aluno deve estar entre 0 e 20.
+- Se uma média for inválida, mostra erro e não uses esse valor no cálculo.
+- Calcula a média da turma dividindo pelo número de médias válidas.
+- Se nenhuma média for válida, mostra uma mensagem em vez de dividir por zero.
+- Mostra a média da turma com duas casas decimais quando houver pelo menos uma média válida.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define `#define TOTAL_ALUNOS 5`.
+2. Declara `Aluno turma[TOTAL_ALUNOS]`.
+3. Usa um ciclo para ler número, nome e média de cada aluno.
+4. Remove o `\n` final dos nomes lidos com `fgets`.
+5. Acumula a soma das médias válidas e conta quantas médias válidas existem.
+6. No fim, mostra a média da turma e lista os alunos com média maior ou igual a 10.
+7. Testa com uma turma em que pelo menos um aluno tem negativa.
 
-### Exercício 88 - `union`
+### Exercício 87 - Pesquisa linear em array de `struct`
 
-Objetivo: praticar `union` aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: procurar um registo dentro de um array de `struct`.
 
-Cria `union` para representar valor numérico em formatos diferentes.
+Usa uma turma com alunos já inicializados no código. Lê um número de aluno e procura esse aluno no array.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa a mesma ideia da `struct Aluno`: número, nome e média.
+- A pesquisa deve percorrer o array desde a posição `0`.
+- Quando encontrares o aluno, podes parar a pesquisa.
+- Se encontrares, mostra todos os dados do aluno.
+- Se não encontrares, mostra uma mensagem clara.
+- A posição mostrada ao utilizador pode começar em 1.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Inicializa um array com 5 alunos.
+2. Lê o número a pesquisar.
+3. Cria uma variável `encontrado` inicializada a `0`.
+4. Percorre o array com `for`.
+5. Compara `turma[i].numero` com o número pesquisado.
+6. Guarda a posição quando encontrares o aluno.
+7. Testa um número existente e um número inexistente.
+
+### Exercício 88 - `enum` para valores com nome
+
+Objetivo: usar `enum` para substituir números mágicos por nomes claros.
+
+Define um `enum DiaSemana` com os dias úteis e cria um programa que lê um número de 1 a 5 e mostra o nome do dia correspondente.
+
+Requisitos:
+
+- O `enum` deve ter nomes como `SEGUNDA`, `TERCA`, `QUARTA`, `QUINTA`, `SEXTA`.
+- Atribui valores explícitos ao `enum`, por exemplo `SEGUNDA = 1`, para coincidir com o input do utilizador.
+- O número lido pelo utilizador deve ser validado.
+- Se o número estiver fora de 1 a 5, mostra erro.
+- Usa `switch` ou `if/else if` para mostrar o texto do dia.
+- No código principal, evita usar números sem significado para representar dias.
+
+Passo a passo:
+
+1. Define o `enum DiaSemana`.
+2. Lê um número entre 1 e 5.
+3. Converte esse número para o valor correspondente do `enum`.
+4. Mostra o dia usando os nomes do `enum`.
+5. Testa com `1`, `5` e um valor inválido como `9`.
 
 ### Exercício 89 - `struct` com `enum`
 
-Objetivo: praticar `struct` com `enum` aplicando os conceitos de `struct`, `union` e `enum`.
+Objetivo: representar o estado de uma entidade com `enum` dentro de uma `struct`.
 
-Combina `struct Pedido` com `enum EstadoPedido`.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 90 - Ponteiros
-
-Objetivo: praticar ponteiros aplicando os conceitos de `struct`, `union` e `enum`.
-
-Manipula `struct` através de ponteiro e operador `->`.
+Cria uma `struct Pedido` com código, nome do cliente, total e estado. O estado deve ser um `enum EstadoPedido` com `PENDENTE`, `ENVIADO` e `ENTREGUE`.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa `typedef enum` para o estado.
+- Usa `typedef struct` para o pedido.
+- Cria pelo menos 3 pedidos num array.
+- Mostra apenas os pedidos que ainda não foram entregues.
+- Ao imprimir o estado, mostra texto legível e não o valor numérico do `enum`.
+- Não uses `0`, `1` e `2` diretamente no código principal para comparar estados.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define `EstadoPedido`.
+2. Define `Pedido`.
+3. Inicializa um array com 3 pedidos.
+4. Percorre o array.
+5. Se o estado for diferente de `ENTREGUE`, mostra o pedido.
+6. Cria uma função auxiliar, se quiseres, para converter o estado em texto.
 
-### Exercício 91 - Modularização
+### Exercício 90 - `struct` dentro de `struct`
 
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
+Objetivo: modelar uma entidade composta por outra entidade.
 
-Move definições para ficheiro `.h` e implementação para `.c`.
+Cria uma `struct Data` com dia, mês e ano. Depois cria uma `struct Aluno` que inclui número, nome, média e data de nascimento.
 
 Requisitos:
 
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
+- A `struct Aluno` deve ter um campo do tipo `Data`.
+- Cria pelo menos um aluno com data de nascimento inicializada.
+- Mostra a data no formato `dia/mes/ano`.
+- Usa acesso encadeado aos campos, por exemplo `aluno.nascimento.dia`.
+- Valida de forma simples que dia está entre 1 e 31 e mês entre 1 e 12.
 
 Passo a passo:
 
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
+1. Define primeiro a `struct Data`.
+2. Define depois a `struct Aluno`.
+3. Cria um aluno no `main`.
+4. Imprime número, nome, média e data de nascimento.
+5. Escreve uma condição simples para validar dia e mês.
+6. Testa também uma data inválida para confirmar a mensagem de erro.
 
-### Exercício 92 - Validação
+### Exercício 91 - Atualizar uma `struct` com ponteiro
 
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
+Objetivo: perceber quando se usa `->` para alterar uma `struct` através de um apontador.
 
-Valida campos de registo antes de guardar.
+Cria uma `struct Produto` com código, nome, preço e stock. Depois cria uma função `atualizar_stock` que recebe um apontador para `Produto` e altera o stock.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- A função deve ter um parâmetro `Produto *produto`.
+- A função deve usar o operador `->`.
+- O novo stock não pode ser negativo.
+- Se o novo stock for inválido, a função não deve alterar o produto.
+- O `main` deve mostrar o produto antes e depois da tentativa de atualização.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define a `struct Produto`.
+2. Escreve o protótipo `int atualizar_stock(Produto *produto, int novo_stock);`.
+3. No `main`, cria um produto com stock inicial.
+4. Chama a função passando `&produto`.
+5. Dentro da função, valida `novo_stock`.
+6. Se for válido, usa `produto->stock = novo_stock`.
+7. Devolve `1` em caso de sucesso e `0` em caso de erro.
+
+### Exercício 92 - `union` com indicação do tipo ativo
+
+Objetivo: compreender que uma `union` guarda valores alternativos, mas só um campo deve ser considerado válido de cada vez.
+
+Cria um tipo `Dado` que pode guardar um valor inteiro ou um valor real. Usa um `enum` para indicar qual dos campos da `union` está ativo.
+
+Requisitos:
+
+- Define um `enum TipoDado` com `DADO_INTEIRO` e `DADO_REAL`.
+- Define uma `union Valor` com `int inteiro` e `float real`.
+- Define uma `struct Dado` com dois campos: `tipo` e `valor`.
+- Cria um exemplo de `Dado` inteiro e outro de `Dado` real.
+- Ao imprimir, consulta primeiro o campo `tipo`.
+- Não leias um campo da `union` diferente daquele indicado pelo `tipo`.
+
+Passo a passo:
+
+1. Define `TipoDado`.
+2. Define `Valor`.
+3. Define `Dado`.
+4. Cria `Dado a` com tipo inteiro.
+5. Cria `Dado b` com tipo real.
+6. Escreve uma função `mostrar_dado(Dado dado)`.
+7. Dentro da função, usa `if` ou `switch` para imprimir o campo correto da `union`.
 
 ### Exercício 93 - Reflexão
 
 Objetivo: consolidar os conceitos de `struct`, `union` e `enum` através de uma explicação escrita e justificada.
 
-Explica porque estruturas compostas tornam o código mais próximo de problemas reais.
+Explica porque `struct`, `enum` e `union` não resolvem o mesmo problema.
 
 Requisitos:
 
@@ -3442,14 +3585,16 @@ Requisitos:
 - A resposta deve usar linguagem técnica correta e frases claras.
 - Justifica cada escolha com base no problema e não apenas no nome do conceito.
 - Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
+- Refere explicitamente qual destes conceitos será mais comum nos teus primeiros programas em C.
 
 Passo a passo:
 
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+1. Explica para que serve uma `struct`.
+2. Explica para que serve um `enum`.
+3. Explica para que serve uma `union`.
+4. Dá um exemplo de problema real adequado a cada conceito.
+5. Compara `struct` e `union`, destacando que na `struct` os campos coexistem e na `union` partilham memória.
+6. Termina com uma conclusão curta sobre porque `struct` e `enum` aparecem mais cedo e com mais frequência em programas simples.
 
 ---
 

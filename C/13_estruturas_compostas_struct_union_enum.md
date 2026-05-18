@@ -290,6 +290,35 @@ Leitura do código:
 - `a.nome` acede ao nome desse aluno;
 - `a.media` acede à média desse aluno.
 
+Quando o campo é uma string, continuamos a tratar esse campo como um array de `char`.
+
+Exemplo de leitura segura de um nome guardado dentro de uma `struct`:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    int numero;
+    char nome[50];
+    float media;
+} Aluno;
+
+int main(void) {
+    Aluno a;
+
+    printf("Nome: ");
+    fgets(a.nome, sizeof a.nome, stdin);
+    a.nome[strcspn(a.nome, "\n")] = '\0';
+
+    printf("Nome lido: %s\n", a.nome);
+
+    return 0;
+}
+```
+
+Repara que usamos `sizeof a.nome`, porque queremos a capacidade do campo `nome`, não a capacidade da `struct` completa.
+
 ---
 
 ## 7. Arrays de `struct`
@@ -408,6 +437,8 @@ Para alterar o original, precisamos de apontadores, que serão aprofundados no m
 
 ## 10. Acesso a campos com o operador seta
 
+Esta secção é uma ponte para o módulo 14, onde os apontadores serão estudados com mais detalhe. Para já, o essencial é reconhecer a diferença entre aceder a uma variável `struct` e aceder a uma `struct` através de um apontador.
+
 Quando temos um apontador para uma `struct`, usamos `->` para aceder aos campos.
 
 Exemplo:
@@ -496,6 +527,8 @@ Mas no programa devemos usar os nomes, não os números.
 ---
 
 ## 12. `union`: vários formatos no mesmo espaço de memória
+
+`union` é o conceito mais avançado deste módulo. Neste nível, o objetivo principal é compreender a ideia e reconhecer situações simples onde ela pode aparecer. Na maioria dos programas iniciais, `struct` e `enum` serão muito mais úteis.
 
 Uma `union` é parecida com uma `struct` na forma de escrever, mas funciona de maneira muito diferente.
 
@@ -693,6 +726,7 @@ Antes de criares uma `struct`, pergunta:
 - Os nomes dos campos são claros?
 - A ordem dos campos faz sentido?
 - Algum campo deve ser uma string? Se sim, tem tamanho suficiente?
+- Se vou ler texto para um campo `char[]`, estou a usar leitura segura, como `fgets`?
 - Algum campo representa estado? Talvez um `enum` ajude.
 - Vou precisar de vários registos? Talvez precise de um array de `struct`.
 - Vou alterar a `struct` dentro de uma função? Então talvez precise de apontador.
@@ -707,10 +741,11 @@ Antes de criares uma `struct`, pergunta:
 4. Usar `.` quando se tem um apontador, em vez de `->`.
 5. Usar `->` quando se tem uma variável normal, em vez de `.`.
 6. Tentar atribuir diretamente uma nova string a um array de `char`.
-7. Usar números como estados em vez de `enum`.
-8. Usar uma `union` sem guardar qual campo está válido.
-9. Não inicializar todos os campos importantes.
-10. Passar uma `struct` para uma função e esperar que a original seja alterada.
+7. Ler nomes compostos com `scanf("%s", ...)` e perder tudo depois do primeiro espaço.
+8. Usar números como estados em vez de `enum`.
+9. Usar uma `union` sem guardar qual campo está válido.
+10. Não inicializar todos os campos importantes.
+11. Passar uma `struct` para uma função e esperar que a original seja alterada.
 
 ---
 
@@ -731,5 +766,6 @@ Antes de criares uma `struct`, pergunta:
 
 ## 19. Changelog
 
+- **2026-05-18**: reforço pedagógico sobre leitura segura de strings dentro de `struct`, indicação explícita de que `->` antecipa apontadores e clarificação do papel introdutório de `union`.
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações progressivas, exemplos guiados, distinção clara entre `struct`, `enum` e `union`, e exercícios.
 - **2026-02-23**: reescrita completa do módulo com detalhe pedagógico e exercícios sem resolução.
