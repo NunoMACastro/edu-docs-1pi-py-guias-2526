@@ -3663,23 +3663,26 @@ Ordem recomendada: resolver por sequência, do 94 ao 105. Antes de usar `malloc`
 
 Objetivo: distinguir valor de uma variável e endereço dessa variável.
 
-Cria um programa com três variáveis (`int`, `double` e `char`) e mostra o valor e o endereço de cada uma.
+Cria um programa com três variáveis (`int`, `double` e `char`), cria um apontador para cada uma e mostra os valores e os endereços guardados nesses apontadores.
 
 Requisitos:
 
-- Usa `&` para obter o endereço de cada variável.
+- Cria um apontador para cada variável.
+- Usa `&` para guardar o endereço de cada variável no apontador correspondente.
 - Usa `%p` para imprimir endereços.
-- Faz cast para `(void *)` ao imprimir endereços com `printf`.
-- O output deve deixar claro o que é valor e o que é endereço.
+- O output deve deixar claro o que é valor da variável e o que é endereço guardado no apontador.
 - Não uses `malloc` neste exercício.
+- Não alteres valores através dos apontadores neste exercício; isso fica para os exercícios seguintes.
 
 Passo a passo:
 
 1. Declara uma variável `int idade`, uma `double media` e uma `char letra`.
 2. Atribui valores fixos às três variáveis.
-3. Imprime o valor de cada variável.
-4. Imprime o endereço de cada variável com `%p`.
-5. Executa o programa duas vezes e observa que os endereços podem mudar.
+3. Declara `int *p_idade`, `double *p_media` e `char *p_letra`.
+4. Guarda em cada apontador o endereço da variável correspondente.
+5. Imprime o valor de cada variável.
+6. Imprime o endereço guardado em cada apontador com `%p`.
+7. Executa o programa duas vezes e observa que os endereços podem mudar.
 
 ### Exercício 95 - Ponteiro básico
 
