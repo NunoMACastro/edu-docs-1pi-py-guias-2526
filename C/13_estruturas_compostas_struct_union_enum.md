@@ -143,11 +143,11 @@ Agora `a` tem três campos:
 
 Pensa numa `struct` como uma ficha:
 
-| Campo | Valor |
-| ----- | ----- |
-| número | 101 |
-| nome | Rita |
-| média | 15.3 |
+| Campo  | Valor |
+| ------ | ----- |
+| número | 101   |
+| nome   | Rita  |
+| média  | 15.3  |
 
 ---
 
@@ -357,6 +357,19 @@ Como ler `turma[i].nome`:
 
 1. `turma[i]` escolhe um aluno no array;
 2. `.nome` escolhe o campo `nome` desse aluno.
+
+Para adicionar um aluno à turma com dados pedidos ao utilizador:
+
+```c
+for (int i = 0; i < 30; i++) {
+    printf("Numero: ");
+    scanf("%d", &turma[i].numero);
+    printf("Nome: ");
+    scanf(" %49[^\n]", turma[i].nome); // leitura segura de string
+    printf("Media: ");
+    scanf("%f", &turma[i].media);
+}
+```
 
 ---
 
@@ -604,11 +617,11 @@ Isto ajuda a evitar confusões.
 
 ## 13. Escolher entre `struct`, `enum` e `union`
 
-| Situação | Escolha mais natural |
-| -------- | -------------------- |
-| Quero agrupar vários dados de uma entidade | `struct` |
-| Quero representar opções ou estados com nomes | `enum` |
-| Quero guardar valores alternativos no mesmo espaço | `union` |
+| Situação                                           | Escolha mais natural |
+| -------------------------------------------------- | -------------------- |
+| Quero agrupar vários dados de uma entidade         | `struct`             |
+| Quero representar opções ou estados com nomes      | `enum`               |
+| Quero guardar valores alternativos no mesmo espaço | `union`              |
 
 Exemplos:
 

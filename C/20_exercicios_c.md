@@ -3355,6 +3355,61 @@ Passo a passo:
 5. Antes de imprimir a ficha, verifica se o ano e o preço são válidos.
 6. Testa com um título com espaços, por exemplo `Os Maias`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_TITULO 100
+#define MAX_AUTOR 50
+
+typedef struct {
+    char titulo[MAX_TITULO];
+    char autor[MAX_AUTOR];
+    int ano;
+    double preco;
+} Livro;
+
+int main() {
+    Livro livro;
+
+    // Lê título e autor
+    printf("Escreve o título do livro: ");
+    fgets(livro.titulo, MAX_TITULO, stdin);
+    livro.titulo[strcspn(livro.titulo, "\n")] = '\0'; // Remove o \n
+
+    printf("Escreve o autor do livro: ");
+    fgets(livro.autor, MAX_AUTOR, stdin);
+    livro.autor[strcspn(livro.autor, "\n")] = '\0'; // Remove o \n
+
+    // Lê ano e preço
+    printf("Escreve o ano de publicação: ");
+    scanf("%d", &livro.ano);
+    printf("Escreve o preço do livro: ");
+    scanf("%lf", &livro.preco);
+
+    // Validações
+    if (livro.ano <= 0) {
+        printf("Ano inválido. O ano deve ser positivo.\n");
+        return 1;
+    }
+    if (livro.preco < 0) {
+        printf("Preço inválido. O preço não pode ser negativo.\n");
+        return 1;
+    }
+
+    // Imprime a ficha do livro
+    printf("\nFicha do Livro:\n");
+    printf("Título: %s\n", livro.titulo);
+    printf("Autor: %s\n", livro.autor);
+    printf("Ano de Publicação: %d\n", livro.ano);
+    printf("Preço: %.2lf\n", livro.preco);
+
+    return 0;
+}
+```
+
 ### Exercício 84 - Array de structs
 
 Objetivo: guardar vários registos do mesmo tipo num array de `struct`.
@@ -3602,253 +3657,280 @@ Passo a passo:
 
 Fonte: [14_estruturas_dinamicas_apontadores.md](./14_estruturas_dinamicas_apontadores.md)
 
+Ordem recomendada: resolver por sequência, do 94 ao 105. Antes de usar `malloc`, garante que sabes explicar a diferença entre valor, endereço e conteúdo apontado.
+
 ### Exercício 94 - Endereços
 
-Objetivo: praticar endereços aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: distinguir valor de uma variável e endereço dessa variável.
 
-Cria programa que mostra valor e endereço de 3 variáveis.
+Cria um programa com três variáveis (`int`, `double` e `char`) e mostra o valor e o endereço de cada uma.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa `&` para obter o endereço de cada variável.
+- Usa `%p` para imprimir endereços.
+- Faz cast para `(void *)` ao imprimir endereços com `printf`.
+- O output deve deixar claro o que é valor e o que é endereço.
+- Não uses `malloc` neste exercício.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara uma variável `int idade`, uma `double media` e uma `char letra`.
+2. Atribui valores fixos às três variáveis.
+3. Imprime o valor de cada variável.
+4. Imprime o endereço de cada variável com `%p`.
+5. Executa o programa duas vezes e observa que os endereços podem mudar.
 
 ### Exercício 95 - Ponteiro básico
 
-Objetivo: praticar ponteiro básico aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: perceber quando um apontador é necessário para alterar uma variável original.
 
-Usa ponteiro para alterar valor de uma variável inteira.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 96 - Vetor dinâmico
-
-Objetivo: praticar vetor dinâmico aplicando os conceitos de apontadores e estruturas dinâmicas.
-
-Aloca vetor de `n` inteiros e calcula soma dos elementos.
+Cria duas funções: uma tenta aumentar uma idade recebendo `int`, e outra aumenta a idade recebendo `int *`.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- A primeira função deve chamar-se `aniversario_errado` e receber `int idade`.
+- A segunda função deve chamar-se `aniversario` e receber `int *idade`.
+- Mostra a idade antes e depois de chamar cada função.
+- Explica, num comentário curto, porque a primeira função não altera a variável original.
+- Não uses variáveis globais.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara `int idade = 16;` no `main`.
+2. Chama `aniversario_errado(idade)`.
+3. Mostra que a idade continua igual.
+4. Chama `aniversario(&idade)`.
+5. Dentro de `aniversario`, usa `*idade = *idade + 1`.
+6. Mostra que agora a idade original foi alterada.
 
-### Exercício 97 - `calloc`
+### Exercício 96 - Troca de valores
 
-Objetivo: praticar `calloc` aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: usar dois apontadores para alterar duas variáveis originais.
 
-Repete exercício 3 usando `calloc` e compara comportamento inicial.
+Cria uma função `trocar` que recebe dois apontadores para `int` e troca os valores das variáveis originais.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- A função deve ter a assinatura `void trocar(int *a, int *b)`.
+- Usa uma variável temporária dentro da função.
+- Mostra os valores antes e depois da troca.
+- A função não deve ler input nem imprimir mensagens.
+- O `main` é responsável por mostrar os resultados.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara dois inteiros no `main`, por exemplo `x = 10` e `y = 20`.
+2. Mostra os valores iniciais.
+3. Chama `trocar(&x, &y)`.
+4. Dentro da função, guarda temporariamente `*a`.
+5. Faz a troca usando `*a` e `*b`.
+6. Mostra os valores finais no `main`.
 
-### Exercício 98 - `realloc`
+### Exercício 97 - Apontadores e arrays
 
-Objetivo: praticar `realloc` aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: perceber que arrays e apontadores estão relacionados em C.
 
-Começa com 5 elementos e expande para 10 com `realloc`.
+Cria uma função `mostrar_array` que receba um array de inteiros e o seu tamanho, mostrando todos os elementos.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- A função pode receber o array como `int valores[]` ou como `int *valores`.
+- A função deve receber também o tamanho do array.
+- Não acedas fora dos limites do array.
+- No `main`, cria um array estático com 5 inteiros.
+- Mostra também o endereço do primeiro elemento com `&valores[0]`.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Declara um array `int valores[5]`.
+2. Escreve o protótipo de `mostrar_array`.
+3. Chama a função passando o array e o tamanho.
+4. Dentro da função, percorre o array com `for`.
+5. Mostra cada posição e o respetivo valor.
+6. Confirma que o ciclo usa `< tamanho`.
 
-### Exercício 99 - Struct dinâmica
+### Exercício 98 - Vetor dinâmico com `malloc`
 
-Objetivo: praticar struct dinâmica aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: reservar memória durante a execução para guardar uma quantidade variável de valores.
 
-Aloca dinamicamente uma `struct Aluno` e preenche campos.
+Lê `n`, reserva dinamicamente um array de `n` inteiros, lê os valores e calcula soma e média.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Valida que `n` é maior do que zero.
+- Usa `malloc(n * sizeof *valores)`.
+- Verifica se `malloc` falhou.
+- Não calcules a média se `n` for inválido.
+- Liberta a memória antes de terminar.
+- Mostra a média com duas casas decimais.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Lê `n`.
+2. Se `n <= 0`, mostra erro e termina.
+3. Reserva memória para `n` inteiros.
+4. Lê os valores num ciclo.
+5. Soma os valores.
+6. Calcula a média com cast para `double`.
+7. Mostra soma e média.
+8. Faz `free(valores)` e `valores = NULL`.
 
-### Exercício 100 - Array de structs dinâmico
+### Exercício 99 - `calloc`
 
-Objetivo: praticar array de structs dinâmico aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: comparar `malloc` e `calloc` quanto à inicialização dos valores.
 
-Aloca turma com tamanho informado pelo utilizador.
+Reserva dinamicamente um array de 5 inteiros com `calloc` e mostra os valores antes de lhes atribuíres qualquer valor manualmente.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa `calloc(5, sizeof *valores)`.
+- Verifica se `calloc` devolveu `NULL`.
+- Mostra os 5 valores logo após a reserva.
+- Depois altera os valores para `10`, `20`, `30`, `40` e `50`.
+- Mostra novamente o array.
+- Liberta a memória no fim.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Reserva o array com `calloc`.
+2. Verifica se a reserva falhou.
+3. Usa um ciclo para mostrar os valores iniciais.
+4. Atribui valores manualmente a cada posição.
+5. Usa outro ciclo para mostrar os novos valores.
+6. Faz `free` e coloca o apontador a `NULL`.
 
-### Exercício 101 - Lista ligada (nó único)
+### Exercício 100 - `realloc`
 
-Objetivo: praticar lista ligada (nó único) aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: praticar redimensionamento seguro de memória dinâmica.
 
-Cria nó, atribui valor, imprime e liberta memória.
+Começa com um array dinâmico de 5 inteiros, preenche-o com valores fixos, expande-o para 10 posições com `realloc` e preenche as novas posições.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa `malloc` para reservar as primeiras 5 posições.
+- Verifica se `malloc` devolveu `NULL`.
+- Usa um apontador temporário para guardar o resultado de `realloc`.
+- Só atualizes o apontador original se `realloc` tiver sucesso.
+- Mostra os 10 valores no final.
+- Faz `free` no fim e coloca o apontador a `NULL`.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define `tamanho = 5`.
+2. Reserva memória com `malloc(tamanho * sizeof *valores)`.
+3. Preenche as primeiras 5 posições.
+4. Cria `novo_tamanho = 10`.
+5. Faz `int *temporario = realloc(valores, novo_tamanho * sizeof *valores);`.
+6. Se `temporario == NULL`, liberta `valores` e termina com erro.
+7. Se funcionar, faz `valores = temporario`.
+8. Preenche as posições de índice 5 a 9.
+9. Mostra todos os valores e liberta a memória.
 
-### Exercício 102 - Lista ligada (vários nós)
+### Exercício 101 - `struct` dinâmica
 
-Objetivo: praticar lista ligada (vários nós) aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: criar uma `struct` em memória dinâmica e aceder aos seus campos com `->`.
 
-Insere 5 nós no fim e percorre para imprimir.
+Define uma `struct Produto` com código, nome e preço. Reserva dinamicamente um produto, preenche os campos e mostra os dados.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa `Produto *produto = malloc(sizeof *produto);`.
+- Verifica se `produto == NULL`.
+- Usa `->` para preencher e mostrar os campos.
+- Para o nome, usa uma string que saibas que cabe no array.
+- Faz `free(produto)` no fim.
+- Coloca `produto = NULL` depois de libertar.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define o tipo `Produto`.
+2. Reserva memória para um produto.
+3. Verifica se a reserva falhou.
+4. Preenche `codigo`, `nome` e `preco`.
+5. Mostra os campos usando `produto->campo`.
+6. Liberta a memória.
 
-### Exercício 103 - Gestão de memória
+### Exercício 102 - Array dinâmico de `struct`
 
-Objetivo: praticar gestão de memória aplicando os conceitos de apontadores e estruturas dinâmicas.
+Objetivo: combinar arrays dinâmicos com tipos compostos.
 
-Faz auditoria de um código e identifica pontos de leak.
+Lê o número de alunos de uma turma, reserva dinamicamente um array de `Aluno` e calcula a média da turma.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Define `struct Aluno` com número, nome e média.
+- Valida que o número de alunos é maior que zero.
+- Usa `malloc(total * sizeof *turma)`.
+- Verifica se a reserva falhou.
+- Para simplificar a leitura, podes usar nomes sem espaços com `scanf("%49s", turma[i].nome)`.
+- Cada média deve estar entre 0 e 20.
+- Liberta a memória antes de terminar.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Lê `total_alunos`.
+2. Valida o valor.
+3. Reserva memória para o array de alunos.
+4. Lê os dados de cada aluno.
+5. Soma apenas médias válidas.
+6. Calcula a média da turma com base nas médias válidas.
+7. Mostra a média ou uma mensagem se não houver médias válidas.
+8. Faz `free(turma)`.
 
-### Exercício 104 - Segurança
+### Exercício 103 - Lista ligada: nó único
 
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
+Objetivo: perceber a estrutura mínima de um nó de lista ligada.
 
-Corrige um exemplo com risco de use-after-free.
+Define uma `struct No` com um valor inteiro e um apontador para o próximo nó. Cria dinamicamente um único nó, mostra o valor e liberta a memória.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Usa a forma `typedef struct No { ... } No;`.
+- O campo `proximo` deve ser do tipo `struct No *`.
+- Reserva memória para um nó com `malloc`.
+- Define `proximo` como `NULL`.
+- Mostra o valor do nó.
+- Liberta o nó no fim.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Define a `struct No`.
+2. Declara `No *no = malloc(sizeof *no);`.
+3. Verifica se `no == NULL`.
+4. Atribui um valor ao campo `valor`.
+5. Atribui `NULL` ao campo `proximo`.
+6. Mostra o valor.
+7. Faz `free(no)` e `no = NULL`.
+
+### Exercício 104 - Auditoria de segurança de memória
+
+Objetivo: identificar erros comuns com apontadores antes de escrever a correção.
+
+Analisa pequenos trechos de código com erros de memória e explica o problema antes de corrigir.
+
+Requisitos:
+
+- Inclui pelo menos um exemplo de apontador não inicializado.
+- Inclui pelo menos um exemplo de acesso fora dos limites.
+- Inclui pelo menos um exemplo de use-after-free.
+- Inclui pelo menos um exemplo de memory leak.
+- Para cada caso, escreve primeiro a causa do erro.
+- Depois apresenta a versão corrigida.
+
+Passo a passo:
+
+1. Escreve ou usa um trecho com erro.
+2. Identifica se o problema é inicialização, limites, libertação ou fuga de memória.
+3. Explica porque o comportamento é perigoso.
+4. Corrige apenas o necessário.
+5. Confirma que a versão corrigida inicializa, valida e liberta corretamente.
 
 ### Exercício 105 - Reflexão
 
 Objetivo: consolidar os conceitos de apontadores e estruturas dinâmicas através de uma explicação escrita e justificada.
 
-Explica por que gestão manual de memória exige disciplina técnica.
+Explica quando os apontadores são necessários e quando uma variável normal é suficiente.
 
 Requisitos:
 
@@ -3856,14 +3938,17 @@ Requisitos:
 - A resposta deve usar linguagem técnica correta e frases claras.
 - Justifica cada escolha com base no problema e não apenas no nome do conceito.
 - Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
+- Refere passagem por valor, alteração do original, memória dinâmica e listas ligadas.
+- Inclui pelo menos dois cuidados de segurança, como `NULL`, limites, `free` ou `realloc`.
 
 Passo a passo:
 
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+1. Começa por explicar porque uma variável normal chega em casos simples.
+2. Explica porque uma função em C não altera automaticamente a variável original.
+3. Explica como o apontador resolve esse problema através do endereço.
+4. Explica porque `malloc` devolve um apontador.
+5. Explica porque listas ligadas precisam de apontadores entre nós.
+6. Termina com uma regra prática: quando usar variável normal e quando usar apontador.
 
 ---
 

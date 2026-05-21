@@ -1,7 +1,7 @@
 # C (10.º Ano) - 14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação
 
 > **Objetivo deste ficheiro**  
-> Compreender apontadores em C de forma gradual, percebendo endereços de memória, passagem por referência, relação com arrays e introdução segura à memória dinâmica.
+> Compreender apontadores em C de forma gradual, percebendo endereços de memória, passagem de endereços para alterar valores, relação com arrays e introdução segura à memória dinâmica.
 
 ---
 
@@ -39,11 +39,12 @@ Apontadores são um dos temas mais importantes de C. Também são um dos temas e
 A forma certa de estudar é:
 
 1. perceber primeiro o que é um endereço de memória;
-2. treinar `&` e `*` com exemplos pequenos;
-3. usar apontadores para alterar variáveis em funções;
-4. rever a ligação entre arrays e apontadores;
-5. só depois avançar para `malloc` e `free`;
-6. desenhar sempre a memória no papel.
+2. perceber quando um apontador é realmente necessário;
+3. treinar `&` e `*` com exemplos pequenos;
+4. usar apontadores para alterar variáveis em funções;
+5. rever a ligação entre arrays e apontadores;
+6. só depois avançar para `malloc` e `free`;
+7. desenhar sempre a memória no papel.
 
 Neste módulo, mais importante do que escrever muito código é conseguir responder:
 
@@ -143,6 +144,71 @@ Podemos imaginar assim:
 | `p` | endereço de `x` |
 
 O apontador não guarda o valor `10`. Guarda a localização onde o `10` está.
+
+### 3.1 Porque precisamos de apontadores se já temos variáveis?
+
+Na maioria dos casos simples, não precisamos de apontadores.
+
+Se queremos apenas guardar e usar um valor dentro da mesma função, uma variável normal chega:
+
+```c
+int idade = 16;
+idade = idade + 1;
+printf("%d\n", idade);
+```
+
+O apontador torna-se necessário quando precisamos de trabalhar com o endereço de uma variável, e não apenas com uma cópia do seu valor.
+
+Há três situações muito comuns.
+
+Primeira: alterar uma variável criada fora de uma função.
+
+Em C, uma função recebe cópias dos argumentos:
+
+```c
+void aniversario_errado(int idade) {
+    idade = idade + 1;
+}
+```
+
+Se chamarmos esta função:
+
+```c
+int idade = 16;
+aniversario_errado(idade);
+```
+
+a variável original continua com `16`, porque a função alterou apenas a cópia.
+
+Para alterar a variável original, a função precisa do endereço:
+
+```c
+void aniversario(int *idade) {
+    *idade = *idade + 1;
+}
+```
+
+Chamada:
+
+```c
+int idade = 16;
+aniversario(&idade);
+```
+
+Agora a função consegue chegar à variável original e alterar o valor guardado lá.
+
+Segunda: trabalhar com memória cujo tamanho só é conhecido durante a execução.
+
+Se o programa só descobre durante a execução quantas notas vão existir, não pode criar um array fixo com esse tamanho escrito no código. Nesse caso, pede memória com `malloc`, e `malloc` devolve um apontador para o bloco reservado.
+
+Terceira: ligar dados entre si.
+
+Em estruturas dinâmicas, como listas ligadas, um nó precisa de apontar para o próximo nó. Não basta guardar apenas valores; é preciso guardar ligações entre posições de memória.
+
+Regra prática:
+
+- usa variáveis normais quando só precisas do valor;
+- usa apontadores quando precisas do endereço, de alterar o original, de memória dinâmica ou de ligar estruturas entre si.
 
 ---
 
@@ -439,15 +505,17 @@ Estas funções estão na biblioteca:
 `malloc` reserva um bloco de memória, mas não inicializa os valores.
 
 ```c
-int *v = malloc(5 * sizeof(int));
+int *v = malloc(5 * sizeof *v);
 ```
 
 Leitura:
 
 - queremos espaço para 5 inteiros;
-- `sizeof(int)` calcula o tamanho de um inteiro;
-- `5 * sizeof(int)` calcula o total de bytes;
+- `sizeof *v` calcula o tamanho do elemento para onde `v` aponta;
+- `5 * sizeof *v` calcula o total de bytes;
 - `v` guarda o endereço do primeiro elemento.
+
+Também poderias escrever `malloc(5 * sizeof(int))`. A forma `sizeof *v` tem uma vantagem: se o tipo de `v` mudar, o cálculo acompanha automaticamente.
 
 Devemos verificar se a alocação falhou:
 
@@ -463,13 +531,13 @@ if (v == NULL) {
 `calloc` também reserva memória, mas inicializa tudo com zero.
 
 ```c
-int *v = calloc(5, sizeof(int));
+int *v = calloc(5, sizeof *v);
 ```
 
 Leitura:
 
 - queremos 5 elementos;
-- cada elemento tem tamanho `sizeof(int)`;
+- cada elemento tem tamanho `sizeof *v`;
 - os valores começam a zero.
 
 ### 11.3 `realloc`
@@ -479,9 +547,10 @@ Leitura:
 Exemplo:
 
 ```c
-int *novo = realloc(v, 10 * sizeof(int));
+int *novo = realloc(v, 10 * sizeof *v);
 
 if (novo == NULL) {
+    printf("Falha ao redimensionar memoria.\n");
     free(v);
     return 1;
 }
@@ -491,10 +560,12 @@ v = novo;
 
 Nota importante: não atribuas diretamente a `v` sem verificar.
 
+Se `realloc` falhar, o bloco original continua válido e `v` continua a apontar para ele. No exemplo anterior fazemos `free(v)` porque o programa vai terminar com erro. Se o programa fosse continuar, poderíamos manter `v` e continuar a usar o bloco antigo.
+
 Evita:
 
 ```c
-v = realloc(v, 10 * sizeof(int)); // perigoso se falhar
+v = realloc(v, 10 * sizeof *v); // perigoso se falhar
 ```
 
 Se `realloc` falhar, podes perder o endereço original e deixar de conseguir libertar a memória antiga.
@@ -528,7 +599,7 @@ Sempre que usas memória dinâmica, pensa neste ciclo:
 Exemplo do padrão:
 
 ```c
-int *v = malloc(n * sizeof(int));
+int *v = malloc(n * sizeof *v);
 
 if (v == NULL) {
     printf("Falha de memoria.\n");
@@ -578,7 +649,7 @@ Mas `->` é a forma mais usada.
 Também podemos criar uma `struct` dinamicamente:
 
 ```c
-Aluno *a = malloc(sizeof(Aluno));
+Aluno *a = malloc(sizeof *a);
 
 if (a == NULL) {
     return 1;
@@ -588,6 +659,7 @@ a->numero = 101;
 a->media = 15.3f;
 
 free(a);
+a = NULL;
 ```
 
 ---
@@ -689,7 +761,7 @@ int main(void) {
         return 1;
     }
 
-    int *notas = malloc(n * sizeof(int));
+    int *notas = malloc(n * sizeof *notas);
 
     if (notas == NULL) {
         printf("Falha ao reservar memoria.\n");
@@ -717,10 +789,12 @@ int main(void) {
 Pontos importantes:
 
 - validamos `n` antes de reservar memória;
-- usamos `malloc(n * sizeof(int))`;
+- usamos `malloc(n * sizeof *notas)`;
 - verificamos se `malloc` devolveu `NULL`;
 - usamos `notas[i]` como num array normal;
 - libertamos a memória no fim.
+
+Neste exemplo, o foco está na memória dinâmica. Num programa mais completo, também validaríamos se cada `scanf` conseguiu ler um número e se cada nota está dentro do intervalo esperado.
 
 ---
 
@@ -740,7 +814,7 @@ typedef struct {
 } Aluno;
 
 int main(void) {
-    Aluno *aluno = malloc(sizeof(Aluno));
+    Aluno *aluno = malloc(sizeof *aluno);
 
     if (aluno == NULL) {
         printf("Falha ao reservar memoria.\n");
@@ -770,6 +844,8 @@ Como ler `aluno->media`:
 - `->media` acede ao campo `media` dessa `struct`.
 
 Este exemplo é simples, mas mostra uma ideia importante: a memória da `struct` foi pedida durante a execução.
+
+O uso de `strcpy` aqui é seguro porque `"Rita"` é uma string conhecida e cabe no campo `nome`. Se o nome viesse do utilizador, deveríamos usar leitura segura e respeitar o tamanho do array.
 
 ---
 
@@ -818,7 +894,7 @@ v = NULL;
 ### 18.4 Aceder fora do bloco
 
 ```c
-int *v = malloc(5 * sizeof(int));
+int *v = malloc(5 * sizeof *v);
 v[5] = 100; // errado: indices validos são 0 a 4
 ```
 
@@ -827,7 +903,7 @@ Este erro é semelhante ao erro em arrays estáticos.
 ### 18.5 Esquecer `free`
 
 ```c
-int *v = malloc(100 * sizeof(int));
+int *v = malloc(100 * sizeof *v);
 /* programa deixa de precisar de v, mas não faz free */
 ```
 
@@ -839,6 +915,7 @@ Isto cria uma fuga de memória.
 
 Antes de escrever ou entregar código com apontadores, confirma:
 
+- Preciso mesmo de um apontador, ou uma variável normal chegava?
 - O apontador foi inicializado?
 - Aponta para uma variável válida ou para memória dinâmica válida?
 - Verifiquei se `malloc` ou `calloc` devolveram `NULL`?
@@ -869,5 +946,6 @@ Antes de escrever ou entregar código com apontadores, confirma:
 
 ## 21. Changelog
 
+- **2026-05-19**: acrescentada explicação explícita sobre porque e quando usar apontadores em vez de variáveis normais; reforçadas notas sobre `realloc`, `sizeof *p`, validação de input e segurança em strings dentro de `struct` dinâmica.
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações graduais sobre memória, apontadores, `NULL`, alocação dinâmica, segurança e exemplos guiados.
 - **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.
