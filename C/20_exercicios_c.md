@@ -4,22 +4,24 @@
 
 ## Índice de exercícios por módulo
 
-1. 07 · Dados, Variáveis, Declarações, Expressões, Constantes e Tipos
-2. 07A · Entrada/Saída Formatada (`printf`/`scanf`) e Endereços (`&` e `*`)
-3. 08 · Operadores em C
-4. 09 · Estruturas de Controlo em C
-5. 10 · Subprogramas: Funções, Variáveis Locais/Globais e Parâmetros
-6. 11 · Funcionalidades de um Editor de Texto
-7. 12 · Estruturas de Dados Estáticas: Strings, Arrays e Matrizes
-8. 13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`
-9. 14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação
-10. 15 · Classes e Objetos (Contexto em C)
-11. 16 · Herança e Polimorfismo (Contexto em C)
-12. 17 · Exceções e Tratamento de Erros em C
-13. 18 · Ficheiros: Acesso e Manipulação em C
-14. 19 · Funcionalidades de Editor de Texto (Produtividade e Debug)
+1. [07 · Dados, Variáveis, Declarações, Expressões, Constantes e Tipos](#exercicios-07)
+2. [07A · Entrada/Saída Formatada (`printf`/`scanf`) e Endereços (`&` e `*`)](#exercicios-07a)
+3. [08 · Operadores em C](#exercicios-08)
+4. [09 · Estruturas de Controlo em C](#exercicios-09)
+5. [10 · Subprogramas: Funções, Variáveis Locais/Globais e Parâmetros](#exercicios-10)
+6. [11 · Funcionalidades de um Editor de Texto](#exercicios-11)
+7. [12 · Estruturas de Dados Estáticas: Strings, Arrays e Matrizes](#exercicios-12)
+8. [13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`](#exercicios-13)
+9. [14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação](#exercicios-14)
+10. [15 · Classes e Objetos (Contexto em C)](#exercicios-15)
+11. [16 · Herança e Polimorfismo (Contexto em C)](#exercicios-16)
+12. [17 · Exceções e Tratamento de Erros em C](#exercicios-17)
+13. [18 · Ficheiros: Acesso e Manipulação em C](#exercicios-18)
+14. [19 · Funcionalidades de Editor de Texto (Produtividade e Debug)](#exercicios-19)
 
 ---
+
+<a id="exercicios-07"></a>
 
 ## 07 · Dados, Variáveis, Declarações, Expressões, Constantes e Tipos
 
@@ -566,6 +568,8 @@ int main() {
 
 ---
 
+<a id="exercicios-07a"></a>
+
 ## 07A · Entrada/Saída Formatada (`printf`/`scanf`) e Endereços (`&` e `*`)
 
 Fonte: [07a_entrada_saida_formatada_printf_scanf_e_enderecos.md](./07a_entrada_saida_formatada_printf_scanf_e_enderecos.md)
@@ -1076,6 +1080,8 @@ int main() {
 ```
 
 ---
+
+<a id="exercicios-08"></a>
 
 ## 08 · Operadores em C
 
@@ -1598,6 +1604,8 @@ Passo a passo:
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
 ---
+
+<a id="exercicios-09"></a>
 
 ## 09 · Estruturas de Controlo em C
 
@@ -2180,6 +2188,8 @@ Passo a passo:
 
 ---
 
+<a id="exercicios-10"></a>
+
 ## 10 · Subprogramas: Funções, Variáveis Locais/Globais e Parâmetros
 
 Fonte: [10_subprogramas_funcoes_e_parametros.md](./10_subprogramas_funcoes_e_parametros.md)
@@ -2648,6 +2658,8 @@ Passo a passo:
 
 ---
 
+<a id="exercicios-11"></a>
+
 ## 11 · Funcionalidades de um Editor de Texto
 
 Fonte: [11_funcionalidades_editor_de_texto.md](./11_funcionalidades_editor_de_texto.md)
@@ -2905,6 +2917,8 @@ Passo a passo:
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
 ---
+
+<a id="exercicios-12"></a>
 
 ## 12 · Estruturas de Dados Estáticas: Strings, Arrays e Matrizes
 
@@ -3302,6 +3316,8 @@ Passo a passo:
 
 ---
 
+<a id="exercicios-13"></a>
+
 ## 13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`
 
 Fonte: [13_estruturas_compostas_struct_union_enum.md](./13_estruturas_compostas_struct_union_enum.md)
@@ -3653,6 +3669,8 @@ Passo a passo:
 
 ---
 
+<a id="exercicios-14"></a>
+
 ## 14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação
 
 Fonte: [14_estruturas_dinamicas_apontadores.md](./14_estruturas_dinamicas_apontadores.md)
@@ -3955,6 +3973,8 @@ Passo a passo:
 
 ---
 
+<a id="exercicios-15"></a>
+
 ## 15 · Classes e Objetos (Contexto em C)
 
 Fonte: [15_classes_e_objetos_contexto_c.md](./15_classes_e_objetos_contexto_c.md)
@@ -4218,6 +4238,8 @@ Passo a passo:
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
 ---
+
+<a id="exercicios-16"></a>
 
 ## 16 · Herança e Polimorfismo (Contexto em C)
 
@@ -4485,6 +4507,8 @@ Passo a passo:
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
 ---
+
+<a id="exercicios-17"></a>
 
 ## 17 · Exceções e Tratamento de Erros em C
 
@@ -4754,6 +4778,8 @@ Passo a passo:
 
 ---
 
+<a id="exercicios-18"></a>
+
 ## 18 · Ficheiros: Acesso e Manipulação em C
 
 Fonte: [18_ficheiros_acesso_e_manipulacao_em_c.md](./18_ficheiros_acesso_e_manipulacao_em_c.md)
@@ -5022,6 +5048,8 @@ Passo a passo:
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
 ---
+
+<a id="exercicios-19"></a>
 
 ## 19 · Funcionalidades de Editor de Texto (Produtividade e Debug)
 
