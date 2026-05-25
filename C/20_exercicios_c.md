@@ -3849,6 +3849,38 @@ Passo a passo:
 5. Mostra cada posição e o respetivo valor.
 6. Confirma que o ciclo usa `< tamanho`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+void mostrar_array(int valores[], int tamanho) {
+    printf("Array: ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", valores[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int valores[5] = {10, 20, 30, 40, 50};
+    printf("Endereço do primeiro elemento: %p\n", (void *)&valores[0]);
+    mostrar_array(valores, 5);
+    return 0;
+}
+```
+
+Ou a mostrar o valor e o endereço de cada elemento na função:
+
+```c
+
+void mostrar_array(int valores[], int tamanho) {
+    printf("Array:\n");
+    for (int i = 0; i < tamanho; i++) {
+        printf("Posição %d: valor = %d, endereço = %p\n", i, valores[i], (void *)&valores[i]);
+    }
+}
+```
+
 ### Exercício 98 - Vetor dinâmico com `malloc`
 
 Objetivo: reservar memória durante a execução para guardar uma quantidade variável de valores.
