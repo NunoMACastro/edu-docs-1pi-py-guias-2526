@@ -3702,6 +3702,31 @@ Passo a passo:
 6. Imprime o endereço guardado em cada apontador com `%p`.
 7. Executa o programa duas vezes e observa que os endereços podem mudar.
 
+> Resolução:
+
+```c
+
+#include <stdio.h>
+int main() {
+    int idade = 25;
+    double media = 15.5;
+    char letra = 'A';
+
+    int *p_idade = &idade;
+    double *p_media = &media;
+    char *p_letra = &letra;
+
+    printf("Valor de idade: %d, Endereço de idade: %p\n", idade, (void *)p_idade);
+    printf("Valor de media: %.2f, Endereço de media: %p\n", media, (void *)p_media);
+    printf("Valor de letra: %c, Endereço de letra: %p\n", letra, (void *)p_letra);
+
+    return 0;
+}
+```
+
+Ao fazer cast para `(void *)` ao imprimir endereços, garantimos que o formato é consistente e evitamos warnings em alguns compiladores.
+O cast é quando transformamos um tipo de dado em outro, e neste caso, estamos dizendo ao compilador para tratar o valor do apontador como um ponteiro genérico (`void *`), que é o tipo recomendado para imprimir endereços.
+
 ### Exercício 95 - Ponteiro básico
 
 Objetivo: perceber quando um apontador é necessário para alterar uma variável original.
@@ -3725,6 +3750,36 @@ Passo a passo:
 5. Dentro de `aniversario`, usa `*idade = *idade + 1`.
 6. Mostra que agora a idade original foi alterada.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+void aniversario_errado(int idade) {
+    // Esta função recebe uma cópia do valor de idade, então não altera a variável original.
+    idade = idade + 1; // Aumenta a idade local, mas isso não afeta a variável no main.
+}
+
+void aniversario(int *idade) {
+    // Esta função recebe um apontador para idade, então pode alterar a variável original.
+    *idade = *idade + 1; // Aumenta a idade usando o conteúdo apontado, alterando a variável no main.
+}
+
+int main() {
+    int idade = 16;
+
+    printf("Idade antes do aniversário errado: %d\n", idade);
+    aniversario_errado(idade);
+    printf("Idade depois do aniversário errado: %d\n", idade); // Continua 16
+
+    printf("Idade antes do aniversário correto: %d\n", idade);
+    aniversario(&idade);
+    printf("Idade depois do aniversário correto: %d\n", idade); // Agora é 17
+
+    return 0;
+}
+```
+
 ### Exercício 96 - Troca de valores
 
 Objetivo: usar dois apontadores para alterar duas variáveis originais.
@@ -3747,6 +3802,29 @@ Passo a passo:
 4. Dentro da função, guarda temporariamente `*a`.
 5. Faz a troca usando `*a` e `*b`.
 6. Mostra os valores finais no `main`.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+void trocar(int *a, int *b) {
+    int temp = *a; // Guarda o valor apontado por a
+    *a = *b;       // Atribui o valor apontado por b a a
+    *b = temp;     // Atribui o valor guardado em temp a b
+}
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    printf("Antes da troca: x = %d, y = %d\n", x, y);
+    trocar(&x, &y);
+    printf("Depois da troca: x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+```
 
 ### Exercício 97 - Apontadores e arrays
 
