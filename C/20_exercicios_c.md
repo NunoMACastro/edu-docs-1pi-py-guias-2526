@@ -3881,7 +3881,38 @@ void mostrar_array(int valores[], int tamanho) {
 }
 ```
 
-### Exercício 98 - Vetor dinâmico com `malloc`
+### Exercício 98 - Apontadores e arrays
+
+Objetivo: perceber que o nome de um array é um apontador para o primeiro elemento.
+
+Cria um programa que declare um array de inteiros e mostre o valor do primeiro elemento usando o nome do array e usando um apontador.
+
+Requisitos:
+
+- Declara um array `int numeros[5]` e inicializa-o com valores fixos.
+- Declara um apontador `int *p_numeros` e atribui-lhe o endereço do primeiro elemento do array.
+- Mostra o valor do primeiro elemento usando `numeros[0]` e usando `*p_numeros`.
+- Mostra o endereço do primeiro elemento usando `&numeros[0]` e usando `p_numeros`.
+- O output deve deixar claro que `numeros` e `p_numeros` estão relacionados.
+
+Por exemplo, o output pode ser:
+
+```
+Valor do primeiro elemento usando numeros[0]: 10
+Valor do primeiro elemento usando *p_numeros: 10
+Endereço do primeiro elemento usando &numeros[0]: 0x7ffee3bc8a0
+Endereço do primeiro elemento usando p_numeros: 0x7ffee3bc8a0
+```
+
+Passo a passo:
+
+1. Declara `int numeros[5] = {10, 20, 30, 40, 50};`.
+2. Declara `int *p_numeros = numeros;` ou `int *p_numeros = &numeros[0];`.
+3. Imprime o valor do primeiro elemento usando `numeros[0]` e `*p_numeros`.
+4. Imprime o endereço do primeiro elemento usando `&numeros[0]` e `p_numeros`.
+5. Executa o programa e observa que os endereços são iguais.
+
+### Exercício 99 - Vetor dinâmico com `malloc`
 
 Objetivo: reservar memória durante a execução para guardar uma quantidade variável de valores.
 
@@ -3907,7 +3938,7 @@ Passo a passo:
 7. Mostra soma e média.
 8. Faz `free(valores)` e `valores = NULL`.
 
-### Exercício 99 - `calloc`
+### Exercício 100 - `calloc`
 
 Objetivo: comparar `malloc` e `calloc` quanto à inicialização dos valores.
 
@@ -3931,7 +3962,7 @@ Passo a passo:
 5. Usa outro ciclo para mostrar os novos valores.
 6. Faz `free` e coloca o apontador a `NULL`.
 
-### Exercício 100 - `realloc`
+### Exercício 101 - `realloc`
 
 Objetivo: praticar redimensionamento seguro de memória dinâmica.
 
@@ -3958,7 +3989,7 @@ Passo a passo:
 8. Preenche as posições de índice 5 a 9.
 9. Mostra todos os valores e liberta a memória.
 
-### Exercício 101 - `struct` dinâmica
+### Exercício 102 - `struct` dinâmica
 
 Objetivo: criar uma `struct` em memória dinâmica e aceder aos seus campos com `->`.
 
@@ -3982,7 +4013,7 @@ Passo a passo:
 5. Mostra os campos usando `produto->campo`.
 6. Liberta a memória.
 
-### Exercício 102 - Array dinâmico de `struct`
+### Exercício 103 - Array dinâmico de `struct`
 
 Objetivo: combinar arrays dinâmicos com tipos compostos.
 
@@ -4009,7 +4040,7 @@ Passo a passo:
 7. Mostra a média ou uma mensagem se não houver médias válidas.
 8. Faz `free(turma)`.
 
-### Exercício 103 - Lista ligada: nó único
+### Exercício 104 - Lista ligada: nó único
 
 Objetivo: perceber a estrutura mínima de um nó de lista ligada.
 
@@ -4034,7 +4065,7 @@ Passo a passo:
 6. Mostra o valor.
 7. Faz `free(no)` e `no = NULL`.
 
-### Exercício 104 - Auditoria de segurança de memória
+### Exercício 105 - Auditoria de segurança de memória
 
 Objetivo: identificar erros comuns com apontadores antes de escrever a correção.
 
@@ -4057,7 +4088,7 @@ Passo a passo:
 4. Corrige apenas o necessário.
 5. Confirma que a versão corrigida inicializa, valida e liberta corretamente.
 
-### Exercício 105 - Reflexão
+### Exercício 106 - Reflexão
 
 Objetivo: consolidar os conceitos de apontadores e estruturas dinâmicas através de uma explicação escrita e justificada.
 
@@ -4089,7 +4120,7 @@ Passo a passo:
 
 Fonte: [15_classes_e_objetos_contexto_c.md](./15_classes_e_objetos_contexto_c.md)
 
-### Exercício 106 - Modelação
+### Exercício 107 - Modelação
 
 Objetivo: praticar modelação aplicando os conceitos de modelação de objetos em C.
 
@@ -4111,7 +4142,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 107 - API mínima
+### Exercício 108 - API mínima
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4132,7 +4163,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 108 - Inicialização
+### Exercício 109 - Inicialização
 
 Objetivo: praticar inicialização aplicando os conceitos de modelação de objetos em C.
 
@@ -4154,7 +4185,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 109 - Encapsulamento
+### Exercício 110 - Encapsulamento
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4175,7 +4206,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 110 - Validação de regras
+### Exercício 111 - Validação de regras
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4197,7 +4228,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 111 - Modularização
+### Exercício 112 - Modularização
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4218,7 +4249,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 112 - Const-correctness
+### Exercício 113 - Const-correctness
 
 Objetivo: praticar const-correctness aplicando os conceitos de modelação de objetos em C.
 
@@ -4240,7 +4271,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 113 - Testes manuais
+### Exercício 114 - Testes manuais
 
 Objetivo: praticar testes manuais aplicando os conceitos de modelação de objetos em C.
 
@@ -4262,7 +4293,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 114 - Refatoração
+### Exercício 115 - Refatoração
 
 Objetivo: praticar refatoração aplicando os conceitos de modelação de objetos em C.
 
@@ -4284,7 +4315,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 115 - Documentação
+### Exercício 116 - Documentação
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4305,7 +4336,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 116 - Evolução
+### Exercício 117 - Evolução
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4326,7 +4357,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 117 - Reflexão
+### Exercício 118 - Reflexão
 
 Objetivo: consolidar os conceitos de modelação de objetos em C através de uma explicação escrita e justificada.
 
@@ -4355,7 +4386,7 @@ Passo a passo:
 
 Fonte: [16_heranca_e_polimorfismo_contexto_c.md](./16_heranca_e_polimorfismo_contexto_c.md)
 
-### Exercício 118 - Composição
+### Exercício 119 - Composição
 
 Objetivo: praticar composição aplicando os conceitos de composição e polimorfismo em C.
 
