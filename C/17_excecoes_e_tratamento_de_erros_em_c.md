@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 17 · Exceções e Tratamento de Erros em C
 
 > **Objetivo deste ficheiro**  
@@ -177,3 +179,5 @@ int main(void) {
 ## 11. Changelog
 
 - **2026-02-23**: reescrita completa com abordagem detalhada e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python · 10.º Ano (Programador de Informática)
 
 > Este README descreve apenas a pasta `Python`. Para uma visão geral do repositório, vê o [README.md](../README.md) na raiz.
@@ -504,3 +506,5 @@ Para correr um exemplo:
     - botão de _Run_ do editor.
 
 ---
+
+![Footer](../Images/Footer.png)

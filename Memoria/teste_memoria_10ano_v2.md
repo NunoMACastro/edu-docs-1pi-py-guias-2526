@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Teste de Avaliação - Gestão de Memória em Python (10.º Ano) - Versão 2
 
 **Nome:** **************__**************  
@@ -231,3 +233,5 @@ Após o último `del`, a afirmação mais correta é:
 18. C
 19. B
 20. B
+
+![Footer](../Images/Footer.png)

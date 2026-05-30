@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 00 · Fundamentos: Hardware, Bits, CPU e Endereços de Memória
 
 > **Objetivo deste ficheiro**  
@@ -378,3 +380,5 @@ Esta é a fundação para entender memória e execução de programas nos próxi
 
 - **2026-02-04**: versão inicial do módulo 00.
 - **2026-02-04**: reforço pedagógico com explicações de utilidade, portas lógicas, fluxo de leitura/escrita e ponte para Python.
+
+![Footer](../Images/Footer.png)

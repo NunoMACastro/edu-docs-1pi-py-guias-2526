@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 09 · Módulos e Organização de Projetos
 
 > **Objetivo deste ficheiro**  
@@ -799,3 +801,5 @@ if __name__ == "__main__":
 ## 11) Changelog
 
 - `2025-02-XX` · Criacao inicial do ficheiro com introducao a modulos, imports e organizacao de projetos.
+
+![Footer](../Images/Footer.png)

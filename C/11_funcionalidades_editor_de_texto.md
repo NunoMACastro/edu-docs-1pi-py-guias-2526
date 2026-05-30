@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 11 · Funcionalidades de um Editor de Texto
 
 > **Objetivo deste ficheiro**  
@@ -142,3 +144,5 @@ Objetivo: encontrar causa do erro, não apenas "apagar sintomas".
 ## 10. Changelog
 
 - **2026-02-23**: reescrita completa do módulo com foco pedagógico e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

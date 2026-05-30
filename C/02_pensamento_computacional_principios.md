@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C - 02 · Pensamento Computacional (Princípios)
 
 > **Objetivo deste ficheiro**  
@@ -423,3 +425,5 @@ Se responderes "não" a 2 ou mais itens, ainda não é hora de programar.
 
 - **2026-04-12**: expansão completa do módulo com mais profundidade, estratégia operacional, exemplos e laboratório.
 - **2026-02-23**: reescrita completa do módulo com explicação detalhada.
+
+![Footer](../Images/Footer.png)

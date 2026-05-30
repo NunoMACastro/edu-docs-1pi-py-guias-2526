@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 01 · Memória do Computador: Cache, Primária e Secundária
 
 > **Objetivo deste ficheiro**  
@@ -239,3 +241,5 @@ Para nível inicial, basta lembrares:
 ## 10. Changelog
 
 - **2026-02-04**: versão inicial do módulo 01.
+
+![Footer](../Images/Footer.png)

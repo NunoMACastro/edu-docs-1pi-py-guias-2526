@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Guia Completo de Markdown (10º ao 12º Ano)
 
 > **Objetivo:**  
@@ -287,3 +289,5 @@ Texto escondido aqui.
 3. Escreve por secoes curtas
 4. Revê o Preview
 ```
+
+![Footer](../Images/Footer.png)

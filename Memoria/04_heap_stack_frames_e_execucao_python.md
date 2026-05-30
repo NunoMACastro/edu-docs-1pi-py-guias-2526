@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 04 · Heap, Stack, Frames e Execução de Código Python (v2)
 
 > **Objetivo deste ficheiro**  
@@ -1181,3 +1183,5 @@ Responde:
 
 - **2026-02-04**: versão inicial do módulo 04.
 - **2026-02-05**: v2 (mapa mental + observação com ferramentas + debug + exercícios).
+
+![Footer](../Images/Footer.png)

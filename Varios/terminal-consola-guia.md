@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Guia Prático de Terminal e Consola (Windows, Linux e macOS)
 
 > **Objetivo:**  
@@ -172,3 +174,5 @@ Apagar:
 - Experimenta os comandos com calma numa pasta de teste.
 - Usa `comando --help` ou `comando /?` sempre que tiveres dúvidas.
 - Pratica os mesmos exercícios nos três sistemas para ganhar confiança.
+
+![Footer](../Images/Footer.png)

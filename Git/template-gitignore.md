@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # .gitignore - Template abrangente (multi-stack)
 
 > Objetivo: um `.gitignore` **pronto a usar** para a maioria dos projetos (Node.js, Python, Java/C#, mobile, web). Inclui ficheiros de sistema (ex.: `.DS_Store`) e lixo de IDEs. Adapta conforme necessário - especialmente em **lockfiles** e **.vscode**.
@@ -385,3 +387,5 @@ Desktop.ini
 -   Mantém o `.gitignore` **curto e auditável**; remove o que não faz sentido para o projeto.
 -   Preferível **comitar lockfiles** (Node, Python, PHP) em aplicações para builds reproduzíveis.
 -   Em monorepos, `.gitignore` na raiz + ajustes granulares em cada pacote se necessário.
+
+![Footer](../Images/Footer.png)

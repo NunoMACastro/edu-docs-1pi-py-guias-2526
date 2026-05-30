@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 00 · Exercicios de recuperação
 
 > **Objetivo deste ficheiro**  
@@ -1242,3 +1244,5 @@ Cria um programa que:
 
 1. Defina uma função que receba um número variável de elementos com chaves e valores (usando `**kwargs`) e mostre quantas vezes cada chave aparece.
 2. Chame a função com diferentes conjuntos de chaves e valores para mostrar os resultados.
+
+![Footer](../Images/Footer.png)

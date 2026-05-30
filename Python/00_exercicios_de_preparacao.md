@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 00 · Exercicios de preparação
 
 > **Objetivo deste ficheiro**  
@@ -529,3 +531,5 @@ for aluno in alunos_lidos:
     negativas = devolve_negativas(aluno)
     print(f"{aluno['nome']} - Negativas: {negativas}")
 ```
+
+![Footer](../Images/Footer.png)

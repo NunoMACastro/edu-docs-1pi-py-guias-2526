@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 12 · Estruturas de Dados Estáticas: Strings, Arrays e Matrizes
 
 > **Objetivo deste ficheiro**  
@@ -807,3 +809,5 @@ Antes de considerar o programa terminado, verifica:
 
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações passo a passo, exemplos guiados, notas de segurança e exercícios.
 - **2026-02-23**: reescrita detalhada do módulo com foco pedagógico e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

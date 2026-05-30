@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C - 01 · Ciclo de Vida do Software
 
 > **Objetivo deste ficheiro**  
@@ -474,3 +476,5 @@ Se falhar algum item, volta à fase correspondente e corrige.
 
 - **2026-04-12**: expansão completa do módulo com foco em profundidade, artefactos por fase, laboratório e avaliação.
 - **2026-02-23**: reescrita completa do módulo com versão detalhada e foco pedagógico.
+
+![Footer](../Images/Footer.png)

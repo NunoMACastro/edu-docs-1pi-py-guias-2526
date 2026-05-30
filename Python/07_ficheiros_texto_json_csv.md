@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 07 · Ficheiros de Texto, JSON e CSV
 
 > **Objetivo deste ficheiro**  
@@ -567,3 +569,5 @@ Escreve um programa que:
 
 -   **2025-11-26 · v1.0**
     -   Criação inicial do ficheiro com introdução a ficheiros de texto, JSON e CSV.
+
+![Footer](../Images/Footer.png)

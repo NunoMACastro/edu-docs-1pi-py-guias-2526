@@ -1,3 +1,5 @@
+![Header](../../Images/Header.png)
+
 # Avaliação do Projeto
 
 ## Grupo
@@ -167,3 +169,5 @@ Os pontos de melhoria estão concentrados na robustez (validação de entradas e
 ### Feedback curto
 
 Conseguiram entregar um jogo funcional com várias partes importantes do enunciado e extras úteis. O próximo passo é reforçar a robustez: validar melhor respostas e ficheiros, e manter a documentação totalmente alinhada com o código final.
+
+![Footer](../../Images/Footer.png)

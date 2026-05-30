@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 21 · Projeto Prático: Mastermind em Consola
 
 ---
@@ -485,3 +487,5 @@ As melhorias só devem ser feitas depois de a versão base estar correta.
 - **2026-05-26**: reformulação do projeto para Mastermind numérico em consola, alinhado com arrays, array de `struct`, `enum`, funções e apontadores antes de `malloc`.
 - **2026-05-26**: reformulação anterior para jogo de consola baseado em mapa.
 - **2026-04-23**: criação do mini projeto de 1 hora, versão original para trabalho em papel.
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Teste de Avaliação - Memória e Execução de Programas (10.º Ano)
 
 **Nome:** **\*\***\*\***\*\***\_\_\_\_**\*\***\*\***\*\***  
@@ -163,3 +165,5 @@ Converte os seguintes números **decimais** para binário:
 18. 77 = `1001101`
 19. 100 = `1100100`
 20. 255 = `11111111`
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 03 · Gestão de Memória em Python: Referências, Mutabilidade e Garbage Collection
 
 > **Objetivo deste ficheiro**  
@@ -389,3 +391,5 @@ Para essa visão completa, consulta:
 ## 11. Changelog
 
 - **2026-02-04**: versão inicial do módulo 03.
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 02 · Operadores e Controlo de Fluxo (`if`, `for`, `while`)
 
 > **Objetivo deste ficheiro**  
@@ -889,3 +891,5 @@ else:
     -   Criação inicial do documento.
     -   Secções: operadores aritméticos, comparação, lógicos, pertinência/identidade, atribuições compostas, truthiness, `if/elif/else`, `while`, `for`, `range` e indentação.
     -   Adicionados 12 exercícios graduais focados em operadores, decisões e ciclos (`for`/`while`).
+
+![Footer](../Images/Footer.png)

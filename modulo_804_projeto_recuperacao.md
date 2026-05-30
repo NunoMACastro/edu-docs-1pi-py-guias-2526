@@ -1,3 +1,5 @@
+![Header](Images/Header.png)
+
 # Projeto de Recuperação do Módulo 804 - 2025/2026
 
 Realiza um trabalho de investigação, no formato que quiseres (powerpoint, word, à mão, etc) sobre o que é:
@@ -18,3 +20,5 @@ O trabalho, depois de terminado, deve ser enviado por e-mail para o professor. n
 > - Conhecimentos adquiridos pelas alunas: 40%
 
 O trabalho será para ser apresentado / explicado ao professor numa data a indicar.
+
+![Footer](Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 02 · RAM, ROM, Binário, Bytes e Endereços
 
 > **Objetivo deste ficheiro**  
@@ -407,3 +409,5 @@ Completa:
 ## 10. Changelog
 
 - **2026-02-04**: versão inicial do módulo 02 com exercícios e resoluções.
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../../Images/Header.png)
+
 # Avaliação do Projeto
 
 ## Grupo
@@ -172,3 +174,5 @@ No entanto, faltam componentes centrais do MVP e da robustez esperada: validaç�
 ### Feedback curto
 
 A base do jogo existe e isso é um bom começo. O próximo passo é fechar os requisitos essenciais: impedir crashes com input inválido, mostrar resumo final completo, baralhar perguntas e guardar pontuações para ranking.
+
+![Footer](../../Images/Footer.png)

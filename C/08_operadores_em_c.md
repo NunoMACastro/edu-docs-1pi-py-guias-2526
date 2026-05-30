@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 08 · Operadores em C
 
 > **Objetivo deste ficheiro**  
@@ -211,3 +213,5 @@ Conceitos usados:
 ## 11. Changelog
 
 - **2026-02-23**: reescrita completa com detalhe pedagógico e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

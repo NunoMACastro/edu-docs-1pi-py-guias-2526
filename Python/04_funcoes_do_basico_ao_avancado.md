@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 04 · Funções do Básico ao “Quase Avançado”
 
 > **Objetivo deste ficheiro**  
@@ -1316,3 +1318,5 @@ print(conta_decrescente_iterativa(4))   # [4, 3, 2, 1]
     -   Secções essenciais: motivação para funções, definição e chamada, `print` vs `return`, parâmetros/argumentos, `return`, scope básico, mutabilidade, boas práticas e testes.
     -   Secções extra: funções de ordem superior, `lambda`, `*args`/`**kwargs`, docstrings e tipos, recursão.
     -   Adicionados 12 exercícios graduais (dos básicos aos desafios com recursão e estruturas aninhadas).
+
+![Footer](../Images/Footer.png)

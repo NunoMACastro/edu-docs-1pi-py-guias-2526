@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 05 · Estruturas Dinâmicas e Complexidade (Big-O)
 
 > **Objetivo deste ficheiro**  
@@ -667,3 +669,5 @@ Legenda:
 - **2026-02-24**: adicionada subsecção com gráficos Mermaid para as classes `O(1)`, `O(log n)`, `O(n)`, `O(n log n)` e `O(n^2)` em Big-O.
 - **2026-02-23**: adicionados esquemas (ASCII), exemplos de inserção/pesquisa, passo a passo de inserção de lista não ordenada em BST, ordenação in-order, reforço pedagógico da complexidade, comparação `sort` vs BST, tabela de estruturas compostas e tabela-resumo de utilização.
 - **2026-02-04**: versão inicial do módulo 05.
+
+![Footer](../Images/Footer.png)

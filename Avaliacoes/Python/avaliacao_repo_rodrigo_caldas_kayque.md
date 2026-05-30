@@ -1,3 +1,5 @@
+![Header](../../Images/Header.png)
+
 # Avaliação do Projeto
 
 ## Grupo
@@ -165,3 +167,5 @@ Para fechar melhor o trabalho, falta completar o resumo final do MVP e melhorar 
 ### Feedback curto
 
 A base do projeto é forte e os três modos mostram empenho real. O próximo passo é consolidar o essencial: no fim de cada jogo, mostrar certas, erradas e percentagem, e melhorar a gestão das pontuações para histórico e Top 10.
+
+![Footer](../../Images/Footer.png)

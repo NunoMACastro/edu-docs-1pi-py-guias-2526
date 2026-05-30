@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 01 · Introdução, Variáveis, Tipos, Strings e I/O
 
 > **Objetivo deste ficheiro**  
@@ -683,3 +685,5 @@ Média: {media:.2f} valores
     -   Criação inicial do documento.
     -   Secções: introdução, variáveis, tipos básicos, strings, comentários, `print()`/`input()` e f-strings.
     -   Adicionados 12 exercícios graduais (nível: 10.º ano, primeira unidade de Python).
+
+![Footer](../Images/Footer.png)

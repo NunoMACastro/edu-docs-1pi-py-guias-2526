@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 09 · Estruturas de Controlo em C
 
 > **Objetivo deste ficheiro**  
@@ -192,3 +194,5 @@ int main(void) {
 ## 11. Changelog
 
 - **2026-02-23**: reescrita completa, foco pedagógico e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

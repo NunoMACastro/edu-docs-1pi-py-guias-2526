@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C - 03 · Algoritmos (Princípios)
 
 > **Objetivo deste ficheiro**  
@@ -421,3 +423,5 @@ Antes de considerar algoritmo concluído:
 
 - **2026-04-12**: expansão completa do módulo com foco em correção, trace, eficiência inicial, laboratório e avaliação.
 - **2026-02-23**: reescrita detalhada do módulo com foco em fundamentos.
+
+![Footer](../Images/Footer.png)

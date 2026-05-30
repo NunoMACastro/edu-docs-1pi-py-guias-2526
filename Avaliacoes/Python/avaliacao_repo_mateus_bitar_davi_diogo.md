@@ -1,3 +1,5 @@
+![Header](../../Images/Header.png)
+
 # Avaliação do Projeto
 
 ## Grupo
@@ -173,3 +175,5 @@ A parte principal do projeto, que é jogar uma ronda completa com avaliação de
 ### Feedback curto
 
 A base do projeto está montada e as perguntas estão bem preparadas. O próximo passo é concluir o essencial: ronda completa de jogo, validação de respostas, soma de pontos e resumo final. Depois disso, devem fazer uma revisão final de mensagens, validações e documentação.
+
+![Footer](../../Images/Footer.png)

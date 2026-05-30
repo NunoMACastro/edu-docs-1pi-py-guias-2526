@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Formulário de Apoio · Python (10.º Ano)
 
 > Ficha de consulta rápida para testes.
@@ -265,3 +267,5 @@ with open("alunos.csv", "r", encoding="utf-8") as f:
 -   Mantém registos (JSON/CSV) atualizados e consistentes ao longo da execução.
 
 Boa preparação!
+
+![Footer](../Images/Footer.png)

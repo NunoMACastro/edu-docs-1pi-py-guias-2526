@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`
 
 > **Objetivo deste ficheiro**  
@@ -782,3 +784,5 @@ Antes de criares uma `struct`, pergunta:
 - **2026-05-18**: reforço pedagógico sobre leitura segura de strings dentro de `struct`, indicação explícita de que `->` antecipa apontadores e clarificação do papel introdutório de `union`.
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações progressivas, exemplos guiados, distinção clara entre `struct`, `enum` e `union`, e exercícios.
 - **2026-02-23**: reescrita completa do módulo com detalhe pedagógico e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

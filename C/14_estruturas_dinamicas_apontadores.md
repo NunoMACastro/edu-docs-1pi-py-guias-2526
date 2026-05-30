@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação
 
 > **Objetivo deste ficheiro**  
@@ -949,3 +951,5 @@ Antes de escrever ou entregar código com apontadores, confirma:
 - **2026-05-19**: acrescentada explicação explícita sobre porque e quando usar apontadores em vez de variáveis normais; reforçadas notas sobre `realloc`, `sizeof *p`, validação de input e segurança em strings dentro de `struct` dinâmica.
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações graduais sobre memória, apontadores, `NULL`, alocação dinâmica, segurança e exemplos guiados.
 - **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

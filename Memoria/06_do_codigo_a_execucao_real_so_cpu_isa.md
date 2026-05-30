@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Memória (10.º Ano) - 06 · Do Código à Execução Real: SO, CPU, ISA e Ficheiros
 
 > **Objetivo deste ficheiro**  
@@ -291,3 +293,5 @@ Perceber este fluxo ajuda-te a:
 ## 15. Changelog
 
 - **2026-02-04**: versão inicial do módulo 06 (execução real, SO, CPU, ISA e ficheiros).
+
+![Footer](../Images/Footer.png)

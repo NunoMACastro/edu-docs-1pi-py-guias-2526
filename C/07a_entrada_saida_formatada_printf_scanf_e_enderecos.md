@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 07A · Entrada/Saída Formatada (`printf`/`scanf`) e Endereços (`&` e `*`)
 
 > **Objetivo deste ficheiro**  
@@ -453,3 +455,5 @@ Relação prática:
 
 - **2026-04-15**: exercícios refeitos com progressão incremental e foco apenas na matéria coberta até este módulo.
 - **2026-04-15**: criação do módulo dedicado de `printf`/`scanf` com explicação de `&` e `*`, validação de input e comparação `scanf` vs `fgets`.
+
+![Footer](../Images/Footer.png)

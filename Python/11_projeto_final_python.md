@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Projeto Final (10.º PI) — Jogo de Perguntas (Quiz) em Python
 
 **Duração:** 2–3 semanas  
@@ -325,3 +327,5 @@ No fim da Fase 1, o grupo deve conseguir:
 ### Entrega do projeto final
 
 Todos os ficheiros e o md de planificação devem ser entregues via GitHub até à data definida pelo professor.
+
+![Footer](../Images/Footer.png)

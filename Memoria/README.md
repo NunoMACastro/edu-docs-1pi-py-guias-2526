@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 [Voltar ao README principal](../README.md)
 
 # Memória · 10.º Ano (Programador Informático)
@@ -84,3 +86,5 @@ Estes ficheiros foram escritos para alunos em fase inicial, com explicações mu
 - **2026-02-04**: Criação inicial da pasta `Memoria` com guia de estudo e 5 módulos.
 - **2026-02-04**: Adicionado módulo `00` de fundamentos (hardware, CPU, RAM, endereços).
 - **2026-02-04**: Adicionado módulo `06` com a visão completa de execução real (SO, CPU, ISA e ficheiros).
+
+![Footer](../Images/Footer.png)

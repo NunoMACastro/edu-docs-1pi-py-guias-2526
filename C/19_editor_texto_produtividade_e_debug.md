@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 19 · Funcionalidades de Editor de Texto (Produtividade e Debug)
 
 > **Objetivo deste ficheiro**  
@@ -153,3 +155,5 @@ Produtividade é processo, não velocidade sem controlo.
 ## 11. Changelog
 
 - **2026-02-23**: reescrita completa com foco em produtividade real e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

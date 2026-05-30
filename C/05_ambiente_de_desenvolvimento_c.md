@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C - 05 · Ambiente de Desenvolvimento
 
 > **Objetivo deste ficheiro**  
@@ -800,3 +802,5 @@ Se algum item falhar, não é fim do mundo: é sinal claro do que corrigir prime
 
 - **2026-04-12**: expansão completa do módulo com foco em profundidade técnica, prática guiada, troubleshooting, laboratório e critérios de autoavaliação.
 - **2026-02-23**: reescrita completa com abordagem detalhada.
+
+![Footer](../Images/Footer.png)

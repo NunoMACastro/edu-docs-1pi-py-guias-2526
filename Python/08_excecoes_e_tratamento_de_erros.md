@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 08 · Exceções e Tratamento de Erros
 
 > **Objetivo deste ficheiro**  
@@ -1003,3 +1005,5 @@ main()
 ## 12. Changelog
 
 -   `2025-02-XX` · Criação inicial do ficheiro com introdução a exceções, leitura de mensagens de erro e `try`/`except` básico.
+
+![Footer](../Images/Footer.png)

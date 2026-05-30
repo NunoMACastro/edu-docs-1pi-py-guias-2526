@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 16 · Herança e Polimorfismo (Contexto em C)
 
 > **Objetivo deste ficheiro**  
@@ -155,3 +157,5 @@ Ainda assim, é excelente para entender conceitos com profundidade.
 ## 10. Changelog
 
 - **2026-02-23**: reescrita detalhada com foco em equivalentes de herança/polimorfismo e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Guia rápido · Primeiro programa em C no GitHub Codespaces e no VS Code
 
 > Objetivo: conseguir escrever, compilar e executar um programa muito simples em C.
@@ -224,3 +226,5 @@ ou:
 ```powershell
 .\programa.exe
 ```
+
+![Footer](../Images/Footer.png)

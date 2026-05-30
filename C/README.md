@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C · 10.º Ano (Programador de Informática)
 
 > Este README descreve apenas a pasta `C`. Para visão geral do repositório, consulta o [README.md](../README.md) da raiz.
@@ -163,3 +165,5 @@ Nestes materiais:
 - **2026-02-23**: todos os módulos atualizados com exercícios sem resolução (apenas enunciados).
 - **2026-04-15**: adicionado módulo `07a` para aprofundar `printf`/`scanf`, `&` e `*`, com atualização da rota de estudo.
 - **2026-04-19**: exercícios removidos dos tutoriais e centralizados em `20_exercicios_c.md`.
+
+![Footer](../Images/Footer.png)

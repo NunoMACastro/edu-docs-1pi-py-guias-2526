@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C - 04 · Metodologias de Desenvolvimento de Software
 
 > **Objetivo deste ficheiro**  
@@ -658,3 +660,5 @@ Se faltarem 2 ou mais itens, o processo ainda está incompleto.
 - **2026-04-14**: reestruturação por níveis (modelo, abordagem, framework/método, ferramentas) para evitar mistura de conceitos.
 - **2026-04-12**: expansão completa do módulo com matriz de decisão, artefactos, métricas, laboratório e avaliação.
 - **2026-02-23**: reescrita detalhada do módulo com foco pedagógico.
+
+![Footer](../Images/Footer.png)

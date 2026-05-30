@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 15 · Classes e Objetos (Contexto em C)
 
 > **Objetivo deste ficheiro**  
@@ -188,3 +190,5 @@ Vantagens:
 ## 10. Changelog
 
 - **2026-02-23**: reescrita detalhada do módulo com foco em equivalentes de POO e exercícios sem resolução.
+
+![Footer](../Images/Footer.png)

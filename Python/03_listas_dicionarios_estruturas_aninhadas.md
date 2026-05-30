@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 03 · Listas, Dicionários e Estruturas Aninhadas
 
 > **Objetivo deste ficheiro**  
@@ -1167,3 +1169,5 @@ else:
 ```
 
 ```
+
+![Footer](../Images/Footer.png)

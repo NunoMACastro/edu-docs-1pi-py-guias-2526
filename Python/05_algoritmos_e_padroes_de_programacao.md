@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # Python (10.º Ano) - 05 · Algoritmos e Padrões de Programação
 
 > **Objetivo deste ficheiro**  
@@ -736,3 +738,5 @@ Escolhe um dos programas que já fizeste (por exemplo, um que trabalhe com turma
         -   junção de tudo em funções (exemplos com idades e turmas),
         -   erros típicos e dicas de debugging.
     -   Criados 12 exercícios graduais, incluindo desafios com dicionários e refatoração de código em funções.
+
+![Footer](../Images/Footer.png)

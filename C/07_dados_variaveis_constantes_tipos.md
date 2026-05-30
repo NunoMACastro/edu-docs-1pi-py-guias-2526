@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 07 · Dados, Variáveis, Declarações, Expressões, Constantes e Tipos
 
 > **Objetivo deste ficheiro**  
@@ -375,3 +377,5 @@ Pontos-chave:
 - **2026-02-23**: reescrita completa com abordagem detalhada, pedagógica e exercícios sem resolução.
 - **2026-04-14**: revisão dos exercícios
 - **2026-04-15**: secção de I/O reduzida para resumo e ligação para o novo módulo `07A`.
+
+![Footer](../Images/Footer.png)

@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 06 · Linguagem Estruturada em C
 
 > **Objetivo deste ficheiro**  
@@ -161,3 +163,5 @@ O que este exemplo ensina:
 ## 9. Changelog
 
 - **2026-02-23**: reescrita completa com explicação detalhada.
+
+![Footer](../Images/Footer.png)

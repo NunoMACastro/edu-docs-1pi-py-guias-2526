@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 20 · Exercícios
 
 ---
@@ -5447,3 +5449,5 @@ Passo a passo:
 3. Justifica cada escolha com base no tipo de problema apresentado.
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+
+![Footer](../Images/Footer.png)

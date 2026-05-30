@@ -1,3 +1,5 @@
+![Header](Images/Header.png)
+
 # Material de Apoio — PI (10.º Ano)
 
 Materiais de apoio em **Markdown** para Programação no **10.º ano (Curso Profissional de Técnico de Programação de Informática)**.
@@ -62,3 +64,5 @@ O comando valida:
 - paridade de code fences;
 - links relativos quebrados;
 - sintaxe de blocos `python`.
+
+![Footer](Images/Footer.png)

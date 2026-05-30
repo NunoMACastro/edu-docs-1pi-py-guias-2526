@@ -1,3 +1,5 @@
+![Header](../../Images/Header.png)
+
 # Avaliação do Projeto
 
 ## Grupo
@@ -171,3 +173,5 @@ Além disso, há indícios documentais fortes de uso intensivo de conteúdo gera
 ### Feedback curto
 
 O projeto está funcional e organizado, mas faltam alguns elementos obrigatórios do enunciado no menu e no resumo final. Também é essencial respeitar integralmente as regras do trabalho, incluindo a proibição de uso de IA quando essa regra é definida pelo professor.
+
+![Footer](../../Images/Footer.png)

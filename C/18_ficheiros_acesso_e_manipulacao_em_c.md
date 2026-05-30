@@ -1,3 +1,5 @@
+![Header](../Images/Header.png)
+
 # C (10.º Ano) - 18 · Ficheiros: Acesso e Manipulação em C
 
 > **Objetivo deste ficheiro**  
@@ -182,3 +184,5 @@ int main(void) {
 ## 11. Changelog
 
 - **2026-02-23**: reescrita detalhada do módulo com exercícios sem resolução.
+
+![Footer](../Images/Footer.png)
