@@ -100,9 +100,9 @@ Exemplo conceptual:
 
 | Endereço | Conteúdo |
 | -------- | -------- |
-| 1000 | 16 |
-| 1004 | 20 |
-| 1008 | 35 |
+| 1000     | 16       |
+| 1004     | 20       |
+| 1008     | 35       |
 
 Se escrevermos:
 
@@ -140,10 +140,10 @@ Leitura:
 
 Podemos imaginar assim:
 
-| Nome | Conteúdo |
-| ---- | -------- |
-| `x` | `10` |
-| `p` | endereço de `x` |
+| Nome | Conteúdo        |
+| ---- | --------------- |
+| `x`  | `10`            |
+| `p`  | endereço de `x` |
 
 O apontador não guarda o valor `10`. Guarda a localização onde o `10` está.
 
@@ -218,10 +218,10 @@ Regra prática:
 
 Há dois operadores essenciais:
 
-| Operador | Nome simples | O que faz |
-| -------- | ------------ | --------- |
-| `&` | endereço de | obtém a morada de uma variável |
-| `*` | conteúdo apontado por | acede ao valor que está no endereço guardado |
+| Operador | Nome simples          | O que faz                                    |
+| -------- | --------------------- | -------------------------------------------- |
+| `&`      | endereço de           | obtém a morada de uma variável               |
+| `*`      | conteúdo apontado por | acede ao valor que está no endereço guardado |
 
 Exemplo:
 
@@ -668,12 +668,31 @@ a = NULL;
 
 ## 14. Introdução a listas ligadas
 
-Uma lista ligada é uma estrutura dinâmica formada por nós.
+Uma lista ligada é uma estrutura de dados dinâmica formada por nós.
 
 Cada nó guarda:
 
 - um valor;
 - um apontador para o próximo nó.
+
+Isto permite guardar uma sequência de elementos sem precisar de reservar um array inteiro de uma só vez.
+
+Num array, os elementos ficam em posições seguidas de memória:
+
+```text
+valores[0]  valores[1]  valores[2]
+   10          20          30
+```
+
+Numa lista ligada, cada elemento pode estar numa zona diferente da memória. O que mantém a lista unida são os apontadores:
+
+```text
+[10 | *] -> [20 | *] -> [30 | NULL]
+```
+
+Cada bloco é um nó. O último aponta para `NULL`, indicando que a lista acabou.
+
+### 14.1 A estrutura de um nó
 
 Exemplo de definição:
 
@@ -688,15 +707,284 @@ Porque aparece `struct No *proximo`?
 
 Porque o nó precisa de apontar para outro nó do mesmo tipo.
 
-Visualmente:
+Dentro da própria definição ainda precisamos de escrever `struct No`, porque o `typedef` só fica completo no fim da declaração.
+
+Podemos imaginar cada nó assim:
+
+| Campo     | O que guarda                                        |
+| --------- | --------------------------------------------------- |
+| `valor`   | o dado do nó                                        |
+| `proximo` | o endereço do próximo nó, ou `NULL` se for o último |
+
+### 14.2 Para que servem listas ligadas?
+
+Listas ligadas são úteis quando:
+
+- não sabemos à partida quantos elementos vamos ter;
+- queremos inserir elementos ao longo da execução;
+- queremos remover elementos sem deslocar todos os outros;
+- queremos representar sequências que crescem e diminuem, como tarefas, pedidos, histórico de ações ou filas simples.
+
+Exemplos de dados que poderiam ser guardados numa lista ligada:
+
+- números introduzidos pelo utilizador;
+- alunos inscritos numa atividade;
+- produtos adicionados a uma encomenda;
+- tarefas pendentes;
+- mensagens recebidas.
+
+Mas uma lista ligada não é sempre melhor do que um array.
+
+| Estrutura    | Vantagem principal                                   | Limitação principal                                              |
+| ------------ | ---------------------------------------------------- | ---------------------------------------------------------------- |
+| Array        | acesso direto por índice, como `v[3]`                | tamanho mais rígido e inserções no meio podem exigir deslocações |
+| Lista ligada | cresce nó a nó e facilita algumas inserções/remoções | para chegar ao elemento 3, é preciso passar pelo 1 e pelo 2      |
+
+Regra simples:
+
+- usa array quando tens tamanho conhecido ou precisas muito de acesso por índice;
+- usa lista ligada quando a quantidade de elementos muda bastante e faz sentido percorrer elemento a elemento.
+
+### 14.3 Operações comuns numa lista ligada
+
+Com uma lista ligada podemos:
+
+- criar uma lista vazia;
+- inserir um nó no início;
+- inserir um nó no fim;
+- percorrer todos os nós;
+- procurar um valor;
+- contar os nós;
+- remover nós;
+- libertar toda a memória no fim.
+
+Uma lista vazia é representada por um apontador com valor `NULL`:
 
 ```text
-[10 | *] -> [20 | *] -> [30 | NULL]
+inicio -> NULL
 ```
 
-Cada bloco é um nó. O último aponta para `NULL`, indicando que a lista acabou.
+Quando a lista tem elementos, `inicio` aponta para o primeiro nó:
 
-Neste módulo, o objetivo é apenas perceber a ideia. A implementação completa de listas ligadas exige bastante cuidado com alocação, ligações e libertação de memória.
+```text
+inicio -> [10 | *] -> [20 | *] -> [30 | NULL]
+```
+
+### 14.4 Exemplo completo: criar, mostrar, procurar e libertar
+
+O programa seguinte cria uma lista ligada de inteiros, adiciona valores no fim, mostra a lista, conta os nós, procura um valor e liberta a memória.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+No *criar_no(int valor) {
+    No *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return NULL;
+    }
+
+    novo->valor = valor;
+    novo->proximo = NULL;
+
+    return novo;
+}
+
+No *inserir_fim(No *inicio, int valor) {
+    No *novo = criar_no(valor);
+
+    if (novo == NULL) {
+        printf("Falha ao reservar memoria.\n");
+        return inicio;
+    }
+
+    if (inicio == NULL) {
+        return novo;
+    }
+
+    No *atual = inicio;
+
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
+
+    atual->proximo = novo;
+    return inicio;
+}
+
+void mostrar_lista(const No *inicio) {
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+        atual = atual->proximo;
+    }
+
+    printf("NULL\n");
+}
+
+int contar_nos(const No *inicio) {
+    int total = 0;
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        total++;
+        atual = atual->proximo;
+    }
+
+    return total;
+}
+
+int contem_valor(const No *inicio, int valor) {
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->valor == valor) {
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+void libertar_lista(No *inicio) {
+    No *atual = inicio;
+
+    while (atual != NULL) {
+        No *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+
+int main(void) {
+    No *lista = NULL;
+
+    lista = inserir_fim(lista, 10);
+    lista = inserir_fim(lista, 20);
+    lista = inserir_fim(lista, 30);
+
+    mostrar_lista(lista);
+
+    printf("Total de nos: %d\n", contar_nos(lista));
+
+    if (contem_valor(lista, 20)) {
+        printf("O valor 20 existe na lista.\n");
+    } else {
+        printf("O valor 20 nao existe na lista.\n");
+    }
+
+    libertar_lista(lista);
+    lista = NULL;
+
+    return 0;
+}
+```
+
+Saída esperada:
+
+```text
+10 -> 20 -> 30 -> NULL
+Total de nos: 3
+O valor 20 existe na lista.
+```
+
+### 14.5 Como ler este programa
+
+Primeiro, a lista começa vazia:
+
+```c
+No *lista = NULL;
+```
+
+Depois, cada chamada a `inserir_fim` devolve o início atualizado da lista:
+
+```c
+lista = inserir_fim(lista, 10);
+```
+
+Isto é importante porque, se a lista estava vazia, o novo nó passa a ser o primeiro nó.
+
+A função `mostrar_lista` percorre a lista com um apontador auxiliar:
+
+```c
+const No *atual = inicio;
+```
+
+Enquanto `atual` não for `NULL`, ainda existe um nó para processar:
+
+```c
+while (atual != NULL) {
+    printf("%d -> ", atual->valor);
+    atual = atual->proximo;
+}
+```
+
+A linha:
+
+```c
+atual = atual->proximo;
+```
+
+significa: "avança para o próximo nó".
+
+### 14.6 Remover o primeiro nó
+
+Remover nós exige cuidado porque não podemos perder o endereço do resto da lista.
+
+Exemplo simples: remover apenas o primeiro nó.
+
+```c
+No *remover_inicio(No *inicio) {
+    if (inicio == NULL) {
+        return NULL;
+    }
+
+    No *seguinte = inicio->proximo;
+    free(inicio);
+
+    return seguinte;
+}
+```
+
+Uso:
+
+```c
+lista = remover_inicio(lista);
+```
+
+Se a lista era:
+
+```text
+inicio -> [10 | *] -> [20 | *] -> [30 | NULL]
+```
+
+depois de remover o primeiro nó fica:
+
+```text
+inicio -> [20 | *] -> [30 | NULL]
+```
+
+### 14.7 Cuidados essenciais
+
+Ao trabalhar com listas ligadas, confirma sempre:
+
+- cada nó criado com `malloc` foi verificado;
+- o último nó aponta para `NULL`;
+- ao percorrer a lista, o ciclo termina quando encontra `NULL`;
+- antes de remover um nó, guardaste o endereço do nó seguinte;
+- todos os nós criados dinamicamente são libertados com `free`;
+- depois de libertar a lista, o apontador principal pode ser colocado a `NULL`.
+
+Neste módulo, o objetivo é perceber a ideia e conseguir acompanhar código simples. Listas ligadas completas, com remoção por valor, inserção ordenada e listas duplamente ligadas, exigem mais cuidado e podem ser estudadas depois.
 
 ---
 
@@ -942,12 +1230,16 @@ Antes de escrever ou entregar código com apontadores, confirma:
 7. Cria uma função que receba um apontador para `Produto` e mostre os seus dados.
 8. Experimenta inicializar um array dinâmico com `calloc` e confirma que os valores começam a zero.
 9. Desenha no papel uma lista ligada com três nós antes de tentar escrever código.
-10. Explica, por palavras tuas, a diferença entre o valor de uma variável e o endereço dessa variável.
+10. Escreve uma função `mostrar_lista` que percorra uma lista ligada de inteiros e mostre todos os valores até encontrar `NULL`.
+11. Escreve uma função `contar_nos` que devolva quantos nós existem numa lista ligada.
+12. Escreve uma função `libertar_lista` que liberte todos os nós criados dinamicamente.
+13. Explica, por palavras tuas, a diferença entre o valor de uma variável e o endereço dessa variável.
 
 ---
 
 ## 21. Changelog
 
+- **2026-06-08**: expandida a introdução a listas ligadas com comparação entre arrays e listas, operações comuns, exemplo completo com `malloc`, procura, contagem, remoção inicial e libertação de memória.
 - **2026-05-19**: acrescentada explicação explícita sobre porque e quando usar apontadores em vez de variáveis normais; reforçadas notas sobre `realloc`, `sizeof *p`, validação de input e segurança em strings dentro de `struct` dinâmica.
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações graduais sobre memória, apontadores, `NULL`, alocação dinâmica, segurança e exemplos guiados.
 - **2026-02-23**: reescrita completa com explicação detalhada e exercícios sem resolução.

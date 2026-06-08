@@ -3677,7 +3677,7 @@ Passo a passo:
 
 Fonte: [14_estruturas_dinamicas_apontadores.md](./14_estruturas_dinamicas_apontadores.md)
 
-Ordem recomendada: resolver por sequência, do 94 ao 105. Antes de usar `malloc`, garante que sabes explicar a diferença entre valor, endereço e conteúdo apontado.
+Ordem recomendada: resolver por sequência, do 94 ao 111. Antes de usar `malloc`, garante que sabes explicar a diferença entre valor, endereço e conteúdo apontado. Os exercícios 104 a 111 devem ser resolvidos por ordem, porque constroem gradualmente uma lista ligada.
 
 ### Exercício 94 - Endereços
 
@@ -4067,52 +4067,175 @@ Passo a passo:
 6. Mostra o valor.
 7. Faz `free(no)` e `no = NULL`.
 
-### Exercício 105 - Auditoria de segurança de memória
+### Exercício 105 - Lista ligada com três nós
 
-Objetivo: identificar erros comuns com apontadores antes de escrever a correção.
+Objetivo: perceber como vários nós ficam ligados através do campo `proximo`.
 
-Analisa pequenos trechos de código com erros de memória e explica o problema antes de corrigir.
-
-Requisitos:
-
-- Inclui pelo menos um exemplo de apontador não inicializado.
-- Inclui pelo menos um exemplo de acesso fora dos limites.
-- Inclui pelo menos um exemplo de use-after-free.
-- Inclui pelo menos um exemplo de memory leak.
-- Para cada caso, escreve primeiro a causa do erro.
-- Depois apresenta a versão corrigida.
-
-Passo a passo:
-
-1. Escreve ou usa um trecho com erro.
-2. Identifica se o problema é inicialização, limites, libertação ou fuga de memória.
-3. Explica porque o comportamento é perigoso.
-4. Corrige apenas o necessário.
-5. Confirma que a versão corrigida inicializa, valida e liberta corretamente.
-
-### Exercício 106 - Reflexão
-
-Objetivo: consolidar os conceitos de apontadores e estruturas dinâmicas através de uma explicação escrita e justificada.
-
-Explica quando os apontadores são necessários e quando uma variável normal é suficiente.
+Cria dinamicamente três nós com os valores `10`, `20` e `30`, liga-os manualmente e mostra a sequência completa.
 
 Requisitos:
 
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-- Refere passagem por valor, alteração do original, memória dinâmica e listas ligadas.
-- Inclui pelo menos dois cuidados de segurança, como `NULL`, limites, `free` ou `realloc`.
+- Usa a mesma `struct No` do exercício anterior.
+- Cada nó deve ser reservado com `malloc`.
+- O primeiro nó deve apontar para o segundo.
+- O segundo nó deve apontar para o terceiro.
+- O terceiro nó deve apontar para `NULL`.
+- Mostra a lista no formato `10 -> 20 -> 30 -> NULL`.
+- Liberta os três nós no fim.
 
 Passo a passo:
 
-1. Começa por explicar porque uma variável normal chega em casos simples.
-2. Explica porque uma função em C não altera automaticamente a variável original.
-3. Explica como o apontador resolve esse problema através do endereço.
-4. Explica porque `malloc` devolve um apontador.
-5. Explica porque listas ligadas precisam de apontadores entre nós.
-6. Termina com uma regra prática: quando usar variável normal e quando usar apontador.
+1. Define a `struct No`.
+2. Cria três apontadores: `primeiro`, `segundo` e `terceiro`.
+3. Reserva memória para cada nó.
+4. Verifica se alguma reserva falhou.
+5. Preenche os valores `10`, `20` e `30`.
+6. Liga os nós através do campo `proximo`.
+7. Mostra a sequência completa.
+8. Liberta os três nós.
+
+### Exercício 106 - Percorrer uma lista ligada
+
+Objetivo: praticar o percurso de uma lista ligada até encontrar `NULL`.
+
+Cria uma função `mostrar_lista` que recebe o início de uma lista ligada e mostra todos os valores.
+
+Requisitos:
+
+- A função deve ter a assinatura `void mostrar_lista(const No *inicio)`.
+- A função não deve alterar a lista.
+- Usa um apontador auxiliar chamado `atual`.
+- O ciclo deve continuar enquanto `atual != NULL`.
+- No fim, mostra `NULL` para indicar o fim da lista.
+- Testa com uma lista vazia e com uma lista de três nós.
+
+Passo a passo:
+
+1. Define a `struct No`.
+2. Cria a função `mostrar_lista`.
+3. Dentro da função, começa com `const No *atual = inicio`.
+4. Enquanto `atual` não for `NULL`, mostra `atual->valor`.
+5. Avança com `atual = atual->proximo`.
+6. Testa primeiro com `No *lista = NULL`.
+7. Testa depois com uma lista de três nós.
+
+### Exercício 107 - Contar nós
+
+Objetivo: contar quantos elementos existem numa lista ligada.
+
+Cria uma função `contar_nos` que recebe o início de uma lista ligada e devolve o número de nós existentes.
+
+Requisitos:
+
+- A função deve ter a assinatura `int contar_nos(const No *inicio)`.
+- A função deve funcionar com uma lista vazia.
+- Não uses variáveis globais.
+- Não alteres os apontadores da lista original.
+- Testa com listas de 0, 1 e 3 nós.
+
+Passo a passo:
+
+1. Declara uma variável `total` inicializada a `0`.
+2. Usa um apontador auxiliar para percorrer a lista.
+3. Sempre que encontrares um nó, incrementa `total`.
+4. Avança para o próximo nó.
+5. Quando chegares a `NULL`, devolve `total`.
+6. Mostra o resultado no `main`.
+
+### Exercício 108 - Procurar valor
+
+Objetivo: procurar um valor percorrendo a lista nó a nó.
+
+Cria uma função `contem_valor` que verifica se um determinado inteiro existe na lista ligada.
+
+Requisitos:
+
+- A função deve ter a assinatura `int contem_valor(const No *inicio, int valor)`.
+- Devolve `1` se o valor existir.
+- Devolve `0` se o valor não existir.
+- O ciclo deve parar quando encontrar o valor ou chegar a `NULL`.
+- Testa com um valor existente e com um valor inexistente.
+
+Passo a passo:
+
+1. Começa no primeiro nó da lista.
+2. Enquanto o nó atual não for `NULL`, compara `atual->valor` com o valor procurado.
+3. Se forem iguais, devolve `1`.
+4. Se não forem iguais, avança para o próximo nó.
+5. Se o ciclo terminar, devolve `0`.
+6. No `main`, mostra uma mensagem clara com o resultado da procura.
+
+### Exercício 109 - Inserir no início
+
+Objetivo: perceber como atualizar o início de uma lista ligada.
+
+Cria uma função `inserir_inicio` que cria um novo nó e o coloca no início da lista.
+
+Requisitos:
+
+- A função deve ter a assinatura `No *inserir_inicio(No *inicio, int valor)`.
+- Reserva um novo nó com `malloc`.
+- Verifica se `malloc` falhou.
+- O novo nó deve apontar para o antigo início.
+- A função deve devolver o novo início da lista.
+- Testa inserindo os valores `30`, `20` e `10`, para obter `10 -> 20 -> 30 -> NULL`.
+
+Passo a passo:
+
+1. Reserva memória para o novo nó.
+2. Se a reserva falhar, devolve o início antigo.
+3. Preenche o campo `valor`.
+4. Faz `novo->proximo = inicio`.
+5. Devolve `novo`.
+6. No `main`, atualiza a lista com `lista = inserir_inicio(lista, valor)`.
+
+### Exercício 110 - Inserir no fim
+
+Objetivo: inserir um novo nó depois do último elemento da lista.
+
+Cria uma função `inserir_fim` que cria um novo nó e o coloca no fim da lista ligada.
+
+Requisitos:
+
+- A função deve ter a assinatura `No *inserir_fim(No *inicio, int valor)`.
+- Se a lista estiver vazia, o novo nó passa a ser o início.
+- Se a lista já tiver elementos, percorre até ao último nó.
+- O último nó antigo deve apontar para o novo nó.
+- O novo nó deve apontar para `NULL`.
+- Testa inserindo os valores `10`, `20` e `30`, para obter `10 -> 20 -> 30 -> NULL`.
+
+Passo a passo:
+
+1. Reserva memória para o novo nó.
+2. Preenche o valor e coloca `novo->proximo = NULL`.
+3. Se `inicio == NULL`, devolve `novo`.
+4. Caso contrário, percorre a lista até `atual->proximo == NULL`.
+5. Liga o último nó ao novo nó.
+6. Devolve o início original da lista.
+
+### Exercício 111 - Libertar lista completa
+
+Objetivo: libertar corretamente todos os nós de uma lista ligada.
+
+Cria uma função `libertar_lista` que percorre a lista e liberta todos os nós criados dinamicamente.
+
+Requisitos:
+
+- A função deve ter a assinatura `void libertar_lista(No *inicio)`.
+- Antes de libertar um nó, guarda o endereço do nó seguinte.
+- Usa `free` em todos os nós.
+- Não acedas a campos de um nó depois de fazer `free`.
+- No `main`, coloca o apontador principal a `NULL` depois de chamar a função.
+- Testa com uma lista vazia e com uma lista de vários nós.
+
+Passo a passo:
+
+1. Começa com `No *atual = inicio`.
+2. Enquanto `atual != NULL`, guarda `No *seguinte = atual->proximo`.
+3. Faz `free(atual)`.
+4. Avança com `atual = seguinte`.
+5. No `main`, chama `libertar_lista(lista)`.
+6. Depois da chamada, faz `lista = NULL`.
 
 ---
 
@@ -4122,7 +4245,7 @@ Passo a passo:
 
 Fonte: [15_classes_e_objetos_contexto_c.md](./15_classes_e_objetos_contexto_c.md)
 
-### Exercício 107 - Modelação
+### Exercício 112 - Modelação
 
 Objetivo: praticar modelação aplicando os conceitos de modelação de objetos em C.
 
@@ -4144,7 +4267,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 108 - API mínima
+### Exercício 113 - API mínima
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4165,7 +4288,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 109 - Inicialização
+### Exercício 114 - Inicialização
 
 Objetivo: praticar inicialização aplicando os conceitos de modelação de objetos em C.
 
@@ -4187,7 +4310,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 110 - Encapsulamento
+### Exercício 115 - Encapsulamento
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4208,7 +4331,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 111 - Validação de regras
+### Exercício 116 - Validação de regras
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4230,7 +4353,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 112 - Modularização
+### Exercício 117 - Modularização
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4251,7 +4374,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 113 - Const-correctness
+### Exercício 118 - Const-correctness
 
 Objetivo: praticar const-correctness aplicando os conceitos de modelação de objetos em C.
 
@@ -4273,7 +4396,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 114 - Testes manuais
+### Exercício 119 - Testes manuais
 
 Objetivo: praticar testes manuais aplicando os conceitos de modelação de objetos em C.
 
@@ -4295,7 +4418,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 115 - Refatoração
+### Exercício 120 - Refatoração
 
 Objetivo: praticar refatoração aplicando os conceitos de modelação de objetos em C.
 
@@ -4317,7 +4440,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 116 - Documentação
+### Exercício 121 - Documentação
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4338,7 +4461,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 117 - Evolução
+### Exercício 122 - Evolução
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4359,7 +4482,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 118 - Reflexão
+### Exercício 123 - Reflexão
 
 Objetivo: consolidar os conceitos de modelação de objetos em C através de uma explicação escrita e justificada.
 
@@ -4388,7 +4511,7 @@ Passo a passo:
 
 Fonte: [16_heranca_e_polimorfismo_contexto_c.md](./16_heranca_e_polimorfismo_contexto_c.md)
 
-### Exercício 119 - Composição
+### Exercício 124 - Composição
 
 Objetivo: praticar composição aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4410,7 +4533,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 119 - Interface por função
+### Exercício 125 - Interface por função
 
 Objetivo: praticar interface por função aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4432,7 +4555,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 120 - Polimorfismo simples
+### Exercício 126 - Polimorfismo simples
 
 Objetivo: praticar polimorfismo simples aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4454,7 +4577,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 121 - Vetor de "objetos"
+### Exercício 127 - Vetor de "objetos"
 
 Objetivo: praticar vetor de "objetos" aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4476,7 +4599,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 122 - Organização
+### Exercício 128 - Organização
 
 Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
 
@@ -4497,7 +4620,7 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
-### Exercício 123 - Validação
+### Exercício 129 - Validação
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4519,7 +4642,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 124 - Refatoração
+### Exercício 130 - Refatoração
 
 Objetivo: praticar refatoração aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4541,7 +4664,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 125 - Testes
+### Exercício 131 - Testes
 
 Objetivo: praticar testes aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4563,7 +4686,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 126 - Limitações
+### Exercício 132 - Limitações
 
 Objetivo: consolidar os conceitos de composição e polimorfismo em C através de uma explicação escrita e justificada.
 
@@ -4584,7 +4707,7 @@ Passo a passo:
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
-### Exercício 127 - Expansão
+### Exercício 133 - Expansão
 
 Objetivo: praticar expansão aplicando os conceitos de composição e polimorfismo em C.
 
@@ -4606,7 +4729,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 128 - Segurança
+### Exercício 134 - Segurança
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4628,7 +4751,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 129 - Reflexão
+### Exercício 135 - Reflexão
 
 Objetivo: consolidar os conceitos de composição e polimorfismo em C através de uma explicação escrita e justificada.
 
@@ -4657,7 +4780,7 @@ Passo a passo:
 
 Fonte: [17_excecoes_e_tratamento_de_erros_em_c.md](./17_excecoes_e_tratamento_de_erros_em_c.md)
 
-### Exercício 130 - Divisão segura
+### Exercício 136 - Divisão segura
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4679,7 +4802,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 131 - Entrada robusta
+### Exercício 137 - Entrada robusta
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4701,7 +4824,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 132 - Códigos de erro
+### Exercício 138 - Códigos de erro
 
 Objetivo: praticar códigos de erro aplicando os conceitos de tratamento de erros em C.
 
@@ -4723,7 +4846,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 133 - Ficheiros
+### Exercício 139 - Ficheiros
 
 Objetivo: praticar ficheiros aplicando os conceitos de tratamento de erros em C.
 
@@ -4745,7 +4868,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 134 - Memória
+### Exercício 140 - Memória
 
 Objetivo: praticar memória aplicando os conceitos de tratamento de erros em C.
 
@@ -4767,7 +4890,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 135 - Propagação
+### Exercício 141 - Propagação
 
 Objetivo: praticar propagação aplicando os conceitos de tratamento de erros em C.
 
@@ -4789,7 +4912,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 136 - Limpeza de recursos
+### Exercício 142 - Limpeza de recursos
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -4811,7 +4934,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 137 - Refatoração
+### Exercício 143 - Refatoração
 
 Objetivo: praticar refatoração aplicando os conceitos de tratamento de erros em C.
 
@@ -4833,7 +4956,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 138 - Diagnóstico
+### Exercício 144 - Diagnóstico
 
 Objetivo: identificar problemas, explicar a causa e aplicar uma correção tecnicamente correta.
 
@@ -4854,7 +4977,7 @@ Passo a passo:
 4. Aplica a correção mínima necessária.
 5. Volta a testar ou reler o código para confirmar que o problema ficou resolvido.
 
-### Exercício 139 - Testes de erro
+### Exercício 145 - Testes de erro
 
 Objetivo: praticar testes de erro aplicando os conceitos de tratamento de erros em C.
 
@@ -4876,7 +4999,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 140 - Mensagens de utilizador
+### Exercício 146 - Mensagens de utilizador
 
 Objetivo: praticar mensagens de utilizador aplicando os conceitos de tratamento de erros em C.
 
@@ -4898,7 +5021,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 141 - Reflexão
+### Exercício 147 - Reflexão
 
 Objetivo: consolidar os conceitos de tratamento de erros em C através de uma explicação escrita e justificada.
 
@@ -4927,7 +5050,7 @@ Passo a passo:
 
 Fonte: [18_ficheiros_acesso_e_manipulacao_em_c.md](./18_ficheiros_acesso_e_manipulacao_em_c.md)
 
-### Exercício 142 - Escrita simples
+### Exercício 148 - Escrita simples
 
 Objetivo: praticar escrita simples aplicando os conceitos de ficheiros em C.
 
@@ -4949,7 +5072,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 143 - Leitura simples
+### Exercício 149 - Leitura simples
 
 Objetivo: praticar leitura simples aplicando os conceitos de ficheiros em C.
 
@@ -4971,7 +5094,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 144 - Cópia de ficheiro
+### Exercício 150 - Cópia de ficheiro
 
 Objetivo: praticar cópia de ficheiro aplicando os conceitos de ficheiros em C.
 
@@ -4993,7 +5116,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 145 - Contagem
+### Exercício 151 - Contagem
 
 Objetivo: praticar contagem aplicando os conceitos de ficheiros em C.
 
@@ -5015,7 +5138,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 146 - Registos
+### Exercício 152 - Registos
 
 Objetivo: praticar registos aplicando os conceitos de ficheiros em C.
 
@@ -5037,7 +5160,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 147 - Pesquisa
+### Exercício 153 - Pesquisa
 
 Objetivo: praticar pesquisa aplicando os conceitos de ficheiros em C.
 
@@ -5059,7 +5182,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 148 - Acrescentar dados
+### Exercício 154 - Acrescentar dados
 
 Objetivo: praticar acrescentar dados aplicando os conceitos de ficheiros em C.
 
@@ -5081,7 +5204,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 149 - Binário básico
+### Exercício 155 - Binário básico
 
 Objetivo: praticar binário básico aplicando os conceitos de ficheiros em C.
 
@@ -5103,7 +5226,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 150 - Validação de I/O
+### Exercício 156 - Validação de I/O
 
 Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
 
@@ -5125,7 +5248,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 151 - Navegação
+### Exercício 157 - Navegação
 
 Objetivo: praticar navegação aplicando os conceitos de ficheiros em C.
 
@@ -5147,7 +5270,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 152 - Projeto curto
+### Exercício 158 - Projeto curto
 
 Objetivo: praticar projeto curto aplicando os conceitos de ficheiros em C.
 
@@ -5169,7 +5292,7 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
-### Exercício 153 - Reflexão
+### Exercício 159 - Reflexão
 
 Objetivo: consolidar os conceitos de ficheiros em C através de uma explicação escrita e justificada.
 
@@ -5198,7 +5321,7 @@ Passo a passo:
 
 Fonte: [19_editor_texto_produtividade_e_debug.md](./19_editor_texto_produtividade_e_debug.md)
 
-### Exercício 154 - Atalhos avançados
+### Exercício 160 - Atalhos avançados
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5219,7 +5342,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 155 - Pipeline local
+### Exercício 161 - Pipeline local
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5240,7 +5363,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 156 - Debug guiado
+### Exercício 162 - Debug guiado
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5261,7 +5384,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 157 - Rastreio de bug
+### Exercício 163 - Rastreio de bug
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5282,7 +5405,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 158 - Navegação
+### Exercício 164 - Navegação
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5303,7 +5426,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 159 - Refatoração
+### Exercício 165 - Refatoração
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5324,7 +5447,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 160 - Extração
+### Exercício 166 - Extração
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5345,7 +5468,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 161 - Qualidade
+### Exercício 167 - Qualidade
 
 Objetivo: consolidar os conceitos de produtividade, organização e debug no editor através de uma explicação escrita e justificada.
 
@@ -5366,7 +5489,7 @@ Passo a passo:
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
-### Exercício 162 - Métricas pessoais
+### Exercício 168 - Métricas pessoais
 
 Objetivo: consolidar os conceitos de produtividade, organização e debug no editor através de uma explicação escrita e justificada.
 
@@ -5387,7 +5510,7 @@ Passo a passo:
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
-### Exercício 163 - Organização
+### Exercício 169 - Organização
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5408,7 +5531,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 164 - Simulação de revisão
+### Exercício 170 - Simulação de revisão
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
 
@@ -5429,7 +5552,7 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
-### Exercício 165 - Reflexão
+### Exercício 171 - Reflexão
 
 Objetivo: consolidar os conceitos de produtividade, organização e debug no editor através de uma explicação escrita e justificada.
 
