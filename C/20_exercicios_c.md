@@ -3940,6 +3940,52 @@ Passo a passo:
 7. Mostra soma e média.
 8. Faz `free(valores)` e `valores = NULL`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    printf("Quantos valores queres ler? ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Número inválido. O número deve ser maior que zero.\n");
+        return 1;
+    }
+
+    int *valores = malloc(n * sizeof *valores);
+    if (valores == NULL) {
+        printf("Erro na reserva de memória.\n");
+        return 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("Escreve o valor %d: ", i + 1);
+        scanf("%d", &valores[i]);
+    }
+
+    int soma = 0;
+    for (int i = 0; i < n; i++) {
+        soma += valores[i];
+    }
+
+    double media = (double)soma / n;
+    printf("Soma: %d, Média: %.2lf\n", soma, media);
+
+    free(valores);
+    valores = NULL;
+
+    return 0;
+}
+```
+
+Pergunta: Porque é que estamos a criar arrays usando o `malloc`e não usando arrays estáticos? Em que situações é que um array dinâmico é necessário?
+
+Resposta: Usamos `malloc` para criar arrays quando não sabemos de antemão quantos elementos vamos precisar, ou quando o número de elementos pode ser muito grande para ser alocado na stack. Arrays estáticos têm um tamanho fixo definido no momento da compilação, enquanto arrays dinâmicos permitem que reservemos memória durante a execução, o que é útil para lidar com dados cujo tamanho só é conhecido em tempo de execução. Por exemplo, se estivermos a ler uma lista de números do utilizador e não soubermos quantos números serão introduzidos, um array dinâmico é a escolha certa. Além disso, arrays dinâmicos podem ser redimensionados com `realloc`, oferecendo ainda mais flexibilidade.
+
 ### Exercício 100 - `calloc`
 
 Objetivo: comparar `malloc` e `calloc` quanto à inicialização dos valores.
