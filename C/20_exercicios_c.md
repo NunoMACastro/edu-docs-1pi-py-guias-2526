@@ -4010,6 +4010,43 @@ Passo a passo:
 5. Usa outro ciclo para mostrar os novos valores.
 6. Faz `free` e coloca o apontador a `NULL`.
 
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int *valores = calloc(5, sizeof *valores);
+    if (valores == NULL) {
+        printf("Erro na reserva de memória.\n");
+        return 1;
+    }
+
+    printf("Valores iniciais:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("valores[%d] = %d\n", i, valores[i]);
+    }
+
+    // Atribui novos valores
+    valores[0] = 10;
+    valores[1] = 20;
+    valores[2] = 30;
+    valores[3] = 40;
+    valores[4] = 50;
+
+    printf("\nValores após atribuição:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("valores[%d] = %d\n", i, valores[i]);
+    }
+
+    free(valores);
+    valores = NULL;
+
+    return 0;
+}
+```
+
 ### Exercício 101 - `realloc`
 
 Objetivo: praticar redimensionamento seguro de memória dinâmica.
@@ -4037,6 +4074,52 @@ Passo a passo:
 8. Preenche as posições de índice 5 a 9.
 9. Mostra todos os valores e liberta a memória.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho = 5;
+    int *valores = malloc(tamanho * sizeof *valores);
+    if (valores == NULL) {
+        printf("Erro na reserva de memória.\n");
+        return 1;
+    }
+
+    // Preenche as primeiras 5 posições
+    for (int i = 0; i < tamanho; i++) {
+        valores[i] = (i + 1) * 10; // 10, 20, 30, 40, 50
+    }
+
+    int novo_tamanho = 10;
+    int *temporario = realloc(valores, novo_tamanho * sizeof *valores);
+    if (temporario == NULL) {
+        free(valores);
+        printf("Erro no redimensionamento da memória.\n");
+        return 1;
+    }
+    valores = temporario;
+
+    // Preenche as novas posições
+    for (int i = tamanho; i < novo_tamanho; i++) {
+        valores[i] = (i + 1) * 10; // Continua a sequência: 60, 70, 80, 90, 100
+    }
+
+    // Mostra todos os valores
+    printf("Valores no array redimensionado:\n");
+    for (int i = 0; i < novo_tamanho; i++) {
+        printf("valores[%d] = %d\n", i, valores[i]);
+    }
+
+    free(valores);
+    valores = NULL;
+
+    return 0;
+}
+```
+
 ### Exercício 102 - `struct` dinâmica
 
 Objetivo: criar uma `struct` em memória dinâmica e aceder aos seus campos com `->`.
@@ -4060,6 +4143,41 @@ Passo a passo:
 4. Preenche `codigo`, `nome` e `preco`.
 5. Mostra os campos usando `produto->campo`.
 6. Liberta a memória.
+
+> Resolução:
+
+```c
+
+#include <stdio.h>
+
+typedef struct {
+    int codigo;
+    char nome[50];
+    float preco;
+} Produto;
+
+int main() {
+    Produto *produto = malloc(sizeof *produto);
+    if (produto == NULL) {
+        printf("Erro na reserva de memória.\n");
+        return 1;
+    }
+
+    produto->codigo = 123;
+    snprintf(produto->nome, sizeof produto->nome, "Caneta Azul");
+    produto->preco = 2.99;
+
+    printf("Produto:\n");
+    printf("Código: %d\n", produto->codigo);
+    printf("Nome: %s\n", produto->nome);
+    printf("Preço: %.2f\n", produto->preco);
+
+    free(produto);
+    produto = NULL;
+
+    return 0;
+}
+```
 
 ### Exercício 103 - Array dinâmico de `struct`
 
@@ -4088,6 +4206,68 @@ Passo a passo:
 7. Mostra a média ou uma mensagem se não houver médias válidas.
 8. Faz `free(turma)`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int numero;
+    char nome[50];
+    float media;
+} Aluno;
+
+int main() {
+    int total_alunos;
+    printf("Quantos alunos tem a turma? ");
+    scanf("%d", &total_alunos);
+
+    if (total_alunos <= 0) {
+        printf("Número de alunos inválido.\n");
+        return 1;
+    }
+
+    Aluno *turma = malloc(total_alunos * sizeof *turma);
+    if (turma == NULL) {
+        printf("Erro na reserva de memória.\n");
+        return 1;
+    }
+
+    float soma_medias = 0.0;
+    int count_medias_validas = 0;
+
+    for (int i = 0; i < total_alunos; i++) {
+        printf("Aluno %d:\n", i + 1);
+        printf("Número: ");
+        scanf("%d", &turma[i].numero);
+        printf("Nome: ");
+        scanf("%49s", turma[i].nome);
+        printf("Média: ");
+        scanf("%f", &turma[i].media);
+
+        if (turma[i].media >= 0 && turma[i].media <= 20) {
+            soma_medias += turma[i].media;
+            count_medias_validas++;
+        } else {
+            printf("Média inválida para o aluno %d. Ignorando esta média.\n", i + 1);
+        }
+    }
+
+    if (count_medias_validas > 0) {
+        float media_turma = soma_medias / count_medias_validas;
+        printf("Média da turma: %.2f\n", media_turma);
+    } else {
+        printf("Não há médias válidas para calcular a média da turma.\n");
+    }
+
+    free(turma);
+    turma = NULL;
+
+    return 0;
+}
+```
+
 ### Exercício 104 - Lista ligada: nó único
 
 Objetivo: perceber a estrutura mínima de um nó de lista ligada.
@@ -4112,6 +4292,36 @@ Passo a passo:
 5. Atribui `NULL` ao campo `proximo`.
 6. Mostra o valor.
 7. Faz `free(no)` e `no = NULL`.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+int main() {
+    No *no = malloc(sizeof *no);
+    if (no == NULL) {
+        printf("Erro na reserva de memória.\n");
+        return 1;
+    }
+
+    no->valor = 10;
+    no->proximo = NULL;
+
+    printf("Valor do nó: %d\n", no->valor);
+
+    free(no);
+    no = NULL;
+
+    return 0;
+}
+```
 
 ### Exercício 105 - Lista ligada com três nós
 
