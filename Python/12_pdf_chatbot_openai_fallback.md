@@ -249,6 +249,7 @@ Por isso criamos também um `.gitignore`:
 
 ```gitignore
 .env
+.venv/
 __pycache__/
 *.pyc
 ```
@@ -256,7 +257,7 @@ __pycache__/
 E podemos criar um `.env.example`, que pode ir para GitHub porque não tem secrets reais:
 
 ```env
-OPENAI_API_KEY=coloca_a_tua_chave_aqui
+OPENAI_API_KEY=
 OPENAI_MODEL=gpt-5.5
 ```
 
@@ -312,6 +313,33 @@ Esta instrução não é uma garantia perfeita, mas melhora o comportamento.
 
 ---
 
+### Atenção a dados sensíveis, custos e limites
+
+Quando usamos uma API externa, parte da informação enviada pelo nosso programa sai do computador e é enviada para esse serviço.
+
+Nesta ficha, o programa pode enviar para a OpenAI API:
+
+- a pergunta escrita pelo aluno;
+- alguns excertos retirados do PDF.
+
+Por isso, usa apenas PDFs adequados para teste.
+
+Evita usar PDFs com:
+
+- números de documentos pessoais;
+- moradas;
+- contactos privados;
+- dados médicos;
+- passwords;
+- notas ou informações confidenciais de outras pessoas;
+- documentos que não tens autorização para enviar para serviços externos.
+
+Também é importante saber que chamadas à API podem ter custos e limites de utilização. Por isso, a aplicação tenta responder localmente primeiro e só chama a API quando a confiança local é baixa.
+
+> Regra simples para esta ficha: se não tinhas autorização para publicar o conteúdo do PDF, também não o deves enviar para uma API externa.
+
+---
+
 ## 3) Competências trabalhadas
 
 Nesta ficha vais praticar:
@@ -337,8 +365,8 @@ Precisas de:
 
 - Python 3.10 ou superior;
 - acesso ao terminal;
-- um PDF com texto selecionável;
-- uma API key da OpenAI para testar o fallback.
+- um PDF com texto selecionável e sem dados sensíveis;
+- uma API key da OpenAI apenas se quiseres testar o fallback.
 
 Verifica a versão do Python:
 
@@ -367,6 +395,12 @@ Cria um ambiente virtual:
 
 ```bash
 python -m venv .venv
+```
+
+Se o teu computador não reconhecer `python`, usa:
+
+```bash
+python3 -m venv .venv
 ```
 
 Ativa o ambiente virtual.
@@ -410,10 +444,18 @@ python-dotenv
 pypdf
 ```
 
+> Nota: esta ficha usa a Responses API da OpenAI. Se o pacote `openai` instalado for muito antigo, atualiza-o antes de testar o fallback.
+
 Instala:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+```
+
+Se no teu computador usas `python3`, podes usar:
+
+```bash
+python3 -m pip install -r requirements.txt
 ```
 
 Para que servem estas bibliotecas?
@@ -436,9 +478,11 @@ OPENAI_MODEL=gpt-5.5
 Cria o ficheiro `.env.example`:
 
 ```env
-OPENAI_API_KEY=coloca_a_tua_chave_aqui
+OPENAI_API_KEY=
 OPENAI_MODEL=gpt-5.5
 ```
+
+O `.env.example` serve só como modelo. Por isso não deve ter uma chave real.
 
 Cria o ficheiro `.gitignore`:
 
@@ -455,6 +499,7 @@ __pycache__/
 - Existe um `.env.example`.
 - O `.env` está no `.gitignore`.
 - A chave real não aparece em nenhum ficheiro que possa ser entregue ou publicado.
+- O `.env.example` não tem uma chave real.
 
 ---
 
@@ -524,6 +569,7 @@ Nesta fase o programa lê um PDF e mostra uma pequena amostra do texto extraído
 from pathlib import Path
 
 from pypdf import PdfReader
+from pypdf.errors import PdfReadError
 
 
 def extract_text_from_pdf(pdf_path):
@@ -538,13 +584,24 @@ def extract_text_from_pdf(pdf_path):
 
     Raises:
         FileNotFoundError: se o ficheiro não existir.
+        ValueError: se o caminho não for um ficheiro ou se o PDF não puder ser lido.
     """
     path = Path(pdf_path)
 
     if not path.exists():
         raise FileNotFoundError(f"O ficheiro não existe: {pdf_path}")
 
-    reader = PdfReader(str(path))
+    if not path.is_file():
+        raise ValueError(f"O caminho indicado não é um ficheiro: {pdf_path}")
+
+    try:
+        reader = PdfReader(str(path))
+    except PdfReadError as error:
+        raise ValueError("Não foi possível ler este PDF. O ficheiro pode estar corrompido.") from error
+
+    if reader.is_encrypted:
+        raise ValueError("O PDF está protegido por password e não pode ser lido nesta ficha.")
+
     pages_text = []
 
     for page_number, page in enumerate(reader.pages, start=1):
@@ -564,7 +621,7 @@ def main():
 
     try:
         text = extract_text_from_pdf(pdf_path)
-    except FileNotFoundError as error:
+    except (FileNotFoundError, ValueError) as error:
         print(error)
         return
 
@@ -587,6 +644,7 @@ if __name__ == "__main__":
 - O programa pede o caminho do PDF.
 - Se o PDF existir, mostra uma amostra do texto.
 - Se o PDF não existir, mostra uma mensagem de erro.
+- Se o caminho não for um ficheiro ou o PDF não puder ser lido, mostra uma mensagem simples.
 
 ---
 
@@ -890,8 +948,7 @@ def ask_openai(client, model, question, relevant_chunks):
     context_parts = []
 
     for score, chunk in relevant_chunks:
-        if score > 0:
-            context_parts.append(chunk)
+        context_parts.append(f"[Pontuação local: {score:.2f}]\n{chunk}")
 
     context = "\n\n---\n\n".join(context_parts)
 
@@ -900,6 +957,7 @@ def ask_openai(client, model, question, relevant_chunks):
 
     response = client.responses.create(
         model=model,
+        max_output_tokens=500,
         instructions=(
             "Responde em português de Portugal. "
             "Usa apenas o contexto retirado do PDF. "
@@ -915,15 +973,24 @@ def ask_openai(client, model, question, relevant_chunks):
     return response.output_text.strip()
 ```
 
+Mesmo quando a pontuação local é baixa, enviamos os melhores excertos encontrados. A OpenAI API não recebe o PDF inteiro, apenas estes blocos de contexto.
+
+Se esses excertos não tiverem a resposta, o modelo deve dizer que não encontrou informação suficiente no PDF.
+
+O parâmetro `max_output_tokens=500` limita o tamanho máximo da resposta. Isto ajuda a controlar respostas demasiado longas e também ajuda a controlar custos.
+
 No início do `main`, carrega o `.env`:
 
 ```python
 load_dotenv()
 
-api_key = os.getenv("OPENAI_API_KEY")
-model = os.getenv("OPENAI_MODEL", "gpt-5.5")
-client = OpenAI() if api_key else None
+api_key = os.getenv("OPENAI_API_KEY", "").strip()
+model = os.getenv("OPENAI_MODEL", "gpt-5.5").strip()
+has_api_key = api_key and api_key != "coloca_a_tua_chave_aqui"
+client = OpenAI() if has_api_key else None
 ```
+
+Repara que a chave continua fora do código. O programa apenas verifica se ela existe no ambiente e se não ficou com o texto de exemplo.
 
 **Checkpoint G**
 
@@ -938,7 +1005,14 @@ Ideia desta fase:
 
 - manter o programa aberto;
 - permitir várias perguntas sobre o mesmo PDF;
+- impedir perguntas demasiado longas;
 - sair com `sair`, `exit` ou `quit`.
+
+Acrescenta esta constante junto das outras constantes:
+
+```python
+MAX_QUESTION_LENGTH = 300
+```
 
 No `main`, depois de carregar os blocos:
 
@@ -954,6 +1028,13 @@ while True:
         break
 
     if not question:
+        continue
+
+    if len(question) > MAX_QUESTION_LENGTH:
+        print(
+            "\nBot: A pergunta é demasiado longa. "
+            f"Usa no máximo {MAX_QUESTION_LENGTH} caracteres.\n"
+        )
         continue
 
     answer, confidence, relevant_chunks = build_local_answer(question, chunks)
@@ -981,6 +1062,7 @@ while True:
 **Checkpoint H**
 
 - A app aceita várias perguntas.
+- A app recusa perguntas demasiado longas.
 - Mostra se a resposta veio do modelo local ou da API.
 - Sai corretamente quando o utilizador escreve `sair`.
 
@@ -1010,12 +1092,14 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 from pypdf import PdfReader
+from pypdf.errors import PdfReadError
 
 
 CHUNK_SIZE = 900
 CHUNK_OVERLAP = 150
 TOP_CHUNKS = 3
 LOCAL_CONFIDENCE_THRESHOLD = 0.30
+MAX_QUESTION_LENGTH = 300
 
 STOP_WORDS = {
     "a", "as", "ao", "aos", "o", "os", "um", "uma", "uns", "umas",
@@ -1037,13 +1121,24 @@ def extract_text_from_pdf(pdf_path):
 
     Raises:
         FileNotFoundError: se o caminho indicado não existir.
+        ValueError: se o caminho não for um ficheiro ou se o PDF não puder ser lido.
     """
     path = Path(pdf_path)
 
     if not path.exists():
         raise FileNotFoundError(f"O ficheiro não existe: {pdf_path}")
 
-    reader = PdfReader(str(path))
+    if not path.is_file():
+        raise ValueError(f"O caminho indicado não é um ficheiro: {pdf_path}")
+
+    try:
+        reader = PdfReader(str(path))
+    except PdfReadError as error:
+        raise ValueError("Não foi possível ler este PDF. O ficheiro pode estar corrompido.") from error
+
+    if reader.is_encrypted:
+        raise ValueError("O PDF está protegido por password e não pode ser lido nesta ficha.")
+
     pages_text = []
 
     for page_number, page in enumerate(reader.pages, start=1):
@@ -1193,8 +1288,7 @@ def ask_openai(client, model, question, relevant_chunks):
     context_parts = []
 
     for score, chunk in relevant_chunks:
-        if score > 0:
-            context_parts.append(chunk)
+        context_parts.append(f"[Pontuação local: {score:.2f}]\n{chunk}")
 
     context = "\n\n---\n\n".join(context_parts)
 
@@ -1203,6 +1297,7 @@ def ask_openai(client, model, question, relevant_chunks):
 
     response = client.responses.create(
         model=model,
+        max_output_tokens=500,
         instructions=(
             "Responde em português de Portugal. "
             "Usa apenas o contexto retirado do PDF. "
@@ -1224,9 +1319,10 @@ def main():
     """
     load_dotenv()
 
-    api_key = os.getenv("OPENAI_API_KEY")
-    model = os.getenv("OPENAI_MODEL", "gpt-5.5")
-    client = OpenAI() if api_key else None
+    api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    model = os.getenv("OPENAI_MODEL", "gpt-5.5").strip()
+    has_api_key = api_key and api_key != "coloca_a_tua_chave_aqui"
+    client = OpenAI() if has_api_key else None
 
     print("PDF Chatbot")
     print("Faz perguntas sobre um PDF.")
@@ -1239,7 +1335,7 @@ def main():
 
     try:
         pdf_text = extract_text_from_pdf(pdf_path)
-    except FileNotFoundError as error:
+    except (FileNotFoundError, ValueError) as error:
         print(error)
         return
 
@@ -1261,6 +1357,13 @@ def main():
             break
 
         if not question:
+            continue
+
+        if len(question) > MAX_QUESTION_LENGTH:
+            print(
+                "\nBot: A pergunta é demasiado longa. "
+                f"Usa no máximo {MAX_QUESTION_LENGTH} caracteres.\n"
+            )
             continue
 
         answer, confidence, relevant_chunks = build_local_answer(question, chunks)
@@ -1304,7 +1407,9 @@ O trabalho está completo quando:
 7. o programa mostra a fonte da resposta: local ou OpenAI API;
 8. o programa não crasha se o PDF não existir;
 9. o programa avisa quando não consegue extrair texto;
-10. as funções principais têm docstrings claras.
+10. o programa avisa quando o PDF está protegido ou não pode ser lido;
+11. o programa impede perguntas demasiado longas;
+12. as funções principais têm docstrings claras.
 
 ---
 
@@ -1317,7 +1422,7 @@ Provavelmente as dependências não foram instaladas.
 Corre:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ---
@@ -1341,8 +1446,23 @@ Verifica:
 - o ficheiro chama-se exatamente `.env`;
 - a variável chama-se exatamente `OPENAI_API_KEY`;
 - não há espaços antes ou depois do sinal `=`;
+- a chave real substituiu o texto `coloca_a_tua_chave_aqui`;
 - o ambiente virtual está ativo;
 - reiniciaste o terminal depois de criar o `.env`, se necessário.
+
+Se aparecer um erro de autenticação, normalmente significa que a chave está errada, expirou, não foi copiada completa ou ainda está com o texto de exemplo.
+
+---
+
+### A OpenAI API dá erro relacionado com `responses`
+
+Se aparecer um erro a dizer que `responses` não existe, provavelmente tens uma versão antiga da biblioteca `openai`.
+
+Atualiza o pacote:
+
+```bash
+python -m pip install --upgrade openai
+```
 
 ---
 
@@ -1351,6 +1471,8 @@ Verifica:
 Alguns PDFs são imagens digitalizadas.
 
 Nesses casos, `pypdf` não consegue ler texto porque não existe texto real dentro do ficheiro.
+
+Também podem existir PDFs protegidos por password ou ficheiros PDF corrompidos. Nesses casos, esta ficha mostra uma mensagem de erro simples e pede outro ficheiro.
 
 Solução possível para uma versão futura:
 
@@ -1401,6 +1523,7 @@ Escolhe pelo menos dois:
 8. Mostrar os três excertos usados no fallback.
 9. Impedir perguntas demasiado longas.
 10. Criar uma pequena interface web com Flask.
+11. Pedir confirmação antes de enviar excertos do PDF para a API.
 
 ---
 
@@ -1449,8 +1572,10 @@ Antes de entregar, confirma:
 - [ ] O programa mostra quantos blocos foram criados.
 - [ ] O programa responde localmente a perguntas simples.
 - [ ] O programa usa a API quando a confiança local é baixa.
+- [ ] O programa não usa PDFs com dados pessoais ou confidenciais.
 - [ ] O `.env` não é entregue com a chave real.
 - [ ] O `.env.example` existe.
+- [ ] O `.env.example` não contém uma chave real.
 - [ ] O `.gitignore` contém `.env`.
 - [ ] As funções têm docstrings.
 - [ ] O código está organizado e legível.
@@ -1470,7 +1595,8 @@ Antes de entregar, confirma:
 9. O que pode correr mal ao extrair texto de um PDF?
 10. Porque é que enviamos apenas excertos relevantes para a API?
 11. O que é uma alucinação num modelo de IA?
-12. Como poderias melhorar esta aplicação?
+12. Porque é que não devemos usar PDFs com dados sensíveis nesta ficha?
+13. Como poderias melhorar esta aplicação?
 
 ---
 
