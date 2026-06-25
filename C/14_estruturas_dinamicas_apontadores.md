@@ -770,119 +770,577 @@ Quando a lista tem elementos, `inicio` aponta para o primeiro nó:
 inicio -> [10 | *] -> [20 | *] -> [30 | NULL]
 ```
 
-### 14.4 Exemplo completo: criar, mostrar, procurar e libertar
+### 14.4 Exemplo completo: criar, inserir, remover, mostrar, procurar e libertar
 
-O programa seguinte cria uma lista ligada de inteiros, adiciona valores no fim, mostra a lista, conta os nós, procura um valor e liberta a memória.
+O programa seguinte cria uma lista ligada de inteiros, adiciona valores no fim, insere um valor no meio da lista, remove um nó, mostra a lista, conta os nós, procura um valor e liberta a memória.
 
 ```c
+/*
+    Este programa mostra as operações principais de uma lista ligada simples:
+    criar nós, inserir no fim, inserir no meio, remover um nó, mostrar,
+    contar, procurar e libertar a memória.
+
+    Numa lista ligada, cada nó guarda:
+    - um valor;
+    - o endereço do próximo nó.
+
+    A lista não é guardada toda seguida na memória, como acontece num array.
+    Cada nó pode estar numa zona diferente da memória e fica ligado ao seguinte
+    através de um apontador.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+    Definimos a estrutura de cada nó da lista.
+
+    O campo "valor" guarda o dado propriamente dito.
+    O campo "proximo" guarda o endereço do próximo nó.
+
+    Se "proximo" tiver o valor NULL, significa que este é o último nó.
+*/
 typedef struct No {
     int valor;
     struct No *proximo;
 } No;
 
+/*
+    Função: criar_no
+
+    Objetivo:
+    Criar dinamicamente um novo nó e preencher os seus campos.
+
+    Recebe:
+    - valor: o número que queremos guardar no novo nó.
+
+    Devolve:
+    - o endereço do novo nó, se a memória for reservada com sucesso;
+    - NULL, se não for possível reservar memória.
+*/
 No *criar_no(int valor) {
+    /*
+        malloc reserva memória durante a execução do programa.
+
+        Usamos "sizeof *novo" em vez de "sizeof(No)" porque assim o tamanho
+        fica automaticamente ligado ao tipo apontado por "novo".
+        É uma forma comum de reduzir erros se o tipo mudar mais tarde.
+    */
     No *novo = malloc(sizeof *novo);
 
+    /*
+        malloc pode falhar.
+        Quando falha, devolve NULL.
+
+        Nunca devemos usar um bloco de memória sem confirmar primeiro
+        se ele foi realmente reservado.
+    */
     if (novo == NULL) {
         return NULL;
     }
 
+    /*
+        Agora que sabemos que o nó existe, podemos preencher os seus campos.
+
+        O novo nó recebe o valor pedido.
+    */
     novo->valor = valor;
+
+    /*
+        Como este nó ainda não foi ligado a nenhum outro, o seu "proximo"
+        começa como NULL.
+
+        Se ele ficar no fim da lista, este NULL indica que a lista acaba aqui.
+    */
     novo->proximo = NULL;
 
+    /*
+        Devolvemos o endereço do nó criado para que outra função possa
+        ligá-lo à lista.
+    */
     return novo;
 }
 
+/*
+    Função: inserir_fim
+
+    Objetivo:
+    Inserir um novo valor no fim da lista.
+
+    Recebe:
+    - inicio: endereço do primeiro nó da lista;
+    - valor: número que queremos acrescentar.
+
+    Devolve:
+    - o início da lista, que pode continuar igual;
+    - ou o novo nó, se a lista estava vazia.
+
+    Esta função devolve "No *" porque o início da lista pode mudar.
+*/
 No *inserir_fim(No *inicio, int valor) {
+    /*
+        Primeiro criamos o nó que queremos inserir.
+        Ainda não sabemos se ele vai ser o primeiro ou o último.
+    */
     No *novo = criar_no(valor);
 
+    /*
+        Se não foi possível criar o nó, não alteramos a lista.
+        Devolvemos o mesmo início que recebemos.
+    */
     if (novo == NULL) {
         printf("Falha ao reservar memoria.\n");
         return inicio;
     }
 
+    /*
+        Caso especial: lista vazia.
+
+        Se inicio é NULL, não existe primeiro nó.
+        Então o novo nó passa a ser o primeiro nó da lista.
+    */
     if (inicio == NULL) {
         return novo;
     }
 
+    /*
+        Se a lista não está vazia, precisamos de percorrê-la até ao último nó.
+
+        Usamos um apontador auxiliar chamado "atual" para andar pela lista
+        sem perder o endereço do início.
+    */
     No *atual = inicio;
 
+    /*
+        Enquanto o campo "proximo" do nó atual não for NULL,
+        ainda existe outro nó a seguir.
+
+        Quando atual->proximo for NULL, encontrámos o último nó.
+    */
     while (atual->proximo != NULL) {
         atual = atual->proximo;
     }
 
+    /*
+        Neste momento, "atual" aponta para o último nó.
+
+        Para inserir no fim, basta fazer o último nó apontar para o novo nó.
+        O novo nó já tem proximo = NULL, porque foi preparado em criar_no.
+    */
     atual->proximo = novo;
+
+    /*
+        O primeiro nó da lista não mudou, por isso devolvemos "inicio".
+    */
     return inicio;
 }
 
-void mostrar_lista(const No *inicio) {
-    const No *atual = inicio;
+/*
+    Função: inserir_meio
 
-    while (atual != NULL) {
-        printf("%d -> ", atual->valor);
+    Objetivo:
+    Inserir um novo nó depois de um valor já existente na lista.
+
+    Exemplo:
+    Se a lista for 10 -> 20 -> 30 -> NULL
+    e chamarmos inserir_meio(lista, 20, 25),
+    a lista passa a ser 10 -> 20 -> 25 -> 30 -> NULL.
+
+    Recebe:
+    - inicio: endereço do primeiro nó;
+    - valor_anterior: valor que vamos procurar;
+    - valor: novo valor que será inserido depois de valor_anterior.
+
+    Devolve:
+    - o início da lista.
+*/
+No *inserir_meio(No *inicio, int valor_anterior, int valor) {
+    /*
+        Começamos no primeiro nó e procuramos o valor de referência.
+
+        Neste exemplo, se queremos inserir 25 depois de 20,
+        precisamos primeiro de encontrar o nó que contém 20.
+    */
+    No *atual = inicio;
+
+    /*
+        O ciclo continua enquanto:
+        - ainda há nós para visitar;
+        - o valor do nó atual ainda não é o valor que procuramos.
+    */
+    while (atual != NULL && atual->valor != valor_anterior) {
         atual = atual->proximo;
     }
 
+    /*
+        Se atual ficou NULL, chegámos ao fim da lista sem encontrar
+        o valor de referência.
+
+        Nesse caso, não inserimos nada e devolvemos a lista como estava.
+    */
+    if (atual == NULL) {
+        printf("Valor de referencia nao encontrado.\n");
+        return inicio;
+    }
+
+    /*
+        Se chegámos aqui, "atual" aponta para o nó depois do qual
+        queremos inserir o novo nó.
+    */
+    No *novo = criar_no(valor);
+
+    /*
+        Se a criação falhar, a lista fica exatamente como estava.
+    */
+    if (novo == NULL) {
+        printf("Falha ao reservar memoria.\n");
+        return inicio;
+    }
+
+    /*
+        Esta é a parte mais importante da inserção no meio.
+
+        Primeiro, o novo nó passa a apontar para o nó que vinha depois
+        do nó atual.
+
+        Exemplo antes:
+        atual(20) -> 30
+
+        Depois desta linha:
+        novo(25) -> 30
+    */
+    novo->proximo = atual->proximo;
+
+    /*
+        Depois, o nó atual passa a apontar para o novo nó.
+
+        Resultado final:
+        atual(20) -> novo(25) -> 30
+
+        A ordem destas duas linhas é importante. Se fizéssemos primeiro
+        "atual->proximo = novo", perderíamos o endereço do nó que vinha a seguir.
+    */
+    atual->proximo = novo;
+
+    /*
+        O primeiro nó da lista não mudou.
+    */
+    return inicio;
+}
+
+/*
+    Função: remover_valor
+
+    Objetivo:
+    Remover a primeira ocorrência de um valor na lista.
+
+    Recebe:
+    - inicio: endereço do primeiro nó;
+    - valor: valor que queremos remover.
+
+    Devolve:
+    - o início atualizado da lista.
+
+    O início pode mudar se o nó removido for o primeiro.
+*/
+No *remover_valor(No *inicio, int valor) {
+    /*
+        Caso especial: lista vazia.
+
+        Se a lista não tem nós, não há nada para remover.
+    */
+    if (inicio == NULL) {
+        return NULL;
+    }
+
+    /*
+        Caso especial: o valor está logo no primeiro nó.
+
+        Se removermos o primeiro nó, o início da lista tem de passar
+        a ser o segundo nó.
+    */
+    if (inicio->valor == valor) {
+        /*
+            Guardamos primeiro o endereço do segundo nó.
+            Isto é essencial, porque depois de fazer free(inicio)
+            já não devemos aceder a inicio->proximo.
+        */
+        No *novo_inicio = inicio->proximo;
+
+        /*
+            Libertamos a memória ocupada pelo nó removido.
+        */
+        free(inicio);
+
+        /*
+            Devolvemos o novo início da lista.
+        */
+        return novo_inicio;
+    }
+
+    /*
+        Para remover um nó que não é o primeiro, precisamos de dois apontadores:
+
+        - anterior: fica no nó anterior ao que queremos remover;
+        - atual: fica no nó que estamos a analisar.
+
+        Precisamos do "anterior" porque é ele que terá de saltar por cima
+        do nó removido.
+    */
+    No *anterior = inicio;
+    No *atual = inicio->proximo;
+
+    /*
+        Procuramos o valor a remover.
+
+        A cada passo, os dois apontadores avançam:
+        - anterior passa para o nó atual;
+        - atual passa para o próximo nó.
+    */
+    while (atual != NULL && atual->valor != valor) {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    /*
+        Se atual ficou NULL, o valor não existe na lista.
+        Nesse caso, não removemos nada.
+    */
+    if (atual == NULL) {
+        return inicio;
+    }
+
+    /*
+        Se chegámos aqui, "atual" aponta para o nó a remover.
+
+        Para remover esse nó, fazemos o nó anterior apontar diretamente
+        para o nó que vem depois de atual.
+
+        Exemplo:
+        anterior(10) -> atual(20) -> 25
+
+        Depois desta linha:
+        anterior(10) -> 25
+    */
+    anterior->proximo = atual->proximo;
+
+    /*
+        Agora que a lista já não aponta para "atual", podemos libertar
+        a memória desse nó.
+    */
+    free(atual);
+
+    /*
+        O primeiro nó da lista não mudou.
+    */
+    return inicio;
+}
+
+/*
+    Função: mostrar_lista
+
+    Objetivo:
+    Percorrer a lista do início ao fim e mostrar os valores.
+
+    Como esta função só mostra a lista e não altera nenhum nó,
+    recebe "const No *".
+*/
+void mostrar_lista(const No *inicio) {
+    /*
+        Usamos um apontador auxiliar para percorrer a lista.
+        Assim, não alteramos o valor recebido em "inicio".
+    */
+    const No *atual = inicio;
+
+    /*
+        Enquanto atual não for NULL, ainda estamos dentro da lista.
+    */
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+
+        /*
+            Avançamos para o próximo nó.
+            Se o próximo for NULL, o ciclo termina na próxima verificação.
+        */
+        atual = atual->proximo;
+    }
+
+    /*
+        Mostramos NULL para deixar claro onde a lista termina.
+    */
     printf("NULL\n");
 }
 
+/*
+    Função: contar_nos
+
+    Objetivo:
+    Contar quantos nós existem na lista.
+
+    Esta função também não altera a lista, por isso recebe "const No *".
+*/
 int contar_nos(const No *inicio) {
     int total = 0;
     const No *atual = inicio;
 
+    /*
+        Por cada nó encontrado, aumentamos o contador e avançamos.
+    */
     while (atual != NULL) {
         total++;
         atual = atual->proximo;
     }
 
+    /*
+        Quando atual chega a NULL, já contámos todos os nós.
+    */
     return total;
 }
 
+/*
+    Função: contem_valor
+
+    Objetivo:
+    Procurar um valor na lista.
+
+    Devolve:
+    - 1 se encontrar o valor;
+    - 0 se chegar ao fim da lista sem encontrar.
+*/
 int contem_valor(const No *inicio, int valor) {
     const No *atual = inicio;
 
+    /*
+        Percorremos a lista nó a nó.
+    */
     while (atual != NULL) {
+        /*
+            Se o valor do nó atual é igual ao valor procurado,
+            podemos terminar imediatamente.
+        */
         if (atual->valor == valor) {
             return 1;
         }
 
+        /*
+            Caso contrário, avançamos para o próximo nó.
+        */
         atual = atual->proximo;
     }
 
+    /*
+        Se o ciclo terminou, significa que chegámos a NULL
+        sem encontrar o valor.
+    */
     return 0;
 }
 
+/*
+    Função: libertar_lista
+
+    Objetivo:
+    Libertar todos os nós criados dinamicamente com malloc.
+
+    Sempre que usamos malloc, devemos garantir que existe um free
+    correspondente quando a memória já não é necessária.
+*/
 void libertar_lista(No *inicio) {
     No *atual = inicio;
 
+    /*
+        Vamos libertar a lista nó a nó.
+    */
     while (atual != NULL) {
+        /*
+            Antes de libertar o nó atual, guardamos o endereço do próximo.
+
+            Isto é obrigatório porque, depois de free(atual),
+            já não podemos aceder com segurança a atual->proximo.
+        */
         No *seguinte = atual->proximo;
+
+        /*
+            Libertamos o nó atual.
+        */
         free(atual);
+
+        /*
+            Avançamos para o nó que tínhamos guardado.
+        */
         atual = seguinte;
     }
 }
 
 int main(void) {
+    /*
+        A lista começa vazia.
+
+        Uma lista vazia é representada por NULL porque ainda não existe
+        nenhum primeiro nó.
+    */
     No *lista = NULL;
 
+    /*
+        Inserimos três valores no fim da lista.
+
+        Guardamos sempre o valor devolvido pela função porque o início
+        da lista pode mudar, especialmente quando a lista ainda está vazia.
+    */
     lista = inserir_fim(lista, 10);
     lista = inserir_fim(lista, 20);
     lista = inserir_fim(lista, 30);
 
+    /*
+        Neste momento esperamos ter:
+        10 -> 20 -> 30 -> NULL
+    */
     mostrar_lista(lista);
 
+    /*
+        Inserimos o valor 25 depois do valor 20.
+
+        A lista esperada passa a ser:
+        10 -> 20 -> 25 -> 30 -> NULL
+    */
+    lista = inserir_meio(lista, 20, 25);
+    mostrar_lista(lista);
+
+    /*
+        Removemos a primeira ocorrência do valor 20.
+
+        A lista esperada passa a ser:
+        10 -> 25 -> 30 -> NULL
+    */
+    lista = remover_valor(lista, 20);
+    mostrar_lista(lista);
+
+    /*
+        Contamos os nós que ainda existem na lista.
+    */
     printf("Total de nos: %d\n", contar_nos(lista));
 
-    if (contem_valor(lista, 20)) {
-        printf("O valor 20 existe na lista.\n");
+    /*
+        Procuramos o valor 25.
+
+        A função contem_valor devolve 1 se encontrar e 0 se não encontrar.
+    */
+    if (contem_valor(lista, 25)) {
+        printf("O valor 25 existe na lista.\n");
     } else {
-        printf("O valor 20 nao existe na lista.\n");
+        printf("O valor 25 nao existe na lista.\n");
     }
 
+    /*
+        No fim do programa, libertamos toda a memória reservada com malloc.
+
+        Isto evita fugas de memória.
+    */
     libertar_lista(lista);
+
+    /*
+        Depois de libertar a lista, colocamos o apontador principal a NULL.
+        Assim evitamos ficar com um apontador que aponta para memória
+        que já foi libertada.
+    */
     lista = NULL;
 
     return 0;
@@ -893,8 +1351,10 @@ Saída esperada:
 
 ```text
 10 -> 20 -> 30 -> NULL
+10 -> 20 -> 25 -> 30 -> NULL
+10 -> 25 -> 30 -> NULL
 Total de nos: 3
-O valor 20 existe na lista.
+O valor 25 existe na lista.
 ```
 
 ### 14.5 Como ler este programa
@@ -912,6 +1372,57 @@ lista = inserir_fim(lista, 10);
 ```
 
 Isto é importante porque, se a lista estava vazia, o novo nó passa a ser o primeiro nó.
+
+A função `inserir_meio` procura primeiro o valor que fica antes do novo nó:
+
+```c
+lista = inserir_meio(lista, 20, 25);
+```
+
+Neste exemplo, o programa procura o nó com valor `20` e coloca o `25` depois dele.
+
+Antes:
+
+```text
+inicio -> [10 | *] -> [20 | *] -> [30 | NULL]
+```
+
+Depois:
+
+```text
+inicio -> [10 | *] -> [20 | *] -> [25 | *] -> [30 | NULL]
+```
+
+A parte mais importante é esta:
+
+```c
+novo->proximo = atual->proximo;
+atual->proximo = novo;
+```
+
+Primeiro, o novo nó passa a apontar para o nó que vinha a seguir. Só depois o nó atual passa a apontar para o novo nó.
+
+Se trocássemos a ordem destas duas linhas, podíamos perder a ligação ao resto da lista.
+
+A função `remover_valor` remove a primeira ocorrência de um valor:
+
+```c
+lista = remover_valor(lista, 20);
+```
+
+Antes de remover um nó do meio, precisamos de dois apontadores:
+
+- `anterior`, que fica no nó anterior ao que queremos remover;
+- `atual`, que fica no nó que vai ser removido.
+
+Depois, ligamos o nó anterior ao nó seguinte:
+
+```c
+anterior->proximo = atual->proximo;
+free(atual);
+```
+
+Assim, a lista deixa de apontar para o nó removido e a memória desse nó é libertada.
 
 A função `mostrar_lista` percorre a lista com um apontador auxiliar:
 
@@ -984,7 +1495,7 @@ Ao trabalhar com listas ligadas, confirma sempre:
 - todos os nós criados dinamicamente são libertados com `free`;
 - depois de libertar a lista, o apontador principal pode ser colocado a `NULL`.
 
-Neste módulo, o objetivo é perceber a ideia e conseguir acompanhar código simples. Listas ligadas completas, com remoção por valor, inserção ordenada e listas duplamente ligadas, exigem mais cuidado e podem ser estudadas depois.
+Neste módulo, o objetivo é perceber a ideia e conseguir acompanhar código simples. Listas ligadas completas, com inserção ordenada, remoção de todos os valores repetidos e listas duplamente ligadas, exigem mais cuidado e podem ser estudadas depois.
 
 ---
 
@@ -1233,12 +1744,16 @@ Antes de escrever ou entregar código com apontadores, confirma:
 10. Escreve uma função `mostrar_lista` que percorra uma lista ligada de inteiros e mostre todos os valores até encontrar `NULL`.
 11. Escreve uma função `contar_nos` que devolva quantos nós existem numa lista ligada.
 12. Escreve uma função `libertar_lista` que liberte todos os nós criados dinamicamente.
-13. Explica, por palavras tuas, a diferença entre o valor de uma variável e o endereço dessa variável.
+13. Escreve uma função que insira um novo nó depois de um valor existente.
+14. Escreve uma função que remova a primeira ocorrência de um valor numa lista ligada.
+15. Explica, por palavras tuas, a diferença entre o valor de uma variável e o endereço dessa variável.
 
 ---
 
 ## 21. Changelog
 
+- **2026-06-25**: adicionados comentários didáticos detalhados ao exemplo completo da secção 14.4.
+- **2026-06-25**: acrescentadas ao exemplo completo de listas ligadas as operações de inserção no meio e remoção de um nó por valor.
 - **2026-06-08**: expandida a introdução a listas ligadas com comparação entre arrays e listas, operações comuns, exemplo completo com `malloc`, procura, contagem, remoção inicial e libertação de memória.
 - **2026-05-19**: acrescentada explicação explícita sobre porque e quando usar apontadores em vez de variáveis normais; reforçadas notas sobre `realloc`, `sizeof *p`, validação de input e segurança em strings dentro de `struct` dinâmica.
 - **2026-05-11**: expansão pedagógica substancial para alunos do 10.º ano, com explicações graduais sobre memória, apontadores, `NULL`, alocação dinâmica, segurança e exemplos guiados.
