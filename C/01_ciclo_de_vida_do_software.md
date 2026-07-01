@@ -183,7 +183,7 @@ Pergunta central: **como transformar requisitos em trabalho executável?**
 
 Exemplo de riscos:
 
-- pouco domínio de ficheiros em C;
+- pouco domínio de arrays, `struct` e funções;
 - faltas de elementos da equipa;
 - subestimação do tempo de testes.
 

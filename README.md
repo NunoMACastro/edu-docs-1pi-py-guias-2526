@@ -20,9 +20,9 @@ Apontamentos e exercícios graduais, ficha de consulta e projeto final.
 
 [Ver sub-readme](./C/README.md)
 
-Percurso completo de C, de fundamentos até ficheiros, robustez e debug.
+Percurso de C, de fundamentos até arrays, `struct`, `enum`, apontadores e estruturas dinâmicas.
 
-- [`C/README.md`](./C/README.md) — índice completo dos **20 módulos**.
+- [`C/README.md`](./C/README.md) — índice completo dos **15 módulos**, exercícios e mini projeto.
 
 ### Memória e Execução
 

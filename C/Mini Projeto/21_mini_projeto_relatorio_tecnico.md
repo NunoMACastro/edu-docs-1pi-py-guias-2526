@@ -1,4 +1,4 @@
-![Header](../Images/Header.png)
+![Header](../../Images/Header.png)
 
 # Relatório técnico - Funções do Mastermind
 
@@ -310,4 +310,4 @@ Guarda os dados principais da partida.
 | `guardar_tentativa`    | Altera o histórico e o contador dentro de `Jogo`.                    |
 | `processar_tentativa`  | Altera o histórico, tentativas usadas e estado do jogo.              |
 
-![Footer](../Images/Footer.png)
+![Footer](../../Images/Footer.png)

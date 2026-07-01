@@ -1,6 +1,6 @@
 ![Header](../Images/Header.png)
 
-# C (10.º Ano) - 20 · Exercícios
+# C (10.º Ano) - Exercícios
 
 ---
 
@@ -15,11 +15,6 @@
 7. [12 · Estruturas de Dados Estáticas: Strings, Arrays e Matrizes](#exercicios-12)
 8. [13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`](#exercicios-13)
 9. [14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação](#exercicios-14)
-10. [15 · Classes e Objetos (Contexto em C)](#exercicios-15)
-11. [16 · Herança e Polimorfismo (Contexto em C)](#exercicios-16)
-12. [17 · Exceções e Tratamento de Erros em C](#exercicios-17)
-13. [18 · Ficheiros: Acesso e Manipulação em C](#exercicios-18)
-14. [19 · Funcionalidades de Editor de Texto (Produtividade e Debug)](#exercicios-19)
 
 ---
 
@@ -4493,1340 +4488,195 @@ Passo a passo:
 5. No `main`, chama `libertar_lista(lista)`.
 6. Depois da chamada, faz `lista = NULL`.
 
----
+### Exercício 112 - Inventário de equipamentos com lista ligada
 
-<a id="exercicios-15"></a>
+Objetivo: aplicar listas ligadas a um problema, usando inserção, procura, remoção e libertação de memória.
 
-## 15 · Classes e Objetos (Contexto em C)
-
-Fonte: [15_classes_e_objetos_contexto_c.md](./15_classes_e_objetos_contexto_c.md)
-
-### Exercício 112 - Modelação
-
-Objetivo: praticar modelação aplicando os conceitos de modelação de objetos em C.
-
-Modela entidade `Aluno` como "objeto" em C (`struct` + funções).
+Cria um programa que gere o inventário de equipamentos de uma sala ou laboratório. Cada equipamento deve ficar guardado num nó de uma lista ligada simples.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Define uma estrutura `Equipamento` com os campos `codigo`, `nome` e `estado`.
+- Define uma estrutura `NoEquipamento` com os campos `equipamento` e `proximo`.
+- Usa `char nome[50]` para guardar o nome do equipamento.
+- Usa `char estado[20]` para guardar valores como `"disponivel"` ou `"avariado"`.
+- Cria a função `Equipamento criar_equipamento(int codigo, const char nome[], const char estado[])`.
+- Cria a função `NoEquipamento *criar_no_equipamento(Equipamento equipamento)`.
+- Cria a função `NoEquipamento *inserir_fim(NoEquipamento *inicio, Equipamento equipamento)`.
+- Cria a função `NoEquipamento *procurar_equipamento(NoEquipamento *inicio, int codigo)`.
+- Cria a função `int existe_codigo(const NoEquipamento *inicio, int codigo)`.
+- Cria a função `int atualizar_estado(NoEquipamento *inicio, int codigo, const char novo_estado[])`.
+- Cria a função `NoEquipamento *remover_equipamento(NoEquipamento *inicio, int codigo)`.
+- Cria a função `int contar_equipamentos(const NoEquipamento *inicio)`.
+- Cria a função `void mostrar_inventario(const NoEquipamento *inicio)`.
+- Cria a função `void libertar_inventario(NoEquipamento *inicio)`.
+- Todas as reservas com `malloc` devem ser verificadas.
+- Não permitas dois equipamentos com o mesmo código.
+- A procura, atualização e remoção devem ser feitas pelo código do equipamento.
+- A função `remover_equipamento` deve funcionar quando o equipamento está no primeiro nó, no meio da lista, no último nó ou não existe.
+- No fim do programa, o inventário deve ser libertado e o apontador principal deve ficar com `NULL`.
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Começa com `NoEquipamento *inventario = NULL`.
+2. Cria três equipamentos com dados definidos no código.
+3. Insere os três equipamentos no fim da lista.
+4. Mostra o inventário completo pela ordem de inserção.
+5. Tenta inserir um equipamento com código repetido e confirma que a lista não muda.
+6. Procura um código existente e um código inexistente.
+7. Atualiza o estado de um equipamento existente.
+8. Tenta atualizar o estado de um equipamento inexistente.
+9. Remove um equipamento que esteja no primeiro nó.
+10. Remove um equipamento que esteja no meio ou no fim da lista.
+11. Tenta remover um código inexistente.
+12. Mostra o inventário depois de cada alteração.
+13. Mostra o número final de equipamentos.
+14. Liberta todos os nós e coloca `inventario = NULL`.
 
-### Exercício 113 - API mínima
+Exemplo de dados para teste:
 
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
+```text
+101 - Portatil - disponivel
+102 - Monitor - avariado
+103 - Teclado - disponivel
+```
 
-Cria API para `Livro`: criar, atualizar estado e consultar dados.
+Testes obrigatórios:
+
+- Mostrar o inventário quando ainda está vazio.
+- Inserir equipamentos no fim da lista.
+- Bloquear código repetido.
+- Procurar equipamento existente.
+- Procurar equipamento inexistente.
+- Atualizar o estado de um equipamento existente.
+- Tentar atualizar um código inexistente.
+- Remover o primeiro equipamento da lista.
+- Remover um equipamento do meio ou do fim.
+- Tentar remover um equipamento inexistente.
+- Contar corretamente os equipamentos existentes.
+- Libertar todos os nós criados com `malloc`.
+
+### Exercício 113 - Lista ligada de alunos
+
+Objetivo: usar uma lista ligada para guardar dados compostos, combinando `struct`, strings, apontadores e memória dinâmica.
+
+Cria um programa que gere uma lista ligada de alunos. Cada nó deve guardar os dados de um aluno e o endereço do próximo nó.
 
 Requisitos:
 
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
+- Define uma estrutura `Aluno` com `numero`, `nome` e `media`.
+- Define uma estrutura `NoAluno` com os campos `aluno` e `proximo`.
+- Usa `char nome[50]` para guardar o nome do aluno.
+- Cria a função `Aluno criar_aluno(int numero, const char nome[], float media)`.
+- Cria a função `NoAluno *criar_no_aluno(Aluno aluno)`.
+- Cria a função `NoAluno *inserir_fim(NoAluno *inicio, Aluno aluno)`.
+- Cria a função `const NoAluno *procurar_aluno(const NoAluno *inicio, int numero)`.
+- Cria a função `NoAluno *remover_aluno(NoAluno *inicio, int numero)`.
+- Cria a função `void mostrar_alunos(const NoAluno *inicio)`.
+- Cria a função `void libertar_alunos(NoAluno *inicio)`.
+- A procura e a remoção devem ser feitas pelo número do aluno.
+- Usa apenas lista ligada simples.
+- O programa não deve perder o início da lista durante o percurso.
 
 Passo a passo:
 
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
+1. Começa com `NoAluno *turma = NULL`.
+2. Cria três alunos com dados definidos no código.
+3. Insere os três alunos no fim da lista.
+4. Mostra a lista completa.
+5. Procura um aluno existente pelo número.
+6. Procura um aluno inexistente pelo número.
+7. Remove o primeiro aluno da lista.
+8. Remove um aluno que esteja no meio ou no fim da lista.
+9. Tenta remover um número inexistente.
+10. Mostra a lista depois de cada remoção.
+11. Liberta a lista completa.
+12. Coloca `turma = NULL` no fim do `main`.
 
-### Exercício 114 - Inicialização
+Exemplo de dados para teste:
 
-Objetivo: praticar inicialização aplicando os conceitos de modelação de objetos em C.
+```text
+101 - Ana Silva - 16.5
+102 - Bruno Costa - 13.0
+103 - Carla Dias - 18.2
+```
 
-Implementa função `init` para 3 tipos diferentes.
+Critérios de verificação:
+
+- A lista mostra todos os alunos pela ordem de inserção.
+- A procura distingue corretamente alunos existentes e inexistentes.
+- A remoção do primeiro aluno atualiza o início da lista.
+- A remoção de um aluno do meio ou do fim mantém a lista bem ligada.
+- Todos os nós criados com `malloc` são libertados com `free`.
+
+### Exercício 114 - Gestor de tarefas com lista ligada e menu
+
+Objetivo: criar um pequeno programa completo com menu, usando lista ligada como estrutura principal de dados.
+
+Cria um gestor de tarefas em consola. Cada tarefa deve estar guardada num nó de uma lista ligada. O utilizador deve conseguir adicionar tarefas, listar tarefas, marcar tarefas como concluídas, remover tarefas e sair do programa.
 
 Requisitos:
 
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
+- Define um `enum EstadoTarefa` com os valores `POR_FAZER` e `CONCLUIDA`.
+- Define uma estrutura `Tarefa` com `id`, `descricao` e `estado`.
+- Define uma estrutura `NoTarefa` com os campos `tarefa` e `proximo`.
+- Usa `char descricao[80]` para a descrição.
+- Cria a função `Tarefa criar_tarefa(int id, const char descricao[])`.
+- Cria a função `NoTarefa *criar_no_tarefa(Tarefa tarefa)`.
+- Cria a função `NoTarefa *inserir_fim(NoTarefa *inicio, Tarefa tarefa)`.
+- Cria a função `int existe_tarefa(const NoTarefa *inicio, int id)`.
+- Cria a função `int marcar_concluida(NoTarefa *inicio, int id)`.
+- Cria a função `NoTarefa *remover_tarefa(NoTarefa *inicio, int id)`.
+- Cria a função `int contar_pendentes(const NoTarefa *inicio)`.
+- Cria a função `void mostrar_tarefas(const NoTarefa *inicio)`.
+- Cria a função `void libertar_tarefas(NoTarefa *inicio)`.
+- Não permitas duas tarefas com o mesmo `id`.
+- A opção de remover deve funcionar para o primeiro nó, para um nó do meio, para o último nó e para um `id` inexistente.
+- Usa apenas lista ligada simples.
+
+Menu obrigatório:
+
+```text
+1 - Adicionar tarefa
+2 - Listar tarefas
+3 - Marcar tarefa como concluída
+4 - Remover tarefa
+5 - Mostrar número de tarefas pendentes
+0 - Sair
+```
 
 Passo a passo:
 
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+1. Começa com `NoTarefa *tarefas = NULL`.
+2. Mostra o menu dentro de um ciclo `do while` ou `while`.
+3. Na opção `1`, pede `id` e `descricao`.
+4. Antes de inserir, verifica se o `id` já existe.
+5. Na opção `2`, percorre a lista e mostra cada tarefa.
+6. Na opção `3`, procura a tarefa pelo `id` e altera o estado para `CONCLUIDA`.
+7. Na opção `4`, remove a tarefa pelo `id`.
+8. Na opção `5`, conta apenas as tarefas com estado `POR_FAZER`.
+9. Na opção `0`, liberta toda a lista antes de terminar.
+10. Depois de libertar, coloca `tarefas = NULL`.
 
-### Exercício 115 - Encapsulamento
+Testes obrigatórios:
 
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
+- Listar tarefas quando a lista está vazia.
+- Adicionar três tarefas.
+- Tentar adicionar uma tarefa com `id` repetido.
+- Marcar uma tarefa existente como concluída.
+- Tentar marcar uma tarefa inexistente.
+- Remover a primeira tarefa.
+- Remover a última tarefa.
+- Tentar remover uma tarefa inexistente.
+- Confirmar que o número de tarefas pendentes fica correto.
+- Sair do programa sem fugas de memória.
 
-Reorganiza código para ocultar detalhes internos num `.c`.
+Compilação recomendada para os três exercícios finais:
 
-Requisitos:
-
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
-
-Passo a passo:
-
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
-
-### Exercício 116 - Validação de regras
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Implementa função que recusa operações inválidas (ex.: saldo negativo).
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 117 - Modularização
-
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
-
-Divide programa em `main.c`, `entidade.c`, `entidade.h`.
-
-Requisitos:
-
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
-
-Passo a passo:
-
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
-
-### Exercício 118 - Const-correctness
-
-Objetivo: praticar const-correctness aplicando os conceitos de modelação de objetos em C.
-
-Cria funções de consulta que recebem ponteiro `const`.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 119 - Testes manuais
-
-Objetivo: praticar testes manuais aplicando os conceitos de modelação de objetos em C.
-
-Define 12 testes para validar API de uma entidade.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 120 - Refatoração
-
-Objetivo: praticar refatoração aplicando os conceitos de modelação de objetos em C.
-
-Converte programa monolítico num design baseado em "objetos" simulados.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 121 - Documentação
-
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
-
-Escreve documentação de API para uma entidade criada por ti.
-
-Requisitos:
-
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
-
-Passo a passo:
-
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
-
-### Exercício 122 - Evolução
-
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
-
-Acrescenta novo comportamento mantendo compatibilidade da API.
-
-Requisitos:
-
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
-
-Passo a passo:
-
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
-
-### Exercício 123 - Reflexão
-
-Objetivo: consolidar os conceitos de modelação de objetos em C através de uma explicação escrita e justificada.
-
-Explica semelhanças e diferenças entre este modelo em C e classes em OOP.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+```bash
+cc -std=c11 -Wall -Wextra -pedantic ficheiro.c -o programa
+```
 
 ---
-
-<a id="exercicios-16"></a>
-
-## 16 · Herança e Polimorfismo (Contexto em C)
-
-Fonte: [16_heranca_e_polimorfismo_contexto_c.md](./16_heranca_e_polimorfismo_contexto_c.md)
-
-### Exercício 124 - Composição
-
-Objetivo: praticar composição aplicando os conceitos de composição e polimorfismo em C.
-
-Cria `struct Veiculo` e `struct Carro` reutilizando campos comuns.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 125 - Interface por função
-
-Objetivo: praticar interface por função aplicando os conceitos de composição e polimorfismo em C.
-
-Define interface de impressão para dois tipos diferentes.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 126 - Polimorfismo simples
-
-Objetivo: praticar polimorfismo simples aplicando os conceitos de composição e polimorfismo em C.
-
-Implementa duas funções de comportamento e seleciona em runtime.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 127 - Vetor de "objetos"
-
-Objetivo: praticar vetor de "objetos" aplicando os conceitos de composição e polimorfismo em C.
-
-Cria array de estruturas com ponteiro para função e executa comportamento.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 128 - Organização
-
-Objetivo: organizar responsabilidades e tornar a solução mais modular, legível e sustentável.
-
-Separa interface e implementação em ficheiros distintos.
-
-Requisitos:
-
-- Separa responsabilidades em funções, ficheiros ou tipos quando isso fizer sentido.
-- Mantém nomes claros para funções, parâmetros e ficheiros.
-- Evita duplicação de código e dependências desnecessárias.
-- Garante que a solução continua fácil de compilar e testar.
-
-Passo a passo:
-
-1. Identifica as responsabilidades principais da solução.
-2. Decide que funções, tipos ou ficheiros devem existir.
-3. Define interfaces claras antes de escrever a implementação completa.
-4. Implementa cada parte mantendo baixo acoplamento entre componentes.
-5. Compila e testa o conjunto para confirmar que a organização funciona.
-
-### Exercício 129 - Validação
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Evita chamada de ponteiro de função nulo com verificações.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 130 - Refatoração
-
-Objetivo: praticar refatoração aplicando os conceitos de composição e polimorfismo em C.
-
-Converte código com muitos `if` de tipo para abordagem polimórfica.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 131 - Testes
-
-Objetivo: praticar testes aplicando os conceitos de composição e polimorfismo em C.
-
-Define testes para validar interface comum entre tipos.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 132 - Limitações
-
-Objetivo: consolidar os conceitos de composição e polimorfismo em C através de uma explicação escrita e justificada.
-
-Escreve 6 limitações desta abordagem em comparação com C++.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
-
-### Exercício 133 - Expansão
-
-Objetivo: praticar expansão aplicando os conceitos de composição e polimorfismo em C.
-
-Adiciona um novo tipo à interface sem alterar código cliente principal.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 134 - Segurança
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Analisa código e identifica riscos com ponteiros para função.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 135 - Reflexão
-
-Objetivo: consolidar os conceitos de composição e polimorfismo em C através de uma explicação escrita e justificada.
-
-Explica como este módulo ajuda a entender OOP mesmo em C.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
-
----
-
-<a id="exercicios-17"></a>
-
-## 17 · Exceções e Tratamento de Erros em C
-
-Fonte: [17_excecoes_e_tratamento_de_erros_em_c.md](./17_excecoes_e_tratamento_de_erros_em_c.md)
-
-### Exercício 136 - Divisão segura
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Implementa função de divisão com tratamento de divisor zero.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 137 - Entrada robusta
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Lê inteiro com validação de formato e intervalo.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 138 - Códigos de erro
-
-Objetivo: praticar códigos de erro aplicando os conceitos de tratamento de erros em C.
-
-Define tabela de códigos de erro para um mini projeto.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 139 - Ficheiros
-
-Objetivo: praticar ficheiros aplicando os conceitos de tratamento de erros em C.
-
-Abre ficheiro para leitura e trata todos os possíveis erros básicos.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 140 - Memória
-
-Objetivo: praticar memória aplicando os conceitos de tratamento de erros em C.
-
-Aloca vetor dinâmico com validação e mensagens de erro adequadas.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 141 - Propagação
-
-Objetivo: praticar propagação aplicando os conceitos de tratamento de erros em C.
-
-Cria cadeia de 3 funções que propagam erros até `main`.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 142 - Limpeza de recursos
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Garante que ficheiro e memória são libertados em qualquer caminho de erro.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 143 - Refatoração
-
-Objetivo: praticar refatoração aplicando os conceitos de tratamento de erros em C.
-
-Melhora um código sem tratamento de erros.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 144 - Diagnóstico
-
-Objetivo: identificar problemas, explicar a causa e aplicar uma correção tecnicamente correta.
-
-Usa `perror` e `errno` em 5 cenários distintos.
-
-Requisitos:
-
-- Identifica primeiro o comportamento errado ou o erro produzido.
-- Explica a causa antes de apresentar a correção.
-- Corrige apenas o necessário para resolver o problema indicado.
-- Confirma a solução com compilação, execução ou análise manual adequada.
-
-Passo a passo:
-
-1. Reproduz ou lê atentamente o erro apresentado.
-2. Localiza a linha ou bloco responsável pelo problema.
-3. Explica a causa usando os conceitos de C envolvidos.
-4. Aplica a correção mínima necessária.
-5. Volta a testar ou reler o código para confirmar que o problema ficou resolvido.
-
-### Exercício 145 - Testes de erro
-
-Objetivo: praticar testes de erro aplicando os conceitos de tratamento de erros em C.
-
-Define 15 testes focados apenas em cenários inválidos.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 146 - Mensagens de utilizador
-
-Objetivo: praticar mensagens de utilizador aplicando os conceitos de tratamento de erros em C.
-
-Reescreve mensagens técnicas para linguagem compreensível por utilizador final.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 147 - Reflexão
-
-Objetivo: consolidar os conceitos de tratamento de erros em C através de uma explicação escrita e justificada.
-
-Explica por que tratamento de erros faz parte da qualidade do software.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
-
----
-
-<a id="exercicios-18"></a>
-
-## 18 · Ficheiros: Acesso e Manipulação em C
-
-Fonte: [18_ficheiros_acesso_e_manipulacao_em_c.md](./18_ficheiros_acesso_e_manipulacao_em_c.md)
-
-### Exercício 148 - Escrita simples
-
-Objetivo: praticar escrita simples aplicando os conceitos de ficheiros em C.
-
-Cria programa que grava 5 linhas num ficheiro texto.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 149 - Leitura simples
-
-Objetivo: praticar leitura simples aplicando os conceitos de ficheiros em C.
-
-Lê ficheiro linha a linha e imprime no ecrã.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 150 - Cópia de ficheiro
-
-Objetivo: praticar cópia de ficheiro aplicando os conceitos de ficheiros em C.
-
-Implementa cópia de um ficheiro texto para outro.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 151 - Contagem
-
-Objetivo: praticar contagem aplicando os conceitos de ficheiros em C.
-
-Conta número de linhas e caracteres de um ficheiro.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 152 - Registos
-
-Objetivo: praticar registos aplicando os conceitos de ficheiros em C.
-
-Guarda registos de alunos no formato `nome;nota`.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 153 - Pesquisa
-
-Objetivo: praticar pesquisa aplicando os conceitos de ficheiros em C.
-
-Lê ficheiro e procura registo por nome.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 154 - Acrescentar dados
-
-Objetivo: praticar acrescentar dados aplicando os conceitos de ficheiros em C.
-
-Abre ficheiro em modo append e adiciona novos registos.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 155 - Binário básico
-
-Objetivo: praticar binário básico aplicando os conceitos de ficheiros em C.
-
-Grava e lê array de inteiros em ficheiro binário.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 156 - Validação de I/O
-
-Objetivo: reforçar validação, segurança e tratamento explícito de casos inválidos.
-
-Melhora programa com tratamento de erro em cada operação de ficheiro.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 157 - Navegação
-
-Objetivo: praticar navegação aplicando os conceitos de ficheiros em C.
-
-Usa `fseek` e `ftell` para descobrir tamanho de ficheiro.
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 158 - Projeto curto
-
-Objetivo: praticar projeto curto aplicando os conceitos de ficheiros em C.
-
-Cria mini agenda persistente em ficheiro (inserir/listar).
-
-Requisitos:
-
-- A solução deve cumprir exatamente o comportamento pedido no enunciado.
-- Usa os conceitos principais do módulo em que o exercício está inserido.
-- Escolhe tipos de dados e nomes de variáveis adequados ao problema.
-- Valida entradas do utilizador sempre que o exercício envolver leitura de dados.
-- O output deve ser claro, organizado e fácil de verificar.
-
-Passo a passo:
-
-1. Identifica os dados de entrada, o processamento necessário e o resultado esperado.
-2. Declara as variáveis com tipos apropriados e nomes significativos.
-3. Implementa a lógica principal usando a estrutura ou conceito pedido.
-4. Acrescenta validações simples para entradas ou casos especiais relevantes.
-5. Compila, executa e testa com valores normais e pelo menos um caso limite.
-
-### Exercício 159 - Reflexão
-
-Objetivo: consolidar os conceitos de ficheiros em C através de uma explicação escrita e justificada.
-
-Explica diferenças práticas entre guardar dados em texto e em binário.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
-
----
-
-<a id="exercicios-19"></a>
-
-## 19 · Funcionalidades de Editor de Texto (Produtividade e Debug)
-
-Fonte: [19_editor_texto_produtividade_e_debug.md](./19_editor_texto_produtividade_e_debug.md)
-
-### Exercício 160 - Atalhos avançados
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Seleciona 15 atalhos do editor e aplica em tarefa real.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 161 - Pipeline local
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Configura build + run num único comando/tarefa no editor.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 162 - Debug guiado
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Coloca breakpoints em função com ciclo e analisa evolução de variáveis.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 163 - Rastreio de bug
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Recebe programa com erro lógico e usa debugger para localizar causa.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 164 - Navegação
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Num projeto com 8+ ficheiros, localiza rapidamente função e todas as referências.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 165 - Refatoração
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Renomeia função globalmente sem quebrar build.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 166 - Extração
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Extrai bloco repetido para função reutilizável.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 167 - Qualidade
-
-Objetivo: consolidar os conceitos de produtividade, organização e debug no editor através de uma explicação escrita e justificada.
-
-Cria checklist final de 12 pontos antes de entregar projeto.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
-
-### Exercício 168 - Métricas pessoais
-
-Objetivo: consolidar os conceitos de produtividade, organização e debug no editor através de uma explicação escrita e justificada.
-
-Regista tempo gasto em tarefa antes e depois de configurar automações.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
-
-### Exercício 169 - Organização
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Reorganiza projeto desestruturado em pastas claras (`src`, `include`, `bin`).
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 170 - Simulação de revisão
-
-Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
-
-Faz revisão de código de colega usando ferramentas do editor.
-
-Requisitos:
-
-- A atividade deve ser feita num ficheiro ou projeto C realista.
-- Regista os passos principais ou configurações aplicadas.
-- Confirma o resultado no editor, no terminal ou no debugger, conforme o exercício.
-- Evita alterações globais sem verificar antes o impacto no projeto.
-
-Passo a passo:
-
-1. Abre um ficheiro ou projeto adequado para a atividade.
-2. Executa a funcionalidade pedida no editor, terminal integrado ou debugger.
-3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
-4. Corrige configurações ou passos caso o resultado não seja o esperado.
-5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
-
-### Exercício 171 - Reflexão
-
-Objetivo: consolidar os conceitos de produtividade, organização e debug no editor através de uma explicação escrita e justificada.
-
-Explica como domínio de editor influencia qualidade e aprendizagem em C.
-
-Requisitos:
-
-- Não escrevas um programa completo, exceto se precisares de pequenos exemplos para justificar uma ideia.
-- A resposta deve usar linguagem técnica correta e frases claras.
-- Justifica cada escolha com base no problema e não apenas no nome do conceito.
-- Inclui pelo menos um exemplo ou situação prática quando isso ajudar a explicação.
-
-Passo a passo:
-
-1. Lê a situação proposta e identifica os conceitos principais envolvidos.
-2. Organiza a resposta em pontos curtos ou pequenos parágrafos.
-3. Justifica cada escolha com base no tipo de problema apresentado.
-4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
-5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
 
 ![Footer](../Images/Footer.png)

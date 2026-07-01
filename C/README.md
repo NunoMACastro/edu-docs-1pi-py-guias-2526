@@ -15,7 +15,7 @@ Cada módulo inclui:
 
 Os exercícios sem resolução estão centralizados no ficheiro [20_exercicios_c.md](./20_exercicios_c.md).
 
-O percurso desta pasta está organizado em **20 módulos tutoriais** (incluindo o módulo intermédio `07a`) + **1 caderno de exercícios**.
+O percurso desta pasta está organizado em **15 módulos tutoriais** (incluindo o módulo intermédio `07a`), **1 caderno de exercícios** e **1 mini projeto**.
 
 ---
 
@@ -23,7 +23,6 @@ O percurso desta pasta está organizado em **20 módulos tutoriais** (incluindo 
 
 - [Estrutura da pasta](#estrutura-da-pasta)
 - [Módulos e objetivos](#módulos-e-objetivos)
-- [Nota sobre POO e exceções em C](#nota-sobre-poo-e-exceções-em-c)
 - [Rota de estudo recomendada](#rota-de-estudo-recomendada)
 - [Como usar estes materiais](#como-usar-estes-materiais)
 
@@ -48,12 +47,9 @@ O percurso desta pasta está organizado em **20 módulos tutoriais** (incluindo 
 ├── 12_estruturas_estaticas_strings_arrays_matrizes.md
 ├── 13_estruturas_compostas_struct_union_enum.md
 ├── 14_estruturas_dinamicas_apontadores.md
-├── 15_classes_e_objetos_contexto_c.md
-├── 16_heranca_e_polimorfismo_contexto_c.md
-├── 17_excecoes_e_tratamento_de_erros_em_c.md
-├── 18_ficheiros_acesso_e_manipulacao_em_c.md
-├── 19_editor_texto_produtividade_e_debug.md
 ├── 20_exercicios_c.md
+├── 21_mini_projeto.md
+├── Mini Projeto/
 └── README.md
 ```
 
@@ -106,34 +102,9 @@ O percurso desta pasta está organizado em **20 módulos tutoriais** (incluindo 
 15. [Estruturas dinâmicas e apontadores](./14_estruturas_dinamicas_apontadores.md)  
     Objetivo: gerir memória dinâmica e ponteiros com disciplina.
 
-16. [Classes e objetos (contexto em C)](./15_classes_e_objetos_contexto_c.md)  
-    Objetivo: aplicar equivalente de modelação orientada a objetos em C.
+Exercícios sem resolução (módulos 07 a 14): [20_exercicios_c.md](./20_exercicios_c.md)
 
-17. [Herança e polimorfismo (contexto em C)](./16_heranca_e_polimorfismo_contexto_c.md)  
-    Objetivo: compreender e simular estes conceitos em C.
-
-18. [Exceções e tratamento de erros em C](./17_excecoes_e_tratamento_de_erros_em_c.md)  
-    Objetivo: implementar tratamento de erro robusto sem `try/catch`.
-
-19. [Ficheiros: acesso e manipulação](./18_ficheiros_acesso_e_manipulacao_em_c.md)  
-    Objetivo: persistir dados em ficheiros texto/binário com validação.
-
-20. [Editor de texto: produtividade e debug](./19_editor_texto_produtividade_e_debug.md)  
-    Objetivo: consolidar práticas avançadas de depuração e manutenção.
-
-Exercícios sem resolução (todos os módulos): [20_exercicios_c.md](./20_exercicios_c.md)
-
----
-
-## Nota sobre POO e exceções em C
-
-A linguagem C **não possui** classes, herança, polimorfismo e exceções como C++/Java/Python.
-
-Nestes materiais:
-
-- "classes/objetos" são explicados via `struct` + funções + organização de API;
-- "herança/polimorfismo" são explicados via composição e ponteiros para função;
-- "exceções" são abordadas com códigos de retorno, validação, `errno` e mensagens de erro.
+Mini projeto: [21_mini_projeto.md](./21_mini_projeto.md)
 
 ---
 
@@ -142,10 +113,10 @@ Nestes materiais:
 1. `01` a `05` (base de engenharia e ambiente)
 2. `06`, `07` e `07a` (núcleo da linguagem C + I/O formatada com endereços)
 3. `08` a `10` (operadores, controlo e funções)
-4. `11` + `19` (produtividade e debug no editor)
+4. `11` (produtividade básica no editor)
 5. `12` a `14` (dados em memória: estáticos e dinâmicos)
-6. `15` a `17` (conceitos avançados em contexto C e robustez)
-7. `18` (ficheiros e persistência; recomendado após base sólida de input/output)
+6. `20` (exercícios de consolidação dos módulos 07 a 14)
+7. `21` (mini projeto de consolidação)
 
 ---
 

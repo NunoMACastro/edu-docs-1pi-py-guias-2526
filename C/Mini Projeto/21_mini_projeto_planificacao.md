@@ -1,4 +1,4 @@
-![Header](../Images/Header.png)
+![Header](../../Images/Header.png)
 
 # Planificação - Mini Projeto Mastermind em C
 
@@ -143,4 +143,4 @@ O código secreto é gerado automaticamente no início de cada partida.
 
 Com os números disponíveis entre `1` e `6`, tanto o código secreto como a tentativa têm 4 números diferentes. Isso significa que dois conjuntos de 4 números escolhidos de um conjunto total de 6 têm sempre pelo menos 2 números em comum. Por isso, uma tentativa válida com `0` números certos não pode acontecer nesta versão do jogo.
 
-![Footer](../Images/Footer.png)
+![Footer](../../Images/Footer.png)
