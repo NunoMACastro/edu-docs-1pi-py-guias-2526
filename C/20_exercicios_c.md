@@ -13,7 +13,7 @@
 5. [10 · Subprogramas: Funções, Variáveis Locais/Globais e Parâmetros](#exercicios-10)
 6. [11 · Funcionalidades de um Editor de Texto](#exercicios-11)
 7. [12 · Estruturas de Dados Estáticas: Strings, Arrays e Matrizes](#exercicios-12)
-8. [13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`](#exercicios-13)
+8. [13 · Estruturas de Dados Compostas: `struct`, `union` e constantes simples](#exercicios-13)
 9. [14 · Estruturas de Dados Dinâmicas: Apontadores, Acesso e Manipulação](#exercicios-14)
 
 ---
@@ -99,7 +99,7 @@ int main() {
     int id_bicicleta;          // ID único da bicicleta, geralmente um número inteiro
     double quilometros_totais; // Quilómetros totais percorridos, pode ter casas decimais
     double custo_por_minuto;   // Custo por minuto de uso, valor monetário com casas decimais
-    int estado;                // Estado da bicicleta: 0 para disponível, 1 para ocupada (pode ser enum ou bool)
+    int estado;                // Estado da bicicleta: 0 para disponivel, 1 para ocupada
     int nivel_bateria;         // Nível de bateria em percentagem (0 a 100), pode ser inteiro
 
     return 0;
@@ -1269,6 +1269,35 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int pares[12][2] = {
+        {5, 3}, {4, 4}, {2, 9}, {10, 1},
+        {7, 8}, {0, 0}, {-3, 2}, {15, 15},
+        {6, -1}, {20, 10}, {1, 100}, {-5, -9}
+    };
+
+    for (int i = 0; i < 12; i++) {
+        int a = pares[i][0];
+        int b = pares[i][1];
+
+        printf("Par %d: a = %d, b = %d\n", i + 1, a, b);
+        printf("a == b: %d\n", a == b);
+        printf("a != b: %d\n", a != b);
+        printf("a > b: %d\n", a > b);
+        printf("a < b: %d\n", a < b);
+        printf("a >= b: %d\n", a >= b);
+        printf("a <= b: %d\n\n", a <= b);
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 26 - Lógica booleana
 
 Objetivo: praticar lógica booleana aplicando os conceitos de operadores em C.
@@ -1290,6 +1319,37 @@ Passo a passo:
 3. Implementa a lógica principal usando a estrutura ou conceito pedido.
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int idade;
+    double nota;
+
+    printf("Idade: ");
+    if (scanf("%d", &idade) != 1) {
+        printf("Erro: idade invalida.\n");
+        return 1;
+    }
+
+    printf("Nota: ");
+    if (scanf("%lf", &nota) != 1) {
+        printf("Erro: nota invalida.\n");
+        return 1;
+    }
+
+    if (idade >= 18 && nota >= 10) {
+        printf("Valido: idade e nota cumprem os requisitos.\n");
+    } else {
+        printf("Invalido: e necessario ter idade >= 18 e nota >= 10.\n");
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 27 - Intervalos
 
@@ -1454,6 +1514,39 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+Exemplo de refatoração de condições:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int idade = 19;
+    double nota = 14.5;
+    int faltas = 3;
+    int tem_autorizacao = 1;
+    int saldo = 25;
+    int custo = 20;
+
+    int idade_valida = idade >= 18;
+    int nota_valida = nota >= 10 && nota <= 20;
+    int poucas_faltas = faltas <= 5;
+    int pode_comprar = saldo >= custo;
+    int pode_entrar = idade_valida || tem_autorizacao;
+    int aluno_aprovado = nota_valida && poucas_faltas;
+
+    printf("Idade valida: %d\n", idade_valida);
+    printf("Nota valida: %d\n", nota_valida);
+    printf("Poucas faltas: %d\n", poucas_faltas);
+    printf("Pode comprar: %d\n", pode_comprar);
+    printf("Pode entrar: %d\n", pode_entrar);
+    printf("Aluno aprovado: %d\n", aluno_aprovado);
+
+    return 0;
+}
+```
+
 ### Exercício 31 - Mini calculadora
 
 Objetivo: praticar mini calculadora aplicando os conceitos de operadores em C.
@@ -1599,6 +1692,27 @@ Passo a passo:
 3. Justifica cada escolha com base no tipo de problema apresentado.
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+
+> Resolução:
+
+Compreender operadores evita bugs porque muitos erros em C não impedem o programa de compilar, mas alteram o resultado lógico.
+
+Exemplos importantes:
+
+- `=` atribui um valor; `==` compara dois valores.
+- `&&` exige que duas condições sejam verdadeiras; `||` exige apenas uma.
+- A divisão entre inteiros perde a parte decimal se não houver conversão para `double` ou `float`.
+- A precedência dos operadores pode mudar o resultado se faltarem parênteses.
+
+Exemplo:
+
+```c
+if (nota >= 10 && faltas <= 5) {
+    printf("Aprovado\n");
+}
+```
+
+Neste caso, o aluno só é aprovado se tiver nota suficiente e poucas faltas. Se fosse usado `||`, bastava uma das condições ser verdadeira, mudando a regra do problema.
 
 ---
 
@@ -1948,46 +2062,45 @@ Passo a passo:
 4. Compara o palpite com o número secreto usando `if/else`.
 5. Atualiza a contagem de tentativas e apresenta o resultado final quando o ciclo terminar.
 
-> Nota: Se quiseres usar um número secreto aleatório, podes usar a função `rand()` da biblioteca `<stdlib.h>`, mas isso é opcional para este exercício.
-
-> Resolução com rand():
+> Resolução:
 
 ```c
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 int main() {
-    int numero_secreto, palpite;
+    int numero_secreto = 42;
+    int palpite;
     int tentativas = 0;
-    const int MAX_TENTATIVAS = 5;
+    int acertou = 0;
+    int max_tentativas = 5;
 
-    // Inicializa o gerador de números aleatórios
-    srand(time(NULL)); // Usa o tempo atual como semente para garantir números diferentes a cada execução
-    numero_secreto = rand() % 100 + 1; // Número entre 1 e 100
+    printf("Adivinha o numero secreto entre 1 e 100.\n");
 
-    printf("Bem-vindo ao jogo de adivinhação!\n");
-    printf("Tenta adivinhar o número secreto entre 1 e 100.\n");
-    printf("Tens %d tentativas.\n", MAX_TENTATIVAS);
+    while (tentativas < max_tentativas && !acertou) {
+        printf("Tentativa %d de %d: ", tentativas + 1, max_tentativas);
+        if (scanf("%d", &palpite) != 1) {
+            printf("Valor invalido.\n");
+            return 1;
+        }
 
-    while (tentativas < MAX_TENTATIVAS) {
-        printf("Tentativa %d: ", tentativas + 1);
-        scanf("%d", &palpite);
+        tentativas++;
 
         if (palpite < numero_secreto) {
-            printf("Demasiado baixo!\n");
+            printf("Demasiado baixo.\n");
         } else if (palpite > numero_secreto) {
-            printf("Demasiado alto!\n");
+            printf("Demasiado alto.\n");
         } else {
-            printf("Parabéns! Adivinhaste o número secreto!\n");
-            return 0; // Termina o programa com vitória
+            acertou = 1;
         }
-        tentativas++;
     }
 
-    printf("Fim do jogo! O número secreto era: %d\n", numero_secreto);
-    return 0; // Termina o programa com derrota
+    if (acertou) {
+        printf("Vitoria! Acertaste em %d tentativas.\n", tentativas);
+    } else {
+        printf("Derrota. O numero secreto era %d.\n", numero_secreto);
+    }
+
+    return 0;
 }
 ```
 
@@ -2075,6 +2188,48 @@ Passo a passo:
 4. Dentro dele, cria outro ciclo para percorrer as colunas.
 5. Em cada posição, atualiza a soma, verifica se o valor é par e compara com o maior valor encontrado até ao momento.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define LINHAS 4
+#define COLUNAS 4
+
+int main() {
+    int matriz[LINHAS][COLUNAS] = {
+        {4, 7, 2, 9},
+        {1, 8, 6, 3},
+        {5, 10, 12, 0},
+        {-2, 11, 14, 6}
+    };
+    int soma = 0;
+    int pares = 0;
+    int maior = matriz[0][0];
+
+    for (int linha = 0; linha < LINHAS; linha++) {
+        for (int coluna = 0; coluna < COLUNAS; coluna++) {
+            int valor = matriz[linha][coluna];
+            soma += valor;
+
+            if (valor % 2 == 0) {
+                pares++;
+            }
+
+            if (valor > maior) {
+                maior = valor;
+            }
+        }
+    }
+
+    printf("Soma: %d\n", soma);
+    printf("Quantidade de pares: %d\n", pares);
+    printf("Maior valor: %d\n", maior);
+
+    return 0;
+}
+```
+
 ### Exercício 42 - Validação
 
 Objetivo: repetir a leitura até o utilizador introduzir um valor válido.
@@ -2097,6 +2252,35 @@ Passo a passo:
 3. Cria uma condição que identifique notas menores que 0 ou maiores que 20.
 4. Enquanto a condição indicar erro, mostra uma mensagem e volta a ler.
 5. Quando o ciclo terminar, apresenta a nota aceite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    double nota;
+
+    printf("Nota (0 a 20): ");
+    if (scanf("%lf", &nota) != 1) {
+        printf("Erro: nota invalida.\n");
+        return 1;
+    }
+
+    while (nota < 0 || nota > 20) {
+        printf("Nota fora do intervalo.\n");
+        printf("Nota (0 a 20): ");
+        if (scanf("%lf", &nota) != 1) {
+            printf("Erro: nota invalida.\n");
+            return 1;
+        }
+    }
+
+    printf("Nota aceite: %.2f\n", nota);
+
+    return 0;
+}
+```
 
 ### Exercício 43 - Menu persistente
 
@@ -2127,6 +2311,69 @@ Passo a passo:
 4. Usa `switch` ou `if/else` para tratar cada opção.
 5. Mantém o ciclo ativo enquanto a opção escolhida for diferente de `0`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int opcao;
+    double ultima_nota = 0;
+    int existe_nota = 0;
+
+    do {
+        printf("\n1 - Inserir nota\n");
+        printf("2 - Mostrar ultima nota\n");
+        printf("3 - Classificar ultima nota\n");
+        printf("0 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Nota: ");
+                scanf("%lf", &ultima_nota);
+
+                if (ultima_nota >= 0 && ultima_nota <= 20) {
+                    existe_nota = 1;
+                    printf("Nota guardada.\n");
+                } else {
+                    printf("Nota invalida.\n");
+                }
+                break;
+
+            case 2:
+                if (existe_nota) {
+                    printf("Ultima nota: %.2f\n", ultima_nota);
+                } else {
+                    printf("Ainda nao existe nota.\n");
+                }
+                break;
+
+            case 3:
+                if (!existe_nota) {
+                    printf("Ainda nao existe nota.\n");
+                } else if (ultima_nota >= 10) {
+                    printf("Classificacao: positiva.\n");
+                } else {
+                    printf("Classificacao: negativa.\n");
+                }
+                break;
+
+            case 0:
+                printf("A sair...\n");
+                break;
+
+            default:
+                printf("Opcao invalida.\n");
+                break;
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
+```
+
 ### Exercício 44 - Simulação de saldo
 
 Objetivo: integrar menu, validação, repetição e decisões num programa mais próximo de um caso real.
@@ -2156,6 +2403,73 @@ Passo a passo:
 4. Valida os valores antes de alterar o saldo.
 5. Atualiza o saldo apenas quando a operação for válida.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    double saldo;
+    double valor;
+    int opcao;
+
+    printf("Saldo inicial: ");
+    if (scanf("%lf", &saldo) != 1 || saldo < 0) {
+        printf("Saldo inicial invalido.\n");
+        return 1;
+    }
+
+    do {
+        printf("\n1 - Consultar saldo\n");
+        printf("2 - Depositar dinheiro\n");
+        printf("3 - Levantar dinheiro\n");
+        printf("0 - Terminar\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Saldo atual: %.2f euros\n", saldo);
+                break;
+
+            case 2:
+                printf("Valor a depositar: ");
+                scanf("%lf", &valor);
+
+                if (valor > 0) {
+                    saldo += valor;
+                    printf("Deposito aceite.\n");
+                } else {
+                    printf("Deposito recusado.\n");
+                }
+                break;
+
+            case 3:
+                printf("Valor a levantar: ");
+                scanf("%lf", &valor);
+
+                if (valor > 0 && valor <= saldo) {
+                    saldo -= valor;
+                    printf("Levantamento aceite.\n");
+                } else {
+                    printf("Levantamento recusado.\n");
+                }
+                break;
+
+            case 0:
+                printf("Operacao terminada.\n");
+                break;
+
+            default:
+                printf("Opcao invalida.\n");
+                break;
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
+```
+
 ### Exercício 45 - Reflexão
 
 Objetivo: escolher a estrutura de repetição adequada a diferentes problemas.
@@ -2182,6 +2496,15 @@ Passo a passo:
 3. Verifica se a ação precisa de acontecer antes do primeiro teste.
 4. Escolhe a estrutura mais adequada.
 5. Escreve uma justificação curta e técnica para cada caso.
+
+> Resolução:
+
+1. Usaria `for`, porque o número de repetições é conhecido: de 1 a 100.
+2. Usaria `while`, porque não se sabe quantas tentativas serão necessárias até a palavra-passe estar correta.
+3. Usaria `do while`, porque o menu deve aparecer pelo menos uma vez antes de testar a opção.
+4. Usaria `while`, porque a leitura termina quando aparece um valor especial (`-999`).
+5. Usaria `for`, porque o tamanho do array é conhecido e queremos percorrer todas as posições.
+6. Usaria `do while` se a pergunta tiver de ser feita pelo menos uma vez; usaria `while` se a resposta inicial já existir antes do ciclo.
 
 ---
 
@@ -2566,6 +2889,65 @@ Passo a passo:
 4. Implementa cada parte mantendo baixo acoplamento entre componentes.
 5. Compila e testa o conjunto para confirmar que a organização funciona.
 
+> Resolução:
+
+Exemplo de organização em três ficheiros.
+
+`operacoes.h`:
+
+```c
+#ifndef OPERACOES_H
+#define OPERACOES_H
+
+int somar(int a, int b);
+int subtrair(int a, int b);
+int multiplicar(int a, int b);
+
+#endif
+```
+
+`operacoes.c`:
+
+```c
+#include "operacoes.h"
+
+int somar(int a, int b) {
+    return a + b;
+}
+
+int subtrair(int a, int b) {
+    return a - b;
+}
+
+int multiplicar(int a, int b) {
+    return a * b;
+}
+```
+
+`main.c`:
+
+```c
+#include <stdio.h>
+#include "operacoes.h"
+
+int main() {
+    int a = 8;
+    int b = 4;
+
+    printf("Soma: %d\n", somar(a, b));
+    printf("Subtracao: %d\n", subtrair(a, b));
+    printf("Multiplicacao: %d\n", multiplicar(a, b));
+
+    return 0;
+}
+```
+
+Compilação:
+
+```bash
+cc main.c operacoes.c -o programa
+```
+
 ### Exercício 54 - Contador de chamadas
 
 Objetivo: praticar contador de chamadas aplicando os conceitos de funções, escopo e parâmetros.
@@ -2587,6 +2969,29 @@ Passo a passo:
 3. Implementa a lógica principal usando a estrutura ou conceito pedido.
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int total_chamadas = 0;
+
+void mostrar_mensagem() {
+    total_chamadas++;
+    printf("Funcao chamada. Total: %d\n", total_chamadas);
+}
+
+int main() {
+    mostrar_mensagem();
+    mostrar_mensagem();
+    mostrar_mensagem();
+
+    printf("A funcao foi chamada %d vezes.\n", total_chamadas);
+
+    return 0;
+}
+```
 
 ### Exercício 55 - Refatoração
 
@@ -2610,6 +3015,80 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+double ler_numero() {
+    double numero;
+
+    printf("Numero: ");
+    scanf("%lf", &numero);
+
+    return numero;
+}
+
+char ler_operador() {
+    char operador;
+
+    printf("Operador (+, -, *, /): ");
+    scanf(" %c", &operador);
+
+    return operador;
+}
+
+double calcular(double a, double b, char operador) {
+    if (operador == '+') {
+        return a + b;
+    }
+
+    if (operador == '-') {
+        return a - b;
+    }
+
+    if (operador == '*') {
+        return a * b;
+    }
+
+    if (operador == '/' && b != 0) {
+        return a / b;
+    }
+
+    return 0;
+}
+
+int operador_valido(char operador, double b) {
+    if (operador == '+' || operador == '-' || operador == '*') {
+        return 1;
+    }
+
+    if (operador == '/' && b != 0) {
+        return 1;
+    }
+
+    return 0;
+}
+
+void mostrar_resultado(double resultado) {
+    printf("Resultado: %.2f\n", resultado);
+}
+
+int main() {
+    double a = ler_numero();
+    double b = ler_numero();
+    char operador = ler_operador();
+
+    if (operador_valido(operador, b)) {
+        mostrar_resultado(calcular(a, b, operador));
+    } else {
+        printf("Operacao invalida.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 56 - Mini biblioteca
 
 Objetivo: praticar mini biblioteca aplicando os conceitos de funções, escopo e parâmetros.
@@ -2632,6 +3111,54 @@ Passo a passo:
 4. Acrescenta validações simples para entradas ou casos especiais relevantes.
 5. Compila, executa e testa com valores normais e pelo menos um caso limite.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int nota_valida(double nota) {
+    return nota >= 0 && nota <= 20;
+}
+
+double calcular_media(double a, double b, double c) {
+    return (a + b + c) / 3.0;
+}
+
+int aluno_aprovado(double media) {
+    return media >= 10;
+}
+
+void mostrar_resultado(double media) {
+    printf("Media: %.2f\n", media);
+
+    if (aluno_aprovado(media)) {
+        printf("Resultado: aprovado\n");
+    } else {
+        printf("Resultado: reprovado\n");
+    }
+}
+
+int main() {
+    double nota1, nota2, nota3;
+
+    printf("Nota 1: ");
+    scanf("%lf", &nota1);
+    printf("Nota 2: ");
+    scanf("%lf", &nota2);
+    printf("Nota 3: ");
+    scanf("%lf", &nota3);
+
+    if (!nota_valida(nota1) || !nota_valida(nota2) || !nota_valida(nota3)) {
+        printf("Existe pelo menos uma nota invalida.\n");
+        return 1;
+    }
+
+    mostrar_resultado(calcular_media(nota1, nota2, nota3));
+
+    return 0;
+}
+```
+
 ### Exercício 57 - Reflexão
 
 Objetivo: consolidar os conceitos de funções, escopo e parâmetros através de uma explicação escrita e justificada.
@@ -2652,6 +3179,32 @@ Passo a passo:
 3. Justifica cada escolha com base no tipo de problema apresentado.
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+
+> Resolução:
+
+Usa-se `return` quando a função precisa de devolver um único resultado principal.
+
+Exemplo:
+
+```c
+int dobro(int numero) {
+    return numero * 2;
+}
+```
+
+Usa-se parâmetro por ponteiro quando a função precisa de alterar uma variável que existe fora dela, ou quando precisa de devolver mais do que um resultado.
+
+Exemplo:
+
+```c
+void trocar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+```
+
+Neste caso, se os parâmetros não fossem ponteiros, a função só alterava cópias locais. Com ponteiros, a função altera as variáveis originais.
 
 ---
 
@@ -2682,6 +3235,16 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
+> Resolução:
+
+1. Abrir as definições do editor.
+2. Ativar a visualização de linha e coluna na barra de estado.
+3. Definir indentação com 4 espaços.
+4. Criar ou abrir um ficheiro `main.c`.
+5. Escrever um pequeno programa e confirmar que os blocos ficam alinhados com 4 espaços.
+
+Conclusão: a linha, a coluna e a indentação ajudam a localizar erros e tornam o código mais legível.
+
 ### Exercício 59 - Atalhos
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
@@ -2702,6 +3265,25 @@ Passo a passo:
 3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
+
+> Resolução:
+
+Atalhos praticados:
+
+1. Guardar ficheiro.
+2. Abrir ficheiro.
+3. Fechar ficheiro.
+4. Copiar linha.
+5. Cortar linha.
+6. Colar.
+7. Desfazer.
+8. Refazer.
+9. Procurar texto.
+10. Substituir texto.
+11. Comentar linha.
+12. Abrir terminal integrado.
+
+Conclusão: os atalhos reduzem tarefas repetitivas e deixam mais atenção disponível para pensar no código.
 
 ### Exercício 60 - Pesquisa global
 
@@ -2724,6 +3306,16 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
+> Resolução:
+
+1. Abrir o projeto no editor.
+2. Usar a pesquisa global.
+3. Procurar o nome da função, por exemplo `calcular_media`.
+4. Confirmar onde a função é declarada, implementada e chamada.
+5. Abrir cada resultado e verificar se a ocorrência pertence mesmo à função procurada.
+
+Conclusão: a pesquisa global permite perceber rapidamente onde uma função é usada num projeto.
+
 ### Exercício 61 - Substituição segura
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
@@ -2744,6 +3336,16 @@ Passo a passo:
 3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
+
+> Resolução:
+
+1. Escolher uma variável com nome pouco claro, por exemplo `n`.
+2. Confirmar o seu escopo antes de renomear.
+3. Usar a opção de renomear símbolo, se existir.
+4. Se for usada substituição manual, confirmar cada ocorrência antes de substituir.
+5. Compilar o programa depois da alteração.
+
+Conclusão: renomear com cuidado evita alterar texto parecido que não pertence à mesma variável.
 
 ### Exercício 62 - Navegação
 
@@ -2766,6 +3368,16 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
+> Resolução:
+
+1. Criar ou abrir um projeto com `main.c`, `operacoes.c` e `operacoes.h`.
+2. No `main.c`, clicar numa chamada como `somar(a, b)`.
+3. Usar "go to definition".
+4. Confirmar que o editor abre a implementação da função em `operacoes.c` ou a declaração em `operacoes.h`.
+5. Voltar ao ficheiro anterior usando o atalho de navegação do editor.
+
+Conclusão: navegar entre `.h` e `.c` ajuda a perceber a ligação entre interface e implementação.
+
 ### Exercício 63 - Formatação
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
@@ -2786,6 +3398,16 @@ Passo a passo:
 3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
+
+> Resolução:
+
+1. Abrir um ficheiro C com indentação irregular.
+2. Aplicar a opção de formatar documento.
+3. Confirmar se os blocos `if`, `for`, `while` e funções ficaram alinhados.
+4. Ajustar manualmente algum ponto que o formatador não tenha resolvido bem.
+5. Compilar para garantir que a formatação não alterou a lógica.
+
+Conclusão: a formatação torna o código mais fácil de ler, mas não substitui a revisão do programador.
 
 ### Exercício 64 - Terminal
 
@@ -2808,6 +3430,23 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
+> Resolução:
+
+Comandos usados no terminal integrado:
+
+```bash
+cc main.c -o programa
+./programa
+```
+
+Se o programa tiver avisos, compilar com:
+
+```bash
+cc -Wall -Wextra -pedantic main.c -o programa
+```
+
+Conclusão: o terminal integrado permite compilar, executar e corrigir erros sem sair do editor.
+
 ### Exercício 65 - Tarefa automática
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
@@ -2828,6 +3467,16 @@ Passo a passo:
 3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
+
+> Resolução:
+
+1. Abrir a configuração de tarefas do editor.
+2. Criar uma tarefa de build.
+3. Definir o comando de compilação, por exemplo `cc main.c -o programa`.
+4. Executar a tarefa.
+5. Confirmar no terminal integrado se o executável foi criado.
+
+Conclusão: uma tarefa de build evita repetir sempre o mesmo comando manualmente.
 
 ### Exercício 66 - Debug inicial
 
@@ -2850,6 +3499,16 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
+> Resolução:
+
+1. Criar um programa com um ciclo `for`.
+2. Colocar um breakpoint dentro do ciclo.
+3. Iniciar o debug.
+4. Observar o valor da variável de controlo a cada paragem.
+5. Avançar passo a passo até perceber como o valor muda.
+
+Conclusão: o breakpoint permite ver o programa a executar devagar e confirmar o valor real das variáveis.
+
 ### Exercício 67 - Refatoração assistida
 
 Objetivo: praticar uma funcionalidade de editor no contexto de programação em C.
@@ -2870,6 +3529,16 @@ Passo a passo:
 3. Observa o resultado e confirma se corresponde ao objetivo do exercício.
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
+
+> Resolução:
+
+1. Escolher um bloco de código repetido, por exemplo cálculo de média.
+2. Criar uma função com nome claro, como `calcular_media`.
+3. Mover o bloco para dentro da função.
+4. Substituir o bloco antigo por uma chamada à função.
+5. Compilar e testar para confirmar que o resultado é o mesmo.
+
+Conclusão: extrair uma função reduz repetição e dá nomes claros às responsabilidades do programa.
 
 ### Exercício 68 - Produtividade
 
@@ -2892,6 +3561,19 @@ Passo a passo:
 4. Corrige configurações ou passos caso o resultado não seja o esperado.
 5. Regista uma conclusão curta sobre o que a funcionalidade permite fazer.
 
+> Resolução:
+
+Exemplo de registo:
+
+```text
+Tarefa: comentar 10 linhas e compilar o programa.
+Sem atalhos: 3 minutos e 20 segundos.
+Com atalhos: 1 minuto e 40 segundos.
+Diferença: menos 1 minuto e 40 segundos.
+```
+
+Conclusão: atalhos simples podem reduzir o tempo gasto em tarefas repetitivas, especialmente em projetos maiores.
+
 ### Exercício 69 - Reflexão
 
 Objetivo: consolidar os conceitos de funcionalidades do editor de texto através de uma explicação escrita e justificada.
@@ -2912,6 +3594,20 @@ Passo a passo:
 3. Justifica cada escolha com base no tipo de problema apresentado.
 4. Acrescenta um exemplo simples quando isso tornar a explicação mais clara.
 5. Revê a resposta para garantir que não ficou vaga ou apenas decorada.
+
+> Resolução:
+
+Um editor bem usado melhora a aprendizagem porque reduz distrações técnicas e ajuda o aluno a perceber melhor o código.
+
+Exemplos:
+
+- a indentação mostra visualmente onde começa e termina cada bloco;
+- a pesquisa ajuda a encontrar funções e variáveis rapidamente;
+- o terminal integrado aproxima compilação, execução e correção;
+- o debug permite observar variáveis passo a passo;
+- a formatação torna os erros de estrutura mais fáceis de encontrar.
+
+Para iniciantes, isto é importante porque muitos erros aparecem por distração: chavetas mal alinhadas, nomes trocados, ficheiros errados ou comandos de compilação repetidos incorretamente.
 
 ---
 
@@ -2993,6 +3689,51 @@ Passo a passo:
 5. Calcula a média com conversão para `double` ou `float`.
 6. Testa também com valores negativos para confirmar que máximo e mínimo estão corretos.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL 20
+
+int main() {
+    int valores[TOTAL];
+    int soma = 0;
+    int maximo;
+    int minimo;
+    double media;
+
+    for (int i = 0; i < TOTAL; i++) {
+        printf("Valor %d: ", i + 1);
+        scanf("%d", &valores[i]);
+    }
+
+    maximo = valores[0];
+    minimo = valores[0];
+
+    for (int i = 0; i < TOTAL; i++) {
+        soma += valores[i];
+
+        if (valores[i] > maximo) {
+            maximo = valores[i];
+        }
+
+        if (valores[i] < minimo) {
+            minimo = valores[i];
+        }
+    }
+
+    media = (double)soma / TOTAL;
+
+    printf("Soma: %d\n", soma);
+    printf("Media: %.2f\n", media);
+    printf("Maximo: %d\n", maximo);
+    printf("Minimo: %d\n", minimo);
+
+    return 0;
+}
+```
+
 ### Exercício 72 - Pares e ímpares
 
 Objetivo: praticar condições dentro do percurso de um array.
@@ -3014,6 +3755,41 @@ Passo a passo:
 4. Se o valor for par, aumenta o contador de pares e mostra esse valor.
 5. Caso contrário, aumenta o contador de ímpares.
 6. Testa com uma lista mista e com uma lista só de números pares.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL 12
+
+int main() {
+    int valores[TOTAL];
+    int pares = 0;
+    int impares = 0;
+
+    for (int i = 0; i < TOTAL; i++) {
+        printf("Valor %d: ", i + 1);
+        scanf("%d", &valores[i]);
+    }
+
+    printf("Valores pares: ");
+
+    for (int i = 0; i < TOTAL; i++) {
+        if (valores[i] % 2 == 0) {
+            pares++;
+            printf("%d ", valores[i]);
+        } else {
+            impares++;
+        }
+    }
+
+    printf("\nTotal de pares: %d\n", pares);
+    printf("Total de impares: %d\n", impares);
+
+    return 0;
+}
+```
 
 ### Exercício 73 - Array passado para função
 
@@ -3037,6 +3813,41 @@ Passo a passo:
 4. Dentro da função, percorre o array com `for`.
 5. Devolve a soma com `return`.
 6. Testa com valores cuja soma seja fácil de confirmar.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL 8
+
+int calcular_soma(int valores[], int tamanho);
+
+int main() {
+    int valores[TOTAL];
+    int soma;
+
+    for (int i = 0; i < TOTAL; i++) {
+        printf("Valor %d: ", i + 1);
+        scanf("%d", &valores[i]);
+    }
+
+    soma = calcular_soma(valores, TOTAL);
+    printf("Soma: %d\n", soma);
+
+    return 0;
+}
+
+int calcular_soma(int valores[], int tamanho) {
+    int soma = 0;
+
+    for (int i = 0; i < tamanho; i++) {
+        soma += valores[i];
+    }
+
+    return soma;
+}
+```
 
 ### Exercício 74 - Pesquisa linear
 
@@ -3195,6 +4006,34 @@ Passo a passo:
 4. Verifica se o resultado da comparação é `0`.
 5. Testa com duas palavras iguais e com duas palavras diferentes.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define TAMANHO 30
+
+int main() {
+    char palavra1[TAMANHO];
+    char palavra2[TAMANHO];
+
+    printf("Primeira palavra: ");
+    scanf("%29s", palavra1);
+
+    printf("Segunda palavra: ");
+    scanf("%29s", palavra2);
+
+    if (strcmp(palavra1, palavra2) == 0) {
+        printf("As palavras sao iguais.\n");
+    } else {
+        printf("As palavras sao diferentes.\n");
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 77 - Construção de nome completo
 
 Objetivo: juntar strings respeitando a capacidade dos arrays.
@@ -3218,6 +4057,36 @@ Passo a passo:
 5. Acrescenta o apelido.
 6. Mostra o resultado e testa com nomes curtos.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define TAM_NOME 30
+#define TAM_COMPLETO 70
+
+int main() {
+    char primeiro_nome[TAM_NOME];
+    char apelido[TAM_NOME];
+    char nome_completo[TAM_COMPLETO];
+
+    printf("Primeiro nome: ");
+    scanf("%29s", primeiro_nome);
+
+    printf("Apelido: ");
+    scanf("%29s", apelido);
+
+    strcpy(nome_completo, primeiro_nome);
+    strcat(nome_completo, " ");
+    strcat(nome_completo, apelido);
+
+    printf("Nome completo: %s\n", nome_completo);
+
+    return 0;
+}
+```
+
 ### Exercício 78 - Lista de nomes
 
 Objetivo: praticar matriz de caracteres, ou seja, vários textos guardados numa só estrutura.
@@ -3240,6 +4109,34 @@ Passo a passo:
 4. Usa outro ciclo para mostrar os nomes.
 5. Testa com nomes simples e nomes com espaços.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define TOTAL_ALUNOS 5
+#define TAM_NOME 50
+
+int main() {
+    char nomes[TOTAL_ALUNOS][TAM_NOME];
+
+    for (int i = 0; i < TOTAL_ALUNOS; i++) {
+        printf("Nome do aluno %d: ", i + 1);
+        fgets(nomes[i], TAM_NOME, stdin);
+        nomes[i][strcspn(nomes[i], "\n")] = '\0';
+    }
+
+    printf("\nLista de alunos:\n");
+
+    for (int i = 0; i < TOTAL_ALUNOS; i++) {
+        printf("%d. %s\n", i + 1, nomes[i]);
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 79 - Matriz 3x3: leitura, visualização e soma
 
 Objetivo: praticar leitura e percurso completo de uma matriz.
@@ -3261,6 +4158,41 @@ Passo a passo:
 3. Soma os valores durante a leitura ou num segundo percurso.
 4. Mostra a matriz com quebras de linha no fim de cada linha.
 5. Mostra a soma total.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define LINHAS 3
+#define COLUNAS 3
+
+int main() {
+    int matriz[LINHAS][COLUNAS];
+    int soma = 0;
+
+    for (int linha = 0; linha < LINHAS; linha++) {
+        for (int coluna = 0; coluna < COLUNAS; coluna++) {
+            printf("Valor [%d][%d]: ", linha, coluna);
+            scanf("%d", &matriz[linha][coluna]);
+            soma += matriz[linha][coluna];
+        }
+    }
+
+    printf("\nMatriz:\n");
+
+    for (int linha = 0; linha < LINHAS; linha++) {
+        for (int coluna = 0; coluna < COLUNAS; coluna++) {
+            printf("%4d", matriz[linha][coluna]);
+        }
+        printf("\n");
+    }
+
+    printf("Soma total: %d\n", soma);
+
+    return 0;
+}
+```
 
 ### Exercício 80 - Matriz 3x3: diagonal, linhas e colunas
 
@@ -3288,6 +4220,54 @@ Passo a passo:
 4. Percorre cada coluna e calcula a sua soma.
 5. Testa com uma matriz simples, como valores de 1 a 9.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TAMANHO 3
+
+int main() {
+    int matriz[TAMANHO][TAMANHO];
+    int soma_diagonal = 0;
+
+    for (int linha = 0; linha < TAMANHO; linha++) {
+        for (int coluna = 0; coluna < TAMANHO; coluna++) {
+            printf("Valor [%d][%d]: ", linha, coluna);
+            scanf("%d", &matriz[linha][coluna]);
+        }
+    }
+
+    for (int i = 0; i < TAMANHO; i++) {
+        soma_diagonal += matriz[i][i];
+    }
+
+    printf("Soma da diagonal principal: %d\n", soma_diagonal);
+
+    for (int linha = 0; linha < TAMANHO; linha++) {
+        int soma_linha = 0;
+
+        for (int coluna = 0; coluna < TAMANHO; coluna++) {
+            soma_linha += matriz[linha][coluna];
+        }
+
+        printf("Soma da linha %d: %d\n", linha + 1, soma_linha);
+    }
+
+    for (int coluna = 0; coluna < TAMANHO; coluna++) {
+        int soma_coluna = 0;
+
+        for (int linha = 0; linha < TAMANHO; linha++) {
+            soma_coluna += matriz[linha][coluna];
+        }
+
+        printf("Soma da coluna %d: %d\n", coluna + 1, soma_coluna);
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 81 - Desafio final: ordenação e reflexão
 
 Objetivo: consolidar arrays através de um desafio um pouco mais exigente e de uma explicação escrita.
@@ -3311,15 +4291,62 @@ Passo a passo:
 5. Escreve uma explicação curta sobre quando um array estático é suficiente e quando uma estrutura dinâmica pode ser necessária.
 6. Testa com valores repetidos, valores já ordenados e valores em ordem inversa.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL 10
+
+int main() {
+    int valores[TOTAL];
+
+    for (int i = 0; i < TOTAL; i++) {
+        printf("Valor %d: ", i + 1);
+        scanf("%d", &valores[i]);
+    }
+
+    printf("Array original: ");
+    for (int i = 0; i < TOTAL; i++) {
+        printf("%d ", valores[i]);
+    }
+    printf("\n");
+
+    for (int i = 0; i < TOTAL - 1; i++) {
+        for (int j = 0; j < TOTAL - 1 - i; j++) {
+            if (valores[j] > valores[j + 1]) {
+                int temp = valores[j];
+                valores[j] = valores[j + 1];
+                valores[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Array ordenado: ");
+    for (int i = 0; i < TOTAL; i++) {
+        printf("%d ", valores[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
+
+Explicação:
+
+Um array estático é suficiente quando sabemos, antes de executar o programa, quantos elementos precisamos de guardar. Por exemplo, uma matriz 3x3 ou um vetor com 10 notas.
+
+Uma estrutura dinâmica é mais adequada quando o tamanho pode variar durante a execução. Por exemplo, se o utilizador indicar quantos valores quer inserir, podemos reservar memória com `malloc`.
+
 ---
 
 <a id="exercicios-13"></a>
 
-## 13 · Estruturas de Dados Compostas: `struct`, `union` e `enum`
+## 13 · Estruturas de Dados Compostas: `struct`, `union` e constantes simples
 
 Fonte: [13_estruturas_compostas_struct_union_enum.md](./13_estruturas_compostas_struct_union_enum.md)
 
-Ordem recomendada: resolver por sequência, do 82 ao 93. Os exercícios 82 a 87 devem consolidar bem `struct` antes de avançares para `enum`, apontadores e `union`.
+Ordem recomendada: resolver por sequência, do 82 ao 93. Os exercícios 82 a 87 devem consolidar bem `struct` antes de avançares para constantes com nome, apontadores e `union`.
 
 ### Exercício 82 - `struct` básico
 
@@ -3343,6 +4370,37 @@ Passo a passo:
 4. Inicializa todos os campos com valores simples.
 5. Mostra os campos usando o operador ponto (`.`).
 6. Para a disponibilidade, mostra uma mensagem como "disponível" ou "indisponível".
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    char titulo[100];
+    char autor[50];
+    int ano;
+    double preco;
+    int disponivel;
+} Livro;
+
+int main() {
+    Livro livro = {"Os Maias", "Eca de Queiros", 1888, 12.50, 1};
+
+    printf("Titulo: %s\n", livro.titulo);
+    printf("Autor: %s\n", livro.autor);
+    printf("Ano: %d\n", livro.ano);
+    printf("Preco: %.2f\n", livro.preco);
+
+    if (livro.disponivel) {
+        printf("Disponibilidade: disponivel\n");
+    } else {
+        printf("Disponibilidade: indisponivel\n");
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 83 - Leitura e impressão
 
@@ -3447,6 +4505,47 @@ Passo a passo:
 5. Percorre o array e compara `livros[i].ano > 2020`.
 6. Mostra título, autor e ano dos livros encontrados.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL_LIVROS 5
+
+typedef struct {
+    char titulo[100];
+    char autor[50];
+    int ano;
+    double preco;
+} Livro;
+
+int main() {
+    Livro livros[TOTAL_LIVROS] = {
+        {"Livro A", "Autor A", 2019, 10.0},
+        {"Livro B", "Autor B", 2021, 12.5},
+        {"Livro C", "Autor C", 2023, 15.0},
+        {"Livro D", "Autor D", 2020, 8.0},
+        {"Livro E", "Autor E", 2024, 20.0}
+    };
+    int encontrados = 0;
+
+    for (int i = 0; i < TOTAL_LIVROS; i++) {
+        if (livros[i].ano > 2020) {
+            printf("%s, %s, %d\n", livros[i].titulo, livros[i].autor, livros[i].ano);
+            encontrados++;
+        }
+    }
+
+    if (encontrados == 0) {
+        printf("Nenhum livro encontrado.\n");
+    } else {
+        printf("Total encontrado: %d\n", encontrados);
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 85 - Função que recebe uma `struct`
 
 Objetivo: separar responsabilidades criando uma função que recebe uma `struct` por valor.
@@ -3469,6 +4568,36 @@ Passo a passo:
 4. Chama `mostrar_produto` para cada produto.
 5. Implementa a função depois do `main`.
 6. Confirma que todos os campos aparecem no output.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    int codigo;
+    char nome[50];
+    double preco;
+    int stock;
+} Produto;
+
+void mostrar_produto(Produto produto);
+
+int main() {
+    Produto p1 = {101, "Caneta", 1.20, 30};
+    Produto p2 = {102, "Caderno", 2.50, 15};
+
+    mostrar_produto(p1);
+    mostrar_produto(p2);
+
+    return 0;
+}
+
+void mostrar_produto(Produto produto) {
+    printf("Codigo: %d | Nome: %s | Preco: %.2f | Stock: %d\n",
+           produto.codigo, produto.nome, produto.preco, produto.stock);
+}
+```
 
 ### Exercício 86 - Turma com array de `struct`
 
@@ -3497,6 +4626,62 @@ Passo a passo:
 6. No fim, mostra a média da turma e lista os alunos com média maior ou igual a 10.
 7. Testa com uma turma em que pelo menos um aluno tem negativa.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define TOTAL_ALUNOS 5
+
+typedef struct {
+    int numero;
+    char nome[50];
+    double media;
+} Aluno;
+
+int main() {
+    Aluno turma[TOTAL_ALUNOS];
+    double soma = 0;
+    int validas = 0;
+
+    for (int i = 0; i < TOTAL_ALUNOS; i++) {
+        printf("Numero do aluno %d: ", i + 1);
+        scanf("%d", &turma[i].numero);
+        getchar();
+
+        printf("Nome: ");
+        fgets(turma[i].nome, sizeof turma[i].nome, stdin);
+        turma[i].nome[strcspn(turma[i].nome, "\n")] = '\0';
+
+        printf("Media: ");
+        scanf("%lf", &turma[i].media);
+
+        if (turma[i].media >= 0 && turma[i].media <= 20) {
+            soma += turma[i].media;
+            validas++;
+        } else {
+            printf("Media invalida. Este valor nao entra no calculo.\n");
+        }
+    }
+
+    if (validas > 0) {
+        printf("Media da turma: %.2f\n", soma / validas);
+    } else {
+        printf("Nao existem medias validas.\n");
+    }
+
+    printf("Alunos com media positiva:\n");
+    for (int i = 0; i < TOTAL_ALUNOS; i++) {
+        if (turma[i].media >= 10 && turma[i].media <= 20) {
+            printf("%d - %s - %.2f\n", turma[i].numero, turma[i].nome, turma[i].media);
+        }
+    }
+
+    return 0;
+}
+```
+
 ### Exercício 87 - Pesquisa linear em array de `struct`
 
 Objetivo: procurar um registo dentro de um array de `struct`.
@@ -3522,16 +4707,64 @@ Passo a passo:
 6. Guarda a posição quando encontrares o aluno.
 7. Testa um número existente e um número inexistente.
 
-### Exercício 88 - `enum` para valores com nome
+> Resolução:
 
-Objetivo: usar `enum` para substituir números mágicos por nomes claros.
+```c
+#include <stdio.h>
 
-Define um `enum DiaSemana` com os dias úteis e cria um programa que lê um número de 1 a 5 e mostra o nome do dia correspondente.
+#define TOTAL_ALUNOS 5
+
+typedef struct {
+    int numero;
+    char nome[50];
+    double media;
+} Aluno;
+
+int main() {
+    Aluno turma[TOTAL_ALUNOS] = {
+        {101, "Ana", 16.5},
+        {102, "Bruno", 9.5},
+        {103, "Carla", 18.0},
+        {104, "Diogo", 12.0},
+        {105, "Eva", 14.5}
+    };
+    int numero;
+    int encontrado = 0;
+    int posicao = -1;
+
+    printf("Numero a pesquisar: ");
+    scanf("%d", &numero);
+
+    for (int i = 0; i < TOTAL_ALUNOS; i++) {
+        if (turma[i].numero == numero) {
+            encontrado = 1;
+            posicao = i;
+            break;
+        }
+    }
+
+    if (encontrado) {
+        printf("Aluno encontrado na posicao %d.\n", posicao + 1);
+        printf("%d - %s - %.2f\n",
+               turma[posicao].numero, turma[posicao].nome, turma[posicao].media);
+    } else {
+        printf("Aluno nao encontrado.\n");
+    }
+
+    return 0;
+}
+```
+
+### Exercício 88 - Constantes para valores com nome
+
+Objetivo: usar constantes com nome para substituir números mágicos por nomes claros.
+
+Define constantes para os dias úteis e cria um programa que lê um número de 1 a 5 e mostra o nome do dia correspondente.
 
 Requisitos:
 
-- O `enum` deve ter nomes como `SEGUNDA`, `TERCA`, `QUARTA`, `QUINTA`, `SEXTA`.
-- Atribui valores explícitos ao `enum`, por exemplo `SEGUNDA = 1`, para coincidir com o input do utilizador.
+- As constantes devem ter nomes como `SEGUNDA`, `TERCA`, `QUARTA`, `QUINTA`, `SEXTA`.
+- Usa valores explícitos, por exemplo `#define SEGUNDA 1`, para coincidir com o input do utilizador.
 - O número lido pelo utilizador deve ser validado.
 - Se o número estiver fora de 1 a 5, mostra erro.
 - Usa `switch` ou `if/else if` para mostrar o texto do dia.
@@ -3539,35 +4772,132 @@ Requisitos:
 
 Passo a passo:
 
-1. Define o `enum DiaSemana`.
+1. Define as constantes dos dias úteis.
 2. Lê um número entre 1 e 5.
-3. Converte esse número para o valor correspondente do `enum`.
-4. Mostra o dia usando os nomes do `enum`.
+3. Guarda esse número numa variável.
+4. Mostra o dia usando os nomes das constantes.
 5. Testa com `1`, `5` e um valor inválido como `9`.
 
-### Exercício 89 - `struct` com `enum`
+> Resolução:
 
-Objetivo: representar o estado de uma entidade com `enum` dentro de uma `struct`.
+```c
+#include <stdio.h>
 
-Cria uma `struct Pedido` com código, nome do cliente, total e estado. O estado deve ser um `enum EstadoPedido` com `PENDENTE`, `ENVIADO` e `ENTREGUE`.
+#define SEGUNDA 1
+#define TERCA 2
+#define QUARTA 3
+#define QUINTA 4
+#define SEXTA 5
+
+int main(void) {
+    int numero;
+    int dia;
+
+    printf("Dia util (1 a 5): ");
+    scanf("%d", &numero);
+
+    if (numero < SEGUNDA || numero > SEXTA) {
+        printf("Dia invalido.\n");
+        return 1;
+    }
+
+    dia = numero;
+
+    switch (dia) {
+        case SEGUNDA:
+            printf("Segunda-feira\n");
+            break;
+        case TERCA:
+            printf("Terca-feira\n");
+            break;
+        case QUARTA:
+            printf("Quarta-feira\n");
+            break;
+        case QUINTA:
+            printf("Quinta-feira\n");
+            break;
+        case SEXTA:
+            printf("Sexta-feira\n");
+            break;
+    }
+
+    return 0;
+}
+```
+
+### Exercício 89 - `struct` com estado numérico
+
+Objetivo: representar o estado de uma entidade com constantes dentro de uma `struct`.
+
+Cria uma `struct Pedido` com código, nome do cliente, total e estado. O estado deve usar constantes como `PENDENTE`, `ENVIADO` e `ENTREGUE`.
 
 Requisitos:
 
-- Usa `typedef enum` para o estado.
+- Usa constantes com nome para o estado.
 - Usa `typedef struct` para o pedido.
 - Cria pelo menos 3 pedidos num array.
 - Mostra apenas os pedidos que ainda não foram entregues.
-- Ao imprimir o estado, mostra texto legível e não o valor numérico do `enum`.
+- Ao imprimir o estado, mostra texto legível e não apenas o valor numérico.
 - Não uses `0`, `1` e `2` diretamente no código principal para comparar estados.
 
 Passo a passo:
 
-1. Define `EstadoPedido`.
+1. Define as constantes `PENDENTE`, `ENVIADO` e `ENTREGUE`.
 2. Define `Pedido`.
 3. Inicializa um array com 3 pedidos.
 4. Percorre o array.
 5. Se o estado for diferente de `ENTREGUE`, mostra o pedido.
 6. Cria uma função auxiliar, se quiseres, para converter o estado em texto.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define TOTAL_PEDIDOS 3
+#define PENDENTE 1
+#define ENVIADO 2
+#define ENTREGUE 3
+
+typedef struct {
+    int codigo;
+    char cliente[50];
+    double total;
+    int estado;
+} Pedido;
+
+const char *estado_texto(int estado) {
+    if (estado == PENDENTE) {
+        return "pendente";
+    }
+
+    if (estado == ENVIADO) {
+        return "enviado";
+    }
+
+    return "entregue";
+}
+
+int main(void) {
+    Pedido pedidos[TOTAL_PEDIDOS] = {
+        {1, "Ana", 25.0, PENDENTE},
+        {2, "Bruno", 40.5, ENVIADO},
+        {3, "Carla", 15.0, ENTREGUE}
+    };
+
+    for (int i = 0; i < TOTAL_PEDIDOS; i++) {
+        if (pedidos[i].estado != ENTREGUE) {
+            printf("%d - %s - %.2f - %s\n",
+                   pedidos[i].codigo,
+                   pedidos[i].cliente,
+                   pedidos[i].total,
+                   estado_texto(pedidos[i].estado));
+        }
+    }
+
+    return 0;
+}
+```
 
 ### Exercício 90 - `struct` dentro de `struct`
 
@@ -3591,6 +4921,45 @@ Passo a passo:
 4. Imprime número, nome, média e data de nascimento.
 5. Escreve uma condição simples para validar dia e mês.
 6. Testa também uma data inválida para confirmar a mensagem de erro.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    int dia;
+    int mes;
+    int ano;
+} Data;
+
+typedef struct {
+    int numero;
+    char nome[50];
+    double media;
+    Data nascimento;
+} Aluno;
+
+int main() {
+    Aluno aluno = {101, "Ana Silva", 15.5, {12, 5, 2008}};
+
+    if (aluno.nascimento.dia < 1 || aluno.nascimento.dia > 31 ||
+        aluno.nascimento.mes < 1 || aluno.nascimento.mes > 12) {
+        printf("Data invalida.\n");
+        return 1;
+    }
+
+    printf("Numero: %d\n", aluno.numero);
+    printf("Nome: %s\n", aluno.nome);
+    printf("Media: %.2f\n", aluno.media);
+    printf("Nascimento: %d/%d/%d\n",
+           aluno.nascimento.dia,
+           aluno.nascimento.mes,
+           aluno.nascimento.ano);
+
+    return 0;
+}
+```
 
 ### Exercício 91 - Atualizar uma `struct` com ponteiro
 
@@ -3616,15 +4985,67 @@ Passo a passo:
 6. Se for válido, usa `produto->stock = novo_stock`.
 7. Devolve `1` em caso de sucesso e `0` em caso de erro.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    int codigo;
+    char nome[50];
+    double preco;
+    int stock;
+} Produto;
+
+int atualizar_stock(Produto *produto, int novo_stock);
+void mostrar_produto(Produto produto);
+
+int main() {
+    Produto produto = {101, "Rato", 12.99, 5};
+
+    mostrar_produto(produto);
+
+    if (atualizar_stock(&produto, 10)) {
+        printf("Stock atualizado.\n");
+    } else {
+        printf("Stock invalido.\n");
+    }
+
+    mostrar_produto(produto);
+
+    if (!atualizar_stock(&produto, -3)) {
+        printf("Tentativa invalida recusada.\n");
+    }
+
+    mostrar_produto(produto);
+
+    return 0;
+}
+
+int atualizar_stock(Produto *produto, int novo_stock) {
+    if (novo_stock < 0) {
+        return 0;
+    }
+
+    produto->stock = novo_stock;
+    return 1;
+}
+
+void mostrar_produto(Produto produto) {
+    printf("%d - %s - %.2f - stock: %d\n",
+           produto.codigo, produto.nome, produto.preco, produto.stock);
+}
+```
+
 ### Exercício 92 - `union` com indicação do tipo ativo
 
 Objetivo: compreender que uma `union` guarda valores alternativos, mas só um campo deve ser considerado válido de cada vez.
 
-Cria um tipo `Dado` que pode guardar um valor inteiro ou um valor real. Usa um `enum` para indicar qual dos campos da `union` está ativo.
+Cria um tipo `Dado` que pode guardar um valor inteiro ou um valor real. Usa constantes para indicar qual dos campos da `union` está ativo.
 
 Requisitos:
 
-- Define um `enum TipoDado` com `DADO_INTEIRO` e `DADO_REAL`.
+- Define constantes `DADO_INTEIRO` e `DADO_REAL`.
 - Define uma `union Valor` com `int inteiro` e `float real`.
 - Define uma `struct Dado` com dois campos: `tipo` e `valor`.
 - Cria um exemplo de `Dado` inteiro e outro de `Dado` real.
@@ -3633,7 +5054,7 @@ Requisitos:
 
 Passo a passo:
 
-1. Define `TipoDado`.
+1. Define as constantes do tipo de dado.
 2. Define `Valor`.
 3. Define `Dado`.
 4. Cria `Dado a` com tipo inteiro.
@@ -3641,11 +5062,56 @@ Passo a passo:
 6. Escreve uma função `mostrar_dado(Dado dado)`.
 7. Dentro da função, usa `if` ou `switch` para imprimir o campo correto da `union`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+
+#define DADO_INTEIRO 1
+#define DADO_REAL 2
+
+typedef union {
+    int inteiro;
+    float real;
+} Valor;
+
+typedef struct {
+    int tipo;
+    Valor valor;
+} Dado;
+
+void mostrar_dado(Dado dado);
+
+int main(void) {
+    Dado a;
+    Dado b;
+
+    a.tipo = DADO_INTEIRO;
+    a.valor.inteiro = 10;
+
+    b.tipo = DADO_REAL;
+    b.valor.real = 12.5f;
+
+    mostrar_dado(a);
+    mostrar_dado(b);
+
+    return 0;
+}
+
+void mostrar_dado(Dado dado) {
+    if (dado.tipo == DADO_INTEIRO) {
+        printf("Inteiro: %d\n", dado.valor.inteiro);
+    } else {
+        printf("Real: %.2f\n", dado.valor.real);
+    }
+}
+```
+
 ### Exercício 93 - Reflexão
 
-Objetivo: consolidar os conceitos de `struct`, `union` e `enum` através de uma explicação escrita e justificada.
+Objetivo: consolidar os conceitos de `struct`, `union` e constantes com nome através de uma explicação escrita e justificada.
 
-Explica porque `struct`, `enum` e `union` não resolvem o mesmo problema.
+Explica porque `struct`, constantes com nome e `union` não resolvem o mesmo problema.
 
 Requisitos:
 
@@ -3658,11 +5124,23 @@ Requisitos:
 Passo a passo:
 
 1. Explica para que serve uma `struct`.
-2. Explica para que serve um `enum`.
+2. Explica para que servem constantes com nome.
 3. Explica para que serve uma `union`.
 4. Dá um exemplo de problema real adequado a cada conceito.
 5. Compara `struct` e `union`, destacando que na `struct` os campos coexistem e na `union` partilham memória.
-6. Termina com uma conclusão curta sobre porque `struct` e `enum` aparecem mais cedo e com mais frequência em programas simples.
+6. Termina com uma conclusão curta sobre porque `struct` e constantes simples aparecem mais cedo e com mais frequência em programas simples.
+
+> Resolução:
+
+`struct`, constantes com nomes e `union` resolvem problemas diferentes.
+
+Uma `struct` agrupa vários dados que pertencem à mesma entidade. Por exemplo, um `Aluno` pode ter número, nome e média ao mesmo tempo. Todos estes campos existem em simultâneo.
+
+Podemos usar constantes com nomes para representar estados. Por exemplo, `#define PENDENTE 1`, `#define ENVIADO 2` e `#define ENTREGUE 3`. Isto é mais claro do que escrever `1`, `2` e `3` diretamente no código.
+
+Uma `union` permite guardar valores alternativos no mesmo espaço de memória. Por exemplo, um dado pode ser inteiro ou real, mas só um desses campos deve ser considerado válido de cada vez.
+
+Nos primeiros programas em C, `struct` e constantes simples costumam ser suficientes para organizar dados e estados. `union` é mais específica e exige mais cuidado, porque os campos partilham memória.
 
 ---
 
@@ -3908,6 +5386,24 @@ Passo a passo:
 3. Imprime o valor do primeiro elemento usando `numeros[0]` e `*p_numeros`.
 4. Imprime o endereço do primeiro elemento usando `&numeros[0]` e `p_numeros`.
 5. Executa o programa e observa que os endereços são iguais.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int numeros[5] = {10, 20, 30, 40, 50};
+    int *p_numeros = numeros;
+
+    printf("Valor usando numeros[0]: %d\n", numeros[0]);
+    printf("Valor usando *p_numeros: %d\n", *p_numeros);
+    printf("Endereco usando &numeros[0]: %p\n", (void *)&numeros[0]);
+    printf("Endereco usando p_numeros: %p\n", (void *)p_numeros);
+
+    return 0;
+}
+```
 
 ### Exercício 99 - Vetor dinâmico com `malloc`
 
@@ -4345,6 +5841,49 @@ Passo a passo:
 7. Mostra a sequência completa.
 8. Liberta os três nós.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+int main() {
+    No *primeiro = malloc(sizeof *primeiro);
+    No *segundo = malloc(sizeof *segundo);
+    No *terceiro = malloc(sizeof *terceiro);
+
+    if (primeiro == NULL || segundo == NULL || terceiro == NULL) {
+        printf("Erro na reserva de memoria.\n");
+        free(primeiro);
+        free(segundo);
+        free(terceiro);
+        return 1;
+    }
+
+    primeiro->valor = 10;
+    segundo->valor = 20;
+    terceiro->valor = 30;
+
+    primeiro->proximo = segundo;
+    segundo->proximo = terceiro;
+    terceiro->proximo = NULL;
+
+    printf("%d -> %d -> %d -> NULL\n",
+           primeiro->valor, segundo->valor, terceiro->valor);
+
+    free(primeiro);
+    free(segundo);
+    free(terceiro);
+
+    return 0;
+}
+```
+
 ### Exercício 106 - Percorrer uma lista ligada
 
 Objetivo: praticar o percurso de uma lista ligada até encontrar `NULL`.
@@ -4370,6 +5909,63 @@ Passo a passo:
 6. Testa primeiro com `No *lista = NULL`.
 7. Testa depois com uma lista de três nós.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+void mostrar_lista(const No *inicio) {
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+        atual = atual->proximo;
+    }
+
+    printf("NULL\n");
+}
+
+int main() {
+    No *lista = NULL;
+    No *n1 = malloc(sizeof *n1);
+    No *n2 = malloc(sizeof *n2);
+    No *n3 = malloc(sizeof *n3);
+
+    mostrar_lista(lista);
+
+    if (n1 == NULL || n2 == NULL || n3 == NULL) {
+        printf("Erro na reserva de memoria.\n");
+        free(n1);
+        free(n2);
+        free(n3);
+        return 1;
+    }
+
+    n1->valor = 10;
+    n2->valor = 20;
+    n3->valor = 30;
+
+    n1->proximo = n2;
+    n2->proximo = n3;
+    n3->proximo = NULL;
+
+    lista = n1;
+    mostrar_lista(lista);
+
+    free(n1);
+    free(n2);
+    free(n3);
+
+    return 0;
+}
+```
+
 ### Exercício 107 - Contar nós
 
 Objetivo: contar quantos elementos existem numa lista ligada.
@@ -4393,6 +5989,58 @@ Passo a passo:
 5. Quando chegares a `NULL`, devolve `total`.
 6. Mostra o resultado no `main`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+int contar_nos(const No *inicio) {
+    int total = 0;
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        total++;
+        atual = atual->proximo;
+    }
+
+    return total;
+}
+
+int main() {
+    No *n1 = malloc(sizeof *n1);
+    No *n2 = malloc(sizeof *n2);
+    No *n3 = malloc(sizeof *n3);
+
+    if (n1 == NULL || n2 == NULL || n3 == NULL) {
+        free(n1);
+        free(n2);
+        free(n3);
+        return 1;
+    }
+
+    n1->valor = 10;
+    n2->valor = 20;
+    n3->valor = 30;
+    n1->proximo = n2;
+    n2->proximo = n3;
+    n3->proximo = NULL;
+
+    printf("Total de nos: %d\n", contar_nos(n1));
+
+    free(n1);
+    free(n2);
+    free(n3);
+
+    return 0;
+}
+```
+
 ### Exercício 108 - Procurar valor
 
 Objetivo: procurar um valor percorrendo a lista nó a nó.
@@ -4415,6 +6063,65 @@ Passo a passo:
 4. Se não forem iguais, avança para o próximo nó.
 5. Se o ciclo terminar, devolve `0`.
 6. No `main`, mostra uma mensagem clara com o resultado da procura.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+int contem_valor(const No *inicio, int valor) {
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->valor == valor) {
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+int main() {
+    No *n1 = malloc(sizeof *n1);
+    No *n2 = malloc(sizeof *n2);
+
+    if (n1 == NULL || n2 == NULL) {
+        free(n1);
+        free(n2);
+        return 1;
+    }
+
+    n1->valor = 10;
+    n2->valor = 20;
+    n1->proximo = n2;
+    n2->proximo = NULL;
+
+    if (contem_valor(n1, 20)) {
+        printf("O valor 20 existe.\n");
+    } else {
+        printf("O valor 20 nao existe.\n");
+    }
+
+    if (contem_valor(n1, 99)) {
+        printf("O valor 99 existe.\n");
+    } else {
+        printf("O valor 99 nao existe.\n");
+    }
+
+    free(n1);
+    free(n2);
+
+    return 0;
+}
+```
 
 ### Exercício 109 - Inserir no início
 
@@ -4440,6 +6147,66 @@ Passo a passo:
 5. Devolve `novo`.
 6. No `main`, atualiza a lista com `lista = inserir_inicio(lista, valor)`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+No *inserir_inicio(No *inicio, int valor) {
+    No *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return inicio;
+    }
+
+    novo->valor = valor;
+    novo->proximo = inicio;
+
+    return novo;
+}
+
+void mostrar_lista(const No *inicio) {
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+        atual = atual->proximo;
+    }
+
+    printf("NULL\n");
+}
+
+void libertar_lista(No *inicio) {
+    No *atual = inicio;
+
+    while (atual != NULL) {
+        No *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+
+int main() {
+    No *lista = NULL;
+
+    lista = inserir_inicio(lista, 30);
+    lista = inserir_inicio(lista, 20);
+    lista = inserir_inicio(lista, 10);
+
+    mostrar_lista(lista);
+    libertar_lista(lista);
+    lista = NULL;
+
+    return 0;
+}
+```
+
 ### Exercício 110 - Inserir no fim
 
 Objetivo: inserir um novo nó depois do último elemento da lista.
@@ -4464,6 +6231,78 @@ Passo a passo:
 5. Liga o último nó ao novo nó.
 6. Devolve o início original da lista.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+No *inserir_fim(No *inicio, int valor) {
+    No *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return inicio;
+    }
+
+    novo->valor = valor;
+    novo->proximo = NULL;
+
+    if (inicio == NULL) {
+        return novo;
+    }
+
+    No *atual = inicio;
+
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
+
+    atual->proximo = novo;
+
+    return inicio;
+}
+
+void mostrar_lista(const No *inicio) {
+    const No *atual = inicio;
+
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+        atual = atual->proximo;
+    }
+
+    printf("NULL\n");
+}
+
+void libertar_lista(No *inicio) {
+    No *atual = inicio;
+
+    while (atual != NULL) {
+        No *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+
+int main() {
+    No *lista = NULL;
+
+    lista = inserir_fim(lista, 10);
+    lista = inserir_fim(lista, 20);
+    lista = inserir_fim(lista, 30);
+
+    mostrar_lista(lista);
+    libertar_lista(lista);
+    lista = NULL;
+
+    return 0;
+}
+```
+
 ### Exercício 111 - Libertar lista completa
 
 Objetivo: libertar corretamente todos os nós de uma lista ligada.
@@ -4487,6 +6326,56 @@ Passo a passo:
 4. Avança com `atual = seguinte`.
 5. No `main`, chama `libertar_lista(lista)`.
 6. Depois da chamada, faz `lista = NULL`.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No *proximo;
+} No;
+
+No *inserir_inicio(No *inicio, int valor) {
+    No *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return inicio;
+    }
+
+    novo->valor = valor;
+    novo->proximo = inicio;
+
+    return novo;
+}
+
+void libertar_lista(No *inicio) {
+    No *atual = inicio;
+
+    while (atual != NULL) {
+        No *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+
+int main() {
+    No *lista = NULL;
+
+    lista = inserir_inicio(lista, 30);
+    lista = inserir_inicio(lista, 20);
+    lista = inserir_inicio(lista, 10);
+
+    libertar_lista(lista);
+    lista = NULL;
+
+    printf("Lista libertada.\n");
+
+    return 0;
+}
+```
 
 ### Exercício 112 - Inventário de equipamentos com lista ligada
 
@@ -4617,7 +6506,7 @@ Cria um gestor de tarefas em consola. Cada tarefa deve estar guardada num nó de
 
 Requisitos:
 
-- Define um `enum EstadoTarefa` com os valores `POR_FAZER` e `CONCLUIDA`.
+- Define constantes `POR_FAZER` e `CONCLUIDA`.
 - Define uma estrutura `Tarefa` com `id`, `descricao` e `estado`.
 - Define uma estrutura `NoTarefa` com os campos `tarefa` e `proximo`.
 - Usa `char descricao[80]` para a descrição.
@@ -4670,12 +6559,6 @@ Testes obrigatórios:
 - Tentar remover uma tarefa inexistente.
 - Confirmar que o número de tarefas pendentes fica correto.
 - Sair do programa sem fugas de memória.
-
-Compilação recomendada para os três exercícios finais:
-
-```bash
-cc -std=c11 -Wall -Wextra -pedantic ficheiro.c -o programa
-```
 
 ---
 
