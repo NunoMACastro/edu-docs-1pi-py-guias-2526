@@ -6445,6 +6445,245 @@ Testes obrigatórios:
 - Contar corretamente os equipamentos existentes.
 - Libertar todos os nós criados com `malloc`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    int codigo;
+    char nome[50];
+    char estado[20];
+} Equipamento;
+
+typedef struct NoEquipamento {
+    Equipamento equipamento;
+    struct NoEquipamento *proximo;
+} NoEquipamento;
+
+
+// Funções para gerir o inventário
+// Se declararmos as funções sem corpo, o compilador sabe que existem e podemos chamá-las antes de as definir
+// Ou seja, pomos o cabeçalho das funções antes do main, e o corpo das funções depois do main
+
+Equipamento criar_equipamento(int codigo, const char nome[], const char estado[]);
+NoEquipamento *criar_no_equipamento(Equipamento equipamento);
+NoEquipamento *inserir_fim(NoEquipamento *inicio, Equipamento equipamento);
+NoEquipamento *procurar_equipamento(NoEquipamento *inicio, int codigo);
+int existe_codigo(const NoEquipamento *inicio, int codigo);
+int atualizar_estado(NoEquipamento *inicio, int codigo, const char novo_estado[]);
+NoEquipamento *remover_equipamento(NoEquipamento *inicio, int codigo);
+int contar_equipamentos(const NoEquipamento *inicio);
+void mostrar_inventario(const NoEquipamento *inicio);
+void libertar_inventario(NoEquipamento *inicio);
+
+int main(void) {
+    NoEquipamento *inventario = NULL;
+    NoEquipamento *encontrado;
+
+    mostrar_inventario(inventario);
+
+    inventario = inserir_fim(inventario, criar_equipamento(101, "Portatil", "disponivel"));
+    inventario = inserir_fim(inventario, criar_equipamento(102, "Monitor", "avariado"));
+    inventario = inserir_fim(inventario, criar_equipamento(103, "Teclado", "disponivel"));
+    inventario = inserir_fim(inventario, criar_equipamento(102, "Monitor extra", "disponivel"));
+
+    mostrar_inventario(inventario);
+
+    encontrado = procurar_equipamento(inventario, 102);
+    if (encontrado != NULL) {
+        printf("Encontrado: %s\n", encontrado->equipamento.nome);
+    }
+
+    if (procurar_equipamento(inventario, 999) == NULL) {
+        printf("Codigo 999 nao encontrado.\n");
+    }
+
+    if (atualizar_estado(inventario, 102, "disponivel")) {
+        printf("Estado atualizado.\n");
+    }
+
+    if (!atualizar_estado(inventario, 999, "avariado")) {
+        printf("Nao foi possivel atualizar o codigo 999.\n");
+    }
+
+    inventario = remover_equipamento(inventario, 101);
+    inventario = remover_equipamento(inventario, 103);
+    inventario = remover_equipamento(inventario, 999);
+
+    mostrar_inventario(inventario);
+    printf("Total: %d\n", contar_equipamentos(inventario));
+
+    libertar_inventario(inventario);
+    inventario = NULL;
+
+    return 0;
+}
+
+Equipamento criar_equipamento(int codigo, const char nome[], const char estado[]) {
+    Equipamento equipamento;
+
+    equipamento.codigo = codigo;
+    strcpy(equipamento.nome, nome);
+    strcpy(equipamento.estado, estado);
+
+    return equipamento;
+}
+
+NoEquipamento *criar_no_equipamento(Equipamento equipamento) {
+    NoEquipamento *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return NULL;
+    }
+
+    novo->equipamento = equipamento;
+    novo->proximo = NULL;
+
+    return novo;
+}
+
+NoEquipamento *inserir_fim(NoEquipamento *inicio, Equipamento equipamento) {
+    NoEquipamento *novo;
+    NoEquipamento *atual;
+
+    if (existe_codigo(inicio, equipamento.codigo)) {
+        printf("Codigo repetido: %d\n", equipamento.codigo);
+        return inicio;
+    }
+
+    novo = criar_no_equipamento(equipamento);
+    if (novo == NULL) {
+        printf("Erro na reserva de memoria.\n");
+        return inicio;
+    }
+
+    if (inicio == NULL) {
+        return novo;
+    }
+
+    atual = inicio;
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
+
+    atual->proximo = novo;
+    return inicio;
+}
+
+NoEquipamento *procurar_equipamento(NoEquipamento *inicio, int codigo) {
+    NoEquipamento *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->equipamento.codigo == codigo) {
+            return atual;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return NULL;
+}
+
+int existe_codigo(const NoEquipamento *inicio, int codigo) {
+    const NoEquipamento *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->equipamento.codigo == codigo) {
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+int atualizar_estado(NoEquipamento *inicio, int codigo, const char novo_estado[]) {
+    NoEquipamento *no = procurar_equipamento(inicio, codigo);
+
+    if (no == NULL) {
+        return 0;
+    }
+
+    strcpy(no->equipamento.estado, novo_estado);
+    return 1;
+}
+
+NoEquipamento *remover_equipamento(NoEquipamento *inicio, int codigo) {
+    NoEquipamento *anterior;
+    NoEquipamento *atual;
+
+    if (inicio == NULL) {
+        return NULL;
+    }
+
+    if (inicio->equipamento.codigo == codigo) {
+        NoEquipamento *novo_inicio = inicio->proximo;
+        free(inicio);
+        return novo_inicio;
+    }
+
+    anterior = inicio;
+    atual = inicio->proximo;
+
+    while (atual != NULL && atual->equipamento.codigo != codigo) {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    if (atual == NULL) {
+        return inicio;
+    }
+
+    anterior->proximo = atual->proximo;
+    free(atual);
+
+    return inicio;
+}
+
+int contar_equipamentos(const NoEquipamento *inicio) {
+    int total = 0;
+    const NoEquipamento *atual = inicio;
+
+    while (atual != NULL) {
+        total++;
+        atual = atual->proximo;
+    }
+
+    return total;
+}
+
+void mostrar_inventario(const NoEquipamento *inicio) {
+    const NoEquipamento *atual = inicio;
+
+    if (inicio == NULL) {
+        printf("Inventario vazio.\n");
+        return;
+    }
+
+    while (atual != NULL) {
+        printf("%d - %s - %s\n",
+               atual->equipamento.codigo,
+               atual->equipamento.nome,
+               atual->equipamento.estado);
+        atual = atual->proximo;
+    }
+}
+
+void libertar_inventario(NoEquipamento *inicio) {
+    NoEquipamento *atual = inicio;
+
+    while (atual != NULL) {
+        NoEquipamento *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+```
+
 ### Exercício 113 - Lista ligada de alunos
 
 Objetivo: usar uma lista ligada para guardar dados compostos, combinando `struct`, strings, apontadores e memória dinâmica.
