@@ -6737,6 +6737,185 @@ Critérios de verificação:
 - A remoção de um aluno do meio ou do fim mantém a lista bem ligada.
 - Todos os nós criados com `malloc` são libertados com `free`.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    int numero;
+    char nome[50];
+    float media;
+} Aluno;
+
+typedef struct NoAluno {
+    Aluno aluno;
+    struct NoAluno *proximo;
+} NoAluno;
+
+Aluno criar_aluno(int numero, const char nome[], float media);
+NoAluno *criar_no_aluno(Aluno aluno);
+NoAluno *inserir_fim(NoAluno *inicio, Aluno aluno);
+const NoAluno *procurar_aluno(const NoAluno *inicio, int numero);
+NoAluno *remover_aluno(NoAluno *inicio, int numero);
+void mostrar_alunos(const NoAluno *inicio);
+void libertar_alunos(NoAluno *inicio);
+
+int main(void) {
+    NoAluno *turma = NULL;
+    const NoAluno *encontrado;
+
+    turma = inserir_fim(turma, criar_aluno(101, "Ana Silva", 16.5f));
+    turma = inserir_fim(turma, criar_aluno(102, "Bruno Costa", 13.0f));
+    turma = inserir_fim(turma, criar_aluno(103, "Carla Dias", 18.2f));
+
+    mostrar_alunos(turma);
+
+    encontrado = procurar_aluno(turma, 102);
+    if (encontrado != NULL) {
+        printf("Encontrado: %s\n", encontrado->aluno.nome);
+    }
+
+    if (procurar_aluno(turma, 999) == NULL) {
+        printf("Aluno 999 nao encontrado.\n");
+    }
+
+    turma = remover_aluno(turma, 101);
+    mostrar_alunos(turma);
+
+    turma = remover_aluno(turma, 103);
+    mostrar_alunos(turma);
+
+    turma = remover_aluno(turma, 999);
+    mostrar_alunos(turma);
+
+    libertar_alunos(turma);
+    turma = NULL;
+
+    return 0;
+}
+
+Aluno criar_aluno(int numero, const char nome[], float media) {
+    Aluno aluno;
+
+    aluno.numero = numero;
+    strcpy(aluno.nome, nome);
+    aluno.media = media;
+
+    return aluno;
+}
+
+NoAluno *criar_no_aluno(Aluno aluno) {
+    NoAluno *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return NULL;
+    }
+
+    novo->aluno = aluno;
+    novo->proximo = NULL;
+
+    return novo;
+}
+
+NoAluno *inserir_fim(NoAluno *inicio, Aluno aluno) {
+    NoAluno *novo = criar_no_aluno(aluno);
+    NoAluno *atual;
+
+    if (novo == NULL) {
+        printf("Erro na reserva de memoria.\n");
+        return inicio;
+    }
+
+    if (inicio == NULL) {
+        return novo;
+    }
+
+    atual = inicio;
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
+
+    atual->proximo = novo;
+    return inicio;
+}
+
+const NoAluno *procurar_aluno(const NoAluno *inicio, int numero) {
+    const NoAluno *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->aluno.numero == numero) {
+            return atual;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return NULL;
+}
+
+NoAluno *remover_aluno(NoAluno *inicio, int numero) {
+    NoAluno *anterior;
+    NoAluno *atual;
+
+    if (inicio == NULL) {
+        return NULL;
+    }
+
+    if (inicio->aluno.numero == numero) {
+        NoAluno *novo_inicio = inicio->proximo;
+        free(inicio);
+        return novo_inicio;
+    }
+
+    anterior = inicio;
+    atual = inicio->proximo;
+
+    while (atual != NULL && atual->aluno.numero != numero) {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    if (atual == NULL) {
+        return inicio;
+    }
+
+    anterior->proximo = atual->proximo;
+    free(atual);
+
+    return inicio;
+}
+
+void mostrar_alunos(const NoAluno *inicio) {
+    const NoAluno *atual = inicio;
+
+    if (inicio == NULL) {
+        printf("Lista vazia.\n");
+        return;
+    }
+
+    while (atual != NULL) {
+        printf("%d - %s - %.2f\n",
+               atual->aluno.numero,
+               atual->aluno.nome,
+               atual->aluno.media);
+        atual = atual->proximo;
+    }
+}
+
+void libertar_alunos(NoAluno *inicio) {
+    NoAluno *atual = inicio;
+
+    while (atual != NULL) {
+        NoAluno *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+```
+
 ### Exercício 114 - Gestor de tarefas com lista ligada e menu
 
 Objetivo: criar um pequeno programa completo com menu, usando lista ligada como estrutura principal de dados.
@@ -6798,6 +6977,269 @@ Testes obrigatórios:
 - Tentar remover uma tarefa inexistente.
 - Confirmar que o número de tarefas pendentes fica correto.
 - Sair do programa sem fugas de memória.
+
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define POR_FAZER 0
+#define CONCLUIDA 1
+
+typedef struct {
+    int id;
+    char descricao[80];
+    int estado;
+} Tarefa;
+
+typedef struct NoTarefa {
+    Tarefa tarefa;
+    struct NoTarefa *proximo;
+} NoTarefa;
+
+Tarefa criar_tarefa(int id, const char descricao[]);
+NoTarefa *criar_no_tarefa(Tarefa tarefa);
+NoTarefa *inserir_fim(NoTarefa *inicio, Tarefa tarefa);
+int existe_tarefa(const NoTarefa *inicio, int id);
+int marcar_concluida(NoTarefa *inicio, int id);
+NoTarefa *remover_tarefa(NoTarefa *inicio, int id);
+int contar_pendentes(const NoTarefa *inicio);
+void mostrar_tarefas(const NoTarefa *inicio);
+void libertar_tarefas(NoTarefa *inicio);
+
+int main(void) {
+    NoTarefa *tarefas = NULL;
+    int opcao;
+    int id;
+    char descricao[80];
+
+    do {
+        printf("\n1 - Adicionar tarefa\n");
+        printf("2 - Listar tarefas\n");
+        printf("3 - Marcar tarefa como concluida\n");
+        printf("4 - Remover tarefa\n");
+        printf("5 - Mostrar numero de tarefas pendentes\n");
+        printf("0 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Id: ");
+                scanf("%d", &id);
+
+                if (existe_tarefa(tarefas, id)) {
+                    printf("Ja existe uma tarefa com esse id.\n");
+                } else {
+                    printf("Descricao sem espacos: ");
+                    scanf("%79s", descricao);
+                    tarefas = inserir_fim(tarefas, criar_tarefa(id, descricao));
+                }
+                break;
+
+            case 2:
+                mostrar_tarefas(tarefas);
+                break;
+
+            case 3:
+                printf("Id a concluir: ");
+                scanf("%d", &id);
+
+                if (marcar_concluida(tarefas, id)) {
+                    printf("Tarefa concluida.\n");
+                } else {
+                    printf("Tarefa nao encontrada.\n");
+                }
+                break;
+
+            case 4:
+                printf("Id a remover: ");
+                scanf("%d", &id);
+
+                if (existe_tarefa(tarefas, id)) {
+                    tarefas = remover_tarefa(tarefas, id);
+                    printf("Tarefa removida.\n");
+                } else {
+                    printf("Tarefa nao encontrada.\n");
+                }
+                break;
+
+            case 5:
+                printf("Pendentes: %d\n", contar_pendentes(tarefas));
+                break;
+
+            case 0:
+                printf("A sair...\n");
+                break;
+
+            default:
+                printf("Opcao invalida.\n");
+                break;
+        }
+    } while (opcao != 0);
+
+    libertar_tarefas(tarefas);
+    tarefas = NULL;
+
+    return 0;
+}
+
+Tarefa criar_tarefa(int id, const char descricao[]) {
+    Tarefa tarefa;
+
+    tarefa.id = id;
+    strcpy(tarefa.descricao, descricao);
+    tarefa.estado = POR_FAZER;
+
+    return tarefa;
+}
+
+NoTarefa *criar_no_tarefa(Tarefa tarefa) {
+    NoTarefa *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return NULL;
+    }
+
+    novo->tarefa = tarefa;
+    novo->proximo = NULL;
+
+    return novo;
+}
+
+NoTarefa *inserir_fim(NoTarefa *inicio, Tarefa tarefa) {
+    NoTarefa *novo = criar_no_tarefa(tarefa);
+    NoTarefa *atual;
+
+    if (novo == NULL) {
+        printf("Erro na reserva de memoria.\n");
+        return inicio;
+    }
+
+    if (inicio == NULL) {
+        return novo;
+    }
+
+    atual = inicio;
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
+
+    atual->proximo = novo;
+    return inicio;
+}
+
+int existe_tarefa(const NoTarefa *inicio, int id) {
+    const NoTarefa *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->tarefa.id == id) {
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+int marcar_concluida(NoTarefa *inicio, int id) {
+    NoTarefa *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->tarefa.id == id) {
+            atual->tarefa.estado = CONCLUIDA;
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+NoTarefa *remover_tarefa(NoTarefa *inicio, int id) {
+    NoTarefa *anterior;
+    NoTarefa *atual;
+
+    if (inicio == NULL) {
+        return NULL;
+    }
+
+    if (inicio->tarefa.id == id) {
+        NoTarefa *novo_inicio = inicio->proximo;
+        free(inicio);
+        return novo_inicio;
+    }
+
+    anterior = inicio;
+    atual = inicio->proximo;
+
+    while (atual != NULL && atual->tarefa.id != id) {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    if (atual == NULL) {
+        return inicio;
+    }
+
+    anterior->proximo = atual->proximo;
+    free(atual);
+
+    return inicio;
+}
+
+int contar_pendentes(const NoTarefa *inicio) {
+    int total = 0;
+    const NoTarefa *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->tarefa.estado == POR_FAZER) {
+            total++;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return total;
+}
+
+void mostrar_tarefas(const NoTarefa *inicio) {
+    const NoTarefa *atual = inicio;
+
+    if (inicio == NULL) {
+        printf("Sem tarefas.\n");
+        return;
+    }
+
+    while (atual != NULL) {
+        printf("%d - %s - %s\n",
+               atual->tarefa.id,
+               atual->tarefa.descricao,
+               atual->tarefa.estado == CONCLUIDA ? "concluida" : "por fazer");
+        atual = atual->proximo;
+    }
+}
+
+void libertar_tarefas(NoTarefa *inicio) {
+    NoTarefa *atual = inicio;
+
+    while (atual != NULL) {
+        NoTarefa *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+```
+
+Compilação recomendada para os três exercícios finais:
+
+```bash
+cc -std=c11 -Wall -Wextra -pedantic ficheiro.c -o programa
+```
 
 ---
 
