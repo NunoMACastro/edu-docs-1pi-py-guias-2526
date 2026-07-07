@@ -7241,6 +7241,115 @@ Compilação recomendada para os três exercícios finais:
 cc -std=c11 -Wall -Wextra -pedantic ficheiro.c -o programa
 ```
 
+### Exercício 115 - Gestor de Pókemon com lista ligada e menu
+
+Objetivo: criar um programa completo com menu, usando lista ligada como estrutura principal de dados.
+
+Criar um gestor de Pókemon em consola. Cada Pókemon deve estar guardado num nó de uma lista ligada. O utilizador deve conseguir adicionar Pókemon, listar Pókemon, marcar Pókemon como capturado, remover Pókemon e sair do programa.
+
+Cada Pókemon deve ter um `id`, `nome`, `tipo` e `estado` (capturado ou não).
+
+Requisitos:
+
+- Define constantes `NAO_CAPTURADO` e `CAPTURADO`.
+- Define uma estrutura `Pokemon` com `id`, `nome`, `tipo` e ` `estado`.
+- Define uma estrutura `NoPokemon` com os campos `pokemon` e `proximo`.
+- Usa `char nome[50]` e `char tipo[20]` para guardar o nome e o tipo do Pókemon.
+- Cria a função `Pokemon criar_pokemon(int id, const char nome[], const char tipo[])`.
+- Cria a função `NoPokemon *criar_no_pokemon(Pokemon pokemon)`.
+- Cria a função `NoPokemon *inserir_fim(NoPokemon *inicio, Pokemon pokemon)`.
+- Cria a função `int existe_pokemon(const NoPokemon *inicio, int id)`.
+- Cria a função `int marcar_capturado(NoPokemon *inicio, int id)`.
+- Cria a função `NoPokemon *remover_pokemon(NoPokemon *inicio, int id)`.
+- Cria a função `int contar_nao_capturados(const NoPokemon *inicio)`.
+- Cria a função `void mostrar_pokemons(const NoPokemon *inicio)`.
+- Cria a função `void libertar_pokemons(NoPokemon *inicio)`.
+- Não permitas dois Pókemon com o mesmo `id`.
+- A opção de remover deve funcionar para o primeiro nó, para um nó do meio, para o último nó e para um `id` inexistente.
+- Usa apenas lista ligada simples.
+
+Menu obrigatório:
+
+```text
+1 - Adicionar Pókemon
+2 - Listar Pókemon
+3 - Marcar Pókemon como capturado
+4 - Remover Pókemon
+5 - Mostrar número de Pókemon não capturados
+0 - Sair
+```
+
+Passo a passo:
+
+1. Começa com `NoPokemon *pokemons = NULL`.
+2. Mostra o menu dentro de um ciclo `do while` ou `while`.
+3. Na opção `1`, pede `id`, `nome` e `tipo`.
+4. Antes de inserir, verifica se o `id` já existe.
+5. Na opção `2`, percorre a lista e mostra cada Pókemon.
+6. Na opção `3`, procura o Pókemon pelo `id` e altera o estado para `CAPTURADO`.
+7. Na opção `4`, remove o Pókemon pelo `id`.
+8. Na opção `5`, conta apenas os Pókemon com estado `NAO_CAPTURADO`.
+9. Na opção `0`, liberta toda a lista antes de terminar.
+10. Depois de libertar, coloca `pokemons = NULL`.
+
+Testes obrigatórios:
+
+- Listar Pókemon quando a lista está vazia.
+- Adicionar três Pókemon.
+- Tentar adicionar um Pókemon com `id` repetido.
+- Marcar um Pókemon existente como capturado.
+- Tentar marcar um Pókemon inexistente.
+- Remover o primeiro Pókemon.
+- Remover o último Pókemon.
+- Tentar remover um Pókemon inexistente.
+- Confirmar que o número de Pókemon não capturados fica correto.
+- Sair do programa sem fugas de memória.
+
+### Exercício 115 - Gestor de Góticas para a nova App do Gustavo, com lista ligada e menu
+
+Objetivo: criar um programa completo com menu, usando lista ligada como estrutura principal de dados.
+
+Criar um gestor de Góticas em consola. Cada Gótica deve estar guardada num nó de uma lista ligada. O utilizador deve conseguir adicionar Góticas, listar Góticas, alterar o nível de Gotice, remover Góticas e sair do programa.
+
+Uma Gótica deve ter um `id`, `nome`, `descricao`, `quantidade_batatas_fritas_por_dia` e `nivel_gotice` (1 a 10).
+
+Menu obrigatório:
+
+```text
+1 - Adicionar Gótica
+2 - Listar Góticas
+3 - Alterar nível de Gotice
+4 - Remover Gótica
+5 - Mostrar número de Góticas com nível de Gotice acima de um valor
+0 - Sair
+```
+
+Passo a passo:
+
+1. Começa com `NoGotica *goticas = NULL`.
+2. Mostra o menu dentro de um ciclo `do while` ou `while`.
+3. Na opção `1`, pede `id`, `nome`, `descricao`, `quantidade_batatas_fritas_por_dia` e `nivel_gotice`.
+4. Antes de inserir, verifica se o `id` já existe.
+5. Na opção `2`, percorre a lista e mostra cada Gótica.
+6. Na opção `3`, procura a Gótica pelo `id` e altera o `nivel_gotice`.
+7. Na opção `4`, remove a Gótica pelo `id`.
+8. Na opção `5`, conta apenas as Góticas com `nivel_gotice` acima de um valor fornecido pelo utilizador.
+9. Na opção `0`, liberta toda a lista antes de terminar.
+10. Depois de libertar, coloca `goticas = NULL`.
+
+Testes obrigatórios:
+
+- Listar Góticas quando a lista está vazia.
+- Adicionar três Góticas.
+- Tentar adicionar uma Gótica com `id` repetido.
+- Alterar o nível de Gotice de uma Gótica existente.
+- Tentar alterar o nível de Gotice de uma Gótica inexistente.
+- Remover a primeira Gótica.
+- Remover a última Gótica.
+- Tentar remover uma Gótica inexistente.
+- Confirmar que o número de Góticas com nível de Gotice acima de um valor fica correto.
+- Sair do programa sem fugas de memória.
+
 ---
 
 ![Footer](../Images/Footer.png)
