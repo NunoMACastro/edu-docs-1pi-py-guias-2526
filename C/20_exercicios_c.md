@@ -7305,7 +7305,7 @@ Testes obrigatórios:
 - Confirmar que o número de Pókemon não capturados fica correto.
 - Sair do programa sem fugas de memória.
 
-### Exercício 115 - Gestor de Góticas para a nova App do Gustavo, com lista ligada e menu
+### Exercício 116 - Gestor de Góticas para a nova App do Gustavo, com lista ligada e menu
 
 Objetivo: criar um programa completo com menu, usando lista ligada como estrutura principal de dados.
 
