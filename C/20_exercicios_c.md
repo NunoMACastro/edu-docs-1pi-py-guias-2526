@@ -7352,4 +7352,46 @@ Testes obrigatórios:
 
 ---
 
+### 117 - Exemplos de perguntas de escolha múltipla de listas ligadas
+
+1. Qual é a principal vantagem de usar uma lista ligada em vez de um array para armazenar elementos?
+   a) Acesso aleatório rápido aos elementos  
+    b) Inserção e remoção de elementos em qualquer posição sem necessidade de realocação  
+    c) Menor uso de memória  
+    d) Melhor desempenho em todas as operações
+
+Resposta correta: b) Inserção e remoção de elementos em qualquer posição sem necessidade de realocação
+
+2. Uma lista ligada simples é composta por nós que contêm:
+   a) Apenas o valor do elemento  
+    b) O valor do elemento e um ponteiro para o próximo nó  
+    c) O valor do elemento, um ponteiro para o próximo nó e um ponteiro para o nó anterior  
+    d) Apenas um ponteiro para o próximo nó
+
+Resposta correta: b) O valor do elemento e um ponteiro para o próximo nó
+
+3. Uma diferença entre um array e uma lista ligada é que:
+   a) Arrays têm tamanho fixo, enquanto listas ligadas podem crescer dinamicamente  
+    b) Arrays são mais eficientes para inserções no meio da estrutura  
+    c) Listas ligadas não podem ser percorridas  
+    d) Arrays não podem armazenar tipos de dados diferentes
+
+Resposta correta: a) Arrays têm tamanho fixo, enquanto listas ligadas podem crescer dinamicamente
+
+4. Uma árvore binária é uma estrutura de dados que:
+   a) Armazena elementos em uma lista linear  
+    b) Cada nó tem no máximo dois filhos, chamados de filho esquerdo e filho direito  
+    c) É sempre balanceada  
+    d) Não permite inserção de novos elementos
+
+Resposta correta: b) Cada nó tem no máximo dois filhos, chamados de filho esquerdo e filho direito
+
+5. Uma árvore binária balanceada, quando comparada a uma lista ligada simples, oferece:
+   a) Acesso mais rápido a elementos específicos devido à sua estrutura hierárquica  
+    b) Menor complexidade de implementação  
+    c) Maior facilidade para inserção e remoção de elementos  
+    d) Nenhuma vantagem significativa
+
+Resposta correta: a) Acesso mais rápido a elementos específicos devido à sua estrutura hierárquica
+
 ![Footer](../Images/Footer.png)
