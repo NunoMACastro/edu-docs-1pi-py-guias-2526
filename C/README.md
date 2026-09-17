@@ -23,8 +23,6 @@ O percurso desta pasta está organizado em **15 módulos tutoriais** (incluindo 
 
 - [Estrutura da pasta](#estrutura-da-pasta)
 - [Módulos e objetivos](#módulos-e-objetivos)
-- [Rota de estudo recomendada](#rota-de-estudo-recomendada)
-- [Como usar estes materiais](#como-usar-estes-materiais)
 
 ---
 
@@ -85,7 +83,7 @@ O percurso desta pasta está organizado em **15 módulos tutoriais** (incluindo 
    Objetivo: aplicar operadores aritméticos, relacionais, lógicos e de atribuição.
 
 10. [Estruturas de controlo](./09_estruturas_de_controlo_em_c.md)  
-   Objetivo: usar decisões e ciclos com segurança.
+    Objetivo: usar decisões e ciclos com segurança.
 
 11. [Subprogramas (funções e parâmetros)](./10_subprogramas_funcoes_e_parametros.md)  
     Objetivo: modularizar código e compreender escopo e passagem por parâmetros.
@@ -105,28 +103,6 @@ O percurso desta pasta está organizado em **15 módulos tutoriais** (incluindo 
 Exercícios sem resolução (módulos 07 a 14): [20_exercicios_c.md](./20_exercicios_c.md)
 
 Mini projeto: [21_mini_projeto.md](./21_mini_projeto.md)
-
----
-
-## Rota de estudo recomendada
-
-1. `01` a `05` (base de engenharia e ambiente)
-2. `06`, `07` e `07a` (núcleo da linguagem C + I/O formatada com endereços)
-3. `08` a `10` (operadores, controlo e funções)
-4. `11` (produtividade básica no editor)
-5. `12` a `14` (dados em memória: estáticos e dinâmicos)
-6. `20` (exercícios de consolidação dos módulos 07 a 14)
-7. `21` (mini projeto de consolidação)
-
----
-
-## Como usar estes materiais
-
-1. Estuda a teoria com calma.
-2. Reproduz exemplos no teu computador.
-3. Faz os exercícios por ordem no ficheiro [20_exercicios_c.md](./20_exercicios_c.md).
-4. Marca dúvidas para discutir em aula.
-5. Revê módulos anteriores antes de temas mais avançados.
 
 ---
 
