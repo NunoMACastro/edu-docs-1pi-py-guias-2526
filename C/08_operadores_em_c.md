@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. O que são operadores?](#1-o-que-são-operadores)
 - [2. Operadores aritméticos](#2-operadores-aritméticos)
 - [3. Operadores de atribuição](#3-operadores-de-atribuição)
@@ -21,14 +20,6 @@
 - [9. Exemplo guiado](#9-exemplo-guiado)
 - [10. Erros comuns](#10-erros-comuns)
 - [11. Changelog](#11-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Revê uma família de operadores de cada vez.
-2. Testa expressões pequenas no compilador.
-3. Usa parênteses para confirmar entendimento da precedência.
 
 ---
 

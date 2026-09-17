@@ -9,7 +9,6 @@
 
 ## Índice
 
--   [0. Guia para não te perderes](#0-guia-para-não-te-perderes)
 -   [1. Revisão rápida: listas e sequências · \[ESSENCIAL\]](#1-revisão-rápida-listas-e-sequências--essencial)
 -   [2. Índices e acesso simples · \[ESSENCIAL\]](#2-índices-e-acesso-simples--essencial)
 -   [3. Slicing básico: `lista[início:fim]` · \[ESSENCIAL\]](#3-slicing-básico-listainíciofim--essencial)
@@ -23,23 +22,6 @@
 -   [11. Boas práticas e erros comuns · \[ESSENCIAL (mentalidade)\]](#11-boas-práticas-e-erros-comuns--essencial-mentalidade)
 -   [12. Exercícios sobre slicing e comprehensions](#12-exercícios-sobre-slicing-e-comprehensions)
 -   [13. Changelog](#13-changelog)
-
----
-
-## 0. Guia para não te perderes
-
-Aqui aparecem dois temas que costumam baralhar:
-
--   a sintaxe com dois pontos (`:`) no meio de listas e strings;
--   a sintaxe compacta das **list comprehensions**.
-
-Para te organizares:
-
--   Foca-te primeiro em:
-    -   **Secção 2 e 3** (índices e slicing básico),
-    -   **Secção 6 e 7** (list comprehensions simples e com condição).
--   As partes marcadas como **[EXTRA]** lê quando estiveres confortável com o essencial.
--   Usa o interpretador (`python` / VS Code) para ir testando exemplos pequeninos.
 
 ---
 

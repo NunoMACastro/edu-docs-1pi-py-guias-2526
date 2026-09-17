@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. O que este módulo resolve](#1-o-que-este-módulo-resolve)
 - [2. Modelo mental: valor e endereco](#2-modelo-mental-valor-e-endereco)
 - [3. `printf` em detalhe](#3-printf-em-detalhe)
@@ -22,15 +21,6 @@
 - [10. Erros comuns e diagnóstico](#10-erros-comuns-e-diagnóstico)
 - [11. Ponte para apontadores](#11-ponte-para-apontadores)
 - [12. Changelog](#12-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Lê as secções 2, 3 e 5 sem saltar: são a base de quase todos os exercícios com input.
-2. Compila sempre com warnings ativados (`-Wall -Wextra -Wpedantic -std=c11`).
-3. Treina primeiro com `int`/`double` e só depois avança para strings.
-4. Sempre que usares `scanf`, valida o valor de retorno.
 
 ---
 

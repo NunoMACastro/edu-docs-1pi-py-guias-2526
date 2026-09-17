@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Porque precisamos de estruturas de dados?](#1-porque-precisamos-de-estruturas-de-dados)
 - [2. O que significa "estrutura estática"?](#2-o-que-significa-estrutura-estática)
 - [3. Arrays unidimensionais](#3-arrays-unidimensionais)
@@ -29,20 +28,6 @@
 - [17. Erros comuns](#17-erros-comuns)
 - [18. Exercícios propostos](#18-exercícios-propostos)
 - [19. Changelog](#19-changelog)
-
----
-
-## 0. Como usar este módulo
-
-Este módulo deve ser estudado com calma. Arrays, strings e matrizes parecem simples quando se vê o código pronto, mas exigem um raciocínio muito importante: perceber onde cada valor fica guardado.
-
-Sugestão de estudo:
-
-1. Primeiro compreende arrays simples, como uma lista de notas.
-2. Depois passa para strings, que são arrays de `char`.
-3. Só depois avança para matrizes, porque exigem pensar em duas coordenadas: linha e coluna.
-4. Em todos os exemplos, desenha no papel as posições de memória.
-5. Sempre que vires um índice, pergunta: "este índice está dentro dos limites?"
 
 ---
 

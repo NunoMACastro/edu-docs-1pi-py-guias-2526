@@ -9,7 +9,6 @@
 
 ## Índice
 
--   [0. Guia para não te perderes](#0-guia-para-n%C3%A3o-te-perderes)
 -   [1. Porque usar funções? · [ESSENCIAL]](#1-porque-usar-fun%C3%A7%C3%B5es--essencial)
 -   [2. Definir e chamar funções · [ESSENCIAL]](#2-definir-e-chamar-fun%C3%A7%C3%B5es--essencial)
 -   [3. `print` vs `return` · [ESSENCIAL]](#3-print-vs-return--essencial)
@@ -24,21 +23,6 @@
 -   [12. Boas práticas e pequenos testes · [ESSENCIAL (mentalidade)]](#12-boas-pr%C3%A1ticas-e-pequenos-testes--essencial-mentalidade)
 -   [13. Exercícios (Funções do básico ao avançado)](#13-exerc%C3%ADcios-fun%C3%A7%C3%B5es-do-b%C3%A1sico-ao-avan%C3%A7ado)
 -   [14. Changelog](#14-changelog)
-
----
-
-## 0. Guia para não te perderes
-
-É aqui que muitos alunos começam a “desligar”, por isso vamos organizar assim:
-
--   Secções marcadas como **[ESSENCIAL]** → é o que precisas MESMO para testes e para programar no dia a dia.
--   Secções marcadas como **[EXTRA]** → são assuntos um pouco mais avançados; lê se estiveres confortável, caso contrário podes voltar mais tarde.
-
-Se te sentires perdido:
-
-1. Foca-te nas secções **[ESSENCIAL]**.
-2. Faz os exemplos e **os exercícios** dessas partes.
-3. Só depois, se der, explora o resto.
 
 ---
 

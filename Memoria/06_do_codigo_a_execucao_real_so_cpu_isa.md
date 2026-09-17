@@ -11,7 +11,6 @@
 
 ## Índice
 
-- [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 - [1. Visão global: do código à execução](#1-visão-global-do-código-à-execução)
 - [2. Código-fonte, bytecode e código de máquina](#2-código-fonte-bytecode-e-código-de-máquina)
 - [3. Binário vs código de máquina](#3-binário-vs-código-de-máquina)
@@ -27,18 +26,6 @@
 - [13. O que isto muda no teu raciocínio de programador](#13-o-que-isto-muda-no-teu-raciocínio-de-programador)
 - [14. Resumo final](#14-resumo-final)
 - [15. Changelog](#15-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-Este módulo é de integração: junta hardware + memória + execução.
-
-Estratégia:
-
-1. Lê a secção 1 e fixa o fluxo global;
-2. depois aprofunda cada peça (SO, loader, CPU, ISA);
-3. no fim, valida com os casos reais (abrir/editar/guardar ficheiro).
 
 ---
 

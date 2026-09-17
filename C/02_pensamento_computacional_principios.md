@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. O que é pensamento computacional?](#2-o-que-é-pensamento-computacional)
 - [3. Os 4 princípios fundamentais](#3-os-4-princípios-fundamentais)
@@ -26,15 +25,6 @@
 - [14. Rubrica de autoavaliação](#14-rubrica-de-autoavaliação)
 - [15. Checklist mental antes de programar](#15-checklist-mental-antes-de-programar)
 - [16. Changelog](#16-changelog)
-
----
-
-## 0. Como estudar este módulo
-
-1. Estuda cada princípio com calma antes de ver código.
-2. Em cada exemplo, escreve primeiro algoritmo textual e só depois C.
-3. Valida sempre casos normais, limite e inválidos.
-4. Usa a checklist final como rotina obrigatória antes de programar.
 
 ---
 

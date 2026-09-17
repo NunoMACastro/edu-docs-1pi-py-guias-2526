@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Dados em programação](#1-dados-em-programação)
 - [2. Variáveis e declaração](#2-variáveis-e-declaração)
 - [3. Tipos de dados simples em C](#3-tipos-de-dados-simples-em-c)
@@ -20,14 +19,6 @@
 - [8. Exemplo guiado](#8-exemplo-guiado)
 - [9. Erros comuns](#9-erros-comuns)
 - [10. Changelog](#10-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Memoriza os tipos mais usados (`int`, `float`, `double`, `char`).
-2. Revê o resumo de I/O neste módulo e aprofunda no módulo `07A`.
-3. Treina validação básica de dados.
 
 ---
 

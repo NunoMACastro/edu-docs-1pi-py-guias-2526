@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Porque o editor importa?](#1-porque-o-editor-importa)
 - [2. Funcionalidades essenciais](#2-funcionalidades-essenciais)
 - [3. Funcionalidades para C](#3-funcionalidades-para-c)
@@ -20,14 +19,6 @@
 - [8. Debug no editor (visão inicial)](#8-debug-no-editor-visão-inicial)
 - [9. Boas práticas de utilização](#9-boas-práticas-de-utilização)
 - [10. Changelog](#10-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Configura o editor antes de projetos grandes.
-2. Pratica atalho por atalho.
-3. Usa o terminal integrado diariamente.
 
 ---
 

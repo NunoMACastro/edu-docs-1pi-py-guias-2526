@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Fluxo de execução](#1-fluxo-de-execução)
 - [2. Seleção com `if`, `else if`, `else`](#2-seleção-com-if-else-if-else)
 - [3. Seleção com `switch`](#3-seleção-com-switch)
@@ -21,14 +20,6 @@
 - [9. Exemplo guiado completo](#9-exemplo-guiado-completo)
 - [10. Erros comuns](#10-erros-comuns)
 - [11. Changelog](#11-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Treina primeiro cada estrutura isoladamente.
-2. Só depois combina decisões + ciclos no mesmo programa.
-3. Testa casos limite para evitar ciclos infinitos.
 
 ---
 

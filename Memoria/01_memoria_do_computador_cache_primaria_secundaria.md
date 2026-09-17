@@ -11,7 +11,6 @@
 
 ## Índice
 
-- [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 - [1. O que é "memória" num computador?](#1-o-que-é-memória-num-computador)
 - [2. Porque não existe só um tipo de memória?](#2-porque-não-existe-só-um-tipo-de-memória)
 - [3. Hierarquia da memória (visão geral)](#3-hierarquia-da-memória-visão-geral)
@@ -23,19 +22,6 @@
 - [9. Erros comuns de alunos (e correção)](#9-erros-comuns-de-alunos-e-correção)
 - [10. Resumo final](#10-resumo-final)
 - [11. Changelog](#11-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-Neste tema, o mais importante não é decorar palavras.  
-O mais importante é conseguires responder a estas perguntas:
-
-1. Porque é que o computador precisa de vários tipos de memória?
-2. Qual é a diferença entre cache, RAM e disco/SSD?
-3. O que muda entre velocidade, capacidade e custo?
-
-Se no fim do ficheiro conseguires explicar isto por palavras tuas, já tens uma base excelente.
 
 ---
 

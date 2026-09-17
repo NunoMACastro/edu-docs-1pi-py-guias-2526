@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. O que é um ambiente de desenvolvimento?](#2-o-que-é-um-ambiente-de-desenvolvimento)
 - [3. Ferramentas essenciais e o papel de cada uma](#3-ferramentas-essenciais-e-o-papel-de-cada-uma)
@@ -28,16 +27,6 @@
 - [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
 - [17. Checklist final de entrega técnica](#17-checklist-final-de-entrega-técnica)
 - [18. Changelog](#18-changelog)
-
----
-
-## 0. Como estudar este módulo
-
-1. Lê as secções 1 a 6 para perceberes o "porquê" técnico.
-2. Executa os comandos das secções 7 a 11 no teu computador.
-3. Faz o mini-laboratório completo da secção 15 sem saltar etapas.
-4. No fim, repete o mini-laboratório com variantes e compara os resultados.
-5. Usa a rubrica e checklist para validar se o teu ambiente está realmente sólido.
 
 ---
 

@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Porque este tema parece difícil?](#1-porque-este-tema-parece-difícil)
 - [2. Memória: pensar em caixas com moradas](#2-memória-pensar-em-caixas-com-moradas)
 - [3. O que é um apontador?](#3-o-que-é-um-apontador)
@@ -31,30 +30,6 @@
 - [19. Checklist mental antes de usar apontadores](#19-checklist-mental-antes-de-usar-apontadores)
 - [20. Exercícios propostos](#20-exercícios-propostos)
 - [21. Changelog](#21-changelog)
-
----
-
-## 0. Como usar este módulo
-
-Apontadores são um dos temas mais importantes de C. Também são um dos temas em que é mais fácil decorar código sem compreender. Esse caminho corre mal depressa.
-
-A forma certa de estudar é:
-
-1. perceber primeiro o que é um endereço de memória;
-2. perceber quando um apontador é realmente necessário;
-3. treinar `&` e `*` com exemplos pequenos;
-4. usar apontadores para alterar variáveis em funções;
-5. rever a ligação entre arrays e apontadores;
-6. só depois avançar para `malloc` e `free`;
-7. desenhar sempre a memória no papel.
-
-Neste módulo, mais importante do que escrever muito código é conseguir responder:
-
-- Que variável existe?
-- Onde está guardada?
-- Que valor tem?
-- O apontador aponta para onde?
-- A memória ainda é válida?
 
 ---
 

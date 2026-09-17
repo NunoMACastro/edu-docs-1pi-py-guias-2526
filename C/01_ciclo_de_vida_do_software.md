@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. O que é o ciclo de vida do software?](#2-o-que-é-o-ciclo-de-vida-do-software)
 - [3. Porque o ciclo de vida é importante](#3-porque-o-ciclo-de-vida-é-importante)
@@ -28,15 +27,6 @@
 - [16. Rubrica de autoavaliação](#16-rubrica-de-autoavaliação)
 - [17. Checklist final do módulo](#17-checklist-final-do-módulo)
 - [18. Changelog](#18-changelog)
-
----
-
-## 0. Como estudar este módulo
-
-1. Lê as fases por ordem e tenta responder: "qual é a saída desta fase?".
-2. Relaciona cada fase com trabalhos reais que já fizeste.
-3. No exemplo guiado, identifica decisões boas e decisões arriscadas.
-4. Faz primeiro o mini-laboratório e só depois a autoavaliação.
 
 ---
 

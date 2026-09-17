@@ -9,7 +9,6 @@
 
 ## Índice
 
--   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 -   [1. Tipos de erros em Python · \[ESSENCIAL\]](#1-tipos-de-erros-em-python--essencial)
 -   [2. Como ler mensagens de erro · \[ESSENCIAL\]](#2-como-ler-mensagens-de-erro--essencial)
 -   [3. Introdução a `try`/`except` · \[ESSENCIAL\]](#3-introdução-a-tryexcept--essencial)
@@ -22,26 +21,6 @@
 -   [10. Lista de erros comuns em Python](#10-lista-de-erros-comuns-em-python)
 -   [11. Exercícios - Exceções e Tratamento de Erros](#11-exercícios---exceções-e-tratamento-de-erros)
 -   [12. Changelog](#12-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-1. Garante que estás minimamente confortável com:
-    - tipos básicos (`int`, `float`, `str`, `bool`) e `input`/`print` (`01_introducao_variaveis_tipos_strings_io.md`);
-    - `if`, `while`, `for`, `range` (`02_operadores_e_controlo_de_fluxo_if_ciclos.md`);
-    - listas e dicionários (`03_listas_dicionarios_estruturas_aninhadas.md`);
-    - funções básicas (`04_funcoes_do_basico_ao_avancado.md`);
-    - ficheiros de texto/JSON/CSV (`07_ficheiros_texto_json_csv.md`).
-2. Lê primeiro as secções marcadas como **[ESSENCIAL]**:
-    - 1, 2, 3 e 4.
-3. Só depois explora as secções marcadas como **[EXTRA]**:
-    - 5, 6 e 7.
-4. Usa o interpretador ou ficheiros `.py` para:
-    - **provocar erros** de propósito,
-    - ver as mensagens de erro e analisá-las,
-    - reescrever o código com `try`/`except`.
-5. No fim, resolve os **exercícios**, começando pelos básicos.
 
 ---
 

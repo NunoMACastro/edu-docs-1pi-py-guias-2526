@@ -11,7 +11,6 @@
 
 ## Índice
 
-- [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 - [1. Estruturas estáticas vs dinâmicas](#1-estruturas-estáticas-vs-dinâmicas)
 - [2. Pilha (Stack)](#2-pilha-stack)
 - [3. Fila (Queue)](#3-fila-queue)
@@ -25,17 +24,6 @@
 - [11. Tabela resumo: pontos fortes, fracos e quando usar](#11-tabela-resumo-pontos-fortes-fracos-e-quando-usar)
 - [12. Resumo final](#12-resumo-final)
 - [13. Changelog](#13-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-Este ficheiro é teórico.  
-O objetivo não é "decorar fórmulas", mas sim:
-
-- perceber comportamento das estruturas;
-- compreender impacto de escolhas no desempenho;
-- desenvolver raciocínio para futuros exercícios/projetos.
 
 ---
 

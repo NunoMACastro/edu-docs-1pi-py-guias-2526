@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. O que é um algoritmo?](#2-o-que-é-um-algoritmo)
 - [3. Propriedades de um bom algoritmo](#3-propriedades-de-um-bom-algoritmo)
@@ -27,15 +26,6 @@
 - [15. Rubrica de autoavaliação](#15-rubrica-de-autoavaliação)
 - [16. Checklist de qualidade algorítmica](#16-checklist-de-qualidade-algorítmica)
 - [17. Changelog](#17-changelog)
-
----
-
-## 0. Como estudar este módulo
-
-1. Lê propriedades e construções antes de ver os exemplos em C.
-2. Para cada algoritmo, faz trace manual com dados pequenos.
-3. Só valida algoritmo quando passar casos normal, limite e inválido.
-4. Compara pelo menos duas soluções para o mesmo problema.
 
 ---
 

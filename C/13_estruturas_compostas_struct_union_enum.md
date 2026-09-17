@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Porque precisamos de estruturas compostas?](#1-porque-precisamos-de-estruturas-compostas)
 - [2. O problema das variáveis soltas](#2-o-problema-das-variáveis-soltas)
 - [3. `struct`: criar um tipo com vários campos](#3-struct-criar-um-tipo-com-vários-campos)
@@ -29,30 +28,6 @@
 - [17. Erros comuns](#17-erros-comuns)
 - [18. Exercícios propostos](#18-exercícios-propostos)
 - [19. Changelog](#19-changelog)
-
----
-
-## 0. Como usar este módulo
-
-Este módulo deve ser estudado depois de compreenderes bem variáveis, arrays e strings.
-
-A ordem recomendada é:
-
-1. compreender primeiro `struct`, porque é a estrutura composta mais importante neste nível;
-2. estudar arrays de `struct`, porque são muito usados em programas reais;
-3. perceber `enum`, que melhora a legibilidade do código;
-4. deixar `union` para o fim, porque é menos comum e exige mais cuidado.
-
-Uma boa forma de estudar este tema é pensar em objetos do mundo real:
-
-- um aluno;
-- um livro;
-- um produto;
-- uma data;
-- uma coordenada;
-- uma ficha de inscrição.
-
-Cada um destes elementos tem vários dados associados. Uma `struct` permite juntar esses dados.
 
 ---
 

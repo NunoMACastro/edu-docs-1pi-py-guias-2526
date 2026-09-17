@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. Porque usar funções?](#1-porque-usar-funções)
 - [2. Protótipos, definição e chamada](#2-protótipos-definição-e-chamada)
 - [3. Parâmetros e argumentos](#3-parâmetros-e-argumentos)
@@ -22,14 +21,6 @@
 - [10. Exemplo guiado](#10-exemplo-guiado)
 - [11. Erros comuns](#11-erros-comuns)
 - [12. Changelog](#12-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Escreve primeiro funções pequenas.
-2. Treina diferença entre local e global.
-3. Pratica passagem por ponteiro em exemplos curtos.
 
 ---
 

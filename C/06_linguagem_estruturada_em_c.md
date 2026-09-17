@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como usar este módulo](#0-como-usar-este-módulo)
 - [1. O que é programação estruturada?](#1-o-que-é-programação-estruturada)
 - [2. Características da linguagem C](#2-características-da-linguagem-c)
 - [3. Estrutura mínima de um programa C](#3-estrutura-mínima-de-um-programa-c)
@@ -19,14 +18,6 @@
 - [7. Exemplo guiado de programa estruturado](#7-exemplo-guiado-de-programa-estruturado)
 - [8. Erros comuns](#8-erros-comuns)
 - [9. Changelog](#9-changelog)
-
----
-
-## 0. Como usar este módulo
-
-1. Lê a estrutura mínima e escreve-a de memória.
-2. Compara programas "confusos" e "estruturados".
-3. Pratica decompor programa em funções pequenas.
 
 ---
 

@@ -9,7 +9,6 @@
 
 ## Índice
 
--   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 -   [1. O que é programar?](#1-o-que-%C3%A9-programar)
 -   [2. Primeiro contacto com Python](#2-primeiro-contacto-com-python)
 -   [3. Variáveis](#3-vari%C3%A1veis)
@@ -19,17 +18,6 @@
 -   [7. Entrada e saída: `print()` e `input()`](#7-entrada-e-sa%C3%ADda-print-e-input)
 -   [8. Exercícios (Introdução, Variáveis, Tipos, Strings, I/O)](#8-exerc%C3%ADcios-introdu%C3%A7%C3%A3o-vari%C3%A1veis-tipos-strings-io)
 -   [9. Changelog](#9-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-1. Lê a explicação teórica com calma.
-2. Analisa os exemplos de código - tenta prever o resultado **antes** de o correr.
-3. Reproduz os exemplos no teu editor / IDE.
-4. No fim, resolve os **exercícios** (10–12). Começa pelos mais fáceis e sobe a dificuldade.
-
-Se tiveres dúvidas, anota-as e fala com o professor.
 
 ---
 

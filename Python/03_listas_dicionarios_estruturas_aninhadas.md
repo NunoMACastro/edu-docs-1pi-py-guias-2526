@@ -9,27 +9,12 @@
 
 ## Índice
 
--   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 -   [1. Listas](#1-listas)
 -   [2. Dicionários](#2-dicion%C3%A1rios)
 -   [3. Estruturas de dados aninhadas](#3-estruturas-de-dados-aninhadas)
 -   [4. Exemplos aplicados](#4-exemplos-aplicados)
 -   [5. Exercícios (Listas, Dicionários e Estruturas Aninhadas)](#5-exerc%C3%ADcios-listas-dicion%C3%A1rios-e-estruturas-aninhadas)
 -   [6. Changelog](#6-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-1. Lê a explicação teórica com atenção.
-2. Experimenta todos os exemplos num ficheiro `.py`.
-3. Faz pequenas alterações para perceberes o efeito (muda valores, acrescenta elementos, etc.).
-4. No fim, resolve os **exercícios**. Começa pelos mais simples e tenta chegar aos desafios.
-
-Este ficheiro liga com os anteriores:
-
--   `01_introducao_variaveis_tipos_strings_io.md`
--   `02_operadores_e_controlo_de_fluxo_if_ciclos.md`
 
 ---
 

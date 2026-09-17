@@ -9,7 +9,6 @@
 
 ## Índice
 
-- [0. Como estudar este módulo](#0-como-estudar-este-módulo)
 - [1. Resultados de aprendizagem](#1-resultados-de-aprendizagem)
 - [2. Porque precisamos de metodologia?](#2-porque-precisamos-de-metodologia)
 - [3. Níveis de decisão em desenvolvimento](#3-níveis-de-decisão-em-desenvolvimento)
@@ -27,16 +26,6 @@
 - [15. Rubrica de autoavaliação](#15-rubrica-de-autoavaliação)
 - [16. Checklist de execução metodológica](#16-checklist-de-execução-metodológica)
 - [17. Changelog](#17-changelog)
-
----
-
-## 0. Como estudar este módulo
-
-1. Lê primeiro diferenças entre cascata, iterativo e ágil.
-2. Distingue explicitamente os 4 níveis (modelo, abordagem, framework/método, ferramentas).
-3. Tenta mapear essas diferenças num projeto que já tenhas feito.
-4. Executa o exemplo guiado como se fosse um projeto real.
-5. Usa a rubrica para avaliar se a metodologia foi realmente aplicada.
 
 ---
 

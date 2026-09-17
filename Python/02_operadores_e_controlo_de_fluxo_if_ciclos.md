@@ -9,7 +9,6 @@
 
 ## Índice
 
--   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 -   [1. Operadores aritméticos](#1-operadores-aritm%C3%A9ticos)
 -   [2. Operadores de comparação](#2-operadores-de-compara%C3%A7%C3%A3o)
 -   [3. Operadores lógicos (`and`, `or`, `not`)](#3-operadores-l%C3%B3gicos-and-or-not)
@@ -23,19 +22,6 @@
 -   [11. Blocos de código e indentação](#11-blocos-de-c%C3%B3digo-e-indenta%C3%A7%C3%A3o)
 -   [12. Exercícios (Operadores, `if`, `for`, `while`)](#12-exerc%C3%ADcios-operadores-if-for-while)
 -   [13. Changelog](#13-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-1. Lê a explicação teórica com calma.
-2. Analisa os exemplos e tenta **prever o resultado antes** de os correr.
-3. Reproduz os exemplos num ficheiro `.py` e faz pequenas alterações para experimentar.
-4. No fim, resolve os **exercícios** (10–12), começando pelos mais fáceis.
-
-Este ficheiro continua o que viste em:
-
--   `01_introducao_variaveis_tipos_strings_io.md` (variáveis, tipos, strings, `print`, `input`).
 
 ---
 

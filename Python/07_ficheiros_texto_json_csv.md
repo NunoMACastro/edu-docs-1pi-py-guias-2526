@@ -9,7 +9,6 @@
 
 ## Índice
 
--   [0. Como usar este ficheiro](#0-como-usar-este-ficheiro)
 -   [1. Introdução: porque usar ficheiros?](#1-introdução-porque-usar-ficheiros)
 -   [2. Ficheiros JSON (`.json`)](#2-ficheiros-json-json)
 -   [3. Ficheiros de texto (`.txt`)](#3-ficheiros-de-texto-txt)
@@ -17,22 +16,6 @@
 -   [5. Boas práticas com ficheiros](#5-boas-práticas-com-ficheiros)
 -   [6. Exercícios - Ficheiros de Texto, JSON e CSV](#6-exercícios---ficheiros-de-texto-json-e-csv)
 -   [7. Changelog](#7-changelog)
-
----
-
-## 0. Como usar este ficheiro
-
-1. Garante que sabes:
-    - variáveis, tipos básicos e `input`/`print` (`01_introducao_variaveis_tipos_strings_io.md`);
-    - `if`, ciclos `for`/`while` (`02_operadores_e_controlo_de_fluxo_if_ciclos.md`);
-    - listas e dicionários (`03_listas_dicionarios_estruturas_aninhadas.md`);
-    - funções simples (`04_funcoes_do_basico_ao_avancado.md`).
-2. Lê as secções pela ordem: texto → JSON → CSV.
-3. Testa todos os exemplos num ficheiro `.py`:
-    - observa que ficheiros são criados na mesma pasta;
-    - abre os ficheiros no editor para veres o “resultado”.
-4. No fim, resolve os **exercícios**.  
-   Começa pelos ficheiros de texto, depois JSON, e por fim CSV.
 
 ---
 
