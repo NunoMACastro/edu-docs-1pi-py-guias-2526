@@ -49,7 +49,6 @@ Módulos sobre hardware base, RAM/ROM, execução Python, heap/stack e complexid
 Documentos de avaliação e feedback pedagógico (não são fichas de aluno):
 
 - [`Avaliacoes/Python/`](./Avaliacoes/Python/) — avaliações de repositórios/projetos.
-- [`modulo_804_projeto_recuperacao.md`](./modulo_804_projeto_recuperacao.md) — proposta de trabalho de recuperação.
 
 ## Validação dos docs
 

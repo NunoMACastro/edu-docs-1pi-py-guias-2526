@@ -1,4 +1,4 @@
-![Header](Images/Header.png)
+![Header](../Images/Header.png)
 
 # Aula de Cibersegurança
 
@@ -1433,4 +1433,4 @@ Quando os alunos criarem uma aplicação com login, devem verificar:
 - Cibersegurança é uma responsabilidade ética.
 - O objetivo de aprender segurança é proteger pessoas, dados e instituições.
 
-![Footer](Images/Footer.png)
+![Footer](../Images/Footer.png)
