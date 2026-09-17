@@ -7305,6 +7305,269 @@ Testes obrigatórios:
 - Confirmar que o número de Pókemon não capturados fica correto.
 - Sair do programa sem fugas de memória.
 
+> Resolução:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define NAO_CAPTURADO 0
+#define CAPTURADO 1
+
+typedef struct {
+    int id;
+    char nome[50];
+    char tipo[20];
+    int estado;
+} Pokemon;
+
+typedef struct NoPokemon {
+    Pokemon pokemon;
+    struct NoPokemon *proximo;
+} NoPokemon;
+
+Pokemon criar_pokemon(int id, const char nome[], const char tipo[]) {
+    Pokemon pokemon;
+
+    pokemon.id = id;
+    strcpy(pokemon.nome, nome);
+    strcpy(pokemon.tipo, tipo);
+    pokemon.estado = NAO_CAPTURADO;
+
+    return pokemon;
+}
+
+Pokemon *criar_no_pokemon(Pokemon pokemon) {
+    NoPokemon *novo = malloc(sizeof *novo);
+
+    if (novo == NULL) {
+        return NULL;
+    }
+
+    novo->pokemon = pokemon;
+    novo->proximo = NULL;
+
+    return novo;
+}
+
+NoPokemon *inserir_fim(NoPokemon *inicio, Pokemon pokemon) {
+    NoPokemon *novo = criar_no_pokemon(pokemon);
+    NoPokemon *atual;
+
+    int existe = existe_pokemon(inicio, pokemon.id);
+
+    if (existe) {
+        printf("Pokemons existe man...");
+        return inicio;
+    }
+
+    if (novo == NULL) {
+        printf("Erro na reserva de memoria.\n");
+        return inicio;
+    }
+
+    if (inicio == NULL) {
+        return novo;
+    }
+
+    atual = inicio;
+    while (atual->proximo != NULL) {
+        atual = atual->proximo;
+    }
+
+    atual->proximo = novo;
+    return inicio;
+}
+
+int existe_pokemon(const NoPokemon *inicio, int id) {
+    const NoPokemon *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->pokemon.id == id) {
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+int marcar_capturado(NoPokemon *inicio, int id) {
+    NoPokemon *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->pokemon.id == id) {
+            atual->pokemon.estado = CAPTURADO;
+            return 1;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return 0;
+}
+
+NoPokemon *remover_pokemon(NoPokemon *inicio, int id) {
+    NoPokemon *anterior;
+    NoPokemon *atual;
+
+    if (inicio == NULL) {
+        return NULL;
+    }
+
+    if (inicio->pokemon.id == id) {
+        NoPokemon *novo_inicio = inicio->proximo;
+        free(inicio);
+        return novo_inicio;
+    }
+
+    anterior = inicio;
+    atual = inicio->proximo;
+
+    while (atual != NULL && atual->pokemon.id != id) {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    if (atual == NULL) {
+        return inicio;
+    }
+
+    anterior->proximo = atual->proximo;
+    free(atual);
+
+    return inicio;
+}
+
+int contar_nao_capturados(const NoPokemon *inicio) {
+    int total = 0;
+    const NoPokemon *atual = inicio;
+
+    while (atual != NULL) {
+        if (atual->pokemon.estado == NAO_CAPTURADO) {
+            total++;
+        }
+
+        atual = atual->proximo;
+    }
+
+    return total;
+}
+
+void mostrar_pokemons(const NoPokemon *inicio) {
+    const NoPokemon *atual = inicio;
+
+    if (inicio == NULL) {
+        printf("Sem pokemons.\n");
+        return;
+    }
+
+    while (atual != NULL) {
+        printf("%d - %s - %s - %s\n",
+               atual->pokemon.id,
+               atual->pokemon.nome,
+               atual->pokemon.tipo,
+               atual->pokemon.estado == CAPTURADO ? "capturado" : "nao capturado");
+        atual = atual->proximo;
+    }
+}
+
+void libertar_pokemons(NoPokemon *inicio) {
+    NoPokemon *atual = inicio;
+
+    while (atual != NULL) {
+        NoPokemon *seguinte = atual->proximo;
+        free(atual);
+        atual = seguinte;
+    }
+}
+
+void menu() {
+    printf("\n1 - Adicionar Pokemon\n");
+    printf("2 - Listar Pokemons\n");
+    printf("3 - Marcar Pokemon como capturado\n");
+    printf("4 - Remover Pokemon\n");
+    printf("5 - Mostrar numero de Pokemons nao capturados\n");
+    printf("0 - Sair\n");
+}
+
+void main() {
+    NoPokemon *pokemons = NULL;
+    int opcao;
+    int id;
+    char nome[50];
+    char tipo[20];
+
+    do {
+        menu();
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Id: ");
+                scanf("%d", &id);
+
+                if (existe_pokemon(pokemons, id)) {
+                    printf("Ja existe um Pokemon com esse id.\n");
+                } else {
+                    printf("Nome sem espacos: ");
+                    scanf("%49s", nome);
+                    printf("Tipo sem espacos: ");
+                    scanf("%19s", tipo);
+                    pokemons = inserir_fim(pokemons, criar_pokemon(id, nome, tipo));
+                }
+                break;
+
+            case 2:
+                mostrar_pokemons(pokemons);
+                break;
+
+            case 3:
+                printf("Id a capturar: ");
+                scanf("%d", &id);
+
+                if (marcar_capturado(pokemons, id)) {
+                    printf("Pokemon capturado.\n");
+                } else {
+                    printf("Pokemon nao encontrado.\n");
+                }
+                break;
+
+            case 4:
+                printf("Id a remover: ");
+                scanf("%d", &id);
+
+                if (existe_pokemon(pokemons, id)) {
+                    pokemons = remover_pokemon(pokemons, id);
+                    printf("Pokemon removido.\n");
+                } else {
+                    printf("Pokemon nao encontrado.\n");
+                }
+                break;
+
+            case 5:
+                printf("Nao capturados: %d\n", contar_nao_capturados(pokemons));
+                break;
+
+            case 0:
+                printf("A sair...\n");
+                break;
+
+            default:
+                printf("Opcao invalida.\n");
+                break;
+        }
+    } while (opcao != 0);
+
+    libertar_pokemons(pokemons);
+    pokemons = NULL;
+}
+
+```
+
 ### Exercício 116 - Gestor de Góticas para a nova App do Gustavo, com lista ligada e menu
 
 Objetivo: criar um programa completo com menu, usando lista ligada como estrutura principal de dados.
@@ -7352,7 +7615,7 @@ Testes obrigatórios:
 
 ---
 
-### 117 - Exemplos de perguntas de escolha múltipla de listas ligadas
+### 117 - Exemplos de perguntas de escolha múltipla de listas ligadas simples e árvores
 
 1. Qual é a principal vantagem de usar uma lista ligada em vez de um array para armazenar elementos?
    a) Acesso aleatório rápido aos elementos  
@@ -7393,5 +7656,85 @@ Resposta correta: b) Cada nó tem no máximo dois filhos, chamados de filho esqu
     d) Nenhuma vantagem significativa
 
 Resposta correta: a) Acesso mais rápido a elementos específicos devido à sua estrutura hierárquica
+
+6. Numa lista ligada simples, o campo `proximo` do último nó deve guardar:
+   a) O endereço do primeiro nó  
+   b) O valor do último elemento  
+   c) `NULL`  
+   d) O endereço do nó anterior
+
+Resposta correta: c) `NULL`
+
+7. Ao inserir um novo nó no início de uma lista ligada simples, qual é a ordem correta das operações?
+   a) Libertar o início antigo e depois ligar o novo nó  
+   b) Fazer `novo->proximo = inicio` e devolver `novo` como novo início  
+   c) Percorrer a lista até ao fim e substituir o último nó  
+   d) Fazer `inicio = NULL` antes de criar o novo nó
+
+Resposta correta: b) Fazer `novo->proximo = inicio` e devolver `novo` como novo início
+
+8. Porque é que uma função que remove o primeiro nó de uma lista ligada simples costuma devolver o novo início da lista?
+   a) Porque o valor guardado no primeiro nó muda sempre  
+   b) Porque o endereço do início pode mudar depois da remoção  
+   c) Porque `free` devolve automaticamente o novo início  
+   d) Porque listas ligadas simples não podem ficar vazias
+
+Resposta correta: b) Porque o endereço do início pode mudar depois da remoção
+
+9. Qual é um erro comum ao percorrer uma lista ligada simples?
+   a) Usar uma variável auxiliar para o percurso  
+   b) Verificar se o apontador atual é diferente de `NULL`  
+   c) Atualizar o apontador atual para `atual->proximo`  
+   d) Aceder a `atual->proximo` quando `atual` já é `NULL`
+
+Resposta correta: d) Aceder a `atual->proximo` quando `atual` já é `NULL`
+
+10. Depois de criar nós com `malloc`, o que deve acontecer quando a lista já não é necessária?
+    a) Chamar `free` para cada nó da lista  
+    b) Chamar `free` apenas para o primeiro nó e ignorar os restantes  
+    c) Fazer apenas `inicio = NULL`, sem libertar memória  
+    d) Esperar que o compilador liberte automaticamente todos os nós
+
+Resposta correta: a) Chamar `free` para cada nó da lista
+
+11. Numa árvore, o nó que não tem pai chama-se:
+    a) Folha  
+    b) Raiz  
+    c) Filho esquerdo  
+    d) Subárvore
+
+Resposta correta: b) Raiz
+
+12. Numa árvore binária, cada nó pode ter:
+    a) No máximo um filho  
+    b) No máximo dois filhos  
+    c) Exatamente dois filhos  
+    d) Um número ilimitado de filhos
+
+Resposta correta: b) No máximo dois filhos
+
+13. Numa árvore, um nó folha é um nó que:
+    a) Não tem filhos  
+    b) Não tem pai  
+    c) Tem sempre dois filhos  
+    d) Guarda obrigatoriamente o menor valor da árvore
+
+Resposta correta: a) Não tem filhos
+
+14. Qual é a principal diferença estrutural entre uma lista ligada simples e uma árvore?
+    a) A lista ligada simples é hierárquica e a árvore é linear  
+    b) A lista ligada simples tem nós com vários filhos e a árvore tem apenas um próximo nó  
+    c) A lista ligada simples é linear e a árvore é hierárquica  
+    d) A lista ligada simples nunca usa apontadores
+
+Resposta correta: c) A lista ligada simples é linear e a árvore é hierárquica
+
+15. Numa árvore binária de pesquisa, considerando a regra mais comum, os valores menores do que o nó atual ficam:
+    a) Na subárvore esquerda  
+    b) Na subárvore direita  
+    c) Sempre na raiz  
+    d) Sempre nos nós folha
+
+Resposta correta: a) Na subárvore esquerda
 
 ![Footer](../Images/Footer.png)
