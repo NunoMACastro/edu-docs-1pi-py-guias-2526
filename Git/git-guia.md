@@ -12,7 +12,7 @@
 
 | Termo                  | Explicação                                                                                                 |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Git**                | Sistema de controlo de versões — permite guardar o histórico de alterações do código.                      |
+| **Git**                | Sistema de controlo de versões - permite guardar o histórico de alterações do código.                      |
 | **Repositório (repo)** | Diretoria que contém o código e o histórico de versões.                                                    |
 | **Commit**             | Registo de alterações com uma mensagem descritiva.                                                         |
 | **Branch**             | Linha de desenvolvimento paralela. Permite trabalhar sem mexer na principal.                               |
@@ -92,7 +92,7 @@ git push origin main
 ## 6. Branches
 
 > Nota: Hoje em dia existe `git switch` (mais “moderno”) e `git checkout` (mais antigo, mas ainda muito usado).  
-> Podes usar qualquer um — o importante é perceber o que faz.
+> Podes usar qualquer um - o importante é perceber o que faz.
 
 ```bash
 git branch nome-da-branch               # cria uma nova branch (não muda para ela)
@@ -193,7 +193,7 @@ Usa quando queres “desfazer o commit” mas manter tudo pronto a commitar.
 git reset --soft <hash_do_commit>
 ```
 
-#### B) `--mixed` (default) — mantém as alterações no working directory, mas tira do staging
+#### B) `--mixed` (default) - mantém as alterações no working directory, mas tira do staging
 
 É o mais comum quando queres voltar atrás e depois escolher o que commitar.
 
@@ -202,7 +202,7 @@ git reset --mixed <hash_do_commit>
 # ou simplesmente: git reset <hash_do_commit>
 ```
 
-#### C) `--hard` (cuidado!) — apaga tudo e fica exatamente como nesse commit
+#### C) `--hard` (cuidado!) - apaga tudo e fica exatamente como nesse commit
 
 Perdes alterações **não guardadas** depois desse commit.
 
@@ -219,12 +219,12 @@ git reset --hard <hash_do_commit>
 
 ---
 
-### 8.4) “Desfazer” um commit **sem reescrever histórico** (REVERT) — recomendado em trabalho de equipa
+### 8.4) “Desfazer” um commit **sem reescrever histórico** (REVERT) - recomendado em trabalho de equipa
 
 `git revert` **cria um novo commit** que anula as alterações de um commit anterior.
 
 ```bash
-git revert <hash_do_commit> 
+git revert <hash_do_commit>
 ```
 
 Isto é o mais seguro quando:
@@ -303,7 +303,7 @@ git reset --hard <hash_que_aparece_no_reflog>
 
 ---
 
-### 8.8) Voltar a um commit anterior — UI do VSCode
+### 8.8) Voltar a um commit anterior - UI do VSCode
 
 - Projeto inteiro: abre a Command Palette (Ctrl+Shift+P) → `Git: Checkout to...` → escolhe o commit.
 - Ficheiro específico: no Explorer, seleciona o ficheiro → abre a view **Timeline** → escolhe um commit → **Restore**.
